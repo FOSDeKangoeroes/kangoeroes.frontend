@@ -34,11 +34,11 @@
 </ng-container>
 <ng-container matColumnDef="leidingSinds">
   <mat-header-cell *matHeaderCellDef>Leiding sinds</mat-header-cell>
-  <mat-cell *matCellDef="let leiding">{{leiding.leidingSinds}}</mat-cell>
+  <mat-cell *matCellDef="let leiding">{{leiding.leidingSinds | date:'dd-MMM-yyyy'}}</mat-cell>
 </ng-container>
 <ng-container matColumnDef="datumGestopt">
   <mat-header-cell *matHeaderCellDef>Datum gestopt als leiding</mat-header-cell>
-  <mat-cell *matCellDef="let leiding">{{leiding.datumGestopt}}</mat-cell>
+  <mat-cell *matCellDef="let leiding">{{leiding.datumGestopt | date:'dd-MMM-yyyy'}}</mat-cell>
 </ng-container>
 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

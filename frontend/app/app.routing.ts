@@ -6,6 +6,8 @@ import {
   FullLayoutComponent,
   SimpleLayoutComponent
 } from './containers';
+import { TakListComponent } from './tak/tak-list/tak-list.component';
+import { LeidingListComponent } from './leiding/leiding-list/leiding-list.component';
 
 export const routes: Routes = [
   // Normale url (localhost:4200 bijv.) redirecten naar localhost:4200/#/dashboard
@@ -27,7 +29,14 @@ export const routes: Routes = [
       },
       {
         path: 'tak',
+        component: TakListComponent,
         loadChildren: './tak/tak.module#TakModule'
+      
+      },
+      {
+        path: 'personen',
+        component: LeidingListComponent,
+        loadChildren: './leiding/leiding.module#LeidingModule'
       }
     ]
   }

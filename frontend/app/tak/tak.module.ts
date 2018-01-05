@@ -17,14 +17,6 @@ import { TakDeleteComponent } from './tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from './tak-leiding-add/tak-leiding-add.component';
 
 const routes = [
-  {
-    path: '',
-    component: TakListComponent,
-    pathMatch: 'full',
-    data: {
-      title: 'Takken'
-    }
-   },
     {
       path: ':id',
       component: TakDetailComponent,

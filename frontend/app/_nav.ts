@@ -12,7 +12,7 @@ export const navigation = [
   },
   {
     name: 'Personen',
-    url: '/leiding',
+    url: '/personen',
     icon: 'icon-user'
   }
 ];

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeidingTableItemComponent } from './leiding-table-item.component';
+import { LeidingListComponent } from './leiding-list.component';
 
-describe('LeidingTableItemComponent', () => {
-  let component: LeidingTableItemComponent;
-  let fixture: ComponentFixture<LeidingTableItemComponent>;
+describe('LeidingListComponent', () => {
+  let component: LeidingListComponent;
+  let fixture: ComponentFixture<LeidingListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeidingTableItemComponent ]
+      declarations: [ LeidingListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeidingTableItemComponent);
+    fixture = TestBed.createComponent(LeidingListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

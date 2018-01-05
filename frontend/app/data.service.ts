@@ -59,4 +59,12 @@ export class DataService {
   addLeiding(leiding: Leiding): Observable<Leiding> {
     return this.http.post(this._leidingUrl, leiding.toJSON()).map(response => response.json()).map(item => Leiding.fromJSON(item));
   }
-}
+
+  getLeiding(): Observable<Leiding[]> {
+    return this.http.get(this._leidingUrl)
+      .map(response =>
+        response.json().result.map(item => Leiding.fromJSON(item))
+      );
+  }
+  }
+

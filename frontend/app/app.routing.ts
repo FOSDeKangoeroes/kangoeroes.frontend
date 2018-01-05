@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 // Import Containers
 import {
@@ -8,8 +8,11 @@ import {
 } from './containers';
 import { TakListComponent } from './tak/tak-list/tak-list.component';
 import { LeidingListComponent } from './leiding/leiding-list/leiding-list.component';
+import { TakDetailComponent } from './tak/tak-detail/tak-detail.component';
+import { TakResolverService } from './tak/tak-resolver.service';
 
-export const routes: Routes = [
+
+const routes: Routes = [
   // Normale url (localhost:4200 bijv.) redirecten naar localhost:4200/#/dashboard
   {
     path: '',
@@ -28,15 +31,18 @@ export const routes: Routes = [
         loadChildren: './views/dashboard/dashboard.module#DashboardModule'
       },
       {
-        path: 'tak',
+        path: 'takken',
         component: TakListComponent,
-        loadChildren: './tak/tak.module#TakModule'
-      
+
+      },
+      {
+        path: 'takken/:id',
+        component: TakDetailComponent,
+        resolve: {tak: TakResolverService}
       },
       {
         path: 'personen',
-        component: LeidingListComponent,
-        loadChildren: './leiding/leiding.module#LeidingModule'
+        component: LeidingListComponent
       }
     ]
   }
@@ -44,7 +50,8 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}) ],
+  providers: [TakResolverService],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}

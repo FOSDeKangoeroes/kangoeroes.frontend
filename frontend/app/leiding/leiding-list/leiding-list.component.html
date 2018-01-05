@@ -1,3 +1,26 @@
-<p>
-  leiding-list works!
-</p>
+<div class="animated fadeIn">
+<mat-table [dataSource]='dataSource' matSort>
+  <ng-container matColumnDef="userName" >
+    <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{user.voornaam}} {{user.naam}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef  mat-sort-header>Email</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{user.email}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="authId">
+    <mat-header-cell *matHeaderCellDef>Auth Id</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{user.auth0Id}} </mat-cell>
+  </ng-container>
+<ng-container matColumnDef="leidingSinds">
+  <mat-header-cell *matHeaderCellDef>Leiding sinds</mat-header-cell>
+  <mat-cell *matCellDef="let leiding">{{leiding.leidingSinds | date:'dd-MMM-yyyy'}}</mat-cell>
+</ng-container>
+<ng-container matColumnDef="datumGestopt">
+  <mat-header-cell *matHeaderCellDef>Datum gestopt als leiding</mat-header-cell>
+  <mat-cell *matCellDef="let leiding">{{leiding.datumGestopt | date:'dd-MMM-yyyy'}}</mat-cell>
+</ng-container>
+<mat-header-row *matHeaderRowDef="['userName','email', 'authId','leidingSinds','datumGestopt']"></mat-header-row>
+<mat-row *matRowDef="let myRowData; columns: ['userName', 'email','authId','leidingSinds','datumGestopt']"></mat-row>
+</mat-table>
+</div>

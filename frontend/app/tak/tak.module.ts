@@ -16,16 +16,6 @@ import { TakEditComponent } from './tak-edit/tak-edit.component';
 import { TakDeleteComponent } from './tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from './tak-leiding-add/tak-leiding-add.component';
 
-const routes = [
-    {
-      path: ':id',
-      component: TakDetailComponent,
-      resolve: {tak: TakResolverService},
-      data: {
-        title: 'Takdetail'
-      }
-    }
-];
 
 @NgModule({
   imports: [
@@ -34,13 +24,13 @@ const routes = [
     LeidingModule,
     MatTableModule,
     ReactiveFormsModule,
+    RouterModule,
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
-    RouterModule.forChild(routes)
+
   ],
   providers: [
     DataService,
-    TakResolverService
   ],
   declarations: [TakComponent, TakListComponent, TakDetailComponent, TakEditComponent, TakDeleteComponent, TakLeidingAddComponent],
   entryComponents: [TakEditComponent, TakDeleteComponent, TakLeidingAddComponent]

@@ -4,14 +4,12 @@ import { CommonModule } from '@angular/common';
 import { TakModule } from '../tak/tak.module';
 import { LeidingListComponent } from './leiding-list/leiding-list.component';
 import { RouterModule } from '@angular/router';
-
-const routes = [
-];
+import { MatTableModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    MatTableModule
   ],
   declarations: [LeidingListComponent]
 })

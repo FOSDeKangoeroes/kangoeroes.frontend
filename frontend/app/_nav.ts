@@ -7,7 +7,7 @@ export const navigation = [
   },
   {
     name: 'Takken',
-    url: '/tak',
+    url: '/takken',
     icon: 'icon-people'
   },
   {

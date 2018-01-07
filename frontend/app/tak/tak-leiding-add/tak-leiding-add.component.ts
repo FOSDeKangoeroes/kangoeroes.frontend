@@ -38,6 +38,7 @@ export class TakLeidingAddComponent implements OnInit {
     const leiding = new Leiding(
       this.addLeidingFormGroup.value.naam,
       this.addLeidingFormGroup.value.voornaam);
+      leiding.email = this.addLeidingFormGroup.value.email;
       leiding.takId = this.takId;
 
     this.dataService.addLeiding(leiding).subscribe(item => {

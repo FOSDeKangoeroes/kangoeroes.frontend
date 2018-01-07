@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TakEditComponent } from './tak-edit/tak-edit.component';
 import { TakDeleteComponent } from './tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from './tak-leiding-add/tak-leiding-add.component';
+import { TakAddComponent } from './tak-add/tak-add.component';
 
 
 @NgModule({
@@ -32,7 +33,19 @@ import { TakLeidingAddComponent } from './tak-leiding-add/tak-leiding-add.compon
   providers: [
     DataService,
   ],
-  declarations: [TakComponent, TakListComponent, TakDetailComponent, TakEditComponent, TakDeleteComponent, TakLeidingAddComponent],
-  entryComponents: [TakEditComponent, TakDeleteComponent, TakLeidingAddComponent]
+  declarations: [
+    TakComponent,
+    TakListComponent,
+    TakDetailComponent,
+    TakEditComponent,
+    TakDeleteComponent,
+    TakLeidingAddComponent,
+    TakAddComponent],
+  entryComponents:
+  [TakEditComponent,
+    TakDeleteComponent,
+    TakLeidingAddComponent,
+  TakAddComponent
+]
 })
 export class TakModule { }

@@ -29,7 +29,7 @@ export class TakEditComponent implements OnInit {
       naam: ['', [Validators.required, Validators.minLength(2)]],
       volgorde: ['', [Validators.required, , Validators.min(1)]]
 
-    }); 
+    });
   }
 
   onSubmit() {

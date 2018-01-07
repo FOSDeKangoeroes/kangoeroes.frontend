@@ -56,6 +56,13 @@ export class DataService {
     });
   }
 
+  addTak(tak: Tak): Observable<Tak> {
+    return this.http.post(this._takUrl, tak.toJSON()).map(response => response.json()).map(item => {
+      const newTak = Tak.fromJSON(item);
+      return newTak;
+    });
+  }
+
   addLeiding(leiding: Leiding): Observable<Leiding> {
     return this.http.post(this._leidingUrl, leiding.toJSON()).map(response => response.json()).map(item => Leiding.fromJSON(item));
   }

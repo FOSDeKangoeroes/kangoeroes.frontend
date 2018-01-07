@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
 <mat-table [dataSource]='dataSource' matSort>
   <ng-container matColumnDef="userName" >
-    <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Naam</mat-header-cell>
     <mat-cell *matCellDef="let user">{{user.voornaam}} {{user.naam}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="email">

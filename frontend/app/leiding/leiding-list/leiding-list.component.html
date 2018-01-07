@@ -1,26 +1,42 @@
 <div class="animated fadeIn">
-<mat-table [dataSource]='dataSource' matSort>
-  <ng-container matColumnDef="userName" >
-    <mat-header-cell *matHeaderCellDef>Naam</mat-header-cell>
-    <mat-cell *matCellDef="let user">{{user.voornaam}} {{user.naam}}</mat-cell>
+
+    <div class="card card-accent-primary">
+      <div class="card-header">
+        Acties
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-success" data-toggle="modal" (click)="openAddModal()">
+          <i class="icon-plus"> Persoon toevoegen</i>
+        </button>
+      </div>
+    </div>
+ 
+<mat-table #table [dataSource]="dataSource" matSort> 
+  <ng-container matColumnDef="voornaam">
+    <mat-header-cell mat-sort-header *matHeaderCellDef>Voornaam</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{user.voornaam}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="naam" >
+    <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{user.naam}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="email">
     <mat-header-cell *matHeaderCellDef  mat-sort-header>Email</mat-header-cell>
-    <mat-cell *matCellDef="let user">{{user.email}} </mat-cell>
+    <mat-cell *matCellDef="let leiding">{{leiding.email}} </mat-cell> 
   </ng-container>
   <ng-container matColumnDef="authId">
-    <mat-header-cell *matHeaderCellDef>Auth Id</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Auth Id</mat-header-cell>
     <mat-cell *matCellDef="let user">{{user.auth0Id}} </mat-cell>
   </ng-container>
 <ng-container matColumnDef="leidingSinds">
-  <mat-header-cell *matHeaderCellDef>Leiding sinds</mat-header-cell>
+  <mat-header-cell *matHeaderCellDef mat-sort-header>Leiding sinds</mat-header-cell>
   <mat-cell *matCellDef="let leiding">{{leiding.leidingSinds | date:'dd-MMM-yyyy'}}</mat-cell>
 </ng-container>
 <ng-container matColumnDef="datumGestopt">
-  <mat-header-cell *matHeaderCellDef>Datum gestopt als leiding</mat-header-cell>
+  <mat-header-cell *matHeaderCellDef mat-sort-header>Datum gestopt als leiding</mat-header-cell>
   <mat-cell *matCellDef="let leiding">{{leiding.datumGestopt | date:'dd-MMM-yyyy'}}</mat-cell>
 </ng-container>
-<mat-header-row *matHeaderRowDef="['userName','email', 'authId','leidingSinds','datumGestopt']"></mat-header-row>
-<mat-row *matRowDef="let myRowData; columns: ['userName', 'email','authId','leidingSinds','datumGestopt']"></mat-row>
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 </div>

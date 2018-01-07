@@ -4,12 +4,15 @@ import { CommonModule } from '@angular/common';
 import { TakModule } from '../tak/tak.module';
 import { LeidingListComponent } from './leiding-list/leiding-list.component';
 import { RouterModule } from '@angular/router';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatSortModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule,
+    BrowserAnimationsModule
   ],
   declarations: [LeidingListComponent]
 })

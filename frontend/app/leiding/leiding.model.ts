@@ -42,6 +42,10 @@ export class Leiding {
         return this._email;
     }
 
+    set email(email: string) {
+        this._email = email;
+    }
+
     get leidingSinds() {
         return this._leidingSinds;
     }
@@ -57,7 +61,7 @@ export class Leiding {
 
     get datumGestopt() {
         return this._datumGestopt;
-    }
+    } 
 
     set datumGestopt(datumGestopt: Date) {
         if (datumGestopt === null) {

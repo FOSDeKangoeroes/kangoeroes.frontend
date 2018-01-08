@@ -33,19 +33,18 @@ const routes: Routes = [
       },
       {
         path: 'takken',
-        //component: TakListComponent,
-        loadChildren: './tak/tak.module#TakModule'
+        loadChildren: './tak/tak.module#TakModule',
+        data: {
+          title: 'Takken'
+        }
 
       },
-     /* {
-        path: 'takken/:id',
-        component: TakDetailComponent,
-        resolve: {tak: TakResolverService}
-      },*/
       {
         path: 'personen',
-        //component: LeidingListComponent
-        loadChildren: './leiding/leiding.module#LeidingModule'
+        loadChildren: './leiding/leiding.module#LeidingModule',
+        data: {
+          title: 'Personen'
+        }
       },
       {
         path: 'callback',

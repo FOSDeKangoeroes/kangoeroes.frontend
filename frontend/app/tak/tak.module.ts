@@ -25,7 +25,10 @@ const routes: Routes = [
   {
     path: ':id',
     component: TakDetailComponent,
-    resolve: {tak: TakResolverService}
+    resolve: {tak: TakResolverService},
+    data: {
+      title: 'Takdetail'
+    }
   }
 ];
 

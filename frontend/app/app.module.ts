@@ -69,6 +69,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { TakModule } from './tak/tak.module';
 import { AuthService } from './auth.service';
 import { CallbackComponent } from './components/callback/callback.component';
+import { LeidingModule } from './leiding/leiding.module';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { CallbackComponent } from './components/callback/callback.component';
     BrowserModule,
     AppRoutingModule,
     TakModule,
+    LeidingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule

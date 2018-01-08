@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TakModule } from '../tak/tak.module';
 import { LeidingListComponent } from './leiding-list/leiding-list.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule, MatSortModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LeidingAddComponent } from './leiding-add/leiding-add.component';
@@ -11,6 +11,12 @@ import { DataService } from '../data.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: LeidingListComponent
+  }
+];
 
 @NgModule({
   imports: [
@@ -19,7 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSortModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    BrowserAnimationsModule
+    RouterModule.forChild(routes),
   ],
   providers: [DataService],
   declarations: [LeidingListComponent, LeidingAddComponent],

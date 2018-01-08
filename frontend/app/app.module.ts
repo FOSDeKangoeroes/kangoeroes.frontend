@@ -67,6 +67,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { TakModule } from './tak/tak.module';
+import { AuthService } from './auth.service';
+import { CallbackComponent } from './components/callback/callback.component';
 
 
 @NgModule({
@@ -82,12 +84,13 @@ import { TakModule } from './tak/tak.module';
     AppComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
-    ...APP_DIRECTIVES
+    ...APP_DIRECTIVES,
+    CallbackComponent
   ],
   providers: [{
     provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+    useClass: HashLocationStrategy,
+  }, AuthService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

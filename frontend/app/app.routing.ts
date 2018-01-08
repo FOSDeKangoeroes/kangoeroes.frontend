@@ -10,6 +10,7 @@ import { TakListComponent } from './tak/tak-list/tak-list.component';
 import { LeidingListComponent } from './leiding/leiding-list/leiding-list.component';
 import { TakDetailComponent } from './tak/tak-detail/tak-detail.component';
 import { TakResolverService } from './tak/tak-resolver.service';
+import { CallbackComponent } from './components/callback/callback.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,11 @@ const routes: Routes = [
       {
         path: 'personen',
         component: LeidingListComponent
+      },
+      {
+        path: 'callback',
+        component: CallbackComponent,
+        pathMatch: 'full'
       }
     ]
   }

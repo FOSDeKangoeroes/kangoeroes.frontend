@@ -3,13 +3,7 @@ import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, Valid
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { DataService } from '../../data.service';
 import { Leiding } from '../../leiding/leiding.model';
-
-// Custom validator om optionele velden te valideren
-function emailOrEmpty(validators?: (ValidatorFn | null | undefined)[] ): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } => {
-    return control.value  ? Validators.compose(validators)(control) : null;
-  };
-}
+import { Util } from '../../leiding/util';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -30,7 +24,7 @@ export class TakLeidingAddComponent implements OnInit {
     this.addLeidingFormGroup = this.fb.group({
       naam: ['', [Validators.required, Validators.minLength(2)]],
       voornaam: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [emailOrEmpty([Validators.email])]]
+      email: ['', [Util.emailOrEmpty([Validators.email])]]
     });
   }
 

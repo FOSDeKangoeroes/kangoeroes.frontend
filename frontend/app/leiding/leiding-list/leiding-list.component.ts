@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { DataService } from '../../data.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Leiding } from '../leiding.model';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { LeidingAddComponent } from '../leiding-add/leiding-add.component';
+
 
 
 
@@ -18,7 +21,9 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dataService: DataService) { 
+  public addModal: BsModalRef;
+
+  constructor(private dataService: DataService, private modalService: BsModalService) {
     this.dataService.getLeiding().subscribe(res => {
       this.dataSource.data = res;
     });
@@ -30,6 +35,10 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  openAddModal() {
+    this.addModal = this.modalService.show(LeidingAddComponent);
   }
 
 }

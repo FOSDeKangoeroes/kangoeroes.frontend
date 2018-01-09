@@ -11,6 +11,18 @@
 
     <fieldset>
 
+  <div class="form-group">
+    <label class="col-12 control-label" for="tak_id">Tak
+      <i class="text-danger">*</i>
+    </label>
+    <div class="col-12">
+     <select class="form-control" formControlName="tak">
+        <option *ngFor="let tak of takken" [value]="tak.id">{{tak.naam}}</option>
+     </select>
+    </div>
+    <div class="text-danger" *ngIf='addLeidingFormGroup.get("tak").errors?.required && addLeidingFormGroup.get("tak").touched'>Dit veld is verplicht.</div>
+  </div>
+
       <div class="form-group">
         <label class="col-12 control-label" for="voornaam_id">Voornaam
           <i class="text-danger">*</i>

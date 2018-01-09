@@ -14,11 +14,19 @@ export class Leiding {
         return leiding;
     }
 
-    constructor(naam: string, voornaam: string, auth0Id?: string,  email?: string, leidingSinds?: Date, datumGestopt?: Date ) {
+    constructor(naam: string,
+        voornaam: string,
+        auth0Id?: string,
+        email?: string,
+        leidingSinds?: Date,
+        datumGestopt?: Date,
+        takId?: number ) {
+
         this._auth0Id = auth0Id;
         this._naam = naam;
         this._voornaam = voornaam;
         this._email = email;
+        this._takId = takId;
         this._leidingSinds = leidingSinds;
         if (this._leidingSinds === null) {
             this._leidingSinds = new Date(1, 1, 1);
@@ -61,7 +69,7 @@ export class Leiding {
 
     get datumGestopt() {
         return this._datumGestopt;
-    } 
+    }
 
     set datumGestopt(datumGestopt: Date) {
         if (datumGestopt === null) {

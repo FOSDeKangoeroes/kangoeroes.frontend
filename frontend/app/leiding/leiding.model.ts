@@ -37,7 +37,9 @@ export class Leiding {
         }
     }
 
-
+get id() {
+    return this._id;
+}
     get naam() {
         return this._naam;
     }

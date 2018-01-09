@@ -70,6 +70,7 @@ import { TakModule } from './tak/tak.module';
 import { AuthService } from './auth.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { LeidingModule } from './leiding/leiding.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { LeidingModule } from './leiding/leiding.module';
     AppRoutingModule,
     TakModule,
     LeidingModule,
+    BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule

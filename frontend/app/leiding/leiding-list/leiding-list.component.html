@@ -8,10 +8,31 @@
         <button type="button" class="btn btn-success" data-toggle="modal" (click)="openAddModal()">
           <i class="icon-plus"> Persoon toevoegen</i>
         </button>
+        <div *ngIf="selection.hasValue()">
+          <select >
+            <option>Test</option>
+          </select>
+      <button type="button" class="btn btn-success">
+  <i class="icon-plus"> Persoon toevoegen</i>
+</button>
+        </div>
+        
       </div>
     </div>
- 
+ <div class="leiding-container">
 <mat-table #table [dataSource]="dataSource" matSort> 
+  <ng-container matColumnDef="select">
+<mat-header-cell *matHeaderCellDef>
+  <mat-checkbox (change)="$event? masterToggle(): null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+</mat-header-cell>
+<mat-cell *matCellDef="let row">
+<mat-checkbox (change)="$event? selection.toggle(row): null" 
+              [checked]="selection.isSelected(row)" 
+              (click)="$event.stopPropagation()"></mat-checkbox>
+</mat-cell>
+  </ng-container>
   <ng-container matColumnDef="voornaam">
     <mat-header-cell mat-sort-header *matHeaderCellDef>Voornaam</mat-header-cell>
     <mat-cell *matCellDef="let user">{{user.voornaam}}</mat-cell>
@@ -39,4 +60,5 @@
 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
+</div>
 </div>

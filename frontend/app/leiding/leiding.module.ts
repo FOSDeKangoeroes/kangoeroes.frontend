@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TakModule } from '../tak/tak.module';
 import { LeidingListComponent } from './leiding-list/leiding-list.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MatTableModule, MatSortModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LeidingAddComponent } from './leiding-add/leiding-add.component';
 import { DataService } from '../data.service';
@@ -24,6 +24,7 @@ const routes: Routes = [
     MatTableModule,
     MatSortModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     ModalModule.forRoot(),
     RouterModule.forChild(routes),
   ],

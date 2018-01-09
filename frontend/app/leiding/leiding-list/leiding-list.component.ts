@@ -23,7 +23,7 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
  selection = new SelectionModel<Leiding>(true, []);
-
+  actionOptions = ['Tak wijzigen', 'Verwijderen'];
 
   public addModal: BsModalRef;
 

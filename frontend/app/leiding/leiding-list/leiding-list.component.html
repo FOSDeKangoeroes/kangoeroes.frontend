@@ -1,64 +1,65 @@
 <div class="animated fadeIn">
 
-    <div class="card card-accent-primary">
-      <div class="card-header">
-        Acties
-      </div>
-      <div class="card-body">
-        <button type="button" class="btn btn-success" data-toggle="modal" (click)="openAddModal()">
-          <i class="icon-plus"> Persoon toevoegen</i>
-        </button>
-        <div *ngIf="selection.hasValue()">
-          <select >
-            <option>Test</option>
-          </select>
-      <button type="button" class="btn btn-success">
-  <i class="icon-plus"> Persoon toevoegen</i>
-</button>
-        </div>
-        
-      </div>
+  <div class="card card-accent-primary">
+    <div class="card-header">
+      Acties
     </div>
- <div class="leiding-container">
-<mat-table #table [dataSource]="dataSource" matSort> 
-  <ng-container matColumnDef="select">
-<mat-header-cell *matHeaderCellDef>
-  <mat-checkbox (change)="$event? masterToggle(): null"
-                  [checked]="selection.hasValue() && isAllSelected()"
-                  [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
-</mat-header-cell>
-<mat-cell *matCellDef="let row">
-<mat-checkbox (change)="$event? selection.toggle(row): null" 
-              [checked]="selection.isSelected(row)" 
-              (click)="$event.stopPropagation()"></mat-checkbox>
-</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="voornaam">
-    <mat-header-cell mat-sort-header *matHeaderCellDef>Voornaam</mat-header-cell>
-    <mat-cell *matCellDef="let user">{{user.voornaam}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="naam" >
-    <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
-    <mat-cell *matCellDef="let user">{{user.naam}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef  mat-sort-header>Email</mat-header-cell>
-    <mat-cell *matCellDef="let leiding">{{leiding.email}} </mat-cell> 
-  </ng-container>
-  <ng-container matColumnDef="authId">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Auth Id</mat-header-cell>
-    <mat-cell *matCellDef="let user">{{user.auth0Id}} </mat-cell>
-  </ng-container>
-<ng-container matColumnDef="leidingSinds">
-  <mat-header-cell *matHeaderCellDef mat-sort-header>Leiding sinds</mat-header-cell>
-  <mat-cell *matCellDef="let leiding">{{leiding.leidingSinds | date:'dd-MMM-yyyy'}}</mat-cell>
-</ng-container>
-<ng-container matColumnDef="datumGestopt">
-  <mat-header-cell *matHeaderCellDef mat-sort-header>Datum gestopt als leiding</mat-header-cell>
-  <mat-cell *matCellDef="let leiding">{{leiding.datumGestopt | date:'dd-MMM-yyyy'}}</mat-cell>
-</ng-container>
-<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+    <div class="card-body">
+      <div class="btn-container"> 
+       <div class="row">
+      <button type="button" class="btn btn-success col-md-4" data-toggle="modal" (click)="openAddModal()"> 
+        <i class="icon-plus"> Persoon toevoegen</i>
+      </button>
+      </div>
+      <hr/>
+      <div class="row">
+      <select class="form-control col-md-4">
+        <option *ngFor="let option of actionOptions" [value]="option">{{option}}</option>
+      </select> 
+      <button [disabled]="!selection.hasValue()" type="button" class="btn btn-primary col-md-4">
+        Uitvoeren 
+      </button></div>
+ </div>
+
+
+  </div>
+</div>
+<div class="leiding-container">
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event? masterToggle(): null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (change)="$event? selection.toggle(row): null" [checked]="selection.isSelected(row)" (click)="$event.stopPropagation()"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="voornaam">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Voornaam</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.voornaam}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="naam">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.naam}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell *matCellDef="let leiding">{{leiding.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="authId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Auth Id</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.auth0Id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="leidingSinds">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Leiding sinds</mat-header-cell>
+      <mat-cell *matCellDef="let leiding">{{leiding.leidingSinds | date:'dd-MMM-yyyy'}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="datumGestopt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Datum gestopt als leiding</mat-header-cell>
+      <mat-cell *matCellDef="let leiding">{{leiding.datumGestopt | date:'dd-MMM-yyyy'}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
 </div>

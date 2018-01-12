@@ -34,8 +34,8 @@ export class DataService {
         response.json().result.map(item => Leiding.fromJSON(item)));
   }
 
-  updateTak(tak: Tak): Observable<boolean> {
-   return this.http.put(this._takUrl, tak.toJSON()).map(response => response.json()).map(item => {
+  updateTak(tak: Tak, takId: number): Observable<boolean> {
+   return this.http.put(`${this._takUrl}/${takId}`, tak.toJSON()).map(response => response.json()).map(item => {
       const updatedTak = Tak.fromJSON(item);
       if (updatedTak) {
         return true;

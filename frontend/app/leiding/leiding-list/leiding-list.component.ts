@@ -6,7 +6,10 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LeidingAddComponent } from '../leiding-add/leiding-add.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
-
+export interface Action {
+  code: string;
+  friendlyMessage: string;
+}
 
 
 
@@ -18,14 +21,27 @@ import { SelectionModel } from '@angular/cdk/collections';
 export class LeidingListComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<Leiding>();
-  displayedColumns = ['select', 'voornaam', 'naam', 'authId', 'email', 'leidingSinds', 'datumGestopt'];
+  displayedColumns = ['select', 'takNaam', 'voornaam', 'naam', 'authId', 'email', 'leidingSinds', 'datumGestopt'];
 
   @ViewChild(MatSort) sort: MatSort;
 
- selection = new SelectionModel<Leiding>(true, []);
+  chosenOption: string;
+
+  selection = new SelectionModel<Leiding>(true, []);
   actionOptions = ['Tak wijzigen', 'Verwijderen'];
 
   public addModal: BsModalRef;
+
+  actions: Action[] = [
+    {
+      code: 'delete',
+      friendlyMessage: 'Verwijderen'
+    },
+    {
+      code: 'changeTak',
+      friendlyMessage: 'Tak wijzigen'
+    }
+  ];
 
   constructor(private dataService: DataService, private modalService: BsModalService) {
     this.dataService.getLeiding().subscribe(res => {
@@ -39,6 +55,7 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+
   }
 
   openAddModal() {
@@ -55,5 +72,19 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
     this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
+  handleSelection() {
+    
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
+ 
+
+
 }
 
+  

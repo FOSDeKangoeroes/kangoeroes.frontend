@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { TakModule } from '../tak/tak.module';
 import { LeidingListComponent } from './leiding-list/leiding-list.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MatTableModule, MatSortModule, MatCheckboxModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LeidingAddComponent } from './leiding-add/leiding-add.component';
 import { DataService } from '../data.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -25,6 +25,8 @@ const routes: Routes = [
     MatSortModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatInputModule,
+    FormsModule,
     ModalModule.forRoot(),
     RouterModule.forChild(routes),
   ],

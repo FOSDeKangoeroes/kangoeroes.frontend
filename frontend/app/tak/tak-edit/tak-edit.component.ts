@@ -35,10 +35,10 @@ export class TakEditComponent implements OnInit {
   onSubmit() {
    const tak = new Tak(this.editTakFormGroup.value.naam, this.editTakFormGroup.value.volgorde);
     tak.id = this.takId;
-    this.dataService.updateTak(tak).subscribe(res => {
+    this.dataService.updateTak(tak, this.takId).subscribe(res => {
       if (res) {
         this.editModalRef.hide();
-        this._router.navigate(['tak']);
+        this._router.navigate(['takken']);
       }
     });
 

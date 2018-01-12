@@ -5,9 +5,10 @@ import { Leiding } from '../leiding.model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LeidingAddComponent } from '../leiding-add/leiding-add.component';
 import { SelectionModel } from '@angular/cdk/collections';
+import { LeidingActions } from './leiding.actions';
 
 export interface Action {
-  code: string;
+  code: LeidingActions;
   friendlyMessage: string;
 }
 
@@ -25,20 +26,20 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  chosenOption: string;
+  chosenOption: LeidingActions;
 
   selection = new SelectionModel<Leiding>(true, []);
-  actionOptions = ['Tak wijzigen', 'Verwijderen'];
 
   public addModal: BsModalRef;
+  public takModal: BsModalRef;
 
   actions: Action[] = [
     {
-      code: 'delete',
+      code: LeidingActions.DELETE,
       friendlyMessage: 'Verwijderen'
     },
     {
-      code: 'changeTak',
+      code: LeidingActions.CHANGE_TAK,
       friendlyMessage: 'Tak wijzigen'
     }
   ];
@@ -68,12 +69,23 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
     return numSelected === numRows;
   }
 
+
   masterToggle() {
-    this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
+    this.isAllSelected() ? this.selection.clear() : this.dataSource.filteredData.forEach(row => this.selection.select(row));
   }
 
   handleSelection() {
-    
+    // TODO
+  switch (this.chosenOption) {
+    case LeidingActions.CHANGE_TAK:
+
+    break;
+
+    case LeidingActions.DELETE:
+    break;
+
+  }
+
   }
 
   applyFilter(filterValue: string) {
@@ -81,10 +93,5 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-
- 
-
-
 }
 
-  

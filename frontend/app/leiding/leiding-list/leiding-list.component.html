@@ -15,7 +15,7 @@
       <div class="row select-container">
         <form>
       <select [(ngModel)]="chosenOption" name="action" class="form-control">
-        <option *ngFor="let option of actionOptions" [value]="option">{{option}}</option>
+        <option *ngFor="let option of actions" [value]="option.code">{{option.friendlyMessage}}</option>
       </select> 
       </form>
       <button [disabled]="!selection.hasValue()" type="button" class="btn btn-primary col-md-4">
@@ -34,7 +34,7 @@
   <div class="leiding-container">
     <div class="example-header">
       <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Zoeken">
       </mat-form-field>
     </div>
     <mat-table #table [dataSource]="dataSource" matSort>

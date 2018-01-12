@@ -52,11 +52,17 @@
         </ng-container>
       <ng-container matColumnDef="voornaam">
         <mat-header-cell mat-sort-header *matHeaderCellDef>Voornaam</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{user.voornaam}}</mat-cell>
+        <mat-cell *matCellDef="let user">
+          <a routerLink="/personen/{{user.id}}">{{user.voornaam}}</a>
+         
+        </mat-cell>
       </ng-container>
       <ng-container matColumnDef="naam">
         <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{user.naam}}</mat-cell>
+        <mat-cell *matCellDef="let user">
+          <a routerLink="/personen/{{user.id}}">
+          {{user.naam}}
+          </a></mat-cell>
       </ng-container>
       <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>

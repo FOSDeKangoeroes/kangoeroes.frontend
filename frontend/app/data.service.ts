@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { Tak } from './tak/tak.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Leiding } from './leiding/leiding.model';
+import { LeidingModule } from './leiding/leiding.module';
 
 
 
@@ -32,6 +33,11 @@ export class DataService {
     return this.http.get(`${this._takUrl}/${id}/leiding`)
       .map(response =>
         response.json().result.map(item => Leiding.fromJSON(item)));
+  }
+
+  getLeidingForId(id): Observable<Leiding> {
+    return this.http.get(`${this._leidingUrl}/${id}`)
+      .map(response => response.json().result).map(item => Leiding.fromJSON(item));
   }
 
   updateTak(tak: Tak, takId: number): Observable<boolean> {

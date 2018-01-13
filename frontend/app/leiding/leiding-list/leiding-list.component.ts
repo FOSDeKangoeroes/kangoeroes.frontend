@@ -22,7 +22,7 @@ export interface Action {
 export class LeidingListComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<Leiding>();
-  displayedColumns = ['select', 'takNaam', 'voornaam', 'naam', 'authId', 'email', 'leidingSinds', 'datumGestopt'];
+  displayedColumns = ['select', 'takNaam', 'voornaam', 'naam', 'email', 'leidingSinds', 'datumGestopt'];
 
   @ViewChild(MatSort) sort: MatSort;
 

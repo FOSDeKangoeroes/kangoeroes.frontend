@@ -39,11 +39,11 @@
     </div>
     <mat-table #table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="select">
-        <mat-header-cell *matHeaderCellDef>
-          <mat-checkbox (change)="$event? masterToggle(): null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+        <mat-header-cell class="leiding-checkbox" *matHeaderCellDef>
+          <mat-checkbox class="mat-checkbox" (change)="$event? masterToggle(): null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
         </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <mat-checkbox (change)="$event? selection.toggle(row): null" [checked]="selection.isSelected(row)" (click)="$event.stopPropagation()"></mat-checkbox>
+        <mat-cell class="leiding-checkbox" *matCellDef="let row">
+          <mat-checkbox class="mat-checkbox" (change)="$event? selection.toggle(row): null" [checked]="selection.isSelected(row)" (click)="$event.stopPropagation()"></mat-checkbox>
         </mat-cell>
       </ng-container>
         <ng-container matColumnDef="takNaam">

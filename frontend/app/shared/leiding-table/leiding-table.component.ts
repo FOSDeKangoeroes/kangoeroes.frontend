@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort, MatTableDataSource, MatInput } from '@angular/material';
 import { Leiding } from '../../leiding/leiding.model';
 import { LeidingTableService } from '../../leiding/leiding-table.service';
 import { EventService } from '../event.service';
@@ -15,6 +15,7 @@ import { EventService } from '../event.service';
 export class LeidingTableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatInput) filter: MatInput;
   dataSource = new MatTableDataSource<Leiding>();
   selection = new SelectionModel<Leiding>(true, []);
   displayedColumns: string[];
@@ -40,6 +41,7 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
   refreshTable()
   {
     this.dataSource.filter = '';
+    this.dataSource.filter = this.filter.value;
     this.dataSource.sort = this.sort;
   }
   isAllSelected() {

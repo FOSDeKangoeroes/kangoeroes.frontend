@@ -12,6 +12,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LeidingDetailComponent } from './leiding-detail/leiding-detail.component';
 import { LeidingResolverService } from './leiding-resolver.service';
+import { LeidingTableComponent } from './leiding-table/leiding-table.component';
+import { LeidingTableService } from './leiding-table.service';
 
 const routes: Routes = [
   {
@@ -37,8 +39,9 @@ const routes: Routes = [
     ModalModule.forRoot(),
     RouterModule.forChild(routes),
   ],
-  providers: [DataService, LeidingResolverService],
-  declarations: [LeidingListComponent, LeidingAddComponent, LeidingDetailComponent],
+  providers: [DataService, LeidingResolverService, LeidingTableService],
+  declarations: [LeidingListComponent, LeidingAddComponent, LeidingDetailComponent, LeidingTableComponent],
   entryComponents: [LeidingAddComponent]
 })
 export class LeidingModule { }
+ 

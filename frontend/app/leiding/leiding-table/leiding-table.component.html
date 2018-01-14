@@ -1,0 +1,55 @@
+<div class="leiding-container">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Zoeken">
+    </mat-form-field>
+  </div>
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="select">
+      <mat-header-cell class="leiding-checkbox" *matHeaderCellDef>
+        <mat-checkbox class="mat-checkbox" (change)="$event? masterToggle(): null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+      </mat-header-cell>
+      <mat-cell class="leiding-checkbox" *matCellDef="let row">
+        <mat-checkbox class="mat-checkbox" (change)="$event? selection.toggle(row): null" [checked]="selection.isSelected(row)" (click)="$event.stopPropagation()"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="takNaam">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Tak</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.takNaam}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="voornaam">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Voornaam</mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <a routerLink="/personen/{{user.id}}">{{user.voornaam}}</a>
+
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="naam">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <a routerLink="/personen/{{user.id}}">
+          {{user.naam}}
+        </a>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell *matCellDef="let leiding">{{leiding.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="authId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Auth Id</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.auth0Id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="leidingSinds">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Leiding sinds</mat-header-cell>
+      <mat-cell *matCellDef="let leiding">{{leiding.leidingSinds | date:'dd-MMM-yyyy'}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="datumGestopt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Datum gestopt als leiding</mat-header-cell>
+      <mat-cell *matCellDef="let leiding">{{leiding.datumGestopt | date:'dd-MMM-yyyy'}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

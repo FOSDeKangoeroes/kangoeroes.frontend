@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LeidingAddComponent } from '../leiding-add/leiding-add.component';
 import { SelectionModel } from '@angular/cdk/collections';
 import { LeidingActions } from './leiding.actions';
+import { LeidingTableService } from '../leiding-table.service';
 
 export interface Action {
   code: LeidingActions;
@@ -19,16 +20,9 @@ export interface Action {
   templateUrl: './leiding-list.component.html',
   styleUrls: ['./leiding-list.component.scss']
 })
-export class LeidingListComponent implements OnInit, AfterViewInit {
+export class LeidingListComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<Leiding>();
   displayedColumns = ['select', 'takNaam', 'voornaam', 'naam', 'email', 'leidingSinds', 'datumGestopt'];
-
-  @ViewChild(MatSort) sort: MatSort;
-
-  chosenOption: LeidingActions;
-
-  selection = new SelectionModel<Leiding>(true, []);
 
   public addModal: BsModalRef;
   public takModal: BsModalRef;
@@ -44,54 +38,20 @@ export class LeidingListComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  constructor(private dataService: DataService, private modalService: BsModalService) {
-    this.dataService.getLeiding().subscribe(res => {
-      this.dataSource.data = res;
-    });
+  constructor(private dataService: DataService, private modalService: BsModalService, private tableService: LeidingTableService) {
+   this.tableService.tableData = this.dataService.getLeiding();
+   this.tableService.displayedColumns = this.displayedColumns;
   }
 
   ngOnInit() {
 
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-
-  }
+ 
 
   openAddModal() {
     this.addModal = this.modalService.show(LeidingAddComponent);
   }
 
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-
-  masterToggle() {
-    this.isAllSelected() ? this.selection.clear() : this.dataSource.filteredData.forEach(row => this.selection.select(row));
-  }
-
-  handleSelection() {
-    // TODO
-  switch (this.chosenOption) {
-    case LeidingActions.CHANGE_TAK:
-
-    break;
-
-    case LeidingActions.DELETE:
-    break;
-
-  }
-
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }
 }
 

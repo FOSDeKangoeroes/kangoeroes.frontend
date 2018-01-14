@@ -3,6 +3,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { DataService } from '../../data.service';
 import { Tak } from '../tak.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EventService } from '../../shared/event.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -16,7 +17,8 @@ export class TakAddComponent implements OnInit {
 
   constructor(public addModalRef: BsModalRef,
     private dataService: DataService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private eventService: EventService
     ) { }
 
   ngOnInit() {
@@ -29,8 +31,11 @@ export class TakAddComponent implements OnInit {
 
   onAdd() {
     const tak = new Tak(this.addTakFormGroup.value.naam, this.addTakFormGroup.value.volgorde);
+    
     this.dataService.addTak(tak).subscribe(res => {
       if (res) {
+        
+        this.eventService.newTak(res);
         this.addModalRef.hide();
       }
     });

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../data.service';
 import { Util } from '../util';
 import { Tak } from '../../tak/tak.model';
 import { Leiding } from '../leiding.model';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -18,7 +20,8 @@ export class LeidingAddComponent implements OnInit {
   public addLeidingFormGroup: FormGroup;
   public takken: Tak[];
 
-  constructor(public addLeidingModalRef: BsModalRef, private fb: FormBuilder, private dataService: DataService) { }
+  @Output () public newLeiding = new EventEmitter<Leiding>();
+  constructor(public addLeidingModalRef: BsModalRef, private fb: FormBuilder, private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
 
@@ -40,7 +43,9 @@ onSubmit() {
   leiding.takId = this.addLeidingFormGroup.value.tak;
 
   this.dataService.addLeiding(leiding).subscribe(res => {
+    this.newLeiding.emit(leiding);
     this.addLeidingModalRef.hide();
+
   });
 
 }

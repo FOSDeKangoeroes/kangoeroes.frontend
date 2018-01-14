@@ -3,6 +3,7 @@ import { Tak } from '../tak.model';
 import { DataService } from '../../data.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TakAddComponent } from '../tak-add/tak-add.component';
+import { EventService } from '../../shared/event.service';
 
 
 @Component({
@@ -15,10 +16,14 @@ export class TakListComponent implements OnInit {
   public addModal: BsModalRef;
 
   private _takken: Tak[];
-  constructor(private _dataService: DataService, private modalService: BsModalService) { }
+  constructor(private _dataService: DataService, private modalService: BsModalService, private eventService: EventService) { }
 
   ngOnInit() {
     this._dataService.takken.subscribe(items => this._takken = items);
+
+    this.eventService.$newTak.subscribe((res) => {
+      this._takken.push(res);
+    });
   }
 
   get takken()  {

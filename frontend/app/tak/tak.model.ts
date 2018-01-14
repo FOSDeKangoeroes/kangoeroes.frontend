@@ -1,4 +1,5 @@
 import { Leiding } from '../leiding/leiding.model';
+import { leave } from '@angular/core/src/profile/wtf_impl';
 
 export class Tak {
 
@@ -32,6 +33,10 @@ get naam() {
 
 get leiding() {
     return this._leiding;
+}
+
+set leiding(leiding: Leiding[]) {
+        this._leiding = leiding;
 }
 
 get id() {

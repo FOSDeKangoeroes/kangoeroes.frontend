@@ -36,7 +36,7 @@ export class TakDetailComponent implements OnInit {
   public hasLeiding: boolean;
 
   
-  displayedColumns = ['voornaam','naam', 'email', 'leidingSinds', 'datumGestopt'];
+  displayedColumns = ['voornaam', 'naam', 'email', 'leidingSinds', 'datumGestopt'];
 
   constructor(private route: ActivatedRoute,
     private dataService: DataService,

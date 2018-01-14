@@ -63,7 +63,7 @@ export class DataService {
   }
 
   addTak(tak: Tak): Observable<Tak> {
-    return this.http.post(this._takUrl, tak.toJSON()).map(response => response.json()).map(item => {
+    return this.http.post(this._takUrl, tak.toJSON()).map(response => response.json().result).map(item => {
       const newTak = Tak.fromJSON(item);
       return newTak;
     });

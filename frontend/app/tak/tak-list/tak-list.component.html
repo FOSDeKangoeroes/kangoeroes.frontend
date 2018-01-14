@@ -6,7 +6,7 @@
       </div>
       <div class="card-body">
       <button type="button" class="btn btn-success" data-toggle="modal" (click)="openAddModal()">
-        <i class="icon-plus"> Tak toevoegen</i>
+        <i class="icon-plus"> Tak toevoegen...</i>
       </button>
       </div>
     </div>
@@ -15,7 +15,8 @@
       Takken
     </div>
     <div class="card-body">
-    <app-tak *ngFor="let localTak of takken" [tak]="localTak"></app-tak>
+   <!-- <app-tak *ngFor="let localTak of takken" [tak]="localTak"></app-tak>-->
+   <app-tak-table></app-tak-table>
     </div>
   </div>
   </div>

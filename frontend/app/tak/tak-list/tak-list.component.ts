@@ -4,6 +4,7 @@ import { DataService } from '../../data.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TakAddComponent } from '../tak-add/tak-add.component';
 import { EventService } from '../../shared/event.service';
+import { TakTableService } from '../tak-table.service';
 
 
 @Component({
@@ -15,28 +16,17 @@ export class TakListComponent implements OnInit {
 
   public addModal: BsModalRef;
 
-  private _takken: Tak[];
-  constructor(private _dataService: DataService, private modalService: BsModalService, private eventService: EventService) { }
+  displayedColumns = ['naam', 'volgorde', 'leiding'];
+  constructor(private _dataService: DataService,
+    private modalService: BsModalService,
+    private eventService: EventService,
+    private takService: TakTableService) {
+    this.takService.tableData = this._dataService.takken;
+    this.takService.displayedColumns = this.displayedColumns;
+   }
 
   ngOnInit() {
-    this._dataService.takken.subscribe(items => this._takken = items);
 
-    this.eventService.$newTak.subscribe((res) => {
-      this._takken.push(res);
-      this._takken.sort((a, b) => {
-        if (a.volgorde > b.volgorde) {
-          return 1;
-        }
-        if (a.volgorde < b.volgorde) {
-          return -1;
-        }
-        return 0;
-      });
-    });
-  }
-
-  get takken()  {
-    return this._takken;
   }
 
   openAddModal() {

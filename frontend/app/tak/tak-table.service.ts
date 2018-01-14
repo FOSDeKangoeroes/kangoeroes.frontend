@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Leiding } from './leiding.model';
+import { Tak } from './tak.model';
 
 @Injectable()
-export class LeidingTableService {
+export class TakTableService {
 
-  private _tableData: Observable<Leiding[]>;
+  private _tableData: Observable<Tak[]>;
   // Nog om te vormen naar observable
   private _displayedColumns: string[];
   constructor() { }
 
-  set tableData(data: Observable<Leiding[]>) {
+  set tableData(data: Observable<Tak[]>) {
     this._tableData = data;
   }
 
-  get tableData(): Observable<Leiding[]> {
+  get tableData(): Observable<Tak[]> {
     return this._tableData;
   }
 
@@ -25,4 +25,5 @@ export class LeidingTableService {
   get displayedColumns(): string[] {
     return this._displayedColumns;
   }
+
 }

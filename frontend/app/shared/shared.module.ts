@@ -4,6 +4,8 @@ import { MatTableModule, MatSortModule, MatCheckboxModule, MatInputModule } from
 import { LeidingTableService } from '../leiding/leiding-table.service';
 import { LeidingTableComponent } from './leiding-table/leiding-table.component';
 import { RouterModule } from '@angular/router';
+import { TakTableComponent } from './tak-table/tak-table.component';
+import { TakTableService } from '../tak/tak-table.service';
 
 @NgModule({
   imports: [
@@ -14,8 +16,8 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     RouterModule
   ],
-  providers: [LeidingTableService],
-  declarations: [LeidingTableComponent],
-  exports: [LeidingTableComponent]
+  providers: [LeidingTableService, TakTableService],
+  declarations: [LeidingTableComponent, TakTableComponent],
+  exports: [LeidingTableComponent, TakTableComponent]
 })
 export class SharedModule { }

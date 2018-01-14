@@ -31,10 +31,9 @@ export class TakAddComponent implements OnInit {
 
   onAdd() {
     const tak = new Tak(this.addTakFormGroup.value.naam, this.addTakFormGroup.value.volgorde);
-    
+
     this.dataService.addTak(tak).subscribe(res => {
       if (res) {
-        
         this.eventService.newTak(res);
         this.addModalRef.hide();
       }

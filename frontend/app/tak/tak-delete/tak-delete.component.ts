@@ -26,7 +26,7 @@ export class TakDeleteComponent implements OnInit {
     this.dataService.deleteTak(this.takId).subscribe(res => {
       if (res) {
         this.deleteModalRef.hide();
-        this._router.navigate(['tak']);
+        this._router.navigate(['takken']);
       }
     });
   }

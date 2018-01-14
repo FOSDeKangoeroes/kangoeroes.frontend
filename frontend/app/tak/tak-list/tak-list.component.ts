@@ -23,6 +23,15 @@ export class TakListComponent implements OnInit {
 
     this.eventService.$newTak.subscribe((res) => {
       this._takken.push(res);
+      this._takken.sort((a, b) => {
+        if (a.volgorde > b.volgorde) {
+          return 1;
+        }
+        if (a.volgorde < b.volgorde) {
+          return -1;
+        }
+        return 0;
+      });
     });
   }
 

@@ -20,6 +20,7 @@ export class LeidingAddComponent implements OnInit {
 
   public addLeidingFormGroup: FormGroup;
   public takken: Tak[];
+  public takkenLoading = true;
 
   @Output () public newLeiding = new EventEmitter<Leiding>();
   constructor(public addLeidingModalRef: BsModalRef,
@@ -30,15 +31,18 @@ export class LeidingAddComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.dataService.takken.subscribe(res => {
+      this.takkenLoading = false;
       this.takken = res;
+
     });
 
     this.addLeidingFormGroup = this.fb.group({
       naam: ['', [Validators.required, Validators.minLength(2)]],
       voornaam: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Util.emailOrEmpty([Validators.email])]],
-      tak: ['', [Validators.required]]
+      tak: ['', [Validators.required, Validators.min(1)]]
     });
   }
 

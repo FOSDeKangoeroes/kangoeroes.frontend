@@ -42,7 +42,6 @@ export class TakLeidingAddComponent implements OnInit {
     this.dataService.addLeiding(leiding).subscribe(item => {
       this.eventService.newLeiding(item);
       this.addLeidingModalRef.hide();
-      
     });
   }
 

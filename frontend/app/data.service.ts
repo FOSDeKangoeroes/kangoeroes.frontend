@@ -41,7 +41,7 @@ export class DataService {
   }
 
   updateTak(tak: Tak, takId: number): Observable<boolean> {
-   return this.http.put(`${this._takUrl}/${takId}`, tak.toJSON()).map(response => response.json()).map(item => {
+   return this.http.put(`${this._takUrl}/${takId}`, tak.toJSON()).map(response => response.json().result).map(item => {
       const updatedTak = Tak.fromJSON(item);
       if (updatedTak) {
         return true;
@@ -70,7 +70,7 @@ export class DataService {
   }
 
   addLeiding(leiding: Leiding): Observable<Leiding> {
-    return this.http.post(this._leidingUrl, leiding.toJSON()).map(response => response.json()).map(item => Leiding.fromJSON(item));
+    return this.http.post(this._leidingUrl, leiding.toJSON()).map(response => response.json().result).map(item => Leiding.fromJSON(item));
   }
 
   getLeiding(): Observable<Leiding[]> {

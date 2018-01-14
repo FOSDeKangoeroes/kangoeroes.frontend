@@ -6,6 +6,7 @@ import { Util } from '../util';
 import { Tak } from '../../tak/tak.model';
 import { Leiding } from '../leiding.model';
 import { Router } from '@angular/router';
+import { EventService } from '../../shared/event.service';
 
 
 
@@ -21,7 +22,11 @@ export class LeidingAddComponent implements OnInit {
   public takken: Tak[];
 
   @Output () public newLeiding = new EventEmitter<Leiding>();
-  constructor(public addLeidingModalRef: BsModalRef, private fb: FormBuilder, private dataService: DataService, private router: Router) { }
+  constructor(public addLeidingModalRef: BsModalRef,
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private router: Router,
+    private eventService: EventService) { }
 
   ngOnInit() {
 
@@ -43,7 +48,7 @@ onSubmit() {
   leiding.takId = this.addLeidingFormGroup.value.tak;
 
   this.dataService.addLeiding(leiding).subscribe(res => {
-    this.newLeiding.emit(leiding);
+    this.eventService.newLeiding(res);
     this.addLeidingModalRef.hide();
 
   });

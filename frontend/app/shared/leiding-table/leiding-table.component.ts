@@ -4,6 +4,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Leiding } from '../../leiding/leiding.model';
 import { LeidingTableService } from '../../leiding/leiding-table.service';
+import { EventService } from '../event.service';
 
 
 @Component({
@@ -18,8 +19,7 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
   selection = new SelectionModel<Leiding>(true, []);
   displayedColumns: string[];
 
-  constructor(private leidingService: LeidingTableService) {
-  
+  constructor(private leidingService: LeidingTableService, private eventService: EventService) {
    }
 
   ngOnInit() {
@@ -31,9 +31,17 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
     });
     this.displayedColumns = this.leidingService.displayedColumns;
     this.dataSource.sort = this.sort;
-
+    this.eventService.$newLeiding.subscribe((res) => {
+      this.dataSource.data.push(res);
+      this.refreshTable();
+    });
   }
 
+  refreshTable()
+  {
+    this.dataSource.filter = '';
+    this.dataSource.sort = this.sort;
+  }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;

@@ -16,6 +16,10 @@ import { TakEditComponent } from './tak-edit/tak-edit.component';
 import { TakDeleteComponent } from './tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from './tak-leiding-add/tak-leiding-add.component';
 import { TakAddComponent } from './tak-add/tak-add.component';
+import { LeidingTableService } from '../leiding/leiding-table.service';
+
+import { AppModule } from '../app.module';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -36,17 +40,17 @@ const routes: Routes = [
   imports: [
     HttpModule,
     CommonModule,
-    //LeidingModule,
     MatTableModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
-
+    SharedModule
   ],
   providers: [
     DataService,
-    TakResolverService
+    TakResolverService,
+    LeidingTableService
   ],
   declarations: [
     TakComponent,

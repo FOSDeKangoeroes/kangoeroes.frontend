@@ -23,7 +23,7 @@
     Personen in {{tak.naam}}
   </div>
 <div class="table table-striped">
-  <mat-table [dataSource]="dataSource" >
+  <!--<mat-table [dataSource]="dataSource" >
 <ng-container matColumnDef="naam">
   <mat-header-cell *matHeaderCellDef>Naam</mat-header-cell>
   <mat-cell *matCellDef="let leiding">{{leiding.voornaam}} {{leiding.naam}}</mat-cell>
@@ -42,7 +42,8 @@
 </ng-container>
 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+  </mat-table>-->
+  <app-leiding-table></app-leiding-table>
 </div>
 </div>
 </div>

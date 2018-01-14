@@ -13,7 +13,7 @@ import {
 const APP_CONTAINERS = [
   FullLayoutComponent,
   SimpleLayoutComponent
-]
+];
 
 // Import components
 import {
@@ -26,8 +26,9 @@ import {
   AppSidebarFormComponent,
   AppSidebarHeaderComponent,
   AppSidebarMinimizerComponent,
-  APP_SIDEBAR_NAV
+  APP_SIDEBAR_NAV,
 } from './components';
+
 
 const APP_COMPONENTS = [
   AppAsideComponent,
@@ -71,6 +72,7 @@ import { AuthService } from './auth.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { LeidingModule } from './leiding/leiding.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({

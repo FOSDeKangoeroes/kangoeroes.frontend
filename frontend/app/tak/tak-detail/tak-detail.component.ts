@@ -13,6 +13,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { TakEditComponent } from '../tak-edit/tak-edit.component';
 import { TakDeleteComponent } from '../tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from '../tak-leiding-add/tak-leiding-add.component';
+import { LeidingTableService } from '../../leiding/leiding-table.service';
+
 
 
 
@@ -33,28 +35,25 @@ export class TakDetailComponent implements OnInit {
   private _tak: Tak;
   public hasLeiding: boolean;
 
-  // Angular Material table
-  private _dataSource: LeidingDataSource;
-  displayedColumns = ['naam', 'email', 'leidingSinds', 'datumGestopt'];
+  
+  displayedColumns = ['voornaam','naam', 'email', 'leidingSinds', 'datumGestopt'];
 
   constructor(private route: ActivatedRoute,
     private dataService: DataService,
-    private modalService: BsModalService) {
+    private modalService: BsModalService, private leidingTableService: LeidingTableService) {
+
   }
   ngOnInit() {
     this.route.data.subscribe(item => this._tak = item['tak']);
-    this._dataSource = new LeidingDataSource(this.dataService, this._tak.id);
     this.hasLeiding = this._tak.leiding.length > 0;
-
+    this.leidingTableService.tableData = this.dataService.getLeidingForTak(this._tak.id);
+    this.leidingTableService.displayedColumns = this.displayedColumns;
   }
 
   get tak() {
     return this._tak;
   }
 
-  get dataSource() {
-    return this._dataSource;
-  }
 
   openEditModal() {
     this.editModal = this.modalService.show(TakEditComponent);

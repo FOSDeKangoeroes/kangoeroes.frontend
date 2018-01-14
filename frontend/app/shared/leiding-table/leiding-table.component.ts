@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Leiding } from '../leiding.model';
+
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { LeidingTableService } from '../leiding-table.service';
+import { Leiding } from '../../leiding/leiding.model';
+import { LeidingTableService } from '../../leiding/leiding-table.service';
+
 
 @Component({
   selector: 'app-leiding-table',

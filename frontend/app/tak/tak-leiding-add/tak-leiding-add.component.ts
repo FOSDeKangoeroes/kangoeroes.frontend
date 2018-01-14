@@ -4,6 +4,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { DataService } from '../../data.service';
 import { Leiding } from '../../leiding/leiding.model';
 import { Util } from '../../leiding/util';
+import { EventService } from '../../shared/event.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,7 +19,10 @@ export class TakLeidingAddComponent implements OnInit {
   naam: string;
   takId: number;
 
-  constructor(public addLeidingModalRef: BsModalRef, private fb: FormBuilder, private dataService: DataService) { }
+  constructor(public addLeidingModalRef: BsModalRef,
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private eventService: EventService) { }
 
   ngOnInit() {
     this.addLeidingFormGroup = this.fb.group({
@@ -36,7 +40,9 @@ export class TakLeidingAddComponent implements OnInit {
       leiding.takId = this.takId;
 
     this.dataService.addLeiding(leiding).subscribe(item => {
+      this.eventService.newLeiding(item);
       this.addLeidingModalRef.hide();
+      
     });
   }
 

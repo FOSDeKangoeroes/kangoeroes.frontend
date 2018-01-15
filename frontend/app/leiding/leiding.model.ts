@@ -82,6 +82,10 @@ get id() {
         return this._takNaam;
     }
 
+    get auth0Id() {
+        return this._auth0Id;
+    }
+
     toJSON() {
         return {
             auth0Id: this._auth0Id,

@@ -1,3 +1,52 @@
-<p>
-{{leiding.voornaam}}
-</p>
+<div class="animated fadeIn">
+
+    <div class="card card-accent-primary">
+        <div class="card-header">
+            Acties
+        </div>
+        <div class="card-body">
+            <div class="btn-container">
+                <div class="row">
+                    <button type="button" class="btn btn-success col-md-3" data-toggle="modal" (click)="openAddModal()">
+                        <i class="icon-people"> Tak wijzigen...</i>
+                    </button>
+                   
+                    <button *ngIf="!leiding.auth0Id" type="button" class="btn btn-success col-md-3" data-toggle="modal" (click)="openAddModal()">
+                        <i class="icon-user"> Linken aan gebruiker...</i>
+                    </button>
+                    <button type="button" class="btn btn-danger col-md-3" data-toggle="modal" (click)="openAddModal()" disabled>
+                        <i class="icon-drawer"> Verwijderen...</i>
+                    </button>
+                </div>
+  
+            </div>
+
+
+        </div>
+    </div>
+    <div class="card card-accent-primary">
+        <div class="card-header">
+            Details
+        </div>
+       <div class="card-body">
+           <div class="mb-2">
+                <div class="badge badge-success">{{leiding.takNaam}}</div>
+                <div *ngIf="leiding.auth0Id" class="badge badge-success">Heeft account</div>
+           </div>
+    
+            <dl>
+                <dt>Voornaam:</dt>
+                <dd>{{leiding.voornaam}}</dd>
+                <dt>Naam:</dt>
+                <dd>{{leiding.naam}}</dd>
+                <dt>Email:</dt>
+                <dd>{{leiding.email}}</dd>
+                <dt>Leiding sinds:</dt>
+                <dd>{{leiding.leidingSinds | date:'dd-MMM-yyyy'}}</dd>
+                <dt>Gestopt op:</dt>
+                <dd>{{leiding.datumGestopt | date:'dd-MMM-yyyy'}}</dd>
+            </dl>
+       </div>
+    </div>
+
+</div>

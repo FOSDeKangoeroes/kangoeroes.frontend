@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Leiding } from '../leiding.model';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { LeidingChangeTakComponent } from '../leiding-change-tak/leiding-change-tak.component';
 
 @Component({
   selector: 'app-leiding-detail',
@@ -11,7 +13,8 @@ export class LeidingDetailComponent implements OnInit {
 
 private _leiding: Leiding;
 
-  constructor(private route: ActivatedRoute) {
+  changeTakModal: BsModalRef;
+  constructor(private route: ActivatedRoute, private modalService: BsModalService) {
     this.route.data.subscribe(item => this._leiding = item['leiding']);
    }
 
@@ -20,5 +23,9 @@ private _leiding: Leiding;
 
   get leiding() {
     return this._leiding;
+  }
+
+  openChangeTakModal() {
+  this.changeTakModal = this.modalService.show(LeidingChangeTakComponent);
   }
 }

@@ -79,5 +79,12 @@ export class DataService {
         response.json().result.map(item => Leiding.fromJSON(item))
       );
   }
+
+  changeTakForLeiding(leidingId, newTakId): Observable<Leiding> {
+    return this.http.put(`${this._leidingUrl}/${leidingId}/changeTak`, {takId: newTakId}).map(res => res.json().result)
+    .map(item => {
+     return Leiding.fromJSON(item);
+    });
+  }
   }
 

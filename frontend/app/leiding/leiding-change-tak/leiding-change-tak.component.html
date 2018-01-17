@@ -1,0 +1,33 @@
+<form [formGroup]='changeTakFormGroup' (ngSubmit)='onSubmit()' class="form-horizontal">
+  <div class="modal-header">
+    <h4 class="modal-title">Tak wijzigen</h4>
+    <button type="button" class="close" (click)="changeTakModal.hide()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <fieldset>
+
+      <div class="form-group">
+        <label class="col-12 control-label" for="tak_id">Tak
+          <i class="text-danger">*</i>
+        </label>
+        <div class="col-12">
+          <select class="form-control" formControlName="tak">
+            <option value="0" *ngIf="takkenLoading">Laden...</option>
+            <option value="0">Kies een tak..</option>
+            <option *ngFor="let tak of takken" [value]="tak.id">{{tak.naam}}</option>
+          </select>
+        </div>
+        <div class="text-danger" *ngIf='changeTakFormGroup.get("tak").errors?.required && changeTakFormGroup.get("tak").touched'>Dit veld is verplicht.</div>
+        <div class="text-danger" *ngIf='changeTakFormGroup.get("tak").errors?.min && changeTakFormGroup.get("tak").touched'>Kies een geldige tak</div>
+      </div>
+
+    </fieldset>
+
+  </div>
+  <div class="modal-footer">
+
+    <button type="submit" [disabled]="!changeTakFormGroup.valid" class="btn btn-success">Toevoegen</button>
+  </div>
+</form>

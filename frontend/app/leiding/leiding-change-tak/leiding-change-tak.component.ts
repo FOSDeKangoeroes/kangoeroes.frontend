@@ -3,6 +3,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Tak } from '../../tak/tak.model';
 import { DataService } from '../../data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EventService } from '../../shared/event.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -12,7 +13,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LeidingChangeTakComponent implements OnInit {
 
-  constructor(public changeTakModal: BsModalRef, private dataService: DataService, private fb: FormBuilder) { }
+  constructor(public changeTakModal: BsModalRef,
+    private dataService: DataService,
+    private fb: FormBuilder,
+    private eventService: EventService) { }
 
   public changeTakFormGroup: FormGroup;
   public takken: Tak[];
@@ -35,6 +39,7 @@ onSubmit() {
   const takId = this.changeTakFormGroup.value.tak;
 
   this.dataService.changeTakForLeiding(this.leidingId, takId).subscribe(res => {
+    this.eventService.newLeiding(res);
     this.changeTakModal.hide();
   });
 }

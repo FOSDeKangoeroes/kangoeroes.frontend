@@ -1,7 +1,7 @@
 <!--Modal voor het wijzigen van takgegevens -->
     <form [formGroup]='editTakFormGroup' (ngSubmit)='onSubmit()' class="form-horizontal">
         <div class="modal-header">
-          <h4 class="modal-title">{{naam}}</h4>
+          <h4 class="modal-title">{{tak.naam}}</h4>
           <button type="button" class="close" (click)="editModalRef.hide()" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

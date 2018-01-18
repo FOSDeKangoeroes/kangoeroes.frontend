@@ -31,6 +31,11 @@ get naam() {
     return this._naam;
 }
 
+set naam(naam: string)
+{
+    this._naam = naam;
+}
+
 get leiding() {
     return this._leiding;
 }
@@ -49,6 +54,10 @@ set id(id: number) {
 
 get volgorde() {
     return this._volgorde;
+}
+
+set volgorde(volgorde: number) {
+    this._volgorde = volgorde;
 }
 
  public hasLeiding(): boolean {

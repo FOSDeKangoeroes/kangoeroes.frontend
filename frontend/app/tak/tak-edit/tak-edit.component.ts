@@ -4,6 +4,7 @@ import { Tak } from '../tak.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { DataService } from '../../data.service';
 import { Router } from '@angular/router';
+import { EventService } from '../../shared/event.service';
 
 
 @Component({
@@ -17,31 +18,34 @@ export class TakEditComponent implements OnInit {
   // Wijzigen
   public editTakFormGroup: FormGroup;
 
- // tak: Tak;
+  tak: Tak;
   naam: string;
   volgorde: number;
   takId: number;
 
-  constructor(public editModalRef: BsModalRef, private fb: FormBuilder, private dataService: DataService, private _router: Router) { }
+  constructor(public editModalRef: BsModalRef,
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private _router: Router,
+    eventService: EventService) { 
+      this.tak = eventService.activeTak;
+    }
 
   ngOnInit() {
     this.editTakFormGroup = this.fb.group({
-      naam: ['', [Validators.required, Validators.minLength(2)]],
-      volgorde: ['', [Validators.required, , Validators.min(1)]]
+      naam: [this.tak.naam, [Validators.required, Validators.minLength(2)]],
+      volgorde: [this.tak.volgorde, [Validators.required, , Validators.min(1)]]
 
     });
-
-    this.editTakFormGroup.controls.naam.setValue(this.naam);
-    this.editTakFormGroup.controls.volgorde.setValue(this.volgorde);
   }
 
   onSubmit() {
-   const tak = new Tak(this.editTakFormGroup.value.naam, this.editTakFormGroup.value.volgorde);
-    tak.id = this.takId;
-    this.dataService.updateTak(tak, this.takId).subscribe(res => {
+ this.tak.naam = this.editTakFormGroup.value.naam;
+ this.tak.volgorde = this.editTakFormGroup.value.volgorde;
+    this.dataService.updateTak(this.tak, this.tak.id).subscribe(res => {
       if (res) {
         this.editModalRef.hide();
-        this._router.navigate(['takken']);
+      //  this._router.navigate(['takken']);
       }
     });
 

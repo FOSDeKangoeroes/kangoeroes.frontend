@@ -14,6 +14,7 @@ import { TakEditComponent } from '../tak-edit/tak-edit.component';
 import { TakDeleteComponent } from '../tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from '../tak-leiding-add/tak-leiding-add.component';
 import { LeidingTableService } from '../../leiding/leiding-table.service';
+import { EventService } from '../../shared/event.service';
 
 
 
@@ -40,7 +41,9 @@ export class TakDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private dataService: DataService,
-    private modalService: BsModalService, private leidingTableService: LeidingTableService) {
+    private modalService: BsModalService,
+    private leidingTableService: LeidingTableService,
+  private eventService: EventService) {
 
   }
   ngOnInit() {
@@ -56,10 +59,9 @@ export class TakDetailComponent implements OnInit {
 
 
   openEditModal() {
+    this.eventService.activeTak = this._tak;
     this.editModal = this.modalService.show(TakEditComponent);
-    this.editModal.content.takId = this._tak.id;
-    this.editModal.content.naam = this._tak.naam;
-    this.editModal.content.volgorde = this._tak.volgorde;
+
   }
 
   openDeleteModal() {

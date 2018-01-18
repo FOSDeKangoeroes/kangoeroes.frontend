@@ -15,22 +15,22 @@ import { Leiding } from '../leiding.model';
 export class LeidingEditComponent implements OnInit {
 
   public editLeidingFormGroup: FormGroup;
-  
+
    leiding: Leiding;
 
   constructor(
     public editLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
     private dataService: DataService,
-    private eventService: EventService) { 
+    private eventService: EventService) {
       this.leiding = this.eventService.activeLeiding;
     }
 
   ngOnInit() {
     this.editLeidingFormGroup = this.fb.group({
-      naam: ['', [Validators.required, Validators.minLength(2)]],
-      voornaam: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Util.emailOrEmpty([Validators.email])]]
+      naam: [this.leiding.naam, [Validators.required, Validators.minLength(2)]],
+      voornaam: [this.leiding.voornaam, [Validators.required, Validators.minLength(2)]],
+      email: [this.leiding.email, [Util.emailOrEmpty([Validators.email])]]
     });
   }
 

@@ -23,8 +23,8 @@
           <i class="text-danger">*</i>
         </label>
         <div class="col-12">
-          <input id="naam_id" formControlName='naam' class="form-control">
-        </div>
+          <input id="naam_id" formControlName='naam' class="form-control" >
+        </div> 
         <div class="text-danger" *ngIf='editLeidingFormGroup.get("naam").errors?.required && editLeidingFormGroup.get("naam").touched'>Dit veld is verplicht.</div>
       </div>
 

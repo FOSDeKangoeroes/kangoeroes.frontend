@@ -16,7 +16,7 @@ export class TakListComponent implements OnInit {
 
   public addModal: BsModalRef;
 
-  displayedColumns = ['naam', 'leiding', 'volgorde']; 
+  displayedColumns = ['naam', 'leiding', 'volgorde'];
   constructor(private _dataService: DataService,
     private modalService: BsModalService,
     private eventService: EventService,

@@ -7,6 +7,7 @@ export class Leiding {
         const leiding = new Leiding(json.naam, json.voornaam, json.auth0Id, json.email, json.leidingSinds, json.datumGestopt);
         leiding._id = json.id;
         leiding._takNaam = json.takNaam;
+        leiding._takId = json.takId;
         return leiding;
     }
 

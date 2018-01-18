@@ -27,7 +27,7 @@ export class TakEditComponent implements OnInit {
     private fb: FormBuilder,
     private dataService: DataService,
     private _router: Router,
-    eventService: EventService) { 
+    eventService: EventService) {
       this.tak = eventService.activeTak;
     }
 
@@ -45,7 +45,6 @@ export class TakEditComponent implements OnInit {
     this.dataService.updateTak(this.tak, this.tak.id).subscribe(res => {
       if (res) {
         this.editModalRef.hide();
-      //  this._router.navigate(['takken']);
       }
     });
 

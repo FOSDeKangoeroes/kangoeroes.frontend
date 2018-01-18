@@ -30,13 +30,19 @@ export class LeidingEditComponent implements OnInit {
     this.editLeidingFormGroup = this.fb.group({
       naam: ['', [Validators.required, Validators.minLength(2)]],
       voornaam: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Util.emailOrEmpty([Validators.email])]],
-      tak: ['', [Validators.required, Validators.min(1)]]
+      email: ['', [Util.emailOrEmpty([Validators.email])]]
     });
   }
 
   onSubmit() {
+      this.leiding.voornaam = this.editLeidingFormGroup.value.voornaam;
+      this.leiding.naam = this.editLeidingFormGroup.value.naam;
+      this.leiding.email = this.editLeidingFormGroup.value.email;
 
+      this.dataService.updateLeiding(this.leiding).subscribe( res => {
+        this.eventService.newLeiding(res);
+        this.editLeidingModalRef.hide();
+      });
   }
 
 }

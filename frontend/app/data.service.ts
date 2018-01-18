@@ -80,6 +80,13 @@ export class DataService {
       );
   }
 
+  updateLeiding(leiding): Observable<Leiding> {
+    return this.http.
+    put(`${this._leidingUrl}/${leiding.id}`, leiding.toJSON())
+    .map(response => response.json().result)
+    .map(item => Leiding.fromJSON(item));
+  }
+
   changeTakForLeiding(leidingId, newTakId: number): Observable<Leiding> {
     return this.http.put(`${this._leidingUrl}/${leidingId}/changeTak`, {newTakId: newTakId}).map(res => res.json().result)
     .map(item => {

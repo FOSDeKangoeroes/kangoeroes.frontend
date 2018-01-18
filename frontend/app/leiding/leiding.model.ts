@@ -35,8 +35,16 @@ get id() {
         return this._naam;
     }
 
+    set naam(naam: string) {
+        this._naam = naam;
+    }
+
     get voornaam() {
         return this._voornaam;
+    }
+
+    set voornaam(voornaam: string) {
+        this._voornaam = voornaam;
     }
 
     get email() {

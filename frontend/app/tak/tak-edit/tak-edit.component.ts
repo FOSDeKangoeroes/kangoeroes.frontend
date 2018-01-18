@@ -30,6 +30,9 @@ export class TakEditComponent implements OnInit {
       volgorde: ['', [Validators.required, , Validators.min(1)]]
 
     });
+
+    this.editTakFormGroup.controls.naam.setValue(this.naam);
+    this.editTakFormGroup.controls.volgorde.setValue(this.volgorde);
   }
 
   onSubmit() {

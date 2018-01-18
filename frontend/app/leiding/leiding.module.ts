@@ -15,6 +15,7 @@ import { LeidingResolverService } from './leiding-resolver.service';
 import { LeidingTableService } from './leiding-table.service';
 import { SharedModule } from '../shared/shared.module';
 import { LeidingChangeTakComponent } from './leiding-change-tak/leiding-change-tak.component';
+import { LeidingEditComponent } from './leiding-edit/leiding-edit.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
     SharedModule
   ],
   providers: [DataService, LeidingResolverService, LeidingTableService],
-  declarations: [LeidingListComponent, LeidingAddComponent, LeidingDetailComponent, LeidingChangeTakComponent],
-  entryComponents: [LeidingAddComponent, LeidingChangeTakComponent]
+  declarations: [LeidingListComponent, LeidingAddComponent, LeidingDetailComponent, LeidingChangeTakComponent, LeidingEditComponent],
+  entryComponents: [LeidingAddComponent, LeidingChangeTakComponent, LeidingEditComponent]
 })
 export class LeidingModule { }

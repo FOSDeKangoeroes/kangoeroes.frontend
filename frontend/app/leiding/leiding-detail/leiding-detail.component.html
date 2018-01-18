@@ -7,14 +7,17 @@
         <div class="card-body">
             <div class="btn-container">
                 <div class="row">
-                    <button type="button" class="btn btn-success col-md-3" data-toggle="modal" (click)="openChangeTakModal()">
+                    <button type="button" class="btn btn-success col-md-2" data-toggle="modal" (click)="openEditModal()">
+                        <i class="icon-pencil"> Wijzigen...</i>
+                    </button>
+                    <button type="button" class="btn btn-success col-md-2" data-toggle="modal" (click)="openChangeTakModal()">
                         <i class="icon-people"> Tak wijzigen...</i>
                     </button>
                    
-                    <button *ngIf="!leiding.auth0Id" type="button" class="btn btn-success col-md-3" data-toggle="modal" (click)="openAddModal()">
-                        <i class="icon-user"> Linken aan gebruiker...</i>
+                    <button *ngIf="!leiding.auth0Id" type="button" class="btn btn-success col-md-2" data-toggle="modal" (click)="openAddModal()">
+                        <i class="icon-user"> Gebruikersaccount aanmaken...</i>
                     </button>
-                    <button type="button" class="btn btn-danger col-md-3" data-toggle="modal" (click)="openAddModal()" disabled>
+                    <button type="button" class="btn btn-danger col-md-2" data-toggle="modal" (click)="openAddModal()" disabled>
                         <i class="icon-drawer"> Verwijderen...</i>
                     </button>
                 </div>

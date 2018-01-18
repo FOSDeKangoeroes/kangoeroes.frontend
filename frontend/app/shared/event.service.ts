@@ -10,6 +10,8 @@ export class EventService {
 
    $newLeiding = new EventEmitter<Leiding>();
 
+   private _activeLeiding: Leiding;
+
   public newTak(tak: Tak) {
     this.$newTak.emit(tak);
   }
@@ -17,6 +19,15 @@ export class EventService {
   public newLeiding(leiding: Leiding) {
     this.$newLeiding.emit(leiding);
   }
+
+  get activeLeiding(): Leiding {
+    return this._activeLeiding;
+  }
+
+  set activeLeiding(leiding: Leiding) {
+    this._activeLeiding = leiding;
+  }
+
   constructor() { }
 
 }

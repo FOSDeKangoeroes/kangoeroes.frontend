@@ -6,11 +6,11 @@ export class Tak {
     private _id: number;
     private _naam: string;
     private _volgorde: number;
-    private _leiding: Leiding[];
+    private _leidingCount: number;
 
     static fromJSON(json): Tak {
         const tak = new Tak(json.naam, json.volgorde);
-        tak._leiding = json.leiding;
+        tak._leidingCount = json.leidingCount;
         tak._id = json.id;
         return tak;
     }
@@ -36,12 +36,12 @@ set naam(naam: string)
     this._naam = naam;
 }
 
-get leiding() {
-    return this._leiding;
+get leidingCount() {
+    return this._leidingCount;
 }
 
-set leiding(leiding: Leiding[]) {
-        this._leiding = leiding;
+set leiding(leidingCount: number) {
+        this._leidingCount = leidingCount;
 }
 
 get id() {
@@ -61,6 +61,6 @@ set volgorde(volgorde: number) {
 }
 
  public hasLeiding(): boolean {
-    return this._leiding.length > 0;
+    return this._leidingCount > 0;
 }
 }

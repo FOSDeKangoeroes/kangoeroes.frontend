@@ -48,7 +48,7 @@ export class TakDetailComponent implements OnInit {
   }
   ngOnInit() {
     this.route.data.subscribe(item => this._tak = item['tak']);
-    this.hasLeiding = this._tak.leiding.length > 0;
+    this.hasLeiding = this._tak.leidingCount > 0;
     this.leidingTableService.tableData = this.dataService.getLeidingForTak(this._tak.id);
     this.leidingTableService.displayedColumns = this.displayedColumns;
   }

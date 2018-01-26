@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LeidingChangeTakComponent } from '../leiding-change-tak/leiding-change-tak.component';
 import { EventService } from '../../shared/event.service';
 import { LeidingEditComponent } from '../leiding-edit/leiding-edit.component';
+import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-leiding-detail',
@@ -18,7 +19,10 @@ private _leiding: Leiding;
   changeTakModal: BsModalRef;
   editModal: BsModalRef;
 
-  constructor(private route: ActivatedRoute, private modalService: BsModalService, private eventService: EventService) {
+  constructor(private route: ActivatedRoute,
+    private modalService: BsModalService,
+    private eventService: EventService,
+    private dataService: DataService) {
     this.route.data.subscribe(item => this._leiding = item['leiding']);
 
     this.eventService.$newLeiding.subscribe(res => {
@@ -42,5 +46,11 @@ private _leiding: Leiding;
     this.eventService.activeLeiding = this._leiding;
     this.editModal = this.modalService.show(LeidingEditComponent);
 
+  }
+
+  createUser() {
+    this.dataService.createUser(this._leiding.id).subscribe(res => {
+      this._leiding = res;
+    });
   }
 }

@@ -93,5 +93,11 @@ export class DataService {
      return Leiding.fromJSON(item);
     });
   }
+
+  createUser(leidingId): Observable<Leiding> {
+    return this.http.post(`${this._leidingUrl}/${leidingId}/user`, null).map(res => res.json().result).map(item => {
+      return Leiding.fromJSON(item);
+    });
+  }
   }
 

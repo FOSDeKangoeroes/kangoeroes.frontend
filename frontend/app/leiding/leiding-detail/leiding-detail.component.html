@@ -14,7 +14,7 @@
                         <i class="icon-people"> Tak wijzigen...</i>
                     </button>
                    
-                    <button *ngIf="!leiding.auth0Id" type="button" class="btn btn-success col-md-2" data-toggle="modal" (click)="openAddModal()">
+                    <button *ngIf="!leiding.auth0Id" type="button" class="btn btn-success col-md-2" data-toggle="modal" (click)="createUser()" [disabled]="leiding.email == null">
                         <i class="icon-user"> Gebruikersaccount aanmaken...</i>
                     </button>
                     <button type="button" class="btn btn-danger col-md-2" data-toggle="modal" (click)="openAddModal()" disabled>

@@ -26,6 +26,7 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   @ViewChild(MatInput) filter: MatInput;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Leiding>(true, []);
   displayedColumns: string[];
@@ -43,7 +44,7 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
 
 this.displayedColumns = this.leidingService.displayedColumns;
- 
+ this.dataSource.paginator = this.paginator;
     this.sort.sortChange
       .pipe(
       startWith({}),
@@ -64,6 +65,8 @@ this.displayedColumns = this.leidingService.displayedColumns;
         return observableOf([]);
       })
       ).subscribe(data => this.dataSource.data = data);
+
+
   }
 
 

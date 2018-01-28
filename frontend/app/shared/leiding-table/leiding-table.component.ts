@@ -27,7 +27,7 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatInput) filter: MatInput;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource<Leiding>();
   selection = new SelectionModel<Leiding>(true, []);
   displayedColumns: string[];
 

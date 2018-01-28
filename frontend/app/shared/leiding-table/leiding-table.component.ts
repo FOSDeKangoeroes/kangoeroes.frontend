@@ -38,11 +38,11 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit() {
-
+  
   }
 
   ngAfterViewInit() {
-
+const takId = this.leidingService.takId;
 this.displayedColumns = this.leidingService.displayedColumns;
  this.dataSource.paginator = this.paginator;
     this.sort.sortChange
@@ -51,7 +51,7 @@ this.displayedColumns = this.leidingService.displayedColumns;
       switchMap(() => {
         this.isLoadingResults = true;
         return this.dataService.getLeiding(
-          this.sort.active, this.sort.direction);
+          this.sort.active, this.sort.direction, '', takId);
       }),
       map(data => {
         // Flip flag to show that loading has finished.

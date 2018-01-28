@@ -5,17 +5,17 @@ import { Leiding } from './leiding.model';
 @Injectable()
 export class LeidingTableService {
 
-  private _tableData: Observable<Leiding[]>;
+  private _takId: number;
   // Nog om te vormen naar observable
   private _displayedColumns: string[];
   constructor() { }
 
-  set tableData(data: Observable<Leiding[]>) {
-    this._tableData = data;
+  set takId(id: number) {
+    this._takId = id;
   }
 
-  get tableData(): Observable<Leiding[]> {
-    return this._tableData;
+  get takId(): number {
+    return this._takId;
   }
 
   set displayedColumns(columns: string[]) {

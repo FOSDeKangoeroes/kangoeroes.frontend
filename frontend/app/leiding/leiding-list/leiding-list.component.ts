@@ -39,7 +39,7 @@ export class LeidingListComponent implements OnInit {
   ];
 
   constructor(private dataService: DataService, private modalService: BsModalService, private tableService: LeidingTableService) {
-   this.tableService.tableData = this.dataService.getLeiding();
+  this.tableService.takId = 0;
    this.tableService.displayedColumns = this.displayedColumns;
   }
 

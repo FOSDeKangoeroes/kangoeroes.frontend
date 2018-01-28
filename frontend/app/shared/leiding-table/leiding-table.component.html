@@ -1,10 +1,18 @@
 <div class="leiding-container">
+ 
   <div class="example-header">
+    <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+        GitHub's API rate limit has been reached. It will be reset in one minute.
+      </div>
+    </div>
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Zoeken">
     </mat-form-field>
   </div>
-  <mat-table #table [dataSource]="dataSource" matSort>
+ 
+  <mat-table #table [dataSource]="dataSource" matSort matSortDirection='asc' matSortActive="naam" matSorDisableClear>
     <ng-container matColumnDef="select">
       <mat-header-cell class="leiding-checkbox" *matHeaderCellDef>
         <mat-checkbox class="mat-checkbox" (change)="$event? masterToggle(): null" [checked]="selection.hasValue() && isAllSelected()"
@@ -14,7 +22,7 @@
         <mat-checkbox class="mat-checkbox" (change)="$event? selection.toggle(row): null" [checked]="selection.isSelected(row)" (click)="$event.stopPropagation()"></mat-checkbox>
       </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="takNaam">
+    <ng-container  matColumnDef="tak">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Tak</mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.takNaam}}</mat-cell>
     </ng-container>
@@ -42,14 +50,15 @@
       <mat-cell *matCellDef="let user">{{user.auth0Id}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="leidingSinds">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Leiding sinds</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef >Leiding sinds</mat-header-cell>
       <mat-cell *matCellDef="let leiding">{{leiding.leidingSinds | date:'dd-MMM-yyyy'}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="datumGestopt">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Datum gestopt als leiding</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Datum gestopt als leiding</mat-header-cell>
       <mat-cell *matCellDef="let leiding">{{leiding.datumGestopt | date:'dd-MMM-yyyy'}}</mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+ 
 </div>

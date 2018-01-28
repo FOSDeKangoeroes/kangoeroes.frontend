@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response, Headers} from '@angular/http';
 import { Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { Tak } from './tak/tak.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Leiding } from './leiding/leiding.model';
 import { LeidingModule } from './leiding/leiding.module';
+import { HttpParams } from '@angular/common/http';
 
 
 
@@ -73,8 +74,8 @@ export class DataService {
     return this.http.post(this._leidingUrl, leiding.toJSON()).map(response => response.json().result).map(item => Leiding.fromJSON(item));
   }
 
-  getLeiding(): Observable<Leiding[]> {
-    return this.http.get(this._leidingUrl)
+  getLeiding(sortBy = '', sortOrder = 'asc', query = ' ' ): Observable<Leiding[]> {
+    return this.http.get(`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}`)
       .map(response =>
         response.json().result.map(item => Leiding.fromJSON(item))
       );

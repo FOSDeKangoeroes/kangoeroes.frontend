@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule, MatSortModule, MatCheckboxModule, MatInputModule } from '@angular/material';
+import { MatTableModule,
+  MatSortModule,
+  MatCheckboxModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatPaginatorModule } from '@angular/material';
 import { LeidingTableService } from '../leiding/leiding-table.service';
 import { LeidingTableComponent } from './leiding-table/leiding-table.component';
 import { RouterModule } from '@angular/router';
@@ -14,6 +19,8 @@ import { TakTableService } from '../tak/tak-table.service';
     MatSortModule,
     MatCheckboxModule,
     MatInputModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
     RouterModule
   ],
   providers: [LeidingTableService, TakTableService],

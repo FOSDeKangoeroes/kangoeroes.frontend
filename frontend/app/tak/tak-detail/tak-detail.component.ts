@@ -78,15 +78,3 @@ export class TakDetailComponent implements OnInit {
   }
 
 }
-
-// Datasource voor de tabel
-export class LeidingDataSource extends DataSource<any> {
-  constructor(private dataService: DataService, private takId: number) {
-    super();
-  }
-  connect(collectionViewer: CollectionViewer): Observable<any[]> {
-    return this.dataService.getLeidingForTak(this.takId);
-  }
-  disconnect(collectionViewer: CollectionViewer): void { }
-
-}

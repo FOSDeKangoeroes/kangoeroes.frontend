@@ -22,7 +22,7 @@ export interface Action {
 })
 export class LeidingListComponent implements OnInit {
 
-  displayedColumns = ['select', 'takNaam', 'voornaam', 'naam', 'email', 'leidingSinds', 'datumGestopt'];
+  displayedColumns = ['select', 'tak', 'voornaam', 'naam', 'email', 'leidingSinds', 'datumGestopt'];
 
   public addModal: BsModalRef;
   public takModal: BsModalRef;

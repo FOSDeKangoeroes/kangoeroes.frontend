@@ -21,6 +21,7 @@ import { LeidingTableService } from '../leiding/leiding-table.service';
 import { AppModule } from '../app.module';
 import { SharedModule } from '../shared/shared.module';
 import { EventService } from '../shared/event.service';
+ 
 
 const routes: Routes = [
   {

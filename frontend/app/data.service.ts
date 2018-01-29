@@ -7,6 +7,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Leiding } from './leiding/leiding.model';
 import { LeidingModule } from './leiding/leiding.module';
 import { HttpParams } from '@angular/common/http';
+import { HttpInterceptor } from './http-interceptor';
+
 
 
 
@@ -16,7 +18,7 @@ export class DataService {
   private _takUrl = '/api/tak';
   private _leidingUrl = '/api/leiding';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpInterceptor) { }
 
 
   get takken(): Observable<Tak[]> {

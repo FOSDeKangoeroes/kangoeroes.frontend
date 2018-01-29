@@ -72,7 +72,8 @@ import { AuthService } from './auth.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { LeidingModule } from './leiding/leiding.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpInterceptor } from './http-interceptor';
+import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    SnotifyModule
   ],
   declarations: [
     AppComponent,
@@ -96,7 +98,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
-  }, AuthService],
+  },
+  {provide: 'SnotifyToastConfig',
+  useValue: ToastDefaults},
+  SnotifyService,
+  AuthService,
+  HttpInterceptor],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

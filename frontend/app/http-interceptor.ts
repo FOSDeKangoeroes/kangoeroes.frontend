@@ -43,7 +43,7 @@ export class HttpInterceptor extends Http {
         case 500: default:
        this.snotify.error('Oops. Er ging iets fout op de server! Probeer later opnieuw.', 'Serverfout', {
          position: SnotifyPosition.rightTop,
-         timeout: 0
+         timeout: 8000
        });
        break;
 

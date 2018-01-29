@@ -21,7 +21,7 @@ export class TakListComponent implements OnInit {
     private modalService: BsModalService,
     private eventService: EventService,
     private takService: TakTableService) {
-    this.takService.tableData = this._dataService.takken;
+    this.takService.tableData = this._dataService.getTakken();
     this.takService.displayedColumns = this.displayedColumns;
    }
 

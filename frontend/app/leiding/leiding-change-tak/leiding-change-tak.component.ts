@@ -24,7 +24,7 @@ export class LeidingChangeTakComponent implements OnInit {
   leidingId: number;
 
   ngOnInit() {
-    this.dataService.takken.subscribe(res => {
+    this.dataService.getTakken().subscribe(res => {
       this.takkenLoading = false;
       this.takken = res;
     });

@@ -38,14 +38,14 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit() {
-  
+
   }
 
   ngAfterViewInit() {
 const takId = this.leidingService.takId;
 this.displayedColumns = this.leidingService.displayedColumns;
  this.dataSource.paginator = this.paginator;
-    this.sort.sortChange
+    merge(this.sort.sortChange, this.eventService.$newLeiding)
       .pipe(
       startWith({}),
       switchMap(() => {

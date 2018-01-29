@@ -18,7 +18,7 @@ export class EventService {
   }
 
   public newLeiding(leiding: Leiding) {
-    this.$newLeiding.emit(leiding);
+    this.$newLeiding.next(leiding);
   }
 
   get activeLeiding(): Leiding {

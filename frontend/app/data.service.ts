@@ -21,8 +21,8 @@ export class DataService {
   constructor(private http: HttpInterceptor) { }
 
 
-  get takken(): Observable<Tak[]> {
-    return this.http.get(this._takUrl).map(response =>
+  getTakken(sortBy: string = '', sortOrder: string = 'asc', query: string = ''): Observable<Tak[]> {
+    return this.http.get(`${this._takUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}`).map(response =>
       response.json().result.map(item => Tak.fromJSON(item))
     );
   }

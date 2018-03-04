@@ -55,8 +55,9 @@ export class TakTableComponent implements OnInit, AfterViewInit {
 
         return data;
       }),
-      catchError(() => {
+      catchError((err) => {
         this.isLoadingResults = false;
+        console.log(err);
         return observableOf([]);
       })
       ).subscribe(data => this.dataSource.data = data);

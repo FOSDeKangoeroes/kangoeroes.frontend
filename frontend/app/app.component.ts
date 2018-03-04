@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
   selector: 'body',
   templateUrl: './app.component.html'
 })
-export class AppComponent { 
+export class AppComponent {
 
   constructor(public auth: AuthService) {
     this.auth.handleAuthentication();

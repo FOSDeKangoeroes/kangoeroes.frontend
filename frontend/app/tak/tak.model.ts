@@ -1,5 +1,5 @@
 import { Leiding } from '../leiding/leiding.model';
-import { leave } from '@angular/core/src/profile/wtf_impl';
+
 
 export class Tak {
 
@@ -27,40 +27,41 @@ export class Tak {
             volgorde: this._volgorde
         };
     }
-get naam() {
-    return this._naam;
-}
 
-set naam(naam: string)
-{
-    this._naam = naam;
-}
 
-get leidingCount() {
-    return this._leidingCount;
-}
+    get naam() {
+        return this._naam;
+    }
 
-set leiding(leidingCount: number) {
+    set naam(naam: string) {
+        this._naam = naam;
+    }
+
+    get leidingCount() {
+        return this._leidingCount;
+    }
+
+    set leiding(leidingCount: number) {
         this._leidingCount = leidingCount;
-}
+    }
 
-get id() {
-    return this._id;
-}
+    get id() {
+        return this._id;
+    }
 
-set id(id: number) {
-    this._id = id;
-}
+    set id(id: number) {
+        this._id = id;
+    }
 
-get volgorde() {
-    return this._volgorde;
-}
+    get volgorde() {
+        return this._volgorde;
+    }
 
-set volgorde(volgorde: number) {
-    this._volgorde = volgorde;
-}
+    set volgorde(volgorde: number) {
+        this._volgorde = volgorde;
+    }
 
- public hasLeiding(): boolean {
-    return this._leidingCount > 0;
-}
+    public hasLeiding(): boolean {
+        return this._leidingCount > 0;
+    }
 }

@@ -45,13 +45,12 @@ const routes: Routes = [
         data: {
           title: 'Personen'
         }
-      },
-      {
-        path: 'callback',
-        component: CallbackComponent,
-        pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: 'callback',
+    component: CallbackComponent
   }
 
 ];

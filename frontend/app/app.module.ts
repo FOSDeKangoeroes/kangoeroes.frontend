@@ -74,11 +74,17 @@ import { LeidingModule } from './leiding/leiding.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpInterceptor } from './http-interceptor';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+import { RequestOptions, Http } from '@angular/http';
+//import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     TakModule,
     LeidingModule,
@@ -86,7 +92,14 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    SnotifyModule
+    SnotifyModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        }
+      }
+    })
   ],
   declarations: [
     AppComponent,
@@ -107,3 +120,5 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
+

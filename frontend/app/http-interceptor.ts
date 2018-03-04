@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import {SnotifyService, SnotifyToastConfig, SnotifyPosition} from 'ng-snotify';
 import { BadRequestResponse } from './shared/bad-request-response';
+import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class HttpInterceptor extends Http {

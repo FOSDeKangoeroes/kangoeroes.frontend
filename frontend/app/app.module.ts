@@ -78,6 +78,7 @@ import { RequestOptions, Http } from '@angular/http';
 //import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { LeidingEditRolesComponent } from './leiding-edit-roles/leiding-edit-roles.component';
 
 
 
@@ -106,7 +107,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
-    CallbackComponent
+    CallbackComponent,
+    LeidingEditRolesComponent
   ],
   providers: [{
     provide: LocationStrategy,

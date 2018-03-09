@@ -6,8 +6,9 @@ import { Tak } from './tak/tak.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Leiding } from './leiding/leiding.model';
 import { LeidingModule } from './leiding/leiding.module';
-import { HttpParams, HttpClient } from '@angular/common/http';
+import { HttpParams, HttpClient, HttpResponse } from '@angular/common/http';
 import { HttpInterceptor } from './http-interceptor';
+
 
 
 
@@ -43,7 +44,7 @@ export class DataService {
   }
 
   updateTak(tak: Tak, takId: number): Observable<Tak> {
-    const takJson = tak.toJSON();
+    const takJson = tak;
    return this.httpClient.put<Tak>(`${this._takUrl}/${takId}`, takJson);
 
   }
@@ -63,34 +64,36 @@ export class DataService {
   }
 
   addLeiding(leiding: Leiding): Observable<Leiding> {
-    return this.http.post(this._leidingUrl, leiding.toJSON()).map(response => response.json().result).map(item => Leiding.fromJSON(item));
+    return this.httpClient.post<Leiding>(this._leidingUrl, leiding.toJSON());
   }
 
   getLeiding(sortBy = '', sortOrder = 'asc', query = ' ', takId: number = 0 ): Observable<Leiding[]> {
-    return this.http.get(`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&tak=${takId}`)
-      .map(response =>
-        response.json().result.map(item => Leiding.fromJSON(item))
-      );
+    return this.httpClient.get<Leiding[]>(`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&tak=${takId}`);
   }
 
   updateLeiding(leiding): Observable<Leiding> {
-    return this.http.
-    put(`${this._leidingUrl}/${leiding.id}`, leiding.toJSON())
-    .map(response => response.json().result)
-    .map(item => Leiding.fromJSON(item));
+    return this.httpClient.
+    put<Leiding>(`${this._leidingUrl}/${leiding.id}`, leiding);
   }
 
   changeTakForLeiding(leidingId, newTakId: number): Observable<Leiding> {
-    return this.http.put(`${this._leidingUrl}/${leidingId}/tak`, {newTakId: newTakId}).map(res => res.json().result)
-    .map(item => {
-     return Leiding.fromJSON(item);
-    });
+    return this.httpClient.put<Leiding>(`${this._leidingUrl}/${leidingId}/tak`, {newTakId: newTakId});
   }
 
   createUser(leidingId): Observable<Leiding> {
-    return this.http.post(`${this._leidingUrl}/${leidingId}/user`, null).map(res => res.json().result).map(item => {
-      return Leiding.fromJSON(item);
-    });
+    return this.httpClient.post<Leiding>(`${this._leidingUrl}/${leidingId}/user`, null);
+  }
+
+  getRolesForUser(id) {
+    return this.httpClient.get<Role[]>(`${this._leidingUrl}/${id}/roles`);
+  }
+
+  removeRoleForUser(leidingId, roleId): Observable<HttpResponse<any>> {
+  return  this.httpClient.delete<HttpResponse<any>>(`${this._leidingUrl}/${leidingId}/roles/${roleId}`);
+  }
+
+  addRoleForUser(leidingId, roleId): Observable<HttpResponse<any>> {
+    return this.httpClient.patch<HttpResponse<any>>(`${this._leidingUrl}/${leidingId}/roles/${roleId}`, null);
   }
   }
 

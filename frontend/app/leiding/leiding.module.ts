@@ -16,6 +16,8 @@ import { LeidingTableService } from './leiding-table.service';
 import { SharedModule } from '../shared/shared.module';
 import { LeidingChangeTakComponent } from './leiding-change-tak/leiding-change-tak.component';
 import { LeidingEditComponent } from './leiding-edit/leiding-edit.component';
+import { LeidingEditRolesComponent } from './leiding-edit-roles/leiding-edit-roles.component';
+import { MatCheckboxModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -36,10 +38,16 @@ const routes: Routes = [
     FormsModule,
     ModalModule.forRoot(),
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    MatCheckboxModule
   ],
   providers: [DataService, LeidingResolverService, LeidingTableService],
-  declarations: [LeidingListComponent, LeidingAddComponent, LeidingDetailComponent, LeidingChangeTakComponent, LeidingEditComponent],
-  entryComponents: [LeidingAddComponent, LeidingChangeTakComponent, LeidingEditComponent]
+  declarations: [LeidingListComponent,
+    LeidingAddComponent,
+    LeidingDetailComponent,
+    LeidingChangeTakComponent,
+    LeidingEditComponent,
+    LeidingEditRolesComponent],
+  entryComponents: [LeidingAddComponent, LeidingChangeTakComponent, LeidingEditComponent, LeidingEditRolesComponent]
 })
 export class LeidingModule { }

@@ -6,6 +6,7 @@ import { LeidingChangeTakComponent } from '../leiding-change-tak/leiding-change-
 import { EventService } from '../../shared/event.service';
 import { LeidingEditComponent } from '../leiding-edit/leiding-edit.component';
 import { DataService } from '../../data.service';
+import { LeidingEditRolesComponent } from '../leiding-edit-roles/leiding-edit-roles.component';
 
 @Component({
   selector: 'app-leiding-detail',
@@ -18,6 +19,7 @@ private _leiding: Leiding;
 
   changeTakModal: BsModalRef;
   editModal: BsModalRef;
+  editRoleModal: BsModalRef;
 
   constructor(private route: ActivatedRoute,
     private modalService: BsModalService,
@@ -46,6 +48,11 @@ private _leiding: Leiding;
     this.eventService.activeLeiding = this._leiding;
     this.editModal = this.modalService.show(LeidingEditComponent);
 
+  }
+
+  openRoleModal() {
+    this.eventService.activeLeiding = this._leiding;
+    this.editRoleModal = this.modalService.show(LeidingEditRolesComponent);
   }
 
   createUser() {

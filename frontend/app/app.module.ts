@@ -76,9 +76,13 @@ import { HttpInterceptor } from './http-interceptor';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { RequestOptions, Http } from '@angular/http';
 //import { AuthHttp, AuthConfig } from 'angular2-jwt';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { LeidingEditRolesComponent } from './leiding-edit-roles/leiding-edit-roles.component';
+import { GlobalLoaderComponent } from './shared/global-loader/global-loader.component';
+import { LoadingService } from './shared/loading.service';
+import { LoadingInterceptor } from './interceptors/loading-interceptor.service';
+
+
 
 
 
@@ -108,19 +112,25 @@ import { LeidingEditRolesComponent } from './leiding-edit-roles/leiding-edit-rol
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
     CallbackComponent,
-    LeidingEditRolesComponent
+    GlobalLoaderComponent
   ],
-  providers: [{
+  providers: [{ 
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
   {provide: 'SnotifyToastConfig',
   useValue: ToastDefaults},
   SnotifyService,
+  LoadingService,
+  {
+provide: HTTP_INTERCEPTORS,
+useClass: LoadingInterceptor,
+multi: true
+  },
   AuthService,
   HttpInterceptor],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
-
+ 
 

@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LeidingAddComponent } from './leiding-add/leiding-add.component';
-import { DataService } from '../data.service';
+
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LeidingDetailComponent } from './leiding-detail/leiding-detail.component';
@@ -18,6 +18,7 @@ import { LeidingChangeTakComponent } from './leiding-change-tak/leiding-change-t
 import { LeidingEditComponent } from './leiding-edit/leiding-edit.component';
 import { LeidingEditRolesComponent } from './leiding-edit-roles/leiding-edit-roles.component';
 import { MatCheckboxModule } from '@angular/material';
+import { DataService } from '../services/data.service';
 
 const routes: Routes = [
   {

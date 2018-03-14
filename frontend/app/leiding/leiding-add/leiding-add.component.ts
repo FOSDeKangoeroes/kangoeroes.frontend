@@ -1,12 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataService } from '../../data.service';
+
 import { Util } from '../util';
 import { Tak } from '../../tak/tak.model';
 import { Leiding } from '../leiding.model';
 import { Router } from '@angular/router';
 import { EventService } from '../../shared/event.service';
+import { DataService } from '../../services/data.service';
 
 
 

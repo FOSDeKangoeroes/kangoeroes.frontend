@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, Validators, ValidatorFn } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { DataService } from '../../data.service';
+
 import { Router } from '@angular/router';
 import { Tak } from '../tak.model';
+import { DataService } from '../../services/data.service';
 
 @Component({
   // tslint:disable-next-line:component-selector

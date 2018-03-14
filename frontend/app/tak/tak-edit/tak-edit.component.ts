@@ -2,9 +2,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Tak } from '../tak.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { DataService } from '../../data.service';
 import { Router } from '@angular/router';
 import { EventService } from '../../shared/event.service';
+import { DataService } from '../../services/data.service';
 
 
 @Component({

@@ -6,7 +6,6 @@ import { Leiding } from '../../leiding/leiding.model';
 import { LeidingTableService } from '../../leiding/leiding-table.service';
 import { EventService } from '../event.service';
 import { LeidingDataSource } from './leiding-data-source';
-import { DataService } from '../../data.service';
 import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';
 import { of as observableOf } from 'rxjs/observable/of';
@@ -14,6 +13,7 @@ import { catchError } from 'rxjs/operators/catchError';
 import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
+import { DataService } from '../../services/data.service';
 
 
 @Component({

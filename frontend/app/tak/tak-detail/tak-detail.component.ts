@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { DataSource, CollectionViewer } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import { Leiding } from '../../leiding/leiding.model';
-import { DataService } from '../../data.service';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 import { Router } from '@angular/router/src/router';
 import { ModalContainerComponent } from 'ngx-bootstrap/modal/modal-container.component';
@@ -15,6 +14,7 @@ import { TakDeleteComponent } from '../tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from '../tak-leiding-add/tak-leiding-add.component';
 import { LeidingTableService } from '../../leiding/leiding-table.service';
 import { EventService } from '../../shared/event.service';
+import { DataService } from '../../services/data.service';
 
 
 
@@ -36,7 +36,6 @@ export class TakDetailComponent implements OnInit {
   private _tak: Tak;
   public hasLeiding: boolean;
 
-  
   displayedColumns = ['voornaam', 'naam', 'email', 'leidingSinds', 'datumGestopt'];
 
   constructor(private route: ActivatedRoute,

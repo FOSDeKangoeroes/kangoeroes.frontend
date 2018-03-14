@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { DataService } from '../../data.service';
 import { Leiding } from '../../leiding/leiding.model';
 import { Util } from '../../leiding/util';
 import { EventService } from '../../shared/event.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   // tslint:disable-next-line:component-selector

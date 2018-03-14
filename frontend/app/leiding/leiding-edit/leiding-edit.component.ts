@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { DataService } from '../../data.service';
+import { DataService } from '../../services/data.service';
 import { EventService } from '../../shared/event.service';
 import { Util } from '../util';
 import { Leiding } from '../leiding.model';

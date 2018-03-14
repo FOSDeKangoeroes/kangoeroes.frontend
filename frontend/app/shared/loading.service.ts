@@ -10,7 +10,6 @@ export class LoadingService {
   public loading$ = this.loadingCount$.asObservable().map(loadingCount => loadingCount > 0);
 
   startLoading() {
-    console.log('started loading');
     const val = this.loadingCount$.value;
     this.loadingCount$.next(val + 1);
   }

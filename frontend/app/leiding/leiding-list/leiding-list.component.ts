@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { DataService } from '../../data.service';
+
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Leiding } from '../leiding.model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -7,6 +7,7 @@ import { LeidingAddComponent } from '../leiding-add/leiding-add.component';
 import { SelectionModel } from '@angular/cdk/collections';
 import { LeidingActions } from './leiding.actions';
 import { LeidingTableService } from '../leiding-table.service';
+import { DataService } from '../../services/data.service';
 
 export interface Action {
   code: LeidingActions;
@@ -46,8 +47,6 @@ export class LeidingListComponent implements OnInit {
   ngOnInit() {
 
   }
-
- 
 
   openAddModal() {
     this.addModal = this.modalService.show(LeidingAddComponent);

@@ -68,19 +68,17 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { TakModule } from './tak/tak.module';
-import { AuthService } from './auth.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { LeidingModule } from './leiding/leiding.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpInterceptor } from './http-interceptor';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { RequestOptions, Http } from '@angular/http';
-//import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { GlobalLoaderComponent } from './shared/global-loader/global-loader.component';
 import { LoadingService } from './shared/loading.service';
 import { LoadingInterceptor } from './interceptors/loading-interceptor.service';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -114,7 +112,7 @@ import { LoadingInterceptor } from './interceptors/loading-interceptor.service';
     CallbackComponent,
     GlobalLoaderComponent
   ],
-  providers: [{ 
+  providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
@@ -127,10 +125,8 @@ provide: HTTP_INTERCEPTORS,
 useClass: LoadingInterceptor,
 multi: true
   },
-  AuthService,
-  HttpInterceptor],
+  AuthService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
- 
 

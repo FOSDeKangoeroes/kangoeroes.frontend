@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TakComponent } from './tak/tak.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TakListComponent } from './tak-list/tak-list.component';
-import { DataService } from '../data.service';
+
 import { HttpModule } from '@angular/http';
 import { LeidingModule } from '../leiding/leiding.module';
 import { TakDetailComponent } from './tak-detail/tak-detail.component';
@@ -21,7 +21,7 @@ import { LeidingTableService } from '../leiding/leiding-table.service';
 import { AppModule } from '../app.module';
 import { SharedModule } from '../shared/shared.module';
 import { EventService } from '../shared/event.service';
- 
+import { DataService } from '../services/data.service';
 
 const routes: Routes = [
   {

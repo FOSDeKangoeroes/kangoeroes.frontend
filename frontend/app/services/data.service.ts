@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers} from '@angular/http';
 import { Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import { Tak } from './tak/tak.model';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Leiding } from './leiding/leiding.model';
-import { LeidingModule } from './leiding/leiding.module';
 import { HttpParams, HttpClient, HttpResponse } from '@angular/common/http';
-import { HttpInterceptor } from './http-interceptor';
+import { Tak } from '../tak/tak.model';
+import { Leiding } from '../leiding/leiding.model';
+
 
 
 
@@ -19,7 +17,7 @@ export class DataService {
   private _takUrl = 'http://localhost:4200/api/tak';
   private _leidingUrl = 'http://localhost:4200/api/leiding';
 
-  constructor(private http: Http, private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
 
   getTakken(sortBy: string = '', sortOrder: string = 'asc', query: string = ''): Observable<Tak[]> {

@@ -5,7 +5,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LeidingChangeTakComponent } from '../leiding-change-tak/leiding-change-tak.component';
 import { EventService } from '../../shared/event.service';
 import { LeidingEditComponent } from '../leiding-edit/leiding-edit.component';
-import { DataService } from '../../data.service';
+import { DataService } from '../../services/data.service';
 import { LeidingEditRolesComponent } from '../leiding-edit-roles/leiding-edit-roles.component';
 
 @Component({

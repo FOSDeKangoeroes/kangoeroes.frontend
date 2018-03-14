@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { DataService } from '../../data.service';
+import { DataService } from '../../services/data.service';
 import { EventService } from '../../shared/event.service';
 import { SelectionModel } from '@angular/cdk/collections';
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Tak } from '../../tak/tak.model';
-import { DataService } from '../../data.service';
+
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventService } from '../../shared/event.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   // tslint:disable-next-line:component-selector

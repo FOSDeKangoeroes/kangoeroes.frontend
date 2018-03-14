@@ -11,14 +11,15 @@ import { catchError } from 'rxjs/operators/catchError';
 import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
-import { DataService } from '../../data.service';
+import { DataService } from '../../services/data.service';
+
 @Component({
   selector: 'app-tak-table',
   templateUrl: './tak-table.component.html',
   styleUrls: ['./tak-table.component.scss']
 })
 export class TakTableComponent implements OnInit, AfterViewInit {
- 
+
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatInput) filter: MatInput;

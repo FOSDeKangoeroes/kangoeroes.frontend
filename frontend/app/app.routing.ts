@@ -11,6 +11,8 @@ import { LeidingListComponent } from './leiding/leiding-list/leiding-list.compon
 import { TakDetailComponent } from './tak/tak-detail/tak-detail.component';
 import { TakResolverService } from './tak/tak-resolver.service';
 import { CallbackComponent } from './components/callback/callback.component';
+import { AuthorizationGuard } from './auth/authorization.guard';
+import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,7 @@ const routes: Routes = [
     data: {
       title: 'Home'
     },
+    canActivate: [AuthorizationGuard],
     children: [
       {
         path: 'dashboard',
@@ -49,9 +52,13 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'forbidden',
+    component: AppForbiddenComponent
+  },
+  {
     path: 'callback',
     component: CallbackComponent
-  }
+  },
 
 ];
 

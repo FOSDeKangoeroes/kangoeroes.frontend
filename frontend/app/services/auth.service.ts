@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class AuthService {
 
-  private requestedScopes = 'openid+roles';
+  private requestedScopes = 'openid roles';
   auth0 = new auth0.WebAuth({
     clientID: environment.AUTH0_CLIENTID,
     domain: environment.AUTH0_DOMAIN,
@@ -76,13 +76,23 @@ export class AuthService {
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+
+    if (!localStorage.getItem('access_token')) {
+      return false;
+    }
+
+      const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+      return new Date().getTime() < expiresAt;
+
   }
 
   public userHasScopes(scopes: Array<string>): boolean {
     const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
     return scopes.every(scope => grantedScopes.includes(scope));
+  }
+
+  public getToken() {
+    return localStorage.getItem('access_token');
   }
 
 }

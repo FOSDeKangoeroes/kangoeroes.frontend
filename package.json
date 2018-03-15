@@ -34,6 +34,7 @@
     "dotenv": "^4.0.0",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
+    "jwt-decode": "^2.2.0",
     "moment": "2.19.1",
     "ng-snotify": "^4.2.0",
     "ng2-charts": "1.6.0",

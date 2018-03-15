@@ -79,6 +79,9 @@ import { GlobalLoaderComponent } from './shared/global-loader/global-loader.comp
 import { LoadingService } from './shared/loading.service';
 import { LoadingInterceptor } from './interceptors/loading-interceptor.service';
 import { AuthService } from './services/auth.service';
+import { AuthorizationGuard } from './auth/authorization.guard';
+import { LoggedInGuard } from './auth/logged-in.guard';
+import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 
 
 
@@ -110,7 +113,8 @@ import { AuthService } from './services/auth.service';
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
     CallbackComponent,
-    GlobalLoaderComponent
+    GlobalLoaderComponent,
+    AppForbiddenComponent
   ],
   providers: [{
     provide: LocationStrategy,
@@ -125,7 +129,9 @@ provide: HTTP_INTERCEPTORS,
 useClass: LoadingInterceptor,
 multi: true
   },
-  AuthService],
+  AuthService,
+AuthorizationGuard,
+LoggedInGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

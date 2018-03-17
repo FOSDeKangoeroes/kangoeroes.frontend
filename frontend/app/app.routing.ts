@@ -13,6 +13,7 @@ import { TakResolverService } from './tak/tak-resolver.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { AuthorizationGuard } from './auth/authorization.guard';
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,7 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+        component: DashboardComponent
       },
       {
         path: 'takken',
@@ -55,10 +56,10 @@ const routes: Routes = [
     path: 'forbidden',
     component: AppForbiddenComponent
   },
-  {
+      {
     path: 'callback',
     component: CallbackComponent
-  },
+  }
 
 ];
 

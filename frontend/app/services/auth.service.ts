@@ -23,17 +23,19 @@ export class AuthService {
   constructor(public router: Router) { }
 
   public login(): void {
+    localStorage.setItem('redirect_uri', this.router.url);
     this.auth0.authorize();
   }
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        window.location.hash = '';
+
         this.setSession(authResult);
-        this.router.navigate(['/dashboard']);
+
+          this.router.navigate(['']);
       } else if (err) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['']);
         console.log(err);
       }
     });
@@ -73,13 +75,9 @@ export class AuthService {
     this.router.navigate(['/dashboard']);
   }
 
-  public isAuthenticated(): boolean {
+  public isAuthenticated(): boolean { 
     // Check whether the current time is past the
     // access token's expiry time
-
-    if (!localStorage.getItem('access_token')) {
-      return false;
-    }
 
       const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
       return new Date().getTime() < expiresAt;

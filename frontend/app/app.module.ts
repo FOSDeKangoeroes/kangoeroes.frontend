@@ -82,6 +82,7 @@ import { AuthService } from './services/auth.service';
 import { AuthorizationGuard } from './auth/authorization.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
+import { DashboardModule } from './views/dashboard/dashboard.module';
 
 
 
@@ -97,8 +98,8 @@ import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule,
     SnotifyModule,
+    DashboardModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
@@ -116,10 +117,7 @@ import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.
     GlobalLoaderComponent,
     AppForbiddenComponent
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy,
-  },
+  providers: [
   {provide: 'SnotifyToastConfig',
   useValue: ToastDefaults},
   SnotifyService,

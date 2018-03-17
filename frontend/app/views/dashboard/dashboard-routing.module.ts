@@ -3,8 +3,6 @@ import { Routes,
      RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { TakListComponent } from '../../tak/tak-list/tak-list.component';
-
 const routes: Routes = [
   {
     path: '',

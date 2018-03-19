@@ -71,7 +71,7 @@ import { TakModule } from './tak/tak.module';
 import { CallbackComponent } from './components/callback/callback.component';
 import { LeidingModule } from './leiding/leiding.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { RequestOptions, Http } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -83,6 +83,7 @@ import { AuthorizationGuard } from './auth/authorization.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardModule } from './views/dashboard/dashboard.module';
+import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
 
 
 
@@ -118,19 +119,26 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
     AppForbiddenComponent
   ],
   providers: [
-  {provide: 'SnotifyToastConfig',
-  useValue: ToastDefaults},
-  SnotifyService,
-  LoadingService,
-  {
-provide: HTTP_INTERCEPTORS,
-useClass: LoadingInterceptor,
-multi: true
-  },
-  AuthService,
-AuthorizationGuard,
-LoggedInGuard],
-  bootstrap: [ AppComponent ]
+    {
+      provide: 'SnotifyToastConfig',
+      useValue: ToastDefaults
+    },
+    SnotifyService,
+    LoadingService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorInterceptor,
+      multi: true
+    },
+    AuthService,
+    AuthorizationGuard,
+    LoggedInGuard],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 

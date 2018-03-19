@@ -65,6 +65,11 @@
   "defaults": {
     "styleExt": "scss",
     "prefixInterfaces":false,
-    "component": {}
+    "component": {
+      "spec": false
+    },
+    "service": {
+      "spec": false
+    }
   }
 }

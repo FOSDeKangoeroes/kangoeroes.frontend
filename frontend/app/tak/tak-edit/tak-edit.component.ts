@@ -5,6 +5,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
+import { SnotifyService } from 'ng-snotify';
 
 
 @Component({
@@ -27,7 +28,9 @@ export class TakEditComponent implements OnInit {
     private fb: FormBuilder,
     private dataService: DataService,
     private _router: Router,
-    eventService: EventService) {
+    eventService: EventService,
+    private snotifyService: SnotifyService
+  ) {
       this.tak = eventService.activeTak;
     }
 
@@ -45,6 +48,7 @@ export class TakEditComponent implements OnInit {
     this.dataService.updateTak(this.tak, this.tak.id).subscribe(res => {
       if (res) {
         this.editModalRef.hide();
+        this.snotifyService.success('Tak succesvol gewijzigd!');
       }
     });
 

@@ -5,6 +5,7 @@ import { DataService } from '../../services/data.service';
 import { EventService } from '../../shared/event.service';
 import { Util } from '../util';
 import { Leiding } from '../leiding.model';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -22,7 +23,8 @@ export class LeidingEditComponent implements OnInit {
     public editLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
     private dataService: DataService,
-    private eventService: EventService) {
+    private eventService: EventService,
+    private snotifyService: SnotifyService) {
       this.leiding = this.eventService.activeLeiding;
     }
 
@@ -42,6 +44,7 @@ export class LeidingEditComponent implements OnInit {
       this.dataService.updateLeiding(this.leiding).subscribe( res => {
         this.eventService.newLeiding(res);
         this.editLeidingModalRef.hide();
+      this.snotifyService.success('Leiding succesvol gewijzigd!');
       });
   }
 

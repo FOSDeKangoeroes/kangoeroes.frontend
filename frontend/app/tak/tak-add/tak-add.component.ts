@@ -5,6 +5,7 @@ import { Tak } from '../tak.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -19,7 +20,8 @@ export class TakAddComponent implements OnInit {
   constructor(public addModalRef: BsModalRef,
     private dataService: DataService,
     private fb: FormBuilder,
-    private eventService: EventService
+    private eventService: EventService,
+    private snotifyService: SnotifyService
     ) { }
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class TakAddComponent implements OnInit {
       if (res) {
         this.eventService.newTak(res);
         this.addModalRef.hide();
+        this.snotifyService.success('Tak succesvol toegevoegd!');
       }
     });
   }

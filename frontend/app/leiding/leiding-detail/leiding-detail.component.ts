@@ -27,9 +27,6 @@ private _leiding: Leiding;
     private dataService: DataService) {
     this.route.data.subscribe(item => this._leiding = item['leiding']);
 
-    this.eventService.$newLeiding.subscribe(res => {
-      this._leiding = res;
-    });
    }
 
   ngOnInit() {

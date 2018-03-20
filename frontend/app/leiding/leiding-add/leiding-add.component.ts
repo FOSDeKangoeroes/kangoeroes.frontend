@@ -8,6 +8,7 @@ import { Leiding } from '../leiding.model';
 import { Router } from '@angular/router';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
+import { SnotifyService } from 'ng-snotify';
 
 
 
@@ -28,7 +29,8 @@ export class LeidingAddComponent implements OnInit {
     private fb: FormBuilder,
     private dataService: DataService,
     private router: Router,
-    private eventService: EventService) { }
+    private eventService: EventService,
+    private snotifyService: SnotifyService) { }
 
   ngOnInit() {
 
@@ -55,7 +57,10 @@ onSubmit() {
   this.dataService.addLeiding(leiding).subscribe(res => {
     this.eventService.newLeiding(res);
     this.addLeidingModalRef.hide();
+    this.snotifyService.success('Leiding werd succesvol aangemaakt!');
 
+  }, error => {
+    this.snotifyService.error(error.message, 'Error!');
   });
 
 }

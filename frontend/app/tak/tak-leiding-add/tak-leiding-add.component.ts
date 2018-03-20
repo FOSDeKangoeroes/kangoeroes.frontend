@@ -5,6 +5,7 @@ import { Leiding } from '../../leiding/leiding.model';
 import { Util } from '../../leiding/util';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -22,7 +23,8 @@ export class TakLeidingAddComponent implements OnInit {
   constructor(public addLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
     private dataService: DataService,
-    private eventService: EventService) { }
+    private eventService: EventService,
+    private snotifyService: SnotifyService) { }
 
   ngOnInit() {
     this.addLeidingFormGroup = this.fb.group({
@@ -42,6 +44,7 @@ export class TakLeidingAddComponent implements OnInit {
     this.dataService.addLeiding(leiding).subscribe(item => {
       this.eventService.newLeiding(item);
       this.addLeidingModalRef.hide();
+      this.snotifyService.success('Leiding succesvol toegevoegd!');
     });
   }
 

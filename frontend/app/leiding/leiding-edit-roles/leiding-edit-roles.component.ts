@@ -3,6 +3,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { DataService } from '../../services/data.service';
 import { EventService } from '../../shared/event.service';
 import { SelectionModel } from '@angular/cdk/collections';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -13,7 +14,10 @@ import { SelectionModel } from '@angular/cdk/collections';
 export class LeidingEditRolesComponent implements OnInit {
   public roles: Role[];
 
-  constructor(public changeRoleModalRef: BsModalRef, private dataService: DataService, private eventService: EventService) { }
+  constructor(public changeRoleModalRef: BsModalRef,
+    private dataService: DataService,
+    private eventService: EventService,
+    private snotifyService: SnotifyService) { }
 
   ngOnInit() {
     // TODO: loading indicator
@@ -39,11 +43,12 @@ export class LeidingEditRolesComponent implements OnInit {
      if (res) {
        // Notificatie tonen
        role.isActive = true;
+       this.snotifyService.success('Rol voor leiding succesvol gewijzigd!');
      }
    });
  }
 
- trackBy(index, role) {
+ trackBy(index, role) { 
    return role.id;
  }
 

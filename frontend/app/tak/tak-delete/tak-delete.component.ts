@@ -5,6 +5,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import { Tak } from '../tak.model';
 import { DataService } from '../../services/data.service';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,7 +19,8 @@ export class TakDeleteComponent implements OnInit {
   takId: number;
   constructor(public deleteModalRef: BsModalRef,
     private dataService: DataService,
-    private _router: Router
+    private _router: Router,
+    private snotifyService: SnotifyService
   ) {}
 
   ngOnInit() {  }
@@ -28,6 +30,7 @@ export class TakDeleteComponent implements OnInit {
       if (res) {
         this.deleteModalRef.hide();
         this._router.navigate(['takken']);
+        this.snotifyService.success('Tak succesvol verwijderd!');
       }
     });
   }

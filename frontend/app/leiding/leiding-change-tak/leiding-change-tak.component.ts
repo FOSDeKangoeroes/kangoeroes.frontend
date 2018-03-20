@@ -5,6 +5,7 @@ import { Tak } from '../../tak/tak.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,7 +18,7 @@ export class LeidingChangeTakComponent implements OnInit {
   constructor(public changeTakModal: BsModalRef,
     private dataService: DataService,
     private fb: FormBuilder,
-    private eventService: EventService) { }
+    private eventService: EventService, private snotifyService: SnotifyService) { }
 
   public changeTakFormGroup: FormGroup;
   public takken: Tak[];
@@ -42,6 +43,7 @@ onSubmit() {
   this.dataService.changeTakForLeiding(this.leidingId, takId).subscribe(res => {
     this.eventService.newLeiding(res);
     this.changeTakModal.hide();
+    this.snotifyService.success('Tak succesvol gewijzigd!');
   });
 }
 }

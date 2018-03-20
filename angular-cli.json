@@ -31,10 +31,10 @@
         "../node_modules/auth0-js/build/auth0.js"
 
       ],
-      "environmentSource": "environments/environment.ts",
+      "environmentSource": "frontend/environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.dev.ts",
-        "prod": "environments/environment.prod.ts"
+        "dev": "frontend/environments/environment.dev.ts",
+        "prod": "frontend/environments/environment.prod.ts"
       }
     }
   ],

@@ -43,7 +43,7 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.dataSource = new LeidingDataSource(this.dataService);
-    this.dataSource.loadLeiding('naam', 'asc', '', 0, 25, 0);
+    this.dataSource.loadLeiding('naam', 'asc', '', this.leidingService.takId, 25, 0);
   }
 
   ngAfterViewInit() {

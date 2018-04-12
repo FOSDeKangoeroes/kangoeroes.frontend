@@ -1,12 +1,12 @@
 <div class="leiding-container">
  
   <div class="example-header">
-    <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
-      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-    </div>
+  <div class="example-loading-shade" *ngIf="dataSource.loading$ | async">
+    <mat-spinner *ngIf="dataSource.loading$ | async"></mat-spinner>
+  </div>
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Zoeken">
-    </mat-form-field>
+    </mat-form-field> 
   </div>
  
   <mat-table #table [dataSource]="dataSource" matSort matSortDirection='asc' matSortActive="naam" matSorDisableClear>
@@ -57,5 +57,5 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-  <mat-paginator [pageSizeOptions]="[25, 100]"></mat-paginator>
+  <mat-paginator [length]="dataSource.totalLength" [pageSizeOptions]="[25, 100]"></mat-paginator> 
 </div>

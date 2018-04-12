@@ -66,8 +66,15 @@ export class DataService {
     return this.httpClient.post<Leiding>(this._leidingUrl, leiding.toJSON());
   }
 
-  getLeiding(sortBy = '', sortOrder = 'asc', query = ' ', takId: number = 0 ): Observable<Leiding[]> {
-    return this.httpClient.get<Leiding[]>(`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&tak=${takId}`);
+  getLeiding(sortBy = '',
+            sortOrder = 'asc',
+            query = ' ',
+            takId: number = 0,
+            pageNumber = 0,
+            pageSize = 25 ): Observable<HttpResponse<Leiding[]>> {
+    return this.httpClient
+    .get<Leiding[]>(`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&tak=${takId}&pageSize=${pageSize}&pageNumber=${pageNumber}`,
+     {observe: 'response'});
   }
 
   updateLeiding(leiding): Observable<Leiding> {

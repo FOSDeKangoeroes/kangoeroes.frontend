@@ -39,8 +39,9 @@ export class TakTableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
 
     this.displayedColumns = this.takService.displayedColumns;
-
     this.dataSource.paginator = this.paginator;
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
     merge(this.sort.sortChange, this.eventService.$newLeiding)
       .pipe(
       startWith({}),

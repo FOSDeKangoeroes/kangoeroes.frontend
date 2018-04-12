@@ -14,6 +14,10 @@ import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { DataService } from '../../services/data.service';
+import { debounceTime } from 'rxjs/operator/debounceTime';
+import { distinctUntilChanged } from 'rxjs/operator/distinctUntilChanged';
+import { tap } from 'rxjs/operators';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 
 @Component({
@@ -27,7 +31,7 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatInput) filter: MatInput;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource = new MatTableDataSource<Leiding>();
+  dataSource: LeidingDataSource;
   selection = new SelectionModel<Leiding>(true, []);
   displayedColumns: string[];
 
@@ -38,43 +42,35 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit() {
-
+    this.dataSource = new LeidingDataSource(this.dataService);
+    this.dataSource.loadLeiding('naam', 'asc', '', 0, 25, 0);
   }
 
   ngAfterViewInit() {
-const takId = this.leidingService.takId;
-this.displayedColumns = this.leidingService.displayedColumns;
- this.dataSource.paginator = this.paginator;
-    merge(this.sort.sortChange, this.eventService.$newLeiding)
+    const takId = this.leidingService.takId;
+    this.displayedColumns = this.leidingService.displayedColumns;
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(
-      startWith({}),
-      switchMap(() => {
-        this.isLoadingResults = true;
-        return this.dataService.getLeiding(
-          this.sort.active, this.sort.direction, '', takId);
-      }),
-      map(data => {
-        // Flip flag to show that loading has finished.
-        this.isLoadingResults = false;
-        this.resultsLength = data.length;
-
-        return data;
-      }),
-      catchError(() => {
-        this.isLoadingResults = false;
-        return observableOf([]);
-      })
-      ).subscribe(data => this.dataSource.data = data);
-
+        tap(() => this.loadLeidingPage())
+      )
+      .subscribe();
 
   }
 
-
-  loadLeiding() {
-   this.dataService.getLeiding(this.sort.active, this.sort.direction);
+  loadLeidingPage() {
+   this.dataSource
+   .loadLeiding(
+    this.sort.active,
+    this.sort.direction,
+    this.filter.value,
+    this.leidingService.takId,
+    this.paginator.pageSize,
+    this.paginator.pageIndex);
   }
 
-  isAllSelected() {
+  /*isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
@@ -83,11 +79,12 @@ this.displayedColumns = this.leidingService.displayedColumns;
 
   masterToggle() {
     this.isAllSelected() ? this.selection.clear() : this.dataSource.filteredData.forEach(row => this.selection.select(row));
-  }
+  }*/
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+    this.paginator.pageIndex = 0;
+    this.loadLeidingPage();
   }
 
 }

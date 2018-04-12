@@ -35,7 +35,6 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
   selection = new SelectionModel<Leiding>(true, []);
   displayedColumns: string[];
 
-  isLoadingResults = false;
   resultsLength = 0;
 
   constructor(private leidingService: LeidingTableService, private eventService: EventService, private dataService: DataService) {

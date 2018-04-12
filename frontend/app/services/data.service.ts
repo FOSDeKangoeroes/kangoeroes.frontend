@@ -21,25 +21,29 @@ export class DataService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getTakken(sortBy: string = '', sortOrder: string = 'asc', query: string = ''): Observable<Tak[]> {
-    return this.httpClient.get<Tak[]>(`${this._takUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}`);
-    // .map(response => response.json().result.map(item => Tak.fromJSON(item)));
+  getTakken(
+  sortBy: string = '',
+  sortOrder: string = 'asc',
+  query: string = '',
+  pageSize = 25,
+  pageNumber = 1): Observable<HttpResponse<Tak[]>> {
+    return this
+    .httpClient
+    .get<Tak[]>(`${this._takUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&pageSize=${pageSize}&pageNumber=${pageNumber}`,
+    {observe: 'response'});
+
   }
 
   getTak(id): Observable<Tak> {
     return this.httpClient.get<Tak>(`${this._takUrl}/${id}`);
-      // .map(response => response.json().result).map(item => Tak.fromJSON(item));
   }
 
   getLeidingForTak(id): Observable<Leiding[]> {
     return this.httpClient.get<Leiding[]>(`${this._takUrl}/${id}/leiding`);
-      // .map(response =>
-       // response.json().result.map(item => Leiding.fromJSON(item)));
   }
 
   getLeidingForId(id): Observable<Leiding> {
     return this.httpClient.get<Leiding>(`${this._leidingUrl}/${id}`);
-    //  .map(response => response.json().result).map(item => Leiding.fromJSON(item));
   }
 
   updateTak(tak: Tak, takId: number): Observable<Tak> {
@@ -73,7 +77,8 @@ export class DataService {
             pageNumber = 0,
             pageSize = 25 ): Observable<HttpResponse<Leiding[]>> {
     return this.httpClient
-    .get<Leiding[]>(`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&tak=${takId}&pageSize=${pageSize}&pageNumber=${pageNumber}`,
+    .get<Leiding[]>
+    (`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&tak=${takId}&pageSize=${pageSize}&pageNumber=${pageNumber}`,
      {observe: 'response'});
   }
 

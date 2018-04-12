@@ -37,7 +37,7 @@ export class LeidingAddComponent implements OnInit {
 
     this.dataService.getTakken().subscribe(res => {
       this.takkenLoading = false;
-      this.takken = res;
+      this.takken = res.body;
 
     });
 

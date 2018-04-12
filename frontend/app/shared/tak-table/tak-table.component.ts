@@ -12,6 +12,8 @@ import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { DataService } from '../../services/data.service';
+import { TakDataSource } from './tak-data-source';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tak-table',
@@ -24,51 +26,45 @@ export class TakTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatInput) filter: MatInput;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource = new MatTableDataSource<Tak>();
+  dataSource: TakDataSource;
   selection = new SelectionModel<Tak>(true, []);
   displayedColumns: string[];
 
-  isLoadingResults = false;
   resultsLength = 0;
 
   constructor(private takService: TakTableService, private eventService: EventService, private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataSource = new TakDataSource(this.dataService);
+    this.dataSource.loadTakken('volgorde', 'asc', '', 6, 0);
   }
 
   ngAfterViewInit() {
 
     this.displayedColumns = this.takService.displayedColumns;
-    this.dataSource.paginator = this.paginator;
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-    merge(this.sort.sortChange, this.eventService.$newLeiding)
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(
-      startWith({}),
-      switchMap(() => {
-        this.isLoadingResults = true;
-        return this.dataService.getTakken(
-          this.sort.active, this.sort.direction);
-      }),
-      map(data => {
-        // Flip flag to show that loading has finished.
-        this.isLoadingResults = false;
-        this.resultsLength = data.length;
-
-        return data;
-      }),
-      catchError((err) => {
-        this.isLoadingResults = false;
-        console.log(err);
-        return observableOf([]);
-      })
-      ).subscribe(data => this.dataSource.data = data);
+        tap(() => this.loadTakPage())
+      )
+      .subscribe();
   }
 
+  loadTakPage() {
+    this.dataSource
+      .loadTakken(
+        this.sort.active,
+        this.sort.direction,
+        this.filter.value,
+        this.paginator.pageSize,
+        this.paginator.pageIndex);
+  }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+    this.paginator.pageIndex = 0;
+    this.loadTakPage();
   }
 }

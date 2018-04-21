@@ -13,15 +13,20 @@
       <i class="text-danger">*</i>
     </label>
     <div class="col-12">
-     <select class="form-control" formControlName="tak">
-       <option value="0" *ngIf="takkenLoading">Laden...</option>
-       <option value="0">Kies een tak..</option>
-        <option *ngFor="let tak of takken" [value]="tak.id">{{tak.naam}}</option>
-     </select>
-    </div>
-    <div class="text-danger" *ngIf='addLeidingFormGroup.get("tak").errors?.required && addLeidingFormGroup.get("tak").touched'>Dit veld is verplicht.</div>
+
+<ng-select formControlName="tak" [items]="takken" [virtualScroll]="true" [loading]="takkenLoading" bindLabel="naam" bindValue="id"
+  placeholder="Kies een tak" (scrollToEnd)="fetchMore($event)">
+  <ng-template ng-header-tmp>
+    <small class="form-text text-muted">{{takken.length}} van {{pagination.totalCount}} geladen</small>
+  </ng-template>
+  <ng-template ng-option-tmp let-item="item" let-index="index">
+    {{item.naam}}
+  </ng-template>
+</ng-select>
+      <div class="text-danger" *ngIf='addLeidingFormGroup.get("tak").errors?.required && addLeidingFormGroup.get("tak").touched'>Dit veld is verplicht.</div>
       <div class="text-danger" *ngIf='addLeidingFormGroup.get("tak").errors?.min && addLeidingFormGroup.get("tak").touched'>Kies een geldige tak</div>
-  </div>
+    </div>
+     </div>
 
       <div class="form-group">
         <label class="col-12 control-label" for="voornaam_id">Voornaam
@@ -29,8 +34,9 @@
         </label>
         <div class="col-12">
           <input id="voornaam_id" formControlName='voornaam' class="form-control">
+          <div class="text-danger" *ngIf='addLeidingFormGroup.get("voornaam").errors?.required && addLeidingFormGroup.get("voornaam").touched'>Dit veld is verplicht.</div>
         </div>
-        <div class="text-danger" *ngIf='addLeidingFormGroup.get("voornaam").errors?.required && addLeidingFormGroup.get("voornaam").touched'>Dit veld is verplicht.</div>
+        
       </div>
 
       <div class="form-group">
@@ -39,9 +45,9 @@
         </label>
         <div class="col-12">
           <input id="naam_id" formControlName='naam' class="form-control">
+           <div class="text-danger" *ngIf='addLeidingFormGroup.get("naam").errors?.required && addLeidingFormGroup.get("naam").touched'>Dit veld is verplicht.</div>
         </div>
-        <div class="text-danger" *ngIf='addLeidingFormGroup.get("naam").errors?.required && addLeidingFormGroup.get("naam").touched'>Dit veld is verplicht.</div>
-      </div>
+          </div>
 
 
 

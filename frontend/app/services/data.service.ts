@@ -22,7 +22,7 @@ export class DataService {
 
 
   getTakken(
-  sortBy: string = '',
+  sortBy: string = 'volgorde',
   sortOrder: string = 'asc',
   query: string = '',
   pageSize = 25,

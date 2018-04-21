@@ -28,7 +28,7 @@ export class LeidingChangeTakComponent implements OnInit {
   ngOnInit() {
     this.dataService.getTakken().subscribe(res => {
       this.takkenLoading = false;
-      this.takken = res;
+      this.takken = res.body;
     });
 
     this.changeTakFormGroup = this.fb.group({

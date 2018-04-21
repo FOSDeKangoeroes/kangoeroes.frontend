@@ -23,7 +23,8 @@
       "../node_modules/simple-line-icons/css/simple-line-icons.css",
       "scss/style.scss",
       "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-      "../node_modules/ng-snotify/styles/material.css"
+      "../node_modules/ng-snotify/styles/material.css",
+      "../node_modules/@ng-select/ng-select/themes/default.theme.css"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.bundle.min.js",

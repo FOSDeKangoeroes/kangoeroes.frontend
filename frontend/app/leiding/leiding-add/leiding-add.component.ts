@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
 import { SnotifyService } from 'ng-snotify';
+import { Pagination } from '../../models/pagination-model';
 
 
 
@@ -23,6 +24,7 @@ export class LeidingAddComponent implements OnInit {
   public addLeidingFormGroup: FormGroup;
   public takken: Tak[];
   public takkenLoading = true;
+  pagination: Pagination;
 
   @Output () public newLeiding = new EventEmitter<Leiding>();
   constructor(public addLeidingModalRef: BsModalRef,
@@ -34,8 +36,16 @@ export class LeidingAddComponent implements OnInit {
 
   ngOnInit() {
 
+    this.pagination = {
+      pageSize: 10,
+      totalCount: 0,
+      currentPage: 1,
+      totalPages: 0
+    };
 
-    this.dataService.getTakken().subscribe(res => {
+    this.dataService.getTakken('volgorde', 'asc', '', this.pagination.pageSize, this.pagination.currentPage).subscribe(res => {
+      const headers = res.headers.get('X-Pagination');
+      this.pagination = JSON.parse(headers);
       this.takkenLoading = false;
       this.takken = res.body;
 
@@ -64,5 +74,18 @@ onSubmit() {
   });
 
 }
+
+  fetchMore(event) {
+    if (this.takken.length < this.pagination.totalCount) {
+      this.takkenLoading = true;
+      this.dataService.getTakken('volgorde', 'asc', '', this.pagination.pageSize, this.pagination.currentPage + 1)
+        .subscribe(res => {
+          const headers = res.headers.get('X-Pagination');
+          this.pagination = JSON.parse(headers);
+          this.takken = this.takken.concat(res.body);
+          this.takkenLoading = false;
+        });
+    }
+  }
 
 }

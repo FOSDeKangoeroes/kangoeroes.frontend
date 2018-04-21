@@ -13,15 +13,20 @@
           <i class="text-danger">*</i>
         </label>
         <div class="col-12">
-          <select class="form-control" formControlName="tak">
-            <option value="0" *ngIf="takkenLoading">Laden...</option>
-            <option value="0">Kies een tak..</option>
-            <option *ngFor="let tak of takken" [value]="tak.id">{{tak.naam}}</option>
-          </select>
+          <ng-select formControlName="tak" [items]="takken" [virtualScroll]="true" [loading]="takkenLoading" bindLabel="naam" bindValue="id"
+            placeholder="Kies een tak" (scrollToEnd)="fetchMore($event)">
+            <ng-template ng-header-tmp>
+              <small class="form-text text-muted">{{takken.length}} van {{pagination.totalCount}} geladen</small>
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item" let-index="index">
+              {{item.naam}}
+            </ng-template>
+          </ng-select>
+          <div class="text-danger" *ngIf='changeTakFormGroup.get("tak").errors?.required && changeTakFormGroup.get("tak").touched'>Dit veld is verplicht.</div>
+          <div class="text-danger" *ngIf='changeTakFormGroup.get("tak").errors?.min && changeTakFormGroup.get("tak").touched'>Kies een geldige tak</div>
+          </div>
         </div>
-        <div class="text-danger" *ngIf='changeTakFormGroup.get("tak").errors?.required && changeTakFormGroup.get("tak").touched'>Dit veld is verplicht.</div>
-        <div class="text-danger" *ngIf='changeTakFormGroup.get("tak").errors?.min && changeTakFormGroup.get("tak").touched'>Kies een geldige tak</div>
-      </div>
+        
 
     </fieldset>
 

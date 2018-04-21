@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
 import { SnotifyService } from 'ng-snotify';
+import { Pagination } from '../../models/pagination-model';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -25,10 +26,21 @@ export class LeidingChangeTakComponent implements OnInit {
   public takkenLoading = true;
   leidingId: number;
 
+  pagination: Pagination;
+
   ngOnInit() {
-    this.dataService.getTakken().subscribe(res => {
+    this.pagination = {
+      pageSize: 10,
+      totalCount: 0,
+      currentPage: 1,
+      totalPages: 0
+    };
+    this.dataService.getTakken('volgorde', 'asc', '', this.pagination.pageSize, this.pagination.currentPage).subscribe(res => {
+      const headers = res.headers.get('X-Pagination');
+      this.pagination = JSON.parse(headers);
       this.takkenLoading = false;
       this.takken = res.body;
+
     });
 
     this.changeTakFormGroup = this.fb.group({
@@ -46,4 +58,17 @@ onSubmit() {
     this.snotifyService.success('Tak succesvol gewijzigd!');
   });
 }
+
+  fetchMore(event) {
+    if (this.takken.length < this.pagination.totalCount) {
+      this.takkenLoading = true;
+      this.dataService.getTakken('volgorde', 'asc', '', this.pagination.pageSize, this.pagination.currentPage + 1)
+        .subscribe(res => {
+          const headers = res.headers.get('X-Pagination');
+          this.pagination = JSON.parse(headers);
+          this.takken = this.takken.concat(res.body);
+          this.takkenLoading = false;
+        });
+    }
+  }
 }

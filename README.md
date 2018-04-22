@@ -1,4 +1,6 @@
-# Wat
+# Leidingbeheer frontend
+
+## Wat
 
 Frontend voor het beheren van alle leidingzaken:
 
@@ -7,7 +9,7 @@ Frontend voor het beheren van alle leidingzaken:
 - Poef
 - Schulden
 
-# Prerequisites
+## Prerequisites
 
 - npm
 - Angular cli
@@ -15,8 +17,7 @@ Frontend voor het beheren van alle leidingzaken:
 - Gebruikersaccount op Auth0 (aan te vragen)
 - Werkende backend (zie backend repository). Dit staat momenteel nog hardcoded op `localhost:5000`. De backend moet dus op die url draaien.
 
-
-# How to run
+## How to run
 
 1. `npm install`
 2. `npm start`

@@ -24,5 +24,6 @@ npm-debug.log
 *.log
 *.stackdump
 *.env
+/wwwroot
 
 /frontend/environments/environment.*.ts

@@ -1,4 +1,4 @@
-# Leidingbeheer frontend
+# Leidingbeheer frontend [![Build Status](https://travis-ci.org/FOSDeKangoeroes/kangoeroes.leidingbeheer.frontend.svg?branch=master)](https://travis-ci.org/FOSDeKangoeroes/kangoeroes.leidingbeheer.frontend)
 
 ## Wat
 

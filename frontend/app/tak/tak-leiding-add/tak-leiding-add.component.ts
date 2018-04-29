@@ -35,11 +35,12 @@ export class TakLeidingAddComponent implements OnInit {
   }
 
   onSubmit() {
-    const leiding = new Leiding(
-      this.addLeidingFormGroup.value.naam,
-      this.addLeidingFormGroup.value.voornaam);
-      leiding.email = this.addLeidingFormGroup.value.email;
-      leiding.takId = this.takId;
+    const leiding = {
+      naam: this.addLeidingFormGroup.value.naam,
+      voornaam: this.addLeidingFormGroup.value.voornaam,
+      email: this.addLeidingFormGroup.value.email,
+      takId: this.takId
+    };
 
     this.dataService.addLeiding(leiding).subscribe(item => {
       this.eventService.newLeiding(item);

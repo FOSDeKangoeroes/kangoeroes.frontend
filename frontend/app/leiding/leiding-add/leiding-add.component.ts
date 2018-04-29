@@ -60,9 +60,13 @@ export class LeidingAddComponent implements OnInit {
   }
 
 onSubmit() {
-  const leiding = new Leiding(this.addLeidingFormGroup.value.naam, this.addLeidingFormGroup.value.voornaam);
-  leiding.email = this.addLeidingFormGroup.value.email;
-  leiding.takId = this.addLeidingFormGroup.value.tak;
+  const leiding =  {
+    naam: this.addLeidingFormGroup.value.naam,
+    voornaam: this.addLeidingFormGroup.value.voornaam,
+    email : this.addLeidingFormGroup.value.email,
+    takId : this.addLeidingFormGroup.value.tak
+  };
+
 
   this.dataService.addLeiding(leiding).subscribe(res => {
     this.eventService.newLeiding(res);

@@ -66,8 +66,8 @@ export class DataService {
     return this.httpClient.post<Tak>(this._takUrl, tak.toJSON());
   }
 
-  addLeiding(leiding: Leiding): Observable<Leiding> {
-    return this.httpClient.post<Leiding>(this._leidingUrl, leiding.toJSON());
+  addLeiding(leiding): Observable<Leiding> {
+    return this.httpClient.post<Leiding>(this._leidingUrl, leiding);
   }
 
   getLeiding(sortBy = '',
@@ -78,6 +78,7 @@ export class DataService {
             pageSize = 25 ): Observable<HttpResponse<Leiding[]>> {
     return this.httpClient
     .get<Leiding[]>
+    // tslint:disable-next-line:max-line-length
     (`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&tak=${takId}&pageSize=${pageSize}&pageNumber=${pageNumber}`,
      {observe: 'response'});
   }

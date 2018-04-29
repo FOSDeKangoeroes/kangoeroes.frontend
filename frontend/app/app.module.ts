@@ -81,6 +81,7 @@ import { LoggedInGuard } from './auth/logged-in.guard';
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
+import { TokenInterceptor } from './interceptors/token-interceptor';
 
 
 
@@ -123,6 +124,11 @@ import { ServerErrorInterceptor } from './interceptors/server-error-interceptor'
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true
     },
     AuthService,

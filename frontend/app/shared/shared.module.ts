@@ -11,8 +11,7 @@ import { LeidingTableComponent } from './leiding-table/leiding-table.component';
 import { RouterModule } from '@angular/router';
 import { TakTableComponent } from './tak-table/tak-table.component';
 import { TakTableService } from '../tak/tak-table.service';
-import { GlobalLoaderComponent } from './global-loader/global-loader.component';
-import { LoadingService } from './loading.service';
+
 
 @NgModule({
   imports: [

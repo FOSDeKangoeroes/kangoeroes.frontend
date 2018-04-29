@@ -75,9 +75,6 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { RequestOptions, Http } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { GlobalLoaderComponent } from './shared/global-loader/global-loader.component';
-import { LoadingService } from './shared/loading.service';
-import { LoadingInterceptor } from './interceptors/loading-interceptor.service';
 import { AuthService } from './services/auth.service';
 import { AuthorizationGuard } from './auth/authorization.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
@@ -115,7 +112,6 @@ import { ServerErrorInterceptor } from './interceptors/server-error-interceptor'
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
     CallbackComponent,
-    GlobalLoaderComponent,
     AppForbiddenComponent
   ],
   providers: [
@@ -124,12 +120,6 @@ import { ServerErrorInterceptor } from './interceptors/server-error-interceptor'
       useValue: ToastDefaults
     },
     SnotifyService,
-    LoadingService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor,
-      multi: true
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorInterceptor,

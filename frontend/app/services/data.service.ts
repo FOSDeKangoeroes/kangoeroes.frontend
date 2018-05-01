@@ -62,8 +62,8 @@ export class DataService {
 
   }
 
-  addTak(tak: Tak): Observable<Tak> {
-    return this.httpClient.post<Tak>(this._takUrl, tak.toJSON());
+  addTak(tak): Observable<Tak> {
+    return this.httpClient.post<Tak>(this._takUrl, tak);
   }
 
   addLeiding(leiding): Observable<Leiding> {

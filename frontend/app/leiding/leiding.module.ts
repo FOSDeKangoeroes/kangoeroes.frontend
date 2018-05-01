@@ -17,7 +17,7 @@ import { SharedModule } from '../shared/shared.module';
 import { LeidingChangeTakComponent } from './leiding-change-tak/leiding-change-tak.component';
 import { LeidingEditComponent } from './leiding-edit/leiding-edit.component';
 import { LeidingEditRolesComponent } from './leiding-edit-roles/leiding-edit-roles.component';
-import { MatCheckboxModule } from '@angular/material';
+import { MatCheckboxModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 import { DataService } from '../services/data.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -42,6 +42,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule,
     MatCheckboxModule,
+    MatInputModule,
+    MatFormFieldModule,
     NgSelectModule
   ],
   providers: [DataService, LeidingResolverService, LeidingTableService],

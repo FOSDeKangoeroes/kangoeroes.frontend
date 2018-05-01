@@ -75,7 +75,7 @@ export class AuthService {
     this.router.navigate(['/dashboard']);
   }
 
-  public isAuthenticated(): boolean { 
+  public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
 

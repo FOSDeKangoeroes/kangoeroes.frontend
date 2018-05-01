@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 import { LeidingModule } from '../leiding/leiding.module';
 import { TakDetailComponent } from './tak-detail/tak-detail.component';
 import { TakResolverService } from './tak-resolver.service';
-import {MatTableModule} from '@angular/material';
+import {MatTableModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {PopoverModule} from 'ngx-bootstrap/popover';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -47,6 +47,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
+    MatFormFieldModule,
+    MatInputModule,
     SharedModule
   ],
   providers: [

@@ -4,6 +4,7 @@ import { DataService } from '../../services/data.service';
 import { EventService } from '../../shared/event.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { SnotifyService } from 'ng-snotify';
+import { Role } from '../../auth/role.model';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -48,7 +49,7 @@ export class LeidingEditRolesComponent implements OnInit {
    });
  }
 
- trackBy(index, role) { 
+ trackBy(index, role) {
    return role.id;
  }
 

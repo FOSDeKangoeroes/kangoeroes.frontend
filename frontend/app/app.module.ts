@@ -82,6 +82,9 @@ import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
 import { TokenInterceptor } from './interceptors/token-interceptor';
+import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
 
 
 
@@ -94,6 +97,7 @@ import { TokenInterceptor } from './interceptors/token-interceptor';
     AppRoutingModule,
     TakModule,
     LeidingModule,
+    MatMomentDateModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
@@ -131,6 +135,7 @@ import { TokenInterceptor } from './interceptors/token-interceptor';
       useClass: TokenInterceptor,
       multi: true
     },
+    { provide: MAT_DATE_LOCALE, useValue: 'nl-be' },
     AuthService,
     AuthorizationGuard,
     LoggedInGuard],

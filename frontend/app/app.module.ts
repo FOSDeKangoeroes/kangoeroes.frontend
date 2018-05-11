@@ -84,6 +84,8 @@ import { ServerErrorInterceptor } from './interceptors/server-error-interceptor'
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { DataService } from './services/data.service';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 
@@ -97,13 +99,12 @@ export function jwtTokenGetter() {
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    TakModule,
-    LeidingModule,
     MatMomentDateModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     SnotifyModule,
+    OverlayModule,
     DashboardModule,
     JwtModule.forRoot({
       config: {
@@ -137,6 +138,7 @@ export function jwtTokenGetter() {
     },
     { provide: MAT_DATE_LOCALE, useValue: 'nl-be' },
     AuthService,
+    DataService,
     AuthorizationGuard,
     LoggedInGuard],
   bootstrap: [AppComponent]

@@ -8,5 +8,6 @@ export const environment = {
   AUTH0_CLIENTID: '',
   AUTH0_DOMAIN: '',
   AUTH0_AUDIENCE: '',
-  AUTH0_REDIRECTURI: ''
+  AUTH0_REDIRECTURI: '',
+  baseUrl:''
 };

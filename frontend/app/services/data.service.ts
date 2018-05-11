@@ -6,6 +6,7 @@ import { Tak } from '../tak/tak.model';
 import { Leiding } from '../leiding/leiding.model';
 import { Role } from '../auth/role.model';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 
 
@@ -16,8 +17,10 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class DataService {
 
-  private _takUrl = 'http://localhost:4200/api/tak';
-  private _leidingUrl = 'http://localhost:4200/api/leiding';
+  private baseUrl = environment.baseUrl;
+
+  private _takUrl = `${this.baseUrl}/api/tak`;
+  private _leidingUrl = `${this.baseUrl}/api/leiding`;
 
   constructor(private httpClient: HttpClient) { }
 

@@ -25,19 +25,19 @@
         </div>
       </div>
 
-    
+
       <div class="form-group">
-          <mat-form-field class="col-12">
-            <input matInput placeholder="Voornaam" formControlName='voornaam'> 
-            <mat-error *ngIf='addLeidingFormGroup.get("voornaam").errors?.required && addLeidingFormGroup.get("voornaam").touched'>Voornaam is verplicht</mat-error>
-          </mat-form-field>
-       
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Voornaam" formControlName='voornaam'>
+          <mat-error *ngIf='addLeidingFormGroup.get("voornaam").errors?.required && addLeidingFormGroup.get("voornaam").touched'>Voornaam is verplicht</mat-error>
+        </mat-form-field>
+
 
 
       </div>
 
       <div class="form-group">
-       
+
         <mat-form-field class="col-12">
           <input matInput placeholder="Naam" id="naam_id" formControlName='naam'>
           <mat-error *ngIf='addLeidingFormGroup.get("naam").errors?.required && addLeidingFormGroup.get("naam").touched'>Dit veld is verplicht.</mat-error>
@@ -47,12 +47,24 @@
 
 
       <div class="form-group">
-        
-<mat-form-field class="col-12">
+
+        <mat-form-field class="col-12">
           <input matInput placeholder='Email' id="email_id" formControlName='email'>
-</mat-form-field>
+        </mat-form-field>
         <mat-error *ngIf='addLeidingFormGroup.get("email").errors?.email && addLeidingFormGroup.get("email").touched'>Geef een geldig emailadres</mat-error>
       </div>
+
+      <mat-form-field class="col-12">
+        <input matInput placeholder="Leiding sinds" matInput [matDatepicker]="leidingSindsPicker" formControlName="leidingSinds">
+        <mat-datepicker-toggle matSuffix [for]="leidingSindsPicker"></mat-datepicker-toggle>
+        <mat-datepicker #leidingSindsPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <input matInput placeholder="Gestopt op" matInput [matDatepicker]="gestoptPicker" formControlName="datumGestopt">
+        <mat-datepicker-toggle matSuffix [for]="gestoptPicker"></mat-datepicker-toggle>
+        <mat-datepicker #gestoptPicker></mat-datepicker>
+      </mat-form-field>
     </fieldset>
 
   </div>

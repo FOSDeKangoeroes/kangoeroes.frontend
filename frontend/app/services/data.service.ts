@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers} from '@angular/http';
-import { Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { HttpParams, HttpClient, HttpResponse } from '@angular/common/http';
 import { Tak } from '../tak/tak.model';
 import { Leiding } from '../leiding/leiding.model';
 import { Role } from '../auth/role.model';
+import { Observable } from 'rxjs';
 
 
 

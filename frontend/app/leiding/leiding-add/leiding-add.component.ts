@@ -55,7 +55,8 @@ export class LeidingAddComponent implements OnInit {
       naam: ['', [Validators.required, Validators.minLength(2)]],
       voornaam: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Util.emailOrEmpty([Validators.email])]],
-      tak: ['', [Validators.required, Validators.min(1)]]
+      tak: ['', [Validators.required, Validators.min(1)]],
+      leidingSinds: ['']
     });
   }
 

@@ -6,7 +6,7 @@
     "ng": "ng",
     "config": "ts-node ./set-env.ts",
     "start": "npm run config -- --environment=dev && ng serve --environment=dev --proxy-config proxy.config.json ",
-    "build": "ng build --configuration=production",
+    "build": "npm run config -- --environment=prod && ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

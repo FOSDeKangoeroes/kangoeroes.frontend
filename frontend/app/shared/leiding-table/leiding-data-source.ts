@@ -3,7 +3,6 @@ import { Leiding } from '../../leiding/leiding.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Observable } from 'rxjs/Observable';
-import { query } from '@angular/core/src/animation/dsl';
 import { catchError, finalize } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { DataService } from '../../services/data.service';

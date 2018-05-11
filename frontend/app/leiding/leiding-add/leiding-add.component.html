@@ -55,13 +55,13 @@
       </div>
 
       <mat-form-field class="col-12">
-        <input placeholder="Leiding sinds" matInput [matDatepicker]="leidingSindsPicker" formControlName="leidingSinds">
+        <input matInput placeholder="Leiding sinds" matInput [matDatepicker]="leidingSindsPicker" formControlName="leidingSinds">
         <mat-datepicker-toggle matSuffix [for]="leidingSindsPicker"></mat-datepicker-toggle>
         <mat-datepicker #leidingSindsPicker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field class="col-12">
-        <input placeholder="Gestopt op" matInput [matDatepicker]="gestoptPicker" formControlName="datumGestopt">
+        <input matInput placeholder="Gestopt op" matInput [matDatepicker]="gestoptPicker" formControlName="datumGestopt">
         <mat-datepicker-toggle matSuffix [for]="gestoptPicker"></mat-datepicker-toggle>
         <mat-datepicker #gestoptPicker></mat-datepicker>
       </mat-form-field>

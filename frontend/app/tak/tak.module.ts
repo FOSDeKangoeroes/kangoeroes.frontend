@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TakComponent } from './tak/tak.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TakListComponent } from './tak-list/tak-list.component';
 
@@ -58,7 +57,6 @@ const routes: Routes = [
     EventService
   ],
   declarations: [
-    TakComponent,
     TakListComponent,
     TakDetailComponent,
     TakEditComponent,

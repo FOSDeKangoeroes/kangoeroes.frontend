@@ -87,7 +87,9 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 
-
+export function jwtTokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 
 @NgModule({
@@ -105,9 +107,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     DashboardModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('access_token');
-        }
+        tokenGetter: jwtTokenGetter
       }
     })
   ],

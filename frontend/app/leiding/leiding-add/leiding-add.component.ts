@@ -65,7 +65,6 @@ export class LeidingAddComponent implements OnInit {
 
 onSubmit() {
 
-  console.log(this.addLeidingFormGroup.value.datumGestopt);
   const gestopt = moment(this.addLeidingFormGroup.value.datumGestopt).toISOString();
   const gestart = moment(this.addLeidingFormGroup.value.datumGestart).toISOString();
   const leiding =  {

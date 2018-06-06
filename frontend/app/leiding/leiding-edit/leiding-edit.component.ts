@@ -6,6 +6,7 @@ import { EventService } from '../../shared/event.service';
 import { Util } from '../util';
 import { Leiding } from '../leiding.model';
 import { SnotifyService } from 'ng-snotify';
+import * as moment from 'moment';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -32,17 +33,27 @@ export class LeidingEditComponent implements OnInit {
     this.editLeidingFormGroup = this.fb.group({
       naam: [this.leiding.naam, [Validators.required, Validators.minLength(2)]],
       voornaam: [this.leiding.voornaam, [Validators.required, Validators.minLength(2)]],
-      email: [this.leiding.email, [Util.emailOrEmpty([Validators.email])]]
+      email: [this.leiding.email, [Util.emailOrEmpty([Validators.email])]],
+      datumGestopt: [this.leiding.datumGestopt],
+      datumGestart: [this.leiding.leidingSinds]
     });
   }
 
   onSubmit() {
-      this.leiding.voornaam = this.editLeidingFormGroup.value.voornaam;
-      this.leiding.naam = this.editLeidingFormGroup.value.naam;
-      this.leiding.email = this.editLeidingFormGroup.value.email;
+    const gestopt = moment(this.editLeidingFormGroup.value.datumGestopt).toISOString();
+    const gestart = moment(this.editLeidingFormGroup.value.datumGestart).toISOString();
+    const leiding = {
+      naam: this.editLeidingFormGroup.value.naam,
+      voornaam: this.editLeidingFormGroup.value.voornaam,
+      email: this.editLeidingFormGroup.value.email,
+      takId: this.editLeidingFormGroup.value.tak,
+      datumGestopt: gestopt ? gestopt : undefined,
+      leidingSinds: gestart ? gestart : undefined
+    };
 
-      this.dataService.updateLeiding(this.leiding).subscribe( res => {
+      this.dataService.updateLeiding(leiding, this.leiding.id).subscribe( res => {
         this.eventService.newLeiding(res);
+        this.leiding = res;
         this.editLeidingModalRef.hide();
       this.snotifyService.success('Leiding succesvol gewijzigd!');
       });

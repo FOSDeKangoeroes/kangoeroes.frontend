@@ -17,20 +17,32 @@
       </div>
 
       <div class="form-group">
-       
+
         <mat-form-field class="col-12">
-          <input matInput placeholder="Naam" id="naam_id" formControlName='naam' class="form-control" >
-        </mat-form-field> 
+          <input matInput placeholder="Naam" id="naam_id" formControlName='naam' class="form-control">
+        </mat-form-field>
         <mat-error *ngIf='editLeidingFormGroup.get("naam").errors?.required && editLeidingFormGroup.get("naam").touched'>Dit veld is verplicht.</mat-error>
       </div>
 
       <div class="form-group">
-        
+
         <mat-form-field class="col-12">
           <input matInput placeholder="Email" id="email_id" formControlName='email'>
         </mat-form-field>
         <mat-error *ngIf='editLeidingFormGroup.get("email").errors?.email && editLeidingFormGroup.get("email").touched'>Geef een geldig emailadres</mat-error>
       </div>
+
+      <mat-form-field class="col-12">
+        <input matInput placeholder="Leiding sinds" matInput [matDatepicker]="leidingSindsPicker" formControlName="datumGestart">
+        <mat-datepicker-toggle matSuffix [for]="leidingSindsPicker"></mat-datepicker-toggle>
+        <mat-datepicker #leidingSindsPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <input matInput placeholder="Gestopt op" matInput [matDatepicker]="gestoptPicker" formControlName="datumGestopt">
+        <mat-datepicker-toggle matSuffix [for]="gestoptPicker"></mat-datepicker-toggle>
+        <mat-datepicker #gestoptPicker></mat-datepicker>
+      </mat-form-field>
     </fieldset>
 
   </div>

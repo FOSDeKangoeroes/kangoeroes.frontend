@@ -10,6 +10,7 @@ import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
 import { SnotifyService } from 'ng-snotify';
 import { Pagination } from '../../models/pagination-model';
+import * as moment from 'moment';
 
 
 
@@ -56,18 +57,25 @@ export class LeidingAddComponent implements OnInit {
       voornaam: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Util.emailOrEmpty([Validators.email])]],
       tak: ['', [Validators.required, Validators.min(1)]],
-      leidingSinds: ['']
+      leidingSinds: [''],
+      datumGestopt: [''],
+      datumGestart: ['']
     });
   }
 
 onSubmit() {
+
+  console.log(this.addLeidingFormGroup.value.datumGestopt);
+  const gestopt = moment(this.addLeidingFormGroup.value.datumGestopt).toISOString();
+  const gestart = moment(this.addLeidingFormGroup.value.datumGestart).toISOString();
   const leiding =  {
     naam: this.addLeidingFormGroup.value.naam,
     voornaam: this.addLeidingFormGroup.value.voornaam,
     email : this.addLeidingFormGroup.value.email,
-    takId : this.addLeidingFormGroup.value.tak
+    takId : this.addLeidingFormGroup.value.tak,
+    datumGestopt: gestopt ? gestopt : undefined,
+    leidingSinds: gestart ? gestart : undefined
   };
-
 
   this.dataService.addLeiding(leiding).subscribe(res => {
     this.eventService.newLeiding(res);

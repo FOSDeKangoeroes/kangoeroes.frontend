@@ -1,3 +1,4 @@
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -48,6 +49,7 @@ const routes: Routes = [
     PopoverModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
     SharedModule
   ],
   providers: [

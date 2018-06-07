@@ -11,7 +11,7 @@
       <div class="form-group">
 
         <mat-form-field class="col-12">
-          <input matInput placeholder="Voornaam" id="voornaam_id" formControlName='voornaam'>
+          <input matInput placeholder="Voornaam*" id="voornaam_id" formControlName='voornaam'>
         </mat-form-field>
         <mat-error *ngIf='editLeidingFormGroup.get("voornaam").errors?.required && editLeidingFormGroup.get("voornaam").touched'>Dit veld is verplicht.</mat-error>
       </div>
@@ -19,7 +19,7 @@
       <div class="form-group">
 
         <mat-form-field class="col-12">
-          <input matInput placeholder="Naam" id="naam_id" formControlName='naam' class="form-control">
+          <input matInput placeholder="Naam*" id="naam_id" formControlName='naam' class="form-control">
         </mat-form-field>
         <mat-error *ngIf='editLeidingFormGroup.get("naam").errors?.required && editLeidingFormGroup.get("naam").touched'>Dit veld is verplicht.</mat-error>
       </div>

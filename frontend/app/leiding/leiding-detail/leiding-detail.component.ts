@@ -1,3 +1,4 @@
+import { LeidingManageUserComponent } from './../leiding-manage-user/leiding-manage-user.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Leiding } from '../leiding.model';
@@ -20,6 +21,7 @@ private _leiding: Leiding;
   changeTakModal: BsModalRef;
   editModal: BsModalRef;
   editRoleModal: BsModalRef;
+  manageUserModal: BsModalRef;
 
   constructor(private route: ActivatedRoute,
     private modalService: BsModalService,
@@ -55,8 +57,11 @@ private _leiding: Leiding;
   }
 
   createUser() {
-    this.dataService.createUser(this._leiding.id).subscribe(res => {
+
+    this.eventService.activeLeiding = this._leiding;
+    this.manageUserModal = this.modalService.show(LeidingManageUserComponent);
+   /* this.dataService.createUser(this._leiding.id).subscribe(res => {
       this._leiding = res;
-    });
+    });*/
   }
 }

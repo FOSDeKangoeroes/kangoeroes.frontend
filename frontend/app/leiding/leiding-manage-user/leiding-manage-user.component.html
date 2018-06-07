@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title">Gebruiker voor {{leiding.voornaam}} {{leiding.naam}}</h4>
+  <button type="button" class="close" (click)="changeTakModal.hide()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <button *ngIf="!leiding.auth0Id" class="btn btn-success col-12">Nieuwe gebruiker aanmaken</button>
+
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <h4 class="col-12">Handmatig gebruiker koppelen</h4>
+    </div>
+    
+
+    <div class="col-12">
+<mat-form-field class="col-8">
+      <input matInput placeholder="auth0 ID">
+    </mat-form-field>
+    <button class="col-4 btn-success">Koppelen</button>
+    </div >
+    
+  </div>
+
+</div>
+<div class="modal-footer">
+
+</div>

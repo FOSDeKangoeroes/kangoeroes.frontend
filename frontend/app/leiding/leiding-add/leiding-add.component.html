@@ -12,7 +12,7 @@
         <div class="col-12">
 
           <ng-select formControlName="tak" [items]="takken" [virtualScroll]="true" [loading]="takkenLoading" bindLabel="naam" bindValue="id"
-            placeholder="Kies een tak" (scrollToEnd)="fetchMore($event)">
+            placeholder="Kies een tak*" (scrollToEnd)="fetchMore($event)">
             <ng-template ng-header-tmp>
               <small class="form-text text-muted">{{takken.length}} van {{pagination.totalCount}} geladen</small>
             </ng-template>
@@ -25,10 +25,9 @@
         </div>
       </div>
 
-
       <div class="form-group">
         <mat-form-field class="col-12">
-          <input matInput placeholder="Voornaam" formControlName='voornaam'>
+          <input matInput placeholder="Voornaam*" formControlName='voornaam'>
           <mat-error *ngIf='addLeidingFormGroup.get("voornaam").errors?.required && addLeidingFormGroup.get("voornaam").touched'>Voornaam is verplicht</mat-error>
         </mat-form-field>
 
@@ -39,7 +38,7 @@
       <div class="form-group">
 
         <mat-form-field class="col-12">
-          <input matInput placeholder="Naam" id="naam_id" formControlName='naam'>
+          <input matInput placeholder="Naam*" id="naam_id" formControlName='naam'>
           <mat-error *ngIf='addLeidingFormGroup.get("naam").errors?.required && addLeidingFormGroup.get("naam").touched'>Dit veld is verplicht.</mat-error>
         </mat-form-field>
       </div>

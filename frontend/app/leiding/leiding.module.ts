@@ -20,6 +20,7 @@ import { LeidingEditRolesComponent } from './leiding-edit-roles/leiding-edit-rol
 import { MatCheckboxModule, MatInputModule, MatFormFieldModule, NativeDateModule, MatNativeDateModule } from '@angular/material';
 import { DataService } from '../services/data.service';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { LeidingManageUserComponent } from './leiding-manage-user/leiding-manage-user.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,13 @@ const routes: Routes = [
     LeidingDetailComponent,
     LeidingChangeTakComponent,
     LeidingEditComponent,
-    LeidingEditRolesComponent],
-  entryComponents: [LeidingAddComponent, LeidingChangeTakComponent, LeidingEditComponent, LeidingEditRolesComponent]
+    LeidingEditRolesComponent,
+    LeidingManageUserComponent],
+  entryComponents: [
+    LeidingAddComponent,
+    LeidingChangeTakComponent,
+    LeidingEditComponent,
+    LeidingEditRolesComponent,
+    LeidingManageUserComponent]
 })
 export class LeidingModule { }

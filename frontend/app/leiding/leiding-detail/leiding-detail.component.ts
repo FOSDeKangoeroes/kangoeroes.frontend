@@ -60,8 +60,6 @@ private _leiding: Leiding;
 
     this.eventService.activeLeiding = this._leiding;
     this.manageUserModal = this.modalService.show(LeidingManageUserComponent);
-   /* this.dataService.createUser(this._leiding.id).subscribe(res => {
-      this._leiding = res;
-    });*/
+   
   }
 }

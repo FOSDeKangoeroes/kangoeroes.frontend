@@ -6,6 +6,7 @@ import { Util } from '../../leiding/util';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';
 import { SnotifyService } from 'ng-snotify';
+import * as moment from 'moment';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -30,23 +31,34 @@ export class TakLeidingAddComponent implements OnInit {
     this.addLeidingFormGroup = this.fb.group({
       naam: ['', [Validators.required, Validators.minLength(2)]],
       voornaam: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Util.emailOrEmpty([Validators.email])]]
+      email: ['', [Util.emailOrEmpty([Validators.email])]],
+      datumGestopt: [''],
+      datumGestart: ['']
     });
   }
 
   onSubmit() {
+
+    const gestopt = moment(this.addLeidingFormGroup.value.datumGestopt).toISOString();
+    const gestart = moment(this.addLeidingFormGroup.value.datumGestart).toISOString();
     const leiding = {
       naam: this.addLeidingFormGroup.value.naam,
       voornaam: this.addLeidingFormGroup.value.voornaam,
       email: this.addLeidingFormGroup.value.email,
-      takId: this.takId
+      takId: this.takId,
+      datumGestopt: gestopt ? gestopt : undefined,
+      leidingSinds: gestart ? gestart : undefined
     };
 
-    this.dataService.addLeiding(leiding).subscribe(item => {
-      this.eventService.newLeiding(item);
+    this.dataService.addLeiding(leiding).subscribe(res => {
+      this.eventService.newLeiding(res);
       this.addLeidingModalRef.hide();
-      this.snotifyService.success('Leiding succesvol toegevoegd!');
+      this.snotifyService.success('Leiding werd succesvol aangemaakt!');
+
+    }, error => {
+      this.snotifyService.error(error.message, 'Error!');
     });
+
   }
 
 }

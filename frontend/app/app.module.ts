@@ -86,6 +86,7 @@ import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/materia
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DataService } from './services/data.service';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { EventService } from './shared/event.service';
 
 
 
@@ -139,6 +140,7 @@ export function jwtTokenGetter() {
     { provide: MAT_DATE_LOCALE, useValue: 'nl-be' },
     AuthService,
     DataService,
+    EventService,
     AuthorizationGuard,
     LoggedInGuard],
   bootstrap: [AppComponent]

@@ -87,9 +87,9 @@ export class DataService {
      {observe: 'response'});
   }
 
-  updateLeiding(leiding): Observable<Leiding> {
+  updateLeiding(leiding, leidingId): Observable<Leiding> {
     return this.httpClient.
-    put<Leiding>(`${this._leidingUrl}/${leiding.id}`, leiding);
+    put<Leiding>(`${this._leidingUrl}/${leidingId}`, leiding);
   }
 
   changeTakForLeiding(leidingId, newTakId: number): Observable<Leiding> {

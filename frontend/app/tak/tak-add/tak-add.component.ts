@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { Tak } from '../tak.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

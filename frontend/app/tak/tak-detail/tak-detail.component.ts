@@ -1,14 +1,8 @@
 import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 import { Tak } from '../tak.model';
 import { ActivatedRoute } from '@angular/router';
-import { DataSource, CollectionViewer } from '@angular/cdk/collections';
-import { Observable } from 'rxjs/Observable';
-import { Leiding } from '../../leiding/leiding.model';
-import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
-import { Router } from '@angular/router/src/router';
-import { ModalContainerComponent } from 'ngx-bootstrap/modal/modal-container.component';
 import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { TakEditComponent } from '../tak-edit/tak-edit.component';
 import { TakDeleteComponent } from '../tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from '../tak-leiding-add/tak-leiding-add.component';

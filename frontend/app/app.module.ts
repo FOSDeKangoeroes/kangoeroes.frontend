@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -75,9 +73,6 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { RequestOptions, Http } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthService } from './services/auth.service';
-import { AuthorizationGuard } from './auth/authorization.guard';
-import { LoggedInGuard } from './auth/logged-in.guard';
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
@@ -138,11 +133,8 @@ export function jwtTokenGetter() {
       multi: true
     },
     { provide: MAT_DATE_LOCALE, useValue: 'nl-be' },
-    AuthService,
     DataService,
-    EventService,
-    AuthorizationGuard,
-    LoggedInGuard],
+    EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

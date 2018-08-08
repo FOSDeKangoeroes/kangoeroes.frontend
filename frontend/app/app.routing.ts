@@ -11,9 +11,10 @@ import { LeidingListComponent } from './leiding/leiding-list/leiding-list.compon
 import { TakDetailComponent } from './tak/tak-detail/tak-detail.component';
 import { TakResolverService } from './tak/tak-resolver.service';
 import { CallbackComponent } from './components/callback/callback.component';
-import { AuthorizationGuard } from './auth/authorization.guard';
+
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { AuthorizationGuard } from './core/auth/authorization.guard';
 
 
 const routes: Routes = [

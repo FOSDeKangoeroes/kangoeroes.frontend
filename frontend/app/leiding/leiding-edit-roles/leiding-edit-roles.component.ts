@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { DataService } from '../../services/data.service';
 import { EventService } from '../../shared/event.service';
-import { SelectionModel } from '@angular/cdk/collections';
+
 import { SnotifyService } from 'ng-snotify';
-import { Role } from '../../auth/role.model';
+import { Role } from '../../core/auth/role.model';
+
 
 @Component({
   // tslint:disable-next-line:component-selector

@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "leiding-beheer": {
-      "root": "src",
+      "root": "app",
       "sourceRoot": "frontend",
       "projectType": "application",
       "architect": {

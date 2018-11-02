@@ -1,0 +1,29 @@
+<div class="row">
+<div class="col">
+</div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <app-totem-entry-add></app-totem-entry-add>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <div class="row">
+      <h5 class="col-auto mr-auto">Alle getotemiseerden</h5>
+      <button class="col-auto" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button (click)="openDialog()" mat-menu-item>Kolommen</button>
+      </mat-menu>
+    </div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Zoeken">
+    </mat-form-field>
+    <totem-entry-table (detail)="detail($event)" [searchString$]="searchString$" [displayedColumns]="displayedColumns"></totem-entry-table>
+  </div>
+</div>

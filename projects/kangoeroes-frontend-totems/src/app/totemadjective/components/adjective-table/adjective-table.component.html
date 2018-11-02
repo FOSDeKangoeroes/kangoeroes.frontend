@@ -1,0 +1,28 @@
+<mat-table #table [dataSource]="dataSource" matSort matSortDisableClear matSortDirection='asc' matSortActive="naam" aria-label="Totemdieren">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="naam">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Naam</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{row.naam}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="createdOn">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Aanmaakdatum</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{row.createdOn | date: 'dd-MM-yyyy'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell class="action-cell" *matCellDef="let row">
+      <button (click)="editAdjective(row)"  mat-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator [length]="dataSource.totalLength" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
+</mat-paginator>

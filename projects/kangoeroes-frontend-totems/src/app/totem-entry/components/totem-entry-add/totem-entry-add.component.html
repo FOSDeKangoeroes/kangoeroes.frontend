@@ -1,0 +1,26 @@
+<form [formGroup]="addEntryFormGroup" class="form-inline" (ngSubmit)="onSubmit()">
+  <div class="col-2">
+<app-select-list (formReady)="addFormControl('persoon',$event)" placeholder="Persoon*" [dataService]="leidingDataService" [validation]="required" [resourceFactory]="leidingFactory"></app-select-list>
+
+  </div>
+  
+  <div class="col-2">
+    <app-select-list (formReady)="addFormControl('adjectief',$event)" placeholder="Adjectief*" [dataService]="adjectiveDataService" [validation]="required" [resourceFactory]="adjectiveFactory"></app-select-list>
+  </div>
+
+  <div class="col-2">
+    <app-select-list (formReady)="addFormControl('totem',$event)" placeholder="Totem*" [dataService]="animalDataService" [validation]="required" [resourceFactory]="animalFactory"></app-select-list>
+  </div>
+
+  
+<mat-form-field class="col-2">
+  <input matInput [matDatepicker]="datumPicker" placeholder="Datum gekregen" formControlName="datumGekregen">
+  <mat-datepicker-toggle matSuffix [for]="datumPicker"></mat-datepicker-toggle>
+  <mat-datepicker #datumPicker></mat-datepicker>
+</mat-form-field>
+
+  <div class="col-2">
+    <app-select-list (formReady)="addFormControl('voorouder',$event)" placeholder="Peetje/Meetje" [dataService]="totemEntryDataService"></app-select-list>
+  </div>
+  <button type="submit" [disabled]="!addEntryFormGroup.valid" mat-raised-button class="col-2">Toevoegen</button>
+</form>

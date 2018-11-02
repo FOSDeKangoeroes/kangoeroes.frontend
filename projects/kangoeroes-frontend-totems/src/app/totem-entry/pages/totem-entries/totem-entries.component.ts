@@ -1,0 +1,107 @@
+import { QueryOptions } from '../../../core/data-services/query-options';
+import { MatDialog } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { TitleService } from '../../../core/title/title.service';
+import { ColumnService } from '../../../core/title/column.service';
+import { PickColumnDialogComponent } from '../../../ui/pick-column/totemanimal-pick-column-dialog/pick-column-dialog.component';
+import { LeidingDataService } from '../../../leiding/leiding-data.service';
+import { Leiding } from '../../../leiding/leiding.model';
+import {
+  debounceTime,
+  switchMap,
+  distinctUntilChanged,
+  map
+} from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-totem-entries',
+  templateUrl: './totem-entries.component.html',
+  styleUrls: ['./totem-entries.component.scss']
+})
+export class TotemEntriesComponent implements OnInit {
+  searchString$ = new BehaviorSubject<string>('');
+
+  displayedColumns = [];
+
+  possibleColumns = [
+    'leiding.voornaam',
+    'adjectief.naam',
+    'totem.naam',
+    'datumGegeven',
+    'voorouder.adjectief.naam',
+    'reuseDateTotem',
+    'reuseDateAdjectief',
+    'acties'
+  ];
+  leiding: Leiding[];
+  totalLeidingCount: number;
+  leidingSearch$ = new Subject<string>();
+  private readonly COLUMN_KEY = 'totem-entries-columns';
+
+
+  constructor(
+    public titleService: TitleService,
+    private columnService: ColumnService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {
+    this.titleService.setTitle('Getotemiseerden');
+  }
+
+  ngOnInit() {
+    this.initializeColumns();
+  }
+
+  private initializeColumns() {
+    if (!this.columnService.itemIsInStorage(this.COLUMN_KEY)) {
+      this.columnService.setDisplayedColumns(
+        this.COLUMN_KEY,
+        this.possibleColumns
+      );
+    }
+    this.displayedColumns = this.columnService.getDisplayedColumns(
+      this.COLUMN_KEY
+    );
+  }
+
+  applyFilter(value: string) {
+    this.searchString$.next(value);
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(PickColumnDialogComponent, {
+      width: '500px',
+      data: {
+        possibleColumns: this.possibleColumns,
+        selectedColumns: this.displayedColumns
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        // Sort the returned selection on the original column order.
+        result.sort((a, b) => {
+          return (
+            this.possibleColumns.indexOf(a) - this.possibleColumns.indexOf(b)
+          );
+        });
+
+        // Set the displayed columns and save them to local storage for further use
+        this.displayedColumns = result;
+        this.columnService.setDisplayedColumns(
+          this.COLUMN_KEY,
+          this.displayedColumns
+        );
+      }
+    });
+  }
+
+  detail(event) {
+  // TODO: navigate to new component
+  console.log(event);
+
+  this.router.navigate(['totems', event.id]);
+  }
+}

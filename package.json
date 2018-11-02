@@ -6,7 +6,7 @@
     "ng": "ng",
     "config": "ts-node ./set-env.ts",
     "totems": "ng serve kangoeroes-frontend-totems --proxy-config proxy.config.json --port=4300",
-    "start": "ng serve kangoeroes-frontend-leidingbeheer --configuration=dev --proxy-config proxy.config.json ",
+    "leidingbeheer": "ng serve kangoeroes-frontend-leidingbeheer --configuration=dev --proxy-config proxy.config.json --port=4200",
     "build": "ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",

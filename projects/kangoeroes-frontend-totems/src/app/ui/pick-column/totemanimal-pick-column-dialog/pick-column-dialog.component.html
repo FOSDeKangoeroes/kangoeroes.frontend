@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Kolommen</h1>
+<div mat-dialog-content>
+ 
+<app-column-picker #picker [possibleColumns]="data.possibleColumns" [selectedColumns]="data.selectedColumns"></app-column-picker>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="picker.selection.selected" cdkFocusInitial>Ok</button>
+</div>
+

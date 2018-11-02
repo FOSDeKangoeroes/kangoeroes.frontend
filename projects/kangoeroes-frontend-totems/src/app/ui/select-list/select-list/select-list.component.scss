@@ -1,0 +1,9 @@
+.ng-invalid {
+    .ng-select-container:after {
+        border-bottom: 1px solid red !important;
+    }
+}
+
+.btn-link {
+    cursor: pointer;
+}

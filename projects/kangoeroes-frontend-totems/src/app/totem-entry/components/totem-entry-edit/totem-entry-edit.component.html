@@ -1,0 +1,32 @@
+<form [formGroup]="addEntryFormGroup" class="form-inline" (ngSubmit)="onSubmit()">
+  <div class="col-12">
+   <h6>Persoon</h6>
+<p>{{totemEntry.leidingVoornaam}} {{totemEntry.leidingNaam}}</p>
+  </div>
+  
+
+  <div class="col-12">
+    <h6>Totemgegevens</h6>
+    <app-select-list #adjectiveSelectList (formReady)="addFormControl('adjectief',$event)" placeholder="Adjectief*" [dataService]="adjectiveDataService"
+      [validation]="required" [value]="totemEntry.adjectief.id"></app-select-list>
+  </div>
+
+  <div class="col-12">
+    <app-select-list (formReady)="addFormControl('totem',$event)" placeholder="Totem*" [dataService]="animalDataService" [validation]="required" [value]="totemEntry.totem.id"></app-select-list>
+  </div>
+
+
+  <mat-form-field class="col-12">
+    <input matInput [matDatepicker]="datumPicker" placeholder="Datum gekregen" formControlName="datumGekregen" [value]="totemEntry.datumGegeven">
+    <mat-datepicker-toggle matSuffix [for]="datumPicker"></mat-datepicker-toggle>
+    <mat-datepicker #datumPicker></mat-datepicker>
+  </mat-form-field>
+
+  <div class="col-12">
+    <app-select-list (formReady)="addFormControl('voorouder',$event)" placeholder="Peetje/Meetje" [dataService]="totemEntryDataService" [value]="totemEntry.voorouderId"></app-select-list>
+  </div> 
+<div class="col-12">
+<button type="submit" [disabled]="!addEntryFormGroup.valid" mat-raised-button class="col-2 float-right">Wijzigen</button>
+</div>
+
+</form>

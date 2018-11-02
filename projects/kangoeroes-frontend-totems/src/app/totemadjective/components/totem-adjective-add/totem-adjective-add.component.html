@@ -1,0 +1,9 @@
+<form [formGroup]='addAdjectiveFormGroup' (ngSubmit)='onSubmit()' class="form-inline">
+
+  <mat-form-field appearance="standard">
+    <mat-label>Adjectief toevoegen</mat-label>
+    <input #animalInput matInput formControlName="name" placeholder="Druk enter om toe te voegen">
+    <mat-icon matSuffix>keyboard_return</mat-icon>
+    <mat-error *ngIf="addAdjectiveFormGroup.get('name').errors?.required && addAdjectiveFormGroup.get('name').touched">Vul dit veld in.</mat-error>
+  </mat-form-field>
+</form>

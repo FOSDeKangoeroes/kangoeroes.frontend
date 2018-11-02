@@ -1,0 +1,22 @@
+<div [formGroup]="formGroup">
+  <ng-select #selectList formControlName="control" [items]="list" [loading]="loading" [virtualScroll]="true" [placeholder]="placeholder" bindLabel="displayName"
+  bindValue="id" (scrollToEnd)="fetchMore()" [typeahead]="search$" [(ngModel)]="value"
+  [appendTo]="'body'">
+  <ng-template ng-header-tmp>
+    <small class="form-text text-muted">{{list.length}} van {{paginationData.totalCount}} geladen.</small>
+  </ng-template>
+
+  <ng-template ng-label-tmp let-item="item">
+    {{item.displayName}}
+  </ng-template>
+  <ng-template ng-option-tmp let-item="item" let-index="index">
+     {{item.displayName}}
+  </ng-template>
+
+    <ng-template *ngIf="resourceFactory" ng-notfound-tmp let-searchTerm="searchTerm">
+      <div class="ng-option disabled">
+      <span class="btn-link" (click)="add(searchTerm)">"{{searchTerm}}" toevoegen?</span>
+      </div>
+    </ng-template>
+</ng-select>
+</div>

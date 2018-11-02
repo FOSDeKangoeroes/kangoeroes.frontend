@@ -1,0 +1,58 @@
+<div>
+  <mat-table #table [dataSource]="dataSource" matSort matSortDisableClear matSortDirection="asc" matSortActive="leiding.voornaam" aria-label="Elements">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="leiding.voornaam">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Naam</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.leidingVoornaam}} {{row.leidingNaam}}</mat-cell>
+    </ng-container>
+ <!-- Name Column -->
+      <ng-container matColumnDef="adjectief.naam">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Adjectief</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.adjectief.naam}}</mat-cell>
+      </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="totem.naam">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Totem</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.totem.naam}}</mat-cell>
+    </ng-container>
+
+      <ng-container matColumnDef="datumGegeven">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Datum gekregen</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.datumGegeven | date: 'dd-MM-yyyy'}}</mat-cell>
+      </ng-container>
+
+          <ng-container matColumnDef="voorouder.adjectief.naam">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Peetje/meetje</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.voorouderAdjectief}} {{row.voorouderTotem}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="reuseDateTotem">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Hergebruikdatum totem</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.reuseDateTotem | noDate | date: 'dd-MM-yyyy'}}</mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="reuseDateAdjectief">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Hergebruikdatum adjectief</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.reuseDateAdjectief | date: 'dd-MM-yyyy'}}</mat-cell>
+        </ng-container>
+
+          <ng-container matColumnDef="acties">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell class="action-cell" *matCellDef="let row">
+            <button (click)="detail.emit(row)" mat-button>
+              <mat-icon>edit</mat-icon>
+            </button>
+          </mat-cell>
+          </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+    [length]="dataSource.totalLength"
+    [pageIndex]="0"
+    [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+</div>

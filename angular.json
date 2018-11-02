@@ -163,8 +163,8 @@
             "index": "projects/kangoeroes-frontend-totems/src/index.html",
             "main": "projects/kangoeroes-frontend-totems/src/main.ts",
             "polyfills": "projects/kangoeroes-frontend-totems/src/polyfills.ts",
-            "tsConfig": "projects/kangoeroes-frontend-totems/src/tsconfig.app.json",
-            "assets": ["projects/kangoeroes-frontend-totems/src/favicon.ico", "src/assets"],
+            "tsConfig": "projects/kangoeroes-frontend-totems/tsconfig.app.json",
+            "assets": ["projects/kangoeroes-frontend-totems/src/favicon.ico", "projects/kangoeroes-frontend-totems/src/assets"],
             "styles": [
               
                 "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -233,7 +233,7 @@
           "options": {
             "main": "projects/kangoeroes-frontend-totems/src/test.ts",
             "polyfills": "projects/kangoeroes-frontend-totems/src/polyfills.ts",
-            "tsConfig": "projects/kangoeroes-frontend-totems/src/tsconfig.spec.json",
+            "tsConfig": "projects/kangoeroes-frontend-totems/tsconfig.spec.json",
             "karmaConfig": "projects/kangoeroes-frontend-totems/src/karma.conf.js",
             "styles": [
               {
@@ -255,7 +255,7 @@
       }
     }
   },
-  "defaultProject": "kangoeroes-frontend-leidingbeheer",
+  "defaultProject": "kangoeroes-frontend-totems",
   "schematics": {
     "@schematics/angular:component": {
       "spec": false,

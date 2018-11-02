@@ -1,0 +1,46 @@
+$linkColor: white;
+$darkenedLink: darken($linkColor, 20%);
+
+a {
+  color: $linkColor;
+  text-decoration-line: none;
+  padding: 8px;
+  font-weight: 300;
+}
+
+.nav-link:hover {
+  color: $darkenedLink;
+}
+
+
+
+.active {
+  color: $darkenedLink;
+  
+}
+
+.sheet {
+  height: 100px;
+
+}
+
+.nav h1 {
+  padding-left: 8px;
+}
+
+.primary-header h1 {
+  font-weight: 300;
+  margin: 0;
+  padding: 28px 8px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.divider {
+  flex: 1 1 auto;
+}
+
+.authButton {
+  cursor: pointer;
+  font-weight: 300; 
+}

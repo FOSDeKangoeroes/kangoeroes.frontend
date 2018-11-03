@@ -82,6 +82,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DataService } from './services/data.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { EventService } from './shared/event.service';
+import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
 
 
 
@@ -102,6 +103,7 @@ export function jwtTokenGetter() {
     SnotifyModule,
     OverlayModule,
     DashboardModule,
+    KangoeroesAuthModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: jwtTokenGetter

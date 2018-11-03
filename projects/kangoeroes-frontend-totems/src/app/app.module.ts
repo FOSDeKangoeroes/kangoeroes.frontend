@@ -36,7 +36,6 @@ export const httpInterceptorProviders = [
     NavModule,
     MatIconModule,
     MatMomentDateModule,
-    KangoeroesAuthModule,
     AuthModule
   ],
   providers: [

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { KangoeroesFrontendCoreComponent } from './kangoeroes-frontend-core.component';
 
 @NgModule({
   imports: [
   ],
-  declarations: [KangoeroesFrontendCoreComponent],
-  exports: [KangoeroesFrontendCoreComponent]
+  declarations: [],
+  exports: []
 })
 export class KangoeroesFrontendCoreModule { }

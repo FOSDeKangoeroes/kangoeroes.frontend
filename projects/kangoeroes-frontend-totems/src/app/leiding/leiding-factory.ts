@@ -1,5 +1,6 @@
 import { Leiding } from './leiding.model';
-import { ResourceFactory } from '../core/data-services/resource-factory';
+import { ResourceFactory } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-factory';
+
 
 export class LeidingFactory implements ResourceFactory<Leiding> {
     create(data: string): Leiding {

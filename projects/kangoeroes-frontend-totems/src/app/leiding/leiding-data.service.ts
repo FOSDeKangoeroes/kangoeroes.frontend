@@ -2,8 +2,9 @@ import { environment } from '../../environments/environment';
 import { LeidingSerializer } from './leiding-serializer';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResourceService } from '../core/data-services/resource-service';
+
 import { Leiding } from './leiding.model';
+import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-service';
 
 @Injectable({
   providedIn: 'root'

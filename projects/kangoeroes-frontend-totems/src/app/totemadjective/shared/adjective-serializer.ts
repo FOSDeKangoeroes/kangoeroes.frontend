@@ -1,5 +1,6 @@
-import { Serializer } from '../../core/data-services/serializer';
+
 import { Adjective } from './adjective.model';
+import { Serializer } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/serializer';
 
 
 export class AdjectiveSerializer implements Serializer<Adjective> {

@@ -16,7 +16,7 @@ export class AuthService {
     redirectUri: 'http://localhost:4300/callback',
     scope: 'openid roles'
   });
-
+ 
   constructor(public router: Router) {}
 
   login() {
@@ -30,7 +30,7 @@ export class AuthService {
         this.setSession(authResult);
         console.log('start navigating');
         
-      }
+      } 
       this.router.navigate(['/totems']);
     });
   }

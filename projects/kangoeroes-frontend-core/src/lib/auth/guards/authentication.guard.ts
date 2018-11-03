@@ -1,15 +1,17 @@
 
+
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import decode from 'jwt-decode';
 import { AuthService } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/core/auth/auth.service';
-import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
+import { KangoeroesAuthModule } from '../kangoeroes-auth.module';
 
-@Injectable({
+
+@Injectable({ 
   providedIn: KangoeroesAuthModule
 })
-export class AuthorizationGuard implements CanActivate {
+export class AuthenticationGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) {
 
@@ -28,12 +30,13 @@ export class AuthorizationGuard implements CanActivate {
 
       } else {
 
-        this.router.navigate(['/forbidden']);
+        this.router.navigate(['/forbidden']); 
         return false;
       }
     }
 
     this.authService.login();
     return false;
+ 
   }
 }

@@ -15,5 +15,4 @@ import { AuthorizationGuard } from 'projects/kangoeroes-frontend-leidingbeheer/s
     CallbackComponent
   ]
 })
-export class KangoeroesAuthModule { }
- 
+export class KangoeroesAuthModule { } 

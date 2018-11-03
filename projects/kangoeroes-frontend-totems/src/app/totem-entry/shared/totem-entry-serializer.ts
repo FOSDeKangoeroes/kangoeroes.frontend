@@ -1,7 +1,8 @@
 import { AnimalSerializer } from '../../totemanimal/shared/animal-serializer';
 import { AdjectiveSerializer } from '../../totemadjective/shared/adjective-serializer';
 import { TotemEntry } from './totem-entry-model';
-import { Serializer } from '../../core/data-services/serializer';
+import { Serializer } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/serializer';
+
 
 export class TotemEntrySerializer implements Serializer<TotemEntry> {
   private adjectiveSerializer: AdjectiveSerializer;

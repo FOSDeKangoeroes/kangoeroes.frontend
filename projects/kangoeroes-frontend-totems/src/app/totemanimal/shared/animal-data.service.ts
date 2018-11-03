@@ -4,7 +4,7 @@ import { Animal } from './animal.model';
 
 import { AnimalSerializer } from './animal-serializer';
 import { environment } from '../../../environments/environment';
-import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-service';
+import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
 
 @Injectable({
   providedIn: 'root'

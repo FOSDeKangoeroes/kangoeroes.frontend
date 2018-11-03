@@ -1,5 +1,5 @@
 import { Animal } from './animal.model';
-import { ResourceFactory } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-factory';
+import { ResourceFactory } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-factory';
 
 
 export class AnimalFactory implements ResourceFactory<Animal> {

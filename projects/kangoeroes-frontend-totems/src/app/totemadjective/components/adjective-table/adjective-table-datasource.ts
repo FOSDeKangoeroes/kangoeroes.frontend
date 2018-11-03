@@ -6,7 +6,7 @@ import { Observable, of as observableOf, merge, BehaviorSubject } from 'rxjs';
 import { Adjective } from '../../shared/adjective.model';
 import { TotemAdjectiveDataService } from '../../shared/totem-adjective-data.service';
 import { AdjectiveService } from '../../shared/adjective.service';
-import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/query-options';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 
 
 /**

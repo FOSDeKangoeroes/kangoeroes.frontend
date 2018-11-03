@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Adjective } from './adjective.model';
 import { AdjectiveSerializer } from './adjective-serializer';
-import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-service';
+import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
 
 @Injectable({
   providedIn: 'root'

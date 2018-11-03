@@ -11,7 +11,7 @@ import {
 import { TotemEntry } from '../../shared/totem-entry-model';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
 import { TotemEntryService } from '../../shared/totem-entry.service';
-import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/query-options';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 
 /**
  * Data source for the TotemEntryTable view. This class should

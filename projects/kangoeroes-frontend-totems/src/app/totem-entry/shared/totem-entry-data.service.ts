@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
-import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-service';
+import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
 
 @Injectable({
   providedIn: 'root'

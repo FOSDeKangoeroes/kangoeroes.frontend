@@ -1,5 +1,6 @@
-import { Serializer } from '../../core/data-services/serializer';
+
 import { Animal } from './animal.model';
+import { Serializer } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/serializer';
 
 export class AnimalSerializer implements Serializer<Animal> {
 

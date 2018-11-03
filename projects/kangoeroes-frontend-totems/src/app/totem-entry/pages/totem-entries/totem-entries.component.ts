@@ -1,18 +1,12 @@
-import { QueryOptions } from '../../../core/data-services/query-options';
+
 import { MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { TitleService } from '../../../core/title/title.service';
 import { ColumnService } from '../../../core/title/column.service';
 import { PickColumnDialogComponent } from '../../../ui/pick-column/totemanimal-pick-column-dialog/pick-column-dialog.component';
-import { LeidingDataService } from '../../../leiding/leiding-data.service';
 import { Leiding } from '../../../leiding/leiding.model';
-import {
-  debounceTime,
-  switchMap,
-  distinctUntilChanged,
-  map
-} from 'rxjs/operators';
+
 import { Router } from '@angular/router';
 
 @Component({

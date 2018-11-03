@@ -4,9 +4,10 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 import decode from 'jwt-decode';
 import { AuthService } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/core/auth/auth.service';
+import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: KangoeroesAuthModule
 })
 export class AuthorizationGuard implements CanActivate {
 

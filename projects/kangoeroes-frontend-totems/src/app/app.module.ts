@@ -17,6 +17,7 @@ import {
   MAT_DATE_LOCALE
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
 
 
 export const httpInterceptorProviders = [
@@ -34,7 +35,9 @@ export const httpInterceptorProviders = [
     MatCardModule,
     NavModule,
     MatIconModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    KangoeroesAuthModule,
+    AuthModule
   ],
   providers: [
     httpInterceptorProviders,

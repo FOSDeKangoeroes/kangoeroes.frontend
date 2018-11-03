@@ -15,8 +15,7 @@ import { RouterModule } from '@angular/router';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    RouterModule,
-    AuthModule
+    RouterModule
   ],
   declarations: [NavComponent],
   exports: [NavComponent]

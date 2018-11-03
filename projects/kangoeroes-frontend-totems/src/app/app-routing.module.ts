@@ -1,9 +1,10 @@
 import { LogoutComponent } from './core/auth/pages/logout/logout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CallbackComponent } from './core/auth/pages/callback/callback.component';
+
 import { AuthorizationGuard } from './core/auth/shared/logged-in.guard';
 import { ForbiddenComponent } from './core/auth/pages/forbidden/forbidden.component';
+import { CallbackComponent } from 'projects/kangoeroes-frontend-core/src/lib/auth/components/callback/callback.component';
 
 const routes: Routes = [
   {

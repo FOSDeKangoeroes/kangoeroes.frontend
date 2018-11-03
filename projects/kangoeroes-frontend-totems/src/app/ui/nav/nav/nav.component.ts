@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { TitleService } from '../../../core/title/title.service';
-import { AuthService } from '../../../core/auth/shared/auth.service';
+import { AuthService } from '../../../../../../kangoeroes-frontend-core/src/lib/auth/services/auth.service';
 
 @Component({
   // tslint:disable-next-line:component-selector

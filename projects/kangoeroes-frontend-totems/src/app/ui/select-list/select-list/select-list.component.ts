@@ -1,5 +1,4 @@
-import { ResourceFactory } from '../../../core/data-services/resource-factory';
-import { ResourceService } from '../../../core/data-services/resource-service';
+
 import { HttpHeaders } from '@angular/common/http';
 
 import { FormGroup, FormControlName, AbstractControl, FormBuilder, FormControl, ValidationErrors } from '@angular/forms';
@@ -7,10 +6,13 @@ import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angu
 
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
-import { Resource } from '../../../core/data-services/resource-model';
-import { QueryOptions } from '../../../core/data-services/query-options';
-import { Pagination } from '../../../core/data-services/pagination-model';
+
 import { NgSelectComponent } from '@ng-select/ng-select';
+import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-model';
+import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-service';
+import { ResourceFactory } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-factory';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/query-options';
+import { Pagination } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/models/pagination-model';
 
 
 @Component({

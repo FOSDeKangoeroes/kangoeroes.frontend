@@ -12,7 +12,7 @@ export class AuthService {
     domain: 'dekangoeroes-development.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'admin.dekangoeroes.be',
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: 'http://localhost:4300/callback',
     scope: 'openid roles'
   });
 

@@ -6,7 +6,7 @@ import { Observable, of as observableOf, merge, BehaviorSubject } from 'rxjs';
 import { Animal } from '../../shared/animal.model';
 import { AnimalDataService } from '../../shared/animal-data.service';
 import { AnimalService } from '../../shared/animal.service';
-import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/query-options';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 
 
 /**

@@ -7,7 +7,7 @@
       "root": "projects/kangoeroes-frontend-core",
       "sourceRoot": "projects/kangoeroes-frontend-core/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "kng-core",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

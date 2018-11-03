@@ -8,10 +8,10 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 
 import { NgSelectComponent } from '@ng-select/ng-select';
-import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-model';
-import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-service';
-import { ResourceFactory } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-factory';
-import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/query-options';
+import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
+import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
+import { ResourceFactory } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-factory';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 import { Pagination } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/models/pagination-model';
 
 

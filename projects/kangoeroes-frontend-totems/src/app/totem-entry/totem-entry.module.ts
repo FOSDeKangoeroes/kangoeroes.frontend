@@ -21,12 +21,13 @@ import {
 } from '@angular/material';
 import { TotemEntriesComponent } from './pages/totem-entries/totem-entries.component';
 import { TotemEntryAddComponent } from './components/totem-entry-add/totem-entry-add.component';
-import { SelectListModule } from '../ui/select-list/select-list.module';
+
 import { TotemEntryDetailComponent } from './pages/totem-entry-detail/totem-entry-detail.component';
 import { TotemEntryEditComponent } from './components/totem-entry-edit/totem-entry-edit.component';
 import { TotemEntryReuseDataComponent } from './components/totem-entry-reuse-data/totem-entry-reuse-data.component';
 import { TotemEntryFamilyComponent } from './components/totem-entry-family/totem-entry-family.component';
 import { TotemEntryAddDescendantComponent } from './components/totem-entry-add-descendant/totem-entry-add-descendant.component';
+import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
 
 
 @NgModule({

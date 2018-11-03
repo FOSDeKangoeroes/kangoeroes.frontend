@@ -1,5 +1,5 @@
-import { Serializer } from '../core/data-services/serializer';
 import { Leiding } from './leiding.model';
+import { Serializer } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/serializer';
 
 export class LeidingSerializer implements Serializer<Leiding> {
   fromJson(json: any): Leiding {

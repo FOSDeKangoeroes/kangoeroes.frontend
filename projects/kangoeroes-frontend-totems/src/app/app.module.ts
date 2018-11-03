@@ -1,3 +1,4 @@
+
 import { AuthModule } from './core/auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import {
   MAT_DATE_LOCALE
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
 
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: BadRequestInterceptor, multi: true }

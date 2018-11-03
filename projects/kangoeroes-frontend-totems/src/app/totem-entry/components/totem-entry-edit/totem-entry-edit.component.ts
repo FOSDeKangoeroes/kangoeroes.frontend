@@ -1,5 +1,4 @@
 import { MatSnackBar } from '@angular/material';
-import { SelectListComponent } from '../../../ui/select-list/select-list/select-list.component';
 import { TotemEntryService } from '../../shared/totem-entry.service';
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { TotemEntry } from '../../shared/totem-entry-model';

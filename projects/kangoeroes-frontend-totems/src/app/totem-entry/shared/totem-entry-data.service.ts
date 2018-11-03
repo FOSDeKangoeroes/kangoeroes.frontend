@@ -3,9 +3,10 @@ import { TotemEntrySerializer } from './totem-entry-serializer';
 import { Injectable } from '@angular/core';
 import { TotemEntry } from './totem-entry-model';
 import { HttpClient } from '@angular/common/http';
-import { ResourceService } from '../../core/data-services/resource-service';
+
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
+import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/core-data-service/resource-service';
 
 @Injectable({
   providedIn: 'root'

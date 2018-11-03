@@ -1,10 +1,11 @@
+import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import * as auth0 from 'auth0-js';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: KangoeroesAuthModule
 })
 export class AuthService {
   auth0 = new auth0.WebAuth({

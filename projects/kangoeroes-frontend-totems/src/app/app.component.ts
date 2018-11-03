@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './core/auth/shared/auth.service';
+import { AuthService } from '../../../kangoeroes-frontend-core/src/lib/auth/services/auth.service';
 
 @Component({
   selector: 'app-root',

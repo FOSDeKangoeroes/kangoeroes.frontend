@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "config": "ts-node ./set-env.ts",
-    "totems": "ng serve kangoeroes-frontend-totems --proxy-config proxy.config.json --port=4300",
+    "totems": "ng serve kangoeroes-frontend-totems --proxy-config proxy.config.json --port=4300 --configuration=dev",
     "leidingbeheer": "ng serve kangoeroes-frontend-leidingbeheer --configuration=dev --proxy-config proxy.config.json --port=4200",
     "build": "ng build --configuration=production",
     "test": "ng test",
@@ -29,6 +29,7 @@
     "@angular/upgrade": "^7.0.0",
     "@auth0/angular-jwt": "^2.0.0",
     "@ng-select/ng-select": "^2.11.1",
+    "@types/auth0-js": "^8.11.7",
     "angular2-jwt": "^0.2.3",
     "auth0-js": "^9.8.0",
     "bootstrap": "^4.1.3",

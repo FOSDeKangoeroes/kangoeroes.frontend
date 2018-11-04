@@ -1,23 +1,27 @@
-import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-
+import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
+import { environment } from 'projects/kangoeroes-frontend-core/src/environment';
+import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
+
+
 
 @Injectable({
   providedIn: KangoeroesAuthModule
 })
 export class AuthService {
   auth0 = new auth0.WebAuth({
-    clientID: 'qsVUJU2hWqxNu15XzwZp5AtkWhlJ6Wic',
-    domain: 'dekangoeroes-development.eu.auth0.com',
-    responseType: 'token id_token',
-    audience: 'admin.dekangoeroes.be',
-    redirectUri: 'http://localhost:4300/callback',
-    scope: 'openid roles'
+    clientID: `${environment.AUTH0_CLIENTID}`,
+    domain: environment.AUTH0_DOMAIN,
+    responseType: environment.AUTH0_RESPONSETYPE,
+    audience: environment.AUTH0_AUDIENCE,
+    redirectUri: environment.AUTH0_REDIRECTURI,
+    scope: environment.AUTH0_SCOPES
   });
  
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+    console.log(auth0);
+  }
 
   login() {
     this.auth0.authorize();

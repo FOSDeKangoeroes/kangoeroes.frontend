@@ -8,6 +8,8 @@
     "totems": "ng serve kangoeroes-frontend-totems --proxy-config proxy.config.json --port=4300 --configuration=dev",
     "leidingbeheer": "ng serve kangoeroes-frontend-leidingbeheer --configuration=dev --proxy-config proxy.config.json --port=4200",
     "build": "ng build --configuration=production",
+    "build-totems-prod":"ng build kangoeroes-frontend-totems --configuration=production --outputPath=dist/totems",
+    "build-totems-staging": "ng build kangoeroes-frontend-totems --configuration=staging --outputPath=dist/totems-staging",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

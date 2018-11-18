@@ -1,7 +1,8 @@
 
+
 import { AuthModule } from './core/auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,8 +18,14 @@ import {
   MAT_DATE_LOCALE
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
+import { ConfigModule } from 'projects/kangoeroes-frontend-core/src/lib/config/config.module';
+import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
 
+const appInitializerFn = (appConfig: ConfigService) => {
+  return () => {
+    return appConfig.loadAppConfig();
+  };
+};
 
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: BadRequestInterceptor, multi: true }
@@ -36,11 +43,18 @@ export const httpInterceptorProviders = [
     NavModule,
     MatIconModule,
     MatMomentDateModule,
-    AuthModule
+    AuthModule,
+    ConfigModule
   ],
   providers: [
     httpInterceptorProviders,
-    { provide: MAT_DATE_LOCALE, useValue: 'nl-be' }
+    { provide: MAT_DATE_LOCALE, useValue: 'nl-be' },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFn,
+      multi: true,
+      deps: [ConfigService]
+    }
   ],
   bootstrap: [AppComponent]
 })

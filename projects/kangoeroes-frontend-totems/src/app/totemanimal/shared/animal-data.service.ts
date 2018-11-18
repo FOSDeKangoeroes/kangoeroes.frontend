@@ -5,14 +5,17 @@ import { Animal } from './animal.model';
 import { AnimalSerializer } from './animal-serializer';
 import { environment } from '../../../environments/environment';
 import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
+import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
+import { TotemAnimalModule } from '../totemanimal.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: TotemAnimalModule
 })
 export class AnimalDataService extends ResourceService<Animal> {
 
-  constructor(httpClient: HttpClient) {
-    const appUrl = `${environment.appUrl}/api`;
+  constructor(httpClient: HttpClient, configService: ConfigService) {
+    const config = configService.get();
+    const appUrl = `${config.appUrl}/api`;
     super(
       httpClient,
       appUrl,

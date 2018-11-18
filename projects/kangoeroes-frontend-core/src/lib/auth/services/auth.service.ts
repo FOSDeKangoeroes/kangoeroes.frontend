@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
-import { environment } from 'projects/kangoeroes-frontend-core/src/environment';
 import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
+import { ConfigService } from '../../config/config.service';
+import { Config } from '../../config/config';
 
 
 
@@ -10,18 +11,24 @@ import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/publ
   providedIn: KangoeroesAuthModule
 })
 export class AuthService {
-  auth0 = new auth0.WebAuth({
-    clientID: `${environment.AUTH0_CLIENTID}`,
-    domain: environment.AUTH0_DOMAIN,
-    responseType: environment.AUTH0_RESPONSETYPE,
-    audience: environment.AUTH0_AUDIENCE,
-    redirectUri: environment.AUTH0_REDIRECTURI,
-    scope: environment.AUTH0_SCOPES
-  });
+   auth0: auth0.WebAuth;
 
   userProfile: auth0.Auth0UserProfile;
+  private readonly config: Config 
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private configService: ConfigService) {
+
+    this.config = this.configService.get();
+
+     this.auth0 = new auth0.WebAuth({
+      clientID: this.config.auth0ClientId,
+      domain: this.config.auth0Domain,
+      responseType: this.config.auth0ResponseType,
+      audience: this.config.auth0Audience,
+      redirectUri: this.config.auth0RedirectUri,
+      scope: this.config.auth0Scopes
+    });
+  }
 
   login() {
     this.auth0.authorize();

@@ -27,3 +27,4 @@ npm-debug.log
 /wwwroot
 /dist
 environment.*.ts
+config.json

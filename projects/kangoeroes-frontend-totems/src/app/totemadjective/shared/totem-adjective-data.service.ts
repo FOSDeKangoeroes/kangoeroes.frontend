@@ -1,19 +1,21 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+
 import { Adjective } from './adjective.model';
 import { AdjectiveSerializer } from './adjective-serializer';
 import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
+import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
+import { TotemAdjectiveModule } from '../totemadjective.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: TotemAdjectiveModule
 })
 export class TotemAdjectiveDataService extends ResourceService<Adjective> {
 
-  constructor(httpClient: HttpClient) {
-    const appUrl = `${environment.appUrl}/api`;
+  constructor(httpClient: HttpClient, configService: ConfigService) {
+    const config = configService.get();
+    const appUrl = `${config.appUrl}/api`;
     super(
       httpClient,
       appUrl,

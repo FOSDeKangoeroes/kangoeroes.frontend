@@ -19,7 +19,7 @@ export class AuthService {
   constructor(public router: Router, private configService: ConfigService) {
 
     this.config = this.configService.get();
-
+console.log(this.config); 
      this.auth0 = new auth0.WebAuth({
       clientID: this.config.auth0ClientId,
       domain: this.config.auth0Domain,

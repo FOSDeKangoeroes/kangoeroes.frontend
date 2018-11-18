@@ -1,17 +1,20 @@
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TreeTotemEntry } from './tree-totem-entry';
+import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
+import { TotemFamilyTreeModule } from '../totem-family-tree.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: TotemFamilyTreeModule
 })
 export class FamilyTreeDataService {
-private appUrl = environment.appUrl;
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient, private configService: ConfigService) {
+
+   }
 
   tree(): Observable<TreeTotemEntry[]> {
-    return this.httpClient.get<TreeTotemEntry[]>(`${this.appUrl}/api/totementry/tree`);
+    return this.httpClient.get<TreeTotemEntry[]>(`${this.configService.get().appUrl}/api/totementry/tree`);
   }
 }

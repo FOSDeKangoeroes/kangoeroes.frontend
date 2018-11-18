@@ -18,10 +18,10 @@ export class AuthService {
     redirectUri: environment.AUTH0_REDIRECTURI,
     scope: environment.AUTH0_SCOPES
   });
- 
-  constructor(public router: Router) {
-    console.log(auth0);
-  }
+
+  userProfile: auth0.Auth0UserProfile;
+
+  constructor(public router: Router) {}
 
   login() {
     this.auth0.authorize();
@@ -30,12 +30,25 @@ export class AuthService {
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-       // window.location.hash = '';
+        // window.location.hash = '';
         this.setSession(authResult);
         console.log('start navigating');
-        
-      } 
+      }
       this.router.navigate(['/totems']);
+    });
+  }
+
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
     });
   }
 

@@ -6,10 +6,9 @@ import { AnimalSerializer } from './animal-serializer';
 import { environment } from '../../../environments/environment';
 import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
 import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
-import { TotemAnimalModule } from '../totemanimal.module';
 
 @Injectable({
-  providedIn: TotemAnimalModule
+  providedIn: 'root'
 })
 export class AnimalDataService extends ResourceService<Animal> {
 

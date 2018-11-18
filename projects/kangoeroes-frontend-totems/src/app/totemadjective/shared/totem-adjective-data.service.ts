@@ -6,10 +6,10 @@ import { Adjective } from './adjective.model';
 import { AdjectiveSerializer } from './adjective-serializer';
 import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
 import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
-import { TotemAdjectiveModule } from '../totemadjective.module';
+
 
 @Injectable({
-  providedIn: TotemAdjectiveModule
+  providedIn: 'root'
 })
 export class TotemAdjectiveDataService extends ResourceService<Adjective> {
 

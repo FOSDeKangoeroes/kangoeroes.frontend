@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Tak } from './tak.model';
 
-@Injectable()
+
+@Injectable(
+  {
+    providedIn: 'root'
+  }
+)
 export class TakTableService {
 
 

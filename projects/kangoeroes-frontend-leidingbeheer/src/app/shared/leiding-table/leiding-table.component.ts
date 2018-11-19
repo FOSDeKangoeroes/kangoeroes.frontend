@@ -2,8 +2,8 @@ import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/cor
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { MatSort, MatTableDataSource, MatInput, MatPaginator } from '@angular/material';
-import { Leiding } from '../../leiding/leiding.model';
-import { LeidingTableService } from '../../leiding/leiding-table.service';
+import { Leiding } from '../../leiding/shared/leiding.model';
+import { LeidingTableService } from '../../leiding/shared/leiding-table.service';
 import { EventService } from '../event.service';
 import { LeidingDataSource } from './leiding-data-source';
 import { Observable } from 'rxjs/Observable';

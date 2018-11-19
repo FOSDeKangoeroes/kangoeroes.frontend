@@ -1,13 +1,18 @@
-import { LeidingManageUserComponent } from './../leiding-manage-user/leiding-manage-user.component';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Leiding } from '../leiding.model';
+
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { LeidingChangeTakComponent } from '../leiding-change-tak/leiding-change-tak.component';
-import { EventService } from '../../shared/event.service';
-import { LeidingEditComponent } from '../leiding-edit/leiding-edit.component';
-import { DataService } from '../../services/data.service';
-import { LeidingEditRolesComponent } from '../leiding-edit-roles/leiding-edit-roles.component';
+
+
+import { Leiding } from '../../shared/leiding.model';
+import { EventService } from '../../../shared/event.service';
+import { LeidingChangeTakComponent } from '../../components/leiding-change-tak/leiding-change-tak.component';
+import { LeidingEditComponent } from '../../components/leiding-edit/leiding-edit.component';
+import { LeidingEditRolesComponent } from '../../components/leiding-edit-roles/leiding-edit-roles.component';
+import { LeidingManageUserComponent } from '../../components/leiding-manage-user/leiding-manage-user.component';
+
+
 
 @Component({
   selector: 'app-leiding-detail',
@@ -26,7 +31,7 @@ private _leiding: Leiding;
   constructor(private route: ActivatedRoute,
     private modalService: BsModalService,
     private eventService: EventService,
-    private dataService: DataService) {
+    ) {
     this.route.data.subscribe(item => this._leiding = item['leiding']);
   this.eventService.$newLeiding.subscribe(res => {
     this._leiding = res;

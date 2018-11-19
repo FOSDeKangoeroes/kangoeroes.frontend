@@ -1,26 +1,29 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TakModule } from '../tak/tak.module';
-import { LeidingListComponent } from './leiding-list/leiding-list.component';
+
 import { RouterModule, Routes } from '@angular/router';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LeidingAddComponent } from './leiding-add/leiding-add.component';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LeidingDetailComponent } from './leiding-detail/leiding-detail.component';
-import { LeidingResolverService } from './leiding-resolver.service';
-import { LeidingTableService } from './leiding-table.service';
+
+import { LeidingResolverService } from './shared/leiding-resolver.service';
 import { SharedModule } from '../shared/shared.module';
-import { LeidingChangeTakComponent } from './leiding-change-tak/leiding-change-tak.component';
-import { LeidingEditComponent } from './leiding-edit/leiding-edit.component';
-import { LeidingEditRolesComponent } from './leiding-edit-roles/leiding-edit-roles.component';
-import { MatCheckboxModule, MatInputModule, MatFormFieldModule, NativeDateModule, MatNativeDateModule } from '@angular/material';
+
+import { MatCheckboxModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import { DataService } from '../services/data.service';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { LeidingManageUserComponent } from './leiding-manage-user/leiding-manage-user.component';
+import { LeidingListComponent } from './pages/leiding-list/leiding-list.component';
+import { LeidingDetailComponent } from './pages/leiding-detail/leiding-detail.component';
+import { LeidingAddComponent } from './components/leiding-add/leiding-add.component';
+import { LeidingEditComponent } from './components/leiding-edit/leiding-edit.component';
+import { LeidingEditRolesComponent } from './components/leiding-edit-roles/leiding-edit-roles.component';
+import { LeidingManageUserComponent } from './components/leiding-manage-user/leiding-manage-user.component';
+import { LeidingChangeTakComponent } from './components/leiding-change-tak/leiding-change-tak.component';
+
 
 const routes: Routes = [
   {
@@ -48,7 +51,7 @@ const routes: Routes = [
     MatDatepickerModule,
     NgSelectModule
   ],
-  providers: [DataService, LeidingResolverService, LeidingTableService],
+  providers: [DataService],
   declarations: [LeidingListComponent,
     LeidingAddComponent,
     LeidingDetailComponent,

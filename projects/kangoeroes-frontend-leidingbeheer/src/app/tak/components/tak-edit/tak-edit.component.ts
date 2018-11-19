@@ -1,11 +1,13 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Tak } from '../tak.model';
+
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { EventService } from '../../shared/event.service';
-import { DataService } from '../../services/data.service';
+
+
 import { SnotifyService } from 'ng-snotify';
+import { DataService } from '../../../services/data.service';
+import { EventService } from '../../../shared/event.service';
+import { Tak } from '../../shared/tak.model';
 
 
 @Component({
@@ -27,7 +29,6 @@ export class TakEditComponent implements OnInit {
   constructor(public editModalRef: BsModalRef,
     private fb: FormBuilder,
     private dataService: DataService,
-    private _router: Router,
     eventService: EventService,
     private snotifyService: SnotifyService
   ) {

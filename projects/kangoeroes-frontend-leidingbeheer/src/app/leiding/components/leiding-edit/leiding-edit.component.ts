@@ -4,7 +4,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { DataService } from '../../services/data.service';
 import { EventService } from '../../shared/event.service';
 import { Util } from '../util';
-import { Leiding } from '../leiding.model';
+import { Leiding } from '../shared/leiding.model';
 import { SnotifyService } from 'ng-snotify';
 import * as moment from 'moment';
 

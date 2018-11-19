@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Tak } from '../tak/tak.model';
-import { Leiding } from '../leiding/leiding.model';
+
+import { Leiding } from '../leiding/shared/leiding.model';
+import { Tak } from '../tak/shared/tak.model';
 
 
 @Injectable()

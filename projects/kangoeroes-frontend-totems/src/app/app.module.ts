@@ -1,6 +1,5 @@
 
 
-import { AuthModule } from './core/auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 
@@ -20,6 +19,7 @@ import {
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { ConfigModule } from 'projects/kangoeroes-frontend-core/src/lib/config/config.module';
 import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
+import { AuthModule } from './core/auth/auth.module';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {

@@ -1,9 +1,9 @@
-
 import { Injectable } from '@angular/core';
 import { ConfigModule } from './config.module';
 
 import { Config } from './config';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: ConfigModule
@@ -19,10 +19,13 @@ export class ConfigService {
       .toPromise()
       .then(data => {
         this.config = data;
-      });
+      }).catch (err => {
+      console.error(err);
+    });
   }
 
   public get(): Config {
+    console.log(this.config); 
     return this.config;
   }
 }

@@ -1,5 +1,6 @@
+
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -64,31 +65,34 @@ import { AppRoutingModule } from './app.routing';
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { TakModule } from './tak/tak.module';
-import { CallbackComponent } from './components/callback/callback.component';
-import { LeidingModule } from './leiding/leiding.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-import { RequestOptions, Http } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
 import { TokenInterceptor } from './interceptors/token-interceptor';
-import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
+import { MAT_DATE_LOCALE} from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DataService } from './services/data.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { EventService } from './shared/event.service';
 import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
-
+import { ConfigModule } from 'projects/kangoeroes-frontend-core/src/lib/config/config.module';
+import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
 
 
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
 }
+
+const appInitializerFn = (appConfig: ConfigService) => {
+  return () => {
+    return appConfig.loadAppConfig();
+  };
+};
 
 
 @NgModule({
@@ -103,6 +107,7 @@ export function jwtTokenGetter() {
     SnotifyModule,
     OverlayModule,
     DashboardModule,
+    ConfigModule,
     KangoeroesAuthModule,
     JwtModule.forRoot({
       config: {
@@ -115,7 +120,6 @@ export function jwtTokenGetter() {
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
-    CallbackComponent,
     AppForbiddenComponent
   ],
   providers: [
@@ -135,9 +139,16 @@ export function jwtTokenGetter() {
       multi: true
     },
     { provide: MAT_DATE_LOCALE, useValue: 'nl-be' },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFn,
+      multi: true,
+      deps: [ConfigService]
+    },
     DataService,
-    EventService],
+    EventService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 

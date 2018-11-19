@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { EventService } from '../../shared/event.service';
-import { DataService } from './../../services/data.service';
-import { Leiding } from '../shared/leiding.model';
+import { Leiding } from '../../shared/leiding.model';
+import { EventService } from '../../../shared/event.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-leiding-manage-user',

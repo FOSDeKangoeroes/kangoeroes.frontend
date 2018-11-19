@@ -2,15 +2,18 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Util } from '../util';
-import { Tak } from '../../tak/tak.model';
-import { Leiding } from '../shared/leiding.model';
+
 import { Router } from '@angular/router';
-import { EventService } from '../../shared/event.service';
-import { DataService } from '../../services/data.service';
+
 import { SnotifyService } from 'ng-snotify';
-import { Pagination } from '../../models/pagination-model';
+
 import * as moment from 'moment';
+import { Leiding } from '../../shared/leiding.model';
+import { DataService } from '../../../services/data.service';
+import { EventService } from '../../../shared/event.service';
+import { Pagination } from '../../../models/pagination-model';
+import { Tak } from '../../../tak/shared/tak.model';
+import { Util } from '../../util';
 
 
 

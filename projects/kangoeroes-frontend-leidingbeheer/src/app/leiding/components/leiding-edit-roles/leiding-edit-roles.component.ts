@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { DataService } from '../../services/data.service';
-import { EventService } from '../../shared/event.service';
-
 import { SnotifyService } from 'ng-snotify';
-import { Role } from '../../core/auth/role.model';
+import { Role } from '../../../core/auth/role.model';
+import { DataService } from '../../../services/data.service';
+import { EventService } from '../../../shared/event.service';
+
 
 
 @Component({

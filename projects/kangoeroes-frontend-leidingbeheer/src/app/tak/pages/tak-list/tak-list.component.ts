@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Tak } from '../tak.model';
+
 
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { TakAddComponent } from '../tak-add/tak-add.component';
-import { EventService } from '../../shared/event.service';
-import { TakTableService } from '../shared/tak-table.service';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../../services/data.service';
+import { EventService } from '../../../shared/event.service';
+import { TakTableService } from '../../shared/tak-table.service';
+import { TakAddComponent } from '../../components/tak-add/tak-add.component';
+
 
 
 @Component({

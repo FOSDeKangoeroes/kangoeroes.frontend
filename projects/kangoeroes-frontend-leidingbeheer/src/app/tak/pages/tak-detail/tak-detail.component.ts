@@ -1,14 +1,15 @@
-import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
-import { Tak } from '../tak.model';
+import { Component, OnInit} from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { TakEditComponent } from '../tak-edit/tak-edit.component';
-import { TakDeleteComponent } from '../tak-delete/tak-delete.component';
-import { TakLeidingAddComponent } from '../tak-leiding-add/tak-leiding-add.component';
-import { LeidingTableService } from '../../leiding/shared/leiding-table.service';
-import { EventService } from '../../shared/event.service';
-import { DataService } from '../../services/data.service';
+import { Tak } from '../../shared/tak.model';
+import { LeidingTableService } from '../../../leiding/shared/leiding-table.service';
+import { EventService } from '../../../shared/event.service';
+import { TakEditComponent } from '../../components/tak-edit/tak-edit.component';
+import { TakDeleteComponent } from '../../components/tak-delete/tak-delete.component';
+import { TakLeidingAddComponent } from '../../components/tak-leiding-add/tak-leiding-add.component';
+
 
 
 
@@ -33,7 +34,6 @@ export class TakDetailComponent implements OnInit {
   displayedColumns = ['voornaam', 'naam', 'email', 'leidingSinds', 'datumGestopt'];
 
   constructor(private route: ActivatedRoute,
-    private dataService: DataService,
     private modalService: BsModalService,
     private leidingTableService: LeidingTableService,
   private eventService: EventService) {

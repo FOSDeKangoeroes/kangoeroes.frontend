@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { DataService } from '../../services/data.service';
-import { EventService } from '../../shared/event.service';
-import { Util } from '../util';
-import { Leiding } from '../shared/leiding.model';
 import { SnotifyService } from 'ng-snotify';
 import * as moment from 'moment';
+import { Leiding } from '../../shared/leiding.model';
+import { DataService } from '../../../services/data.service';
+import { EventService } from '../../../shared/event.service';
+import { Util } from '../../util';
+
 
 @Component({
   // tslint:disable-next-line:component-selector

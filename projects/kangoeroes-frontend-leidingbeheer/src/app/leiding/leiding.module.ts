@@ -51,7 +51,6 @@ const routes: Routes = [
     MatDatepickerModule,
     NgSelectModule
   ],
-  providers: [DataService],
   declarations: [LeidingListComponent,
     LeidingAddComponent,
     LeidingDetailComponent,

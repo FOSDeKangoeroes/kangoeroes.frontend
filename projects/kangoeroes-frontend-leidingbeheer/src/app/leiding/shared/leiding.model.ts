@@ -1,5 +1,6 @@
-export interface Leiding {
-    id: number;
+import { Resource } from "projects/kangoeroes-frontend-core/src/lib/data-service/resource-model";
+
+export class Leiding extends Resource {
 
     takId: number;
     takNaam: string;

@@ -1,4 +1,5 @@
-import { Resource } from "projects/kangoeroes-frontend-core/src/lib/data-service/resource-model";
+import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
+
 
 export class Leiding extends Resource {
     naam: string;

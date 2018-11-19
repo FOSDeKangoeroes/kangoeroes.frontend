@@ -2,18 +2,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
-import { Router } from '@angular/router';
-
 import { SnotifyService } from 'ng-snotify';
-
 import * as moment from 'moment';
 import { Leiding } from '../../shared/leiding.model';
-import { DataService } from '../../../services/data.service';
 import { EventService } from '../../../shared/event.service';
 import { Pagination } from '../../../models/pagination-model';
 import { Tak } from '../../../tak/shared/tak.model';
 import { Util } from '../../util';
+import { LeidingDataService } from '../../shared/leiding-data.service';
 
 
 
@@ -33,8 +29,7 @@ export class LeidingAddComponent implements OnInit {
   @Output () public newLeiding = new EventEmitter<Leiding>();
   constructor(public addLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
-    private dataService: DataService,
-    private router: Router,
+    private dataService: LeidingDataService,
     private eventService: EventService,
     private snotifyService: SnotifyService) { }
 
@@ -79,7 +74,7 @@ onSubmit() {
     leidingSinds: gestart ? gestart : undefined
   };
 
-  this.dataService.addLeiding(leiding).subscribe(res => {
+  this.dataService.create(leiding).subscribe(res => {
     this.eventService.newLeiding(res);
     this.addLeidingModalRef.hide();
     this.snotifyService.success('Leiding werd succesvol aangemaakt!');

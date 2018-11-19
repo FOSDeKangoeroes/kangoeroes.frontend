@@ -1,28 +1,20 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule} from '@angular/router';
 
-// Import Containers
-import {
-  FullLayoutComponent,
-  SimpleLayoutComponent
-} from './containers';
-import { TakListComponent } from './tak/tak-list/tak-list.component';
-import { LeidingListComponent } from './leiding/leiding-list/leiding-list.component';
-import { TakDetailComponent } from './tak/tak-detail/tak-detail.component';
+import { FullLayoutComponent } from './containers';
 import { TakResolverService } from './tak/tak-resolver.service';
-import { CallbackComponent } from './components/callback/callback.component';
 
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AuthorizationGuard } from './core/auth/authorization.guard';
-
+import { CallbackComponent } from 'projects/kangoeroes-frontend-core/src/lib/auth/components/callback/callback.component';
 
 const routes: Routes = [
   // Normale url (localhost:4200 bijv.) redirecten naar localhost:4200/#/dashboard
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full',
+    pathMatch: 'full'
   },
   {
     path: '',
@@ -42,7 +34,6 @@ const routes: Routes = [
         data: {
           title: 'Takken'
         }
-
       },
       {
         path: 'personen',
@@ -57,16 +48,15 @@ const routes: Routes = [
     path: 'forbidden',
     component: AppForbiddenComponent
   },
-      {
+  {
     path: 'callback',
     component: CallbackComponent
   }
-
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
   providers: [TakResolverService],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

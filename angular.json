@@ -280,7 +280,7 @@
       }
     }
   },
-  "defaultProject": "kangoeroes-frontend-totems",
+  "defaultProject": "kangoeroes-frontend-leidingbeheer",
   "schematics": {
     "@schematics/angular:component": {
       "spec": false,

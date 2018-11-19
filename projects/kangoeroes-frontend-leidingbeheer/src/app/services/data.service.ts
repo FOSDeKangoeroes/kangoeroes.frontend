@@ -13,7 +13,7 @@ import { Role } from '../core/auth/role.model';
 @Injectable()
 export class DataService {
 
-  private baseUrl = environment.baseUrl;
+  private baseUrl = 'http://localhost:4200'
 
   private _takUrl = `${this.baseUrl}/api/tak`;
   private _leidingUrl = `${this.baseUrl}/api/leiding`;

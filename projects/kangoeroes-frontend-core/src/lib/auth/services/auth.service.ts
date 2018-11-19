@@ -5,22 +5,18 @@ import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/publ
 import { ConfigService } from '../../config/config.service';
 import { Config } from '../../config/config';
 
-
-
 @Injectable({
   providedIn: KangoeroesAuthModule
 })
 export class AuthService {
-   auth0: auth0.WebAuth;
+  auth0: auth0.WebAuth;
 
   userProfile: auth0.Auth0UserProfile;
-  private readonly config: Config 
+  private readonly config: Config;
 
   constructor(public router: Router, private configService: ConfigService) {
-
     this.config = this.configService.get();
-console.log(this.config); 
-     this.auth0 = new auth0.WebAuth({
+    this.auth0 = new auth0.WebAuth({
       clientID: this.config.auth0ClientId,
       domain: this.config.auth0Domain,
       responseType: this.config.auth0ResponseType,
@@ -39,9 +35,11 @@ console.log(this.config);
       if (authResult && authResult.accessToken && authResult.idToken) {
         // window.location.hash = '';
         this.setSession(authResult);
-        console.log('start navigating');
+        this.router.navigate(['/totems']);
+      } else if (err) {
+        this.router.navigate(['/totems']);
+        console.log(err);
       }
-      this.router.navigate(['/totems']);
     });
   }
 
@@ -64,9 +62,11 @@ console.log(this.config);
     const expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
     );
+    const scopes = authResult.scope || this.config.auth0Scopes || '';
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('scopes', JSON.stringify(scopes));
   }
 
   public logout(): void {
@@ -74,6 +74,7 @@ console.log(this.config);
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('scopes');
     // Go back to the home route
     this.router.navigate(['/logout']);
   }
@@ -83,6 +84,11 @@ console.log(this.config);
     // Access Token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
     return new Date().getTime() < expiresAt;
+  }
+
+  public userHasScopes(scopes: Array<string>): boolean {
+    const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
+    return scopes.every(scope => grantedScopes.includes(scope));
   }
 
   public getToken() {

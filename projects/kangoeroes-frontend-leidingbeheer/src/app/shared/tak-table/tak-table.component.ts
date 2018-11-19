@@ -1,19 +1,14 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { Tak } from '../../tak/tak.model';
-import { MatSort, MatInput, MatTableDataSource, MatPaginator } from '@angular/material';
+
+import { MatSort, MatInput,MatPaginator } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
-import { TakTableService } from '../../tak/tak-table.service';
+import { TakTableService } from '../../tak/shared/tak-table.service';
 import { EventService } from '../event.service';
-import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';
-import { of as observableOf } from 'rxjs/observable/of';
-import { catchError } from 'rxjs/operators/catchError';
-import { map } from 'rxjs/operators/map';
-import { startWith } from 'rxjs/operators/startWith';
-import { switchMap } from 'rxjs/operators/switchMap';
 import { DataService } from '../../services/data.service';
 import { TakDataSource } from './tak-data-source';
 import { tap } from 'rxjs/operators';
+import { Tak } from '../../tak/shared/tak.model';
 
 @Component({
   selector: 'app-tak-table',

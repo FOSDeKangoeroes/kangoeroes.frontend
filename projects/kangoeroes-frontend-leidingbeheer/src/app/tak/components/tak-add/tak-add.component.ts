@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
-import { Tak } from '../tak.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EventService } from '../../shared/event.service';
-import { DataService } from '../../services/data.service';
+
 import { SnotifyService } from 'ng-snotify';
+import { DataService } from '../../../services/data.service';
+import { EventService } from '../../../shared/event.service';
 
 @Component({
   // tslint:disable-next-line:component-selector

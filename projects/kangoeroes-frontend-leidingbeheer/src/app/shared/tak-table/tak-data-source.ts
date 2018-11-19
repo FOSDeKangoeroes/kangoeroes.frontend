@@ -1,11 +1,9 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Tak } from '../../tak/tak.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { catchError, finalize } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
 import { DataService } from '../../services/data.service';
-import { HttpResponse } from '@angular/common/http';
+import { Tak } from '../../tak/shared/tak.model';
+
 
 
 

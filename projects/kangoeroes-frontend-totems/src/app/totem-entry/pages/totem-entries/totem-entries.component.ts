@@ -93,9 +93,6 @@ export class TotemEntriesComponent implements OnInit {
   }
 
   detail(event) {
-  // TODO: navigate to new component
-  console.log(event);
-
   this.router.navigate(['totems', event.id]);
   }
 }

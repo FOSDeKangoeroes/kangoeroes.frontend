@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Util } from '../util';
 import { Tak } from '../../tak/tak.model';
-import { Leiding } from '../leiding.model';
+import { Leiding } from '../shared/leiding.model';
 import { Router } from '@angular/router';
 import { EventService } from '../../shared/event.service';
 import { DataService } from '../../services/data.service';

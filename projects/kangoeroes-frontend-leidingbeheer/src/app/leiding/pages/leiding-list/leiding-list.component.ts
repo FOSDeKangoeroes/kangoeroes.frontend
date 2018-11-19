@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { Leiding } from '../leiding.model';
+import { Leiding } from '../shared/leiding.model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LeidingAddComponent } from '../leiding-add/leiding-add.component';
 import { SelectionModel } from '@angular/cdk/collections';
 import { LeidingActions } from './leiding.actions';
-import { LeidingTableService } from '../leiding-table.service';
+import { LeidingTableService } from '../shared/leiding-table.service';
 import { DataService } from '../../services/data.service';
 
 export interface Action {

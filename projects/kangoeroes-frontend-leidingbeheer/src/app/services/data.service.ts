@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers} from '@angular/http';
+
 import 'rxjs/add/operator/map';
-import { HttpParams, HttpClient, HttpResponse } from '@angular/common/http';
-import { Tak } from '../tak/tak.model';
-import { Leiding } from '../leiding/leiding.model';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+
+import { Leiding } from '../leiding/shared/leiding.model';
 
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
 import { Role } from '../core/auth/role.model';
+import { Tak } from '../tak/shared/tak.model';
 
 
 @Injectable()

@@ -6,11 +6,11 @@ import { MatTableModule,
   MatInputModule,
   MatProgressSpinnerModule,
   MatPaginatorModule } from '@angular/material';
-import { LeidingTableService } from '../leiding/leiding-table.service';
+import { LeidingTableService } from '../leiding/shared/leiding-table.service';
 import { LeidingTableComponent } from './leiding-table/leiding-table.component';
 import { RouterModule } from '@angular/router';
 import { TakTableComponent } from './tak-table/tak-table.component';
-import { TakTableService } from '../tak/tak-table.service';
+import { TakTableService } from '../tak/shared/tak-table.service';
 
 
 @NgModule({

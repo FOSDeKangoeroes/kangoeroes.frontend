@@ -1,5 +1,5 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Leiding } from '../../leiding/leiding.model';
+import { Leiding } from '../../leiding/shared/leiding.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Observable } from 'rxjs/Observable';

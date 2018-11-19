@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { EventService } from '../../shared/event.service';
 import { DataService } from './../../services/data.service';
-import { Leiding } from './../leiding.model';
+import { Leiding } from '../shared/leiding.model';
 
 @Component({
   selector: 'app-leiding-manage-user',

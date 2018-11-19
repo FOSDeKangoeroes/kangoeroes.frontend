@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Leiding } from './leiding.model';
 
-@Injectable()
+@Injectable(
+{
+  providedIn: 'root'
+}
+)
 export class LeidingTableService {
 
   private _takId: number;

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
 
 import { FullLayoutComponent } from './containers';
-import { TakResolverService } from './tak/tak-resolver.service';
+import { TakResolverService } from './tak/shared/tak-resolver.service';
 
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';

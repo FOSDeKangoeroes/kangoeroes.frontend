@@ -10,6 +10,8 @@ import { Pagination } from '../../../models/pagination-model';
 import { Tak } from '../../../tak/shared/tak.model';
 import { Util } from '../../util';
 import { LeidingDataService } from '../../shared/leiding-data.service';
+import { TakDataService } from '../../../tak/shared/tak-data.service';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 
 
 
@@ -30,6 +32,7 @@ export class LeidingAddComponent implements OnInit {
   constructor(public addLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
     private dataService: LeidingDataService,
+    private takDataService: TakDataService,
     private eventService: EventService,
     private snotifyService: SnotifyService) { }
 
@@ -42,7 +45,14 @@ export class LeidingAddComponent implements OnInit {
       totalPages: 0
     };
 
-    this.dataService.getTakken('volgorde', 'asc', '', this.pagination.pageSize, this.pagination.currentPage).subscribe(res => {
+    const queryOptions = new QueryOptions();
+
+    queryOptions.pageNumber = this.pagination.currentPage;
+    queryOptions.pageSize = this.pagination.pageSize;
+    queryOptions.sortBy = 'volgorde';
+    queryOptions.sortOrder = 'asc';
+
+    this.takDataService.list(queryOptions).subscribe(res => {
       const headers = res.headers.get('X-Pagination');
       this.pagination = JSON.parse(headers);
       this.takkenLoading = false;
@@ -88,7 +98,15 @@ onSubmit() {
   fetchMore(event) {
     if (this.takken.length < this.pagination.totalCount) {
       this.takkenLoading = true;
-      this.dataService.getTakken('volgorde', 'asc', '', this.pagination.pageSize, this.pagination.currentPage + 1)
+
+      const queryOptions = new QueryOptions();
+
+      queryOptions.pageNumber = this.pagination.currentPage + 1;
+      queryOptions.pageSize = this.pagination.pageSize;
+      queryOptions.sortBy = 'volgorde';
+      queryOptions.sortOrder = 'asc';
+
+      this.takDataService.list(queryOptions)
         .subscribe(res => {
           const headers = res.headers.get('X-Pagination');
           this.pagination = JSON.parse(headers);

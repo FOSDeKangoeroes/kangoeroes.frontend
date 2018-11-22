@@ -1,6 +1,7 @@
-export class Tak {
+import { Resource } from "projects/kangoeroes-frontend-core/src/lib/data-service/resource-model";
 
-    id: number;
+export class Tak extends Resource {
+
     naam: string;
     volgorde: number;
     leidingCount: number;

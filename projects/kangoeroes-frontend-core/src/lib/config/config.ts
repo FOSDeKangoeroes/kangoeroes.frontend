@@ -8,5 +8,6 @@ export interface Config {
     auth0Scopes: string;
     auth0ResponseType: string;
     baseUrl: string;
+    postAuthUrl: string;
 
 }

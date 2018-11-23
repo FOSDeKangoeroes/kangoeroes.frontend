@@ -6,8 +6,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { SnotifyService } from 'ng-snotify';
-import { DataService } from '../../../services/data.service';
 import { Tak } from '../../../tak/shared/tak.model';
+import { TakDataService } from '../../../tak/shared/tak-data.service';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
+import { LeidingDataService } from '../../shared/leiding-data.service';
 
 
 @Component({
@@ -19,7 +21,8 @@ import { Tak } from '../../../tak/shared/tak.model';
 export class LeidingChangeTakComponent implements OnInit {
 
   constructor(public changeTakModal: BsModalRef,
-    private dataService: DataService,
+    private takDataService: TakDataService,
+    private leidingDataService: LeidingDataService,
     private fb: FormBuilder,
     private eventService: EventService, private snotifyService: SnotifyService) { }
 
@@ -37,7 +40,15 @@ export class LeidingChangeTakComponent implements OnInit {
       currentPage: 1,
       totalPages: 0
     };
-    this.dataService.getTakken('volgorde', 'asc', '', this.pagination.pageSize, this.pagination.currentPage).subscribe(res => {
+
+    const queryOptions = new QueryOptions();
+
+    queryOptions.pageNumber = this.pagination.currentPage;
+    queryOptions.pageSize = this.pagination.pageSize;
+    queryOptions.sortBy = 'volgorde';
+    queryOptions.sortOrder = 'asc';
+
+    this.takDataService.list(queryOptions).subscribe(res => {
       const headers = res.headers.get('X-Pagination');
       this.pagination = JSON.parse(headers);
       this.takkenLoading = false;
@@ -54,7 +65,7 @@ export class LeidingChangeTakComponent implements OnInit {
 onSubmit() {
   const takId = this.changeTakFormGroup.value.tak;
 
-  this.dataService.changeTakForLeiding(this.leidingId, takId).subscribe(res => {
+  this.leidingDataService.tak(this.leidingId, takId).subscribe(res => {
     this.eventService.newLeiding(res);
     this.changeTakModal.hide();
     this.snotifyService.success('Tak succesvol gewijzigd!');
@@ -64,7 +75,13 @@ onSubmit() {
   fetchMore(event) {
     if (this.takken.length < this.pagination.totalCount) {
       this.takkenLoading = true;
-      this.dataService.getTakken('volgorde', 'asc', '', this.pagination.pageSize, this.pagination.currentPage + 1)
+      const queryOptions = new QueryOptions();
+
+      queryOptions.pageNumber = this.pagination.currentPage + 1;
+      queryOptions.pageSize = this.pagination.pageSize;
+      queryOptions.sortBy = 'volgorde';
+      queryOptions.sortOrder = 'asc';
+      this.takDataService.list(queryOptions)
         .subscribe(res => {
           const headers = res.headers.get('X-Pagination');
           this.pagination = JSON.parse(headers);

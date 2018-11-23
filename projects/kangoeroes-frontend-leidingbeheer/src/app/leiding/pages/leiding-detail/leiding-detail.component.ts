@@ -7,8 +7,7 @@ import { Leiding } from '../../shared/leiding.model';
 import { EventService } from '../../../shared/event.service';
 import { LeidingChangeTakComponent } from '../../components/leiding-change-tak/leiding-change-tak.component';
 import { LeidingEditComponent } from '../../components/leiding-edit/leiding-edit.component';
-import { LeidingEditRolesComponent } from '../../components/leiding-edit-roles/leiding-edit-roles.component';
-import { LeidingManageUserComponent } from '../../components/leiding-manage-user/leiding-manage-user.component';
+
 
 @Component({
   selector: 'app-leiding-detail',
@@ -50,13 +49,5 @@ export class LeidingDetailComponent implements OnInit {
     this.editModal = this.modalService.show(LeidingEditComponent);
   }
 
-  openRoleModal() {
-    this.eventService.activeLeiding = this._leiding;
-    this.editRoleModal = this.modalService.show(LeidingEditRolesComponent);
-  }
 
-  createUser() {
-    this.eventService.activeLeiding = this._leiding;
-    this.manageUserModal = this.modalService.show(LeidingManageUserComponent);
-  }
 }

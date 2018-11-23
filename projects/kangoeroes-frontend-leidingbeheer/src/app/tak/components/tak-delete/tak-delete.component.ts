@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { SnotifyService } from 'ng-snotify';
 import { DataService } from '../../../services/data.service';
+import { TakDataService } from '../../shared/tak-data.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,7 +18,7 @@ export class TakDeleteComponent implements OnInit {
   title: string;
   takId: number;
   constructor(public deleteModalRef: BsModalRef,
-    private dataService: DataService,
+    private dataService: TakDataService,
     private _router: Router,
     private snotifyService: SnotifyService
   ) {}
@@ -25,7 +26,7 @@ export class TakDeleteComponent implements OnInit {
   ngOnInit() {  }
 
   onDelete() {
-    this.dataService.deleteTak(this.takId).subscribe(res => {
+    this.dataService.delete(this.takId).subscribe(res => {
       if (res) {
         this.deleteModalRef.hide();
         this._router.navigate(['takken']);

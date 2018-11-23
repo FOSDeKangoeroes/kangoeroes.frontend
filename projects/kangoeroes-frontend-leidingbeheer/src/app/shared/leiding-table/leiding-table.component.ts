@@ -1,23 +1,13 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-
-import { MatSort, MatTableDataSource, MatInput, MatPaginator } from '@angular/material';
+import { MatSort,MatInput, MatPaginator } from '@angular/material';
 import { Leiding } from '../../leiding/shared/leiding.model';
 import { LeidingTableService } from '../../leiding/shared/leiding-table.service';
 import { EventService } from '../event.service';
 import { LeidingDataSource } from './leiding-data-source';
-import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';
-import { of as observableOf } from 'rxjs/observable/of';
-import { catchError } from 'rxjs/operators/catchError';
-import { map } from 'rxjs/operators/map';
-import { startWith } from 'rxjs/operators/startWith';
-import { switchMap } from 'rxjs/operators/switchMap';
-import { DataService } from '../../services/data.service';
-import { debounceTime } from 'rxjs/operator/debounceTime';
-import { distinctUntilChanged } from 'rxjs/operator/distinctUntilChanged';
 import { tap } from 'rxjs/operators';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { LeidingDataService } from '../../leiding/shared/leiding-data.service';
 
 
 @Component({
@@ -37,7 +27,7 @@ export class LeidingTableComponent implements OnInit, AfterViewInit {
 
   resultsLength = 0;
 
-  constructor(private leidingService: LeidingTableService, private eventService: EventService, private dataService: DataService) {
+  constructor(private leidingService: LeidingTableService, private eventService: EventService, private dataService: LeidingDataService) {
    }
 
   ngOnInit() {

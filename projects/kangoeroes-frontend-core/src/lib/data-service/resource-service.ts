@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 export abstract class ResourceService<T extends Resource> {
   constructor(
     protected httpClient: HttpClient,
-    private url: string,
-    private endpoint: string,
+    protected url: string,
+    protected endpoint: string,
     protected serializer: Serializer<T>
   ) {}
 

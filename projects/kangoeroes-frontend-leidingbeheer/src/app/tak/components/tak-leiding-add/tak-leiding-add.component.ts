@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { DataService } from '../../../services/data.service';
 import { EventService } from '../../../shared/event.service';
 import { Util } from '../../../leiding/util';
+import { LeidingDataService } from '../../../leiding/shared/leiding-data.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -23,7 +24,7 @@ export class TakLeidingAddComponent implements OnInit {
 
   constructor(public addLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
-    private dataService: DataService,
+    private dataService: LeidingDataService,
     private eventService: EventService,
     private snotifyService: SnotifyService) { }
 
@@ -50,7 +51,7 @@ export class TakLeidingAddComponent implements OnInit {
       leidingSinds: gestart ? gestart : undefined
     };
 
-    this.dataService.addLeiding(leiding).subscribe(res => {
+    this.dataService.create(leiding).subscribe(res => {
       this.eventService.newLeiding(res);
       this.addLeidingModalRef.hide();
       this.snotifyService.success('Leiding werd succesvol aangemaakt!');

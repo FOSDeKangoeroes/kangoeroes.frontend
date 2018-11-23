@@ -20,8 +20,6 @@ import { LeidingListComponent } from './pages/leiding-list/leiding-list.componen
 import { LeidingDetailComponent } from './pages/leiding-detail/leiding-detail.component';
 import { LeidingAddComponent } from './components/leiding-add/leiding-add.component';
 import { LeidingEditComponent } from './components/leiding-edit/leiding-edit.component';
-import { LeidingEditRolesComponent } from './components/leiding-edit-roles/leiding-edit-roles.component';
-import { LeidingManageUserComponent } from './components/leiding-manage-user/leiding-manage-user.component';
 import { LeidingChangeTakComponent } from './components/leiding-change-tak/leiding-change-tak.component';
 
 
@@ -55,14 +53,12 @@ const routes: Routes = [
     LeidingAddComponent,
     LeidingDetailComponent,
     LeidingChangeTakComponent,
-    LeidingEditComponent,
-    LeidingEditRolesComponent,
-    LeidingManageUserComponent],
+    LeidingEditComponent
+],
   entryComponents: [
     LeidingAddComponent,
     LeidingChangeTakComponent,
-    LeidingEditComponent,
-    LeidingEditRolesComponent,
-    LeidingManageUserComponent]
+    LeidingEditComponent
+]
 })
 export class LeidingModule { }

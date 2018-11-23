@@ -5,10 +5,11 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { TakTableService } from '../../tak/shared/tak-table.service';
 import { EventService } from '../event.service';
 import { merge } from 'rxjs/observable/merge';
-import { DataService } from '../../services/data.service';
+
 import { TakDataSource } from './tak-data-source';
 import { tap } from 'rxjs/operators';
 import { Tak } from '../../tak/shared/tak.model';
+import { TakDataService } from '../../tak/shared/tak-data.service';
 
 @Component({
   selector: 'app-tak-table',
@@ -27,7 +28,7 @@ export class TakTableComponent implements OnInit, AfterViewInit {
 
   resultsLength = 0;
 
-  constructor(private takService: TakTableService, private eventService: EventService, private dataService: DataService) { }
+  constructor(private takService: TakTableService, private eventService: EventService, private dataService: TakDataService) { }
 
   ngOnInit() {
     this.dataSource = new TakDataSource(this.dataService);

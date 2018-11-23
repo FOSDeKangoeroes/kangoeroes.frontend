@@ -25,7 +25,6 @@ export class ConfigService {
   }
 
   public get(): Config {
-    console.log(this.config); 
     return this.config;
   }
 }

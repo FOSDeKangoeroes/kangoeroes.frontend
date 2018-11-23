@@ -7,6 +7,7 @@ import { Leiding } from '../../shared/leiding.model';
 import { DataService } from '../../../services/data.service';
 import { EventService } from '../../../shared/event.service';
 import { Util } from '../../util';
+import { LeidingDataService } from '../../shared/leiding-data.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class LeidingEditComponent implements OnInit {
   constructor(
     public editLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
-    private dataService: DataService,
+    private dataService: LeidingDataService,
     private eventService: EventService,
     private snotifyService: SnotifyService) {
       this.leiding = this.eventService.activeLeiding;
@@ -52,7 +53,7 @@ export class LeidingEditComponent implements OnInit {
       leidingSinds: gestart ? gestart : undefined
     };
 
-      this.dataService.updateLeiding(leiding, this.leiding.id).subscribe( res => {
+      this.dataService.update(leiding, this.leiding.id).subscribe( res => {
         this.eventService.newLeiding(res);
         this.leiding = res;
         this.editLeidingModalRef.hide();

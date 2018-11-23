@@ -21,7 +21,7 @@ export class DataService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getTakken(
+  /*getTakken(
   sortBy: string = 'volgorde',
   sortOrder: string = 'asc',
   query: string = '',
@@ -32,27 +32,27 @@ export class DataService {
     .get<Tak[]>(`${this._takUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&pageSize=${pageSize}&pageNumber=${pageNumber}`,
     {observe: 'response'});
 
-  }
+  }*/
 
-  getTak(id): Observable<Tak> {
+  /*getTak(id): Observable<Tak> {
     return this.httpClient.get<Tak>(`${this._takUrl}/${id}`);
-  }
+  }*/
 
   getLeidingForTak(id): Observable<Leiding[]> {
     return this.httpClient.get<Leiding[]>(`${this._takUrl}/${id}/leiding`);
   }
 
-  getLeidingForId(id): Observable<Leiding> {
+  /*getLeidingForId(id): Observable<Leiding> {
     return this.httpClient.get<Leiding>(`${this._leidingUrl}/${id}`);
-  }
+  }*/
 
-  updateTak(tak: Tak, takId: number): Observable<Tak> {
+  /*updateTak(tak: Tak, takId: number): Observable<Tak> {
     const takJson = tak;
    return this.httpClient.put<Tak>(`${this._takUrl}/${takId}`, takJson);
 
-  }
+  }*/
 
-  deleteTak(id: number): Observable<boolean> {
+ /* deleteTak(id: number): Observable<boolean> {
     return this.httpClient.delete<Tak>(`${this._takUrl}/${id}`).map(res => {
       if (res) {
         return true;
@@ -60,17 +60,17 @@ export class DataService {
       return false;
     });
 
-  }
+  }*/
 
-  addTak(tak): Observable<Tak> {
+  /*addTak(tak): Observable<Tak> {
     return this.httpClient.post<Tak>(this._takUrl, tak);
-  }
+  }*/
 
-  addLeiding(leiding): Observable<Leiding> {
+ /* addLeiding(leiding): Observable<Leiding> {
     return this.httpClient.post<Leiding>(this._leidingUrl, leiding);
-  }
+  }*/
 
-  getLeiding(sortBy = '',
+ /* getLeiding(sortBy = '',
             sortOrder = 'asc',
             query = ' ',
             takId: number = 0,
@@ -81,22 +81,22 @@ export class DataService {
     // tslint:disable-next-line:max-line-length
     (`${this._leidingUrl}?sortBy=${sortBy}&sortOrder=${sortOrder}&query=${query}&tak=${takId}&pageSize=${pageSize}&pageNumber=${pageNumber}`,
      {observe: 'response'});
-  }
+            }*/
 
-  updateLeiding(leiding, leidingId): Observable<Leiding> {
+ /* updateLeiding(leiding, leidingId): Observable<Leiding> {
     return this.httpClient.
     put<Leiding>(`${this._leidingUrl}/${leidingId}`, leiding);
-  }
+  }*/
 
-  changeTakForLeiding(leidingId, newTakId: number): Observable<Leiding> {
+  /*changeTakForLeiding(leidingId, newTakId: number): Observable<Leiding> {
     return this.httpClient.put<Leiding>(`${this._leidingUrl}/${leidingId}/tak`, {newTakId: newTakId});
-  }
+  }*/
 
-  createUser(leidingId): Observable<Leiding> {
+ /* createUser(leidingId): Observable<Leiding> {
     return this.httpClient.post<Leiding>(`${this._leidingUrl}/${leidingId}/user`, null);
-  }
+  }*/
 
-  getRolesForUser(id) {
+ /* getRolesForUser(id) {
     return this.httpClient.get<Role[]>(`${this._leidingUrl}/${id}/roles`);
   }
 
@@ -106,6 +106,6 @@ export class DataService {
 
   addRoleForUser(leidingId, roleId): Observable<HttpResponse<any>> {
     return this.httpClient.patch<HttpResponse<any>>(`${this._leidingUrl}/${leidingId}/roles/${roleId}`, null);
-  }
+  }*/
   }
 

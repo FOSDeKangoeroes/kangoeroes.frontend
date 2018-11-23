@@ -8,6 +8,7 @@ import { SnotifyService } from 'ng-snotify';
 import { DataService } from '../../../services/data.service';
 import { EventService } from '../../../shared/event.service';
 import { Tak } from '../../shared/tak.model';
+import { TakDataService } from '../../shared/tak-data.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class TakEditComponent implements OnInit {
 
   constructor(public editModalRef: BsModalRef,
     private fb: FormBuilder,
-    private dataService: DataService,
+    private dataService: TakDataService,
     eventService: EventService,
     private snotifyService: SnotifyService
   ) {
@@ -46,7 +47,7 @@ export class TakEditComponent implements OnInit {
   onSubmit() {
  this.tak.naam = this.editTakFormGroup.value.naam;
  this.tak.volgorde = this.editTakFormGroup.value.volgorde;
-    this.dataService.updateTak(this.tak, this.tak.id).subscribe(res => {
+    this.dataService.update(this.tak, this.tak.id).subscribe(res => {
       if (res) {
         this.editModalRef.hide();
         this.snotifyService.success('Tak succesvol gewijzigd!');

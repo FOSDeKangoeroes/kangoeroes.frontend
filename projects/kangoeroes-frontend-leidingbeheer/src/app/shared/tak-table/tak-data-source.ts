@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { DataService } from '../../services/data.service';
 import { Tak } from '../../tak/shared/tak.model';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
+import { TakDataService } from '../../tak/shared/tak-data.service';
 
 
 
@@ -15,7 +17,7 @@ export class TakDataSource implements DataSource<Tak> {
 
     public loading$ = this.loadingSubject.asObservable();
 
-    constructor(private dataService: DataService) { }
+    constructor(private dataService: TakDataService) { }
 
     connect(collectionViewer: CollectionViewer): Observable<Tak[]> {
         return this.takSubject.asObservable();
@@ -28,7 +30,13 @@ export class TakDataSource implements DataSource<Tak> {
 
     loadTakken(sortBy = 'naam', sortOrder = 'asc', filter = '', pageSize = 25, pageIndex = 0) {
         this.loadingSubject.next(true);
-        this.dataService.getTakken(sortBy, sortOrder, filter, pageSize, pageIndex + 1)
+        const queryOptions = new QueryOptions();
+
+        queryOptions.pageNumber = pageIndex + 1;
+        queryOptions.pageSize = pageSize;
+        queryOptions.sortBy = sortBy;
+        queryOptions.sortOrder = sortOrder;
+        this.dataService.list(queryOptions)
             .subscribe(res => {
 
                 const headers = JSON.parse(res.headers.get('X-Pagination'));

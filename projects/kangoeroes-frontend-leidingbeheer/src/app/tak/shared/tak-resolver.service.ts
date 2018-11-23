@@ -3,6 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Tak } from './tak.model';
 import { Observable } from 'rxjs/Observable';
 import { DataService } from '../../services/data.service';
+import { TakDataService } from './tak-data.service';
 
 @Injectable(
   {
@@ -11,9 +12,9 @@ import { DataService } from '../../services/data.service';
 )
 export class TakResolverService implements Resolve<Tak> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tak>  {
-    return this.dataService.getTak(route.params['id']);
+    return this.dataService.read(route.params['id']);
   }
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: TakDataService) { }
 
 }

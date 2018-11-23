@@ -15,4 +15,8 @@ export class LeidingDataService extends ResourceService<Leiding> {
     const url = `${configService.get().appUrl}/api`;
     super(httpClient, url, 'leiding', new LeidingSerializer())
    }
+
+  public tak(leidingId: number, newTakId: number) {
+     return this.httpClient.put<Leiding>(`${this.url}/${this.endpoint}/${leidingId}/tak`, { newTakId: newTakId });
+   }
 }

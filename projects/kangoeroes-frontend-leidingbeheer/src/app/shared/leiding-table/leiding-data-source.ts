@@ -3,7 +3,7 @@ import { Leiding } from '../../leiding/shared/leiding.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Observable } from 'rxjs/Observable';
-import { DataService } from '../../services/data.service';
+
 import { LeidingDataService } from '../../leiding/shared/leiding-data.service';
 import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 

@@ -76,7 +76,6 @@ import { ServerErrorInterceptor } from './interceptors/server-error-interceptor'
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { MAT_DATE_LOCALE} from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { DataService } from './services/data.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { EventService } from './shared/event.service';
 import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
@@ -145,7 +144,6 @@ const appInitializerFn = (appConfig: ConfigService) => {
       multi: true,
       deps: [ConfigService]
     },
-    DataService,
     EventService
   ],
   bootstrap: [AppComponent]

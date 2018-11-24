@@ -4,7 +4,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 
 import { SnotifyService } from 'ng-snotify';
-import { DataService } from '../../../services/data.service';
 import { TakDataService } from '../../shared/tak-data.service';
 
 @Component({

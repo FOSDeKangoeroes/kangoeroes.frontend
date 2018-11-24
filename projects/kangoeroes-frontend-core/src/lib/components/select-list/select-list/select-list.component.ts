@@ -1,7 +1,7 @@
 
 import { HttpHeaders } from '@angular/common/http';
 
-import { FormGroup, FormControlName, AbstractControl, FormBuilder, FormControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, AbstractControl, FormBuilder, ValidationErrors } from '@angular/forms';
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
 
 import { Subject } from 'rxjs';

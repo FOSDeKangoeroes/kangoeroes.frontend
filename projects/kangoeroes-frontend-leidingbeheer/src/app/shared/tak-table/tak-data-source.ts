@@ -1,7 +1,6 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { DataService } from '../../services/data.service';
 import { Tak } from '../../tak/shared/tak.model';
 import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 import { TakDataService } from '../../tak/shared/tak-data.service';

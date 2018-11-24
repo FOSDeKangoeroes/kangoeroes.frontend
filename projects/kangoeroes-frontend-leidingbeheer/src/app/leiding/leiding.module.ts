@@ -14,7 +14,6 @@ import { LeidingResolverService } from './shared/leiding-resolver.service';
 import { SharedModule } from '../shared/shared.module';
 
 import { MatCheckboxModule, MatInputModule, MatFormFieldModule} from '@angular/material';
-import { DataService } from '../services/data.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { LeidingListComponent } from './pages/leiding-list/leiding-list.component';
 import { LeidingDetailComponent } from './pages/leiding-detail/leiding-detail.component';

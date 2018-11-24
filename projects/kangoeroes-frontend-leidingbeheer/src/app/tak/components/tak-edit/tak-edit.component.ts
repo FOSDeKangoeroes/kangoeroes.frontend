@@ -1,11 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-
-
 import { SnotifyService } from 'ng-snotify';
-import { DataService } from '../../../services/data.service';
 import { EventService } from '../../../shared/event.service';
 import { Tak } from '../../shared/tak.model';
 import { TakDataService } from '../../shared/tak-data.service';

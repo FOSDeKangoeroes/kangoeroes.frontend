@@ -11,9 +11,6 @@ import { Tak } from '../../../tak/shared/tak.model';
 import { Util } from '../../util';
 import { LeidingDataService } from '../../shared/leiding-data.service';
 import { TakDataService } from '../../../tak/shared/tak-data.service';
-import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
-
-
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -38,33 +35,10 @@ export class LeidingAddComponent implements OnInit {
 
   ngOnInit() {
 
-    this.pagination = {
-      pageSize: 10,
-      totalCount: 0,
-      currentPage: 1,
-      totalPages: 0
-    };
-
-    const queryOptions = new QueryOptions();
-
-    queryOptions.pageNumber = this.pagination.currentPage;
-    queryOptions.pageSize = this.pagination.pageSize;
-    queryOptions.sortBy = 'volgorde';
-    queryOptions.sortOrder = 'asc';
-
-    this.takDataService.list(queryOptions).subscribe(res => {
-      const headers = res.headers.get('X-Pagination');
-      this.pagination = JSON.parse(headers);
-      this.takkenLoading = false;
-      this.takken = res.body;
-
-    });
-
     this.addLeidingFormGroup = this.fb.group({
       naam: ['', [Validators.required, Validators.minLength(2)]],
       voornaam: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Util.emailOrEmpty([Validators.email])]],
-      tak: ['', [Validators.required, Validators.min(1)]],
       leidingSinds: [''],
       datumGestopt: [''],
       datumGestart: ['']
@@ -95,25 +69,8 @@ onSubmit() {
 
 }
 
-  fetchMore(event) {
-    if (this.takken.length < this.pagination.totalCount) {
-      this.takkenLoading = true;
-
-      const queryOptions = new QueryOptions();
-
-      queryOptions.pageNumber = this.pagination.currentPage + 1;
-      queryOptions.pageSize = this.pagination.pageSize;
-      queryOptions.sortBy = 'volgorde';
-      queryOptions.sortOrder = 'asc';
-
-      this.takDataService.list(queryOptions)
-        .subscribe(res => {
-          const headers = res.headers.get('X-Pagination');
-          this.pagination = JSON.parse(headers);
-          this.takken = this.takken.concat(res.body);
-          this.takkenLoading = false;
-        });
-    }
+  addFormControl(name: string, formGroup: FormGroup): void {
+    this.addLeidingFormGroup.addControl(name, formGroup);
   }
 
 }

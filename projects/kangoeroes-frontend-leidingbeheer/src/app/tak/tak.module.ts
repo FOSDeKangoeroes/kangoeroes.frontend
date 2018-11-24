@@ -16,7 +16,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { EventService } from '../shared/event.service';
-import { DataService } from '../services/data.service';
 import { TakListComponent } from './pages/tak-list/tak-list.component';
 import { TakEditComponent } from './components/tak-edit/tak-edit.component';
 import { TakDeleteComponent } from './components/tak-delete/tak-delete.component';
@@ -54,7 +53,6 @@ const routes: Routes = [
     SharedModule
   ],
   providers: [
-    DataService,
     EventService
   ],
   declarations: [

@@ -20,6 +20,7 @@ import { LeidingDetailComponent } from './pages/leiding-detail/leiding-detail.co
 import { LeidingAddComponent } from './components/leiding-add/leiding-add.component';
 import { LeidingEditComponent } from './components/leiding-edit/leiding-edit.component';
 import { LeidingChangeTakComponent } from './components/leiding-change-tak/leiding-change-tak.component';
+import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
 
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    NgSelectModule
+    NgSelectModule,
+    SelectListModule
   ],
   declarations: [LeidingListComponent,
     LeidingAddComponent,

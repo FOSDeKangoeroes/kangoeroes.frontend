@@ -10,18 +10,7 @@
 
       <div class="form-group">
         <div class="col-12">
-
-          <ng-select formControlName="tak" [items]="takken" [virtualScroll]="true" [loading]="takkenLoading" bindLabel="naam" bindValue="id"
-            placeholder="Kies een tak*" (scrollToEnd)="fetchMore($event)">
-            <ng-template ng-header-tmp>
-              <small class="form-text text-muted">{{takken.length}} van {{pagination.totalCount}} geladen</small>
-            </ng-template>
-            <ng-template ng-option-tmp let-item="item" let-index="index">
-              {{item.naam}}
-            </ng-template>
-          </ng-select>
-          <div class="text-danger" *ngIf='addLeidingFormGroup.get("tak").errors?.required && addLeidingFormGroup.get("tak").touched'>Dit veld is verplicht.</div>
-          <div class="text-danger" *ngIf='addLeidingFormGroup.get("tak").errors?.min && addLeidingFormGroup.get("tak").touched'>Kies een geldige tak</div>
+          <app-select-list (formReady)="addFormControl('tak', $event)" placeholder="Tak" [dataService]="takDataService" [validation]="required" ></app-select-list>
         </div>
       </div>
 
@@ -30,8 +19,6 @@
           <input matInput placeholder="Voornaam*" formControlName='voornaam'>
           <mat-error *ngIf='addLeidingFormGroup.get("voornaam").errors?.required && addLeidingFormGroup.get("voornaam").touched'>Voornaam is verplicht</mat-error>
         </mat-form-field>
-
-
 
       </div>
 

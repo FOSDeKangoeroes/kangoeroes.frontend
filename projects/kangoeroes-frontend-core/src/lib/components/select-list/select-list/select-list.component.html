@@ -1,6 +1,13 @@
-<div [formGroup]="formGroup">
-  <ng-select #selectList formControlName="control" [items]="list" [loading]="loading" [virtualScroll]="true" [placeholder]="placeholder" bindLabel="displayName"
-  bindValue="id" (scrollToEnd)="fetchMore()" [typeahead]="search$" [(ngModel)]="value"
+<div>
+  <ng-select #selectList 
+  [items]="list" 
+  [loading]="loading" 
+  [virtualScroll]="true" 
+  [placeholder]="placeholder" 
+  bindLabel="displayName"
+  bindValue="id" 
+  (scrollToEnd)="fetchMore()" 
+  [typeahead]="search$" 
   [appendTo]="'body'">
   <ng-template ng-header-tmp>
     <small class="form-text text-muted">{{list.length}} van {{paginationData.totalCount}} geladen.</small>
@@ -18,5 +25,5 @@
       <span class="btn-link" (click)="add(searchTerm)">"{{searchTerm}}" toevoegen?</span>
       </div>
     </ng-template>
-</ng-select>
+</ng-select> 
 </div>

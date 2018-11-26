@@ -1,12 +1,9 @@
 
 import { HttpHeaders } from '@angular/common/http';
-
-import { FormGroup, AbstractControl, FormBuilder, ValidationErrors } from '@angular/forms';
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
-
+import { FormGroup, AbstractControl, FormBuilder, ValidationErrors, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, forwardRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
-
 import { NgSelectComponent } from '@ng-select/ng-select';
 import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
 import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
@@ -18,16 +15,23 @@ import { Pagination } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/m
 @Component({
   selector: 'app-select-list',
   templateUrl: './select-list.component.html',
-  styleUrls: ['./select-list.component.scss']
+  styleUrls: ['./select-list.component.scss'],
+  providers: [
+    {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => SelectListComponent),
+    multi: true
+    }
+  ]
 })
-export class SelectListComponent<T extends Resource> implements OnInit {
-  formGroup: FormGroup;
+export class SelectListComponent<T extends Resource> implements OnInit, ControlValueAccessor {
+
   @Input() placeholder: string;
   @Input() dataService: ResourceService<T>;
   @Input() value: number;
-  @Output() formReady = new EventEmitter<FormGroup>();
-  @Input() validation: ((control: AbstractControl) => ValidationErrors)[];
+  //@Output() formReady = new EventEmitter<FormGroup>();
   @Input() resourceFactory: ResourceFactory<T>;
+  @Input() control: string;
 
   @ViewChild('selectList') selectList: NgSelectComponent;
 
@@ -38,18 +42,35 @@ export class SelectListComponent<T extends Resource> implements OnInit {
   search$ = new Subject<string>();
   loading = false;
 
-  constructor(private fb: FormBuilder) {
+  _onChange: any;
+  _onTouched: any;
+  _disabled: boolean;
+  _value: any;
+
+  constructor() {
 
   }
 
   ngOnInit() {
-    this.formGroup = this.fb.group({
 
-      control: [, this.validation]
-    });
-    this.formReady.emit(this.formGroup);
     this.loadLeiding();
     this.searchLeiding();
+  }
+
+  registerOnChange(fn: any): void {
+    this.selectList.registerOnChange(fn);
+  }
+
+  registerOnTouched(fn: any): void {
+    this.selectList.registerOnTouched(fn);
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.selectList.setDisabledState(isDisabled)
+  }
+
+  writeValue(obj: any): void {
+    this.selectList.writeValue(obj);
   }
 
   loadLeiding() {
@@ -96,7 +117,7 @@ export class SelectListComponent<T extends Resource> implements OnInit {
     this.loading = true;
     this.selectList.close();
    const result = this.resourceFactory.create(searchTerm);
-   this.dataService.create(result).subscribe(res => {
+   this.dataService.create(result).subscribe(() => {
     this.loading = false;
    });
   }

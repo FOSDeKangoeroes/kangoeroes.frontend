@@ -22,7 +22,9 @@ export class TotemEntryAddDescendantComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.data);
-    this.formGroup = this.fb.group({});
+    this.formGroup = this.fb.group({
+      voorouder: [, [Validators.required]]
+    });
   }
 
   onSubmit() {

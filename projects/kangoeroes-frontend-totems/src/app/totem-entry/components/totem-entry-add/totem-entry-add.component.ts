@@ -36,7 +36,12 @@ export class TotemEntryAddComponent implements OnInit {
 
   ngOnInit() {
     this.addEntryFormGroup = this.fb.group({
-      datumGekregen: ['']
+      persoon: [, [Validators.required]],
+      adjectief: [, [Validators.required]],
+      totem: [, [Validators.required]],
+      datumGekregen: [''],
+      voorouder: [, [Validators.required]]
+
     });
   }
 

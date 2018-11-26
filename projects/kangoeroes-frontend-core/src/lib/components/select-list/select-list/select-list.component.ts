@@ -1,7 +1,7 @@
 
 import { HttpHeaders } from '@angular/common/http';
-import { FormGroup, AbstractControl, FormBuilder, ValidationErrors, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, Input, ViewChild, forwardRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { NgSelectComponent } from '@ng-select/ng-select';
@@ -28,8 +28,6 @@ export class SelectListComponent<T extends Resource> implements OnInit, ControlV
 
   @Input() placeholder: string;
   @Input() dataService: ResourceService<T>;
-  @Input() value: number;
-  //@Output() formReady = new EventEmitter<FormGroup>();
   @Input() resourceFactory: ResourceFactory<T>;
   @Input() control: string;
 
@@ -41,11 +39,6 @@ export class SelectListComponent<T extends Resource> implements OnInit, ControlV
   paginationData: Pagination;
   search$ = new Subject<string>();
   loading = false;
-
-  _onChange: any;
-  _onTouched: any;
-  _disabled: boolean;
-  _value: any;
 
   constructor() {
 

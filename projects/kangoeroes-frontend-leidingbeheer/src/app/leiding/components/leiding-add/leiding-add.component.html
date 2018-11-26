@@ -1,3 +1,4 @@
+
 <form [formGroup]='addLeidingFormGroup' (ngSubmit)='onSubmit()' class="form-horizontal">
   <div class="modal-header">
     <h4 class="modal-title">Nieuwe persoon toevoegen</h4>
@@ -6,11 +7,12 @@
     </button>
   </div>
   <div class="modal-body">
+    
     <fieldset>
 
       <div class="form-group">
         <div class="col-12">
-          <app-select-list (formReady)="addFormControl('tak', $event)" placeholder="Tak" [dataService]="takDataService" [validation]="required" ></app-select-list>
+          <app-select-list formControlName="tak" placeholder="Tak" [dataService]="takDataService" control="tak"></app-select-list>
         </div>
       </div>
 

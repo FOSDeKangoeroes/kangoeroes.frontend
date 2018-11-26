@@ -24,12 +24,12 @@ export class LeidingAddComponent implements OnInit {
   public takken: Tak[];
   public takkenLoading = true;
   pagination: Pagination;
-
+ 
   @Output () public newLeiding = new EventEmitter<Leiding>();
   constructor(public addLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
     private dataService: LeidingDataService,
-    private takDataService: TakDataService,
+    public takDataService: TakDataService,
     private eventService: EventService,
     private snotifyService: SnotifyService) { }
 
@@ -39,10 +39,13 @@ export class LeidingAddComponent implements OnInit {
       naam: ['', [Validators.required, Validators.minLength(2)]],
       voornaam: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Util.emailOrEmpty([Validators.email])]],
+      tak: [, [Validators.required]],
       leidingSinds: [''],
       datumGestopt: [''],
-      datumGestart: ['']
+      datumGestart: [''] 
     });
+
+    console.log(this.addLeidingFormGroup)
   }
 
 onSubmit() {
@@ -68,9 +71,5 @@ onSubmit() {
   });
 
 }
-
-  addFormControl(name: string, formGroup: FormGroup): void {
-    this.addLeidingFormGroup.addControl(name, formGroup);
-  }
 
 }

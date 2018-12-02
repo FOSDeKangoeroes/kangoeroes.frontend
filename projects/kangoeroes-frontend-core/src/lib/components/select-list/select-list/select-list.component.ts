@@ -30,7 +30,6 @@ export class SelectListComponent<T extends Resource> implements OnInit, ControlV
   @Input() placeholder: string;
   @Input() dataService: ResourceService<T>;
   @Input() resourceFactory: ResourceFactory<T>;
-  @Input() control: string;
 
   @ViewChild('selectList') selectList: NgSelectComponent;
 

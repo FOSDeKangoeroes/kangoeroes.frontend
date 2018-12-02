@@ -12,7 +12,7 @@
 
       <div class="form-group">
         <div class="col-12">
-          <app-select-list formControlName="tak" placeholder="Tak" [dataService]="takDataService" control="tak"></app-select-list>
+          <app-select-list formControlName="tak" placeholder="Tak" [dataService]="takDataService"></app-select-list>
           <mat-error *ngIf='addLeidingFormGroup.get("tak").errors?.required && addLeidingFormGroup.get("tak").touched'>Tak
             is verplicht</mat-error>
         </div>

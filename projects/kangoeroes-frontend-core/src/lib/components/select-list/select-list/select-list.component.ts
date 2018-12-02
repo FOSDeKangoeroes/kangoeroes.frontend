@@ -109,8 +109,11 @@ export class SelectListComponent<T extends Resource> implements OnInit, ControlV
   add(searchTerm: string) {
     this.loading = true;
     this.selectList.close();
+    
    const result = this.resourceFactory.create(searchTerm);
    this.dataService.create(result).subscribe(() => {
+     this.list.push(result);
+
     this.loading = false;
    });
   }

@@ -35,7 +35,11 @@ export class TotemEntryEditComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.addEntryFormGroup = this.fb.group({
-      datumGekregen: ['']
+      adjectief: [this.totemEntry.adjectief.id, [Validators.required]],
+      totem: [this.totemEntry.totem.id, [Validators.required]],
+      datumGekregen: [''],
+      voorouder: [this.totemEntry.voorouderId]
+       
     });
 
   }

@@ -13,6 +13,8 @@
       <div class="form-group">
         <div class="col-12">
           <app-select-list formControlName="tak" placeholder="Tak" [dataService]="takDataService" control="tak"></app-select-list>
+          <mat-error *ngIf='addLeidingFormGroup.get("tak").errors?.required && addLeidingFormGroup.get("tak").touched'>Tak
+            is verplicht</mat-error>
         </div>
       </div>
 
@@ -28,7 +30,7 @@
 
         <mat-form-field class="col-12">
           <input matInput placeholder="Naam*" id="naam_id" formControlName='naam'>
-          <mat-error *ngIf='addLeidingFormGroup.get("naam").errors?.required && addLeidingFormGroup.get("naam").touched'>Dit veld is verplicht.</mat-error>
+          <mat-error *ngIf='addLeidingFormGroup.get("naam").errors?.required && addLeidingFormGroup.get("naam").touched'>Naam is verplicht</mat-error>
         </mat-form-field>
       </div>
 

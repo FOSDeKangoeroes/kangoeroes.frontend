@@ -7,12 +7,11 @@
 
   <div class="col-12">
     <h6>Totemgegevens</h6>
-    <app-select-list #adjectiveSelectList (formReady)="addFormControl('adjectief',$event)" placeholder="Adjectief*" [dataService]="adjectiveDataService"
-      [validation]="required" [value]="totemEntry.adjectief.id"></app-select-list>
+    <app-select-list #adjectiveSelectList  placeholder="Adjectief*" [dataService]="adjectiveDataService"></app-select-list>
   </div>
 
   <div class="col-12">
-    <app-select-list (formReady)="addFormControl('totem',$event)" placeholder="Totem*" [dataService]="animalDataService" [validation]="required" [value]="totemEntry.totem.id"></app-select-list>
+    <app-select-list  placeholder="Totem*" [dataService]="animalDataService" ></app-select-list>
   </div>
 
 
@@ -23,7 +22,7 @@
   </mat-form-field>
 
   <div class="col-12">
-    <app-select-list (formReady)="addFormControl('voorouder',$event)" placeholder="Peetje/Meetje" [dataService]="totemEntryDataService" [value]="totemEntry.voorouderId"></app-select-list>
+    <app-select-list  placeholder="Peetje/Meetje" [dataService]="totemEntryDataService"></app-select-list>
   </div> 
 <div class="col-12">
 <button type="submit" [disabled]="!addEntryFormGroup.valid" mat-raised-button class="col-2 float-right">Wijzigen</button>

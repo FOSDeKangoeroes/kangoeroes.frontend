@@ -9,7 +9,8 @@ import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service
 import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
 import { ResourceFactory } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-factory';
 import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
-import { Pagination } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/models/pagination-model';
+import { Pagination } from './pagination-model';
+
 
 
 @Component({

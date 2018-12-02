@@ -1,4 +1,3 @@
-import { Pagination } from './../../../models/pagination-model';
 import { EventService } from './../../../shared/event.service';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -27,8 +26,6 @@ export class LeidingChangeTakComponent implements OnInit {
   public takken: Tak[];
   public takkenLoading = true;
   leidingId: number;
-
-  pagination: Pagination;
 
   ngOnInit() {
 

@@ -1,18 +1,12 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
 import { RouterModule, Routes } from '@angular/router';
-
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 import { LeidingResolverService } from './shared/leiding-resolver.service';
 import { SharedModule } from '../shared/shared.module';
-
 import { MatCheckboxModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { LeidingListComponent } from './pages/leiding-list/leiding-list.component';

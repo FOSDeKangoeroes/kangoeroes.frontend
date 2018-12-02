@@ -13,6 +13,7 @@ import { Pagination } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/m
 
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'app-select-list',
   templateUrl: './select-list.component.html',
   styleUrls: ['./select-list.component.scss'],
@@ -59,7 +60,7 @@ export class SelectListComponent<T extends Resource> implements OnInit, ControlV
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.selectList.setDisabledState(isDisabled)
+    this.selectList.setDisabledState(isDisabled);
   }
 
   writeValue(obj: any): void {
@@ -109,7 +110,7 @@ export class SelectListComponent<T extends Resource> implements OnInit, ControlV
   add(searchTerm: string) {
     this.loading = true;
     this.selectList.close();
-    
+
    const result = this.resourceFactory.create(searchTerm);
    this.dataService.create(result).subscribe(() => {
      this.list.push(result);

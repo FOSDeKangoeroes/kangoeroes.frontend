@@ -3,9 +3,10 @@ import { Leiding } from '../../../shared/leiding.model';
 import { MatPaginator, MatSort } from '@angular/material';
 import { BehaviorSubject, Subscription, Observable, merge } from 'rxjs';
 import { LeidingDataService } from '../../../shared/leiding-data.service';
-import { EventService } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/shared/event.service';
+
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
+import { LeidingService } from '../../../shared/leiding.service';
 
 export class LeidingTableDataSource extends DataSource<Leiding> {
 
@@ -20,7 +21,7 @@ export class LeidingTableDataSource extends DataSource<Leiding> {
         private sort: MatSort,
         private searchString$: BehaviorSubject<string>,
         private leidingDataService: LeidingDataService,
-        private eventService: EventService
+        private eventService: LeidingService
     ) {
         super();
         this.serviceSubscription = this.searchString$.subscribe(res => {
@@ -36,7 +37,7 @@ export class LeidingTableDataSource extends DataSource<Leiding> {
             this.paginator.page,
             this.sort.sortChange,
             this.searchString$.pipe(debounceTime(200), distinctUntilChanged()),
-            this.eventService.$newLeiding
+            this.eventService.entryChanged$
         ];
 
         return merge(...dataMutations).pipe(

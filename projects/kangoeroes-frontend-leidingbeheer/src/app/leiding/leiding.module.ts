@@ -15,6 +15,7 @@ import { LeidingAddComponent } from './components/leiding-add/leiding-add.compon
 import { LeidingEditComponent } from './components/leiding-edit/leiding-edit.component';
 import { LeidingChangeTakComponent } from './components/leiding-change-tak/leiding-change-tak.component';
 import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
+import { LeidingTableModule } from './components/leiding-table/leiding-table.module';
 
 
 const routes: Routes = [
@@ -36,7 +37,7 @@ const routes: Routes = [
     FormsModule,
     ModalModule.forRoot(),
     RouterModule.forChild(routes),
-    SharedModule,
+    LeidingTableModule,
     MatCheckboxModule,
     MatInputModule,
     MatFormFieldModule,

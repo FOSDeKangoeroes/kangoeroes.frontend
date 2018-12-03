@@ -7,7 +7,6 @@ import { MatTableModule,
   MatProgressSpinnerModule,
   MatPaginatorModule } from '@angular/material';
 import { LeidingTableService } from '../leiding/shared/leiding-table.service';
-import { LeidingTableComponent } from './leiding-table/leiding-table.component';
 import { RouterModule } from '@angular/router';
 import { TakTableComponent } from './tak-table/tak-table.component';
 import { TakTableService } from '../tak/shared/tak-table.service';
@@ -25,7 +24,7 @@ import { TakTableService } from '../tak/shared/tak-table.service';
     RouterModule
   ],
   providers: [LeidingTableService, TakTableService],
-  declarations: [LeidingTableComponent, TakTableComponent],
-  exports: [LeidingTableComponent, TakTableComponent]
+  declarations: [TakTableComponent],
+  exports: [TakTableComponent]
 })
 export class SharedModule { }

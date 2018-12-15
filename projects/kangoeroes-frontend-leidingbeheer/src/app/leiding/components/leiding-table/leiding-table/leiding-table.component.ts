@@ -4,6 +4,7 @@ import { LeidingTableDataSource } from './leiding-table-datasource';
 import { BehaviorSubject } from 'rxjs';
 import { LeidingDataService } from '../../../shared/leiding-data.service';
 import { LeidingService } from '../../../shared/leiding.service';
+import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
 
 @Component({
   selector: 'app-leiding-table',
@@ -13,18 +14,37 @@ import { LeidingService } from '../../../shared/leiding.service';
 export class LeidingTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: LeidingTableDataSource;
 
   @Input() displayedColumns: string[];
-  @Input() searchString$: BehaviorSubject<string>;
 
-  constructor(private leidingDataService: LeidingDataService, private leidingService: LeidingService) {}
+  dataSource: LeidingTableDataSource;
+
+  private possibleColumns = [
+    'tak',
+    'voornaam',
+    'naam',
+    'email',
+    'leidingSinds',
+    'datumGestopt'
+  ];
+
+  constructor(
+    private leidingDataService: LeidingDataService,
+    private leidingService: LeidingService,
+    private searchBarService: SearchBarService
+  ) {}
 
   ngOnInit() {
+
+    // Optional to provide the columns, if nothing is provided, show all the columns
+    if (!this.displayedColumns) {
+      this.displayedColumns = this.possibleColumns;
+    }
+
     this.dataSource = new LeidingTableDataSource(
       this.paginator,
       this.sort,
-      this.searchString$,
+      this.searchBarService,
       this.leidingDataService,
       this.leidingService
     );

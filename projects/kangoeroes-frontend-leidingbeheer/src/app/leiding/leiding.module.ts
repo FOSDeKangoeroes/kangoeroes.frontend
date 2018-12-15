@@ -16,6 +16,7 @@ import { LeidingEditComponent } from './components/leiding-edit/leiding-edit.com
 import { LeidingChangeTakComponent } from './components/leiding-change-tak/leiding-change-tak.component';
 import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
 import { LeidingTableModule } from './components/leiding-table/leiding-table.module';
+import { SearchBarModule } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.module';
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatDatepickerModule,
     NgSelectModule,
-    SelectListModule
+    SelectListModule,
+    SearchBarModule
   ],
   declarations: [LeidingListComponent,
     LeidingAddComponent,

@@ -7,6 +7,7 @@ import { LeidingDataService } from '../../../shared/leiding-data.service';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 import { LeidingService } from '../../../shared/leiding.service';
+import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
 
 export class LeidingTableDataSource extends DataSource<Leiding> {
 
@@ -19,12 +20,12 @@ export class LeidingTableDataSource extends DataSource<Leiding> {
     constructor(
         private paginator: MatPaginator,
         private sort: MatSort,
-        private searchString$: BehaviorSubject<string>,
+        private searchBarService: SearchBarService,
         private leidingDataService: LeidingDataService,
         private eventService: LeidingService
     ) {
         super();
-        this.serviceSubscription = this.searchString$.subscribe(res => {
+        this.serviceSubscription = this.searchBarService.searchString$.subscribe(res => {
             this.searchString = res;
             this.paginator.pageIndex = 0;
         });
@@ -36,7 +37,7 @@ export class LeidingTableDataSource extends DataSource<Leiding> {
         const dataMutations = [
             this.paginator.page,
             this.sort.sortChange,
-            this.searchString$.pipe(debounceTime(200), distinctUntilChanged()),
+            this.searchBarService.searchString$.pipe(debounceTime(200), distinctUntilChanged()),
             this.eventService.entryChanged$
         ];
 

@@ -13,6 +13,6 @@ export class AppComponent {
 
   constructor(public auth: AuthService) {
     this.auth.handleAuthentication();
+    this.auth.scheduleRenewal();
   }
 }
- 

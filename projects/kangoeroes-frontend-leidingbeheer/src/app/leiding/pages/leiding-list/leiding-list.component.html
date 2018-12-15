@@ -31,7 +31,9 @@
   <div class="card-header">
     Personen
   </div>
-  
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Zoeken">
+  </mat-form-field>
  <app-leiding-table [displayedColumns]="displayedColumns" [searchString$]="searchString$"></app-leiding-table>
 </div>
 

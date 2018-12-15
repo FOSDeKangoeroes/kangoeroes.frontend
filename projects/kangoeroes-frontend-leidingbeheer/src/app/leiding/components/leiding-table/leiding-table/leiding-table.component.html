@@ -1,7 +1,7 @@
 <div class="leiding-container">
 
   <mat-table #table [dataSource]="dataSource" matSort matSortDirection='asc' matSortActive="naam" matSorDisableClear>
-    <ng-container matColumnDef="select">
+ <!--   <ng-container matColumnDef="select">
       <mat-header-cell class="leiding-checkbox" *matHeaderCellDef>
         <mat-checkbox class="mat-checkbox" (change)="$event? masterToggle(): null" [checked]="selection.hasValue() && isAllSelected()"
           [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
@@ -10,7 +10,7 @@
         <mat-checkbox class="mat-checkbox" (change)="$event? selection.toggle(row): null" [checked]="selection.isSelected(row)"
           (click)="$event.stopPropagation()"></mat-checkbox>
       </mat-cell>
-    </ng-container>
+    </ng-container>-->
     <ng-container matColumnDef="tak">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Tak</mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.takNaam}}</mat-cell>

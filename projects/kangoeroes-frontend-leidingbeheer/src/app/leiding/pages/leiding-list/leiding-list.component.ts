@@ -1,20 +1,12 @@
 import { Component, OnInit} from '@angular/core';
-
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LeidingActions } from './leiding.actions';
-
 import { LeidingAddComponent } from '../../components/leiding-add/leiding-add.component';
-import { BehaviorSubject } from 'rxjs';
 import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
-
-
 export interface Action {
   code: LeidingActions;
   friendlyMessage: string;
 }
-
-
-
 @Component({
   selector: 'app-leiding-list',
   templateUrl: './leiding-list.component.html',
@@ -36,8 +28,7 @@ export class LeidingListComponent implements OnInit {
 
   constructor(
     private modalService: BsModalService
-  ) {
-  }
+  ) { }
 
   ngOnInit() {}
 

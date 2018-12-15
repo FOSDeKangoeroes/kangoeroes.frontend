@@ -9,6 +9,7 @@ import { EventService } from '../../../shared/event.service';
 import { TakEditComponent } from '../../components/tak-edit/tak-edit.component';
 import { TakDeleteComponent } from '../../components/tak-delete/tak-delete.component';
 import { TakLeidingAddComponent } from '../../components/tak-leiding-add/tak-leiding-add.component';
+import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
 
 
 
@@ -18,7 +19,8 @@ import { TakLeidingAddComponent } from '../../components/tak-leiding-add/tak-lei
 @Component({
   selector: 'app-tak-detail',
   templateUrl: './tak-detail.component.html',
-  styleUrls: ['./tak-detail.component.scss']
+  styleUrls: ['./tak-detail.component.scss'],
+  providers: [SearchBarService]
 })
 export class TakDetailComponent implements OnInit {
 

@@ -16,6 +16,7 @@ export class LeidingTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   @Input() displayedColumns: string[];
+  @Input() takId: number;
 
   dataSource: LeidingTableDataSource;
 
@@ -46,7 +47,8 @@ export class LeidingTableComponent implements OnInit {
       this.sort,
       this.searchBarService,
       this.leidingDataService,
-      this.leidingService
+      this.leidingService,
+      this.takId
     );
   }
 }

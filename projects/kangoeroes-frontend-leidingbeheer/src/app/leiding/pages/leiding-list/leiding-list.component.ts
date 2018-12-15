@@ -34,29 +34,19 @@ export class LeidingListComponent implements OnInit {
   public addModal: BsModalRef;
   public takModal: BsModalRef;
 
-  actions: Action[] = [
-    {
-      code: LeidingActions.DELETE,
-      friendlyMessage: 'Verwijderen'
-    },
-    {
-      code: LeidingActions.CHANGE_TAK,
-      friendlyMessage: 'Tak wijzigen'
-    }
-  ];
-
   constructor(
     private modalService: BsModalService,
-    private tableService: LeidingTableService
   ) {
-    this.tableService.takId = 0;
-    this.tableService.displayedColumns = this.displayedColumns;
   }
 
   ngOnInit() {}
 
   openAddModal() {
     this.addModal = this.modalService.show(LeidingAddComponent);
+  }
+
+  applyFilter(searchString: string) {
+    this.searchString$.next(searchString);
   }
 }
 

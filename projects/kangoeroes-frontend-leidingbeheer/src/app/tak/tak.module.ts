@@ -22,6 +22,7 @@ import { TakDeleteComponent } from './components/tak-delete/tak-delete.component
 import { TakLeidingAddComponent } from './components/tak-leiding-add/tak-leiding-add.component';
 import { TakAddComponent } from './components/tak-add/tak-add.component';
 import { TakDetailComponent } from './pages/tak-detail/tak-detail.component';
+import { LeidingTableModule } from '../leiding/components/leiding-table/leiding-table.module';
 
 const routes: Routes = [
   {
@@ -50,7 +51,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    SharedModule
+    SharedModule,
+    LeidingTableModule
   ],
   providers: [
     EventService

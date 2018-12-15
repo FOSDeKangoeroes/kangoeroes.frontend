@@ -7,7 +7,6 @@ Monorepo voor alle Angular frontends:
 - kangoeroes-frontend-core: library met gedeelde code: components, services,..
 - kangoeroes-frontend-leidingbeheer: Angular 7 frontend voor het beheer van leiding, poef en schulden
 - kangoeroes-frontend-totems: Angular 7 frontend voor het beheer van de totemdatabank
-- Schulden
 
 ## 0. Prerequisites
 

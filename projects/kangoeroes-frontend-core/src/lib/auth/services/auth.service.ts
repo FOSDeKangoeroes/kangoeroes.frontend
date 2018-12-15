@@ -4,6 +4,8 @@ import * as auth0 from 'auth0-js';
 import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
 import { ConfigService } from '../../config/config.service';
 import { Config } from '../../config/config';
+import { Observable, of, timer } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: KangoeroesAuthModule
@@ -13,6 +15,7 @@ export class AuthService {
 
   userProfile: auth0.Auth0UserProfile;
   private readonly config: Config;
+  private refreshSubscription: any;
 
   constructor(public router: Router, private configService: ConfigService) {
     this.config = this.configService.get();
@@ -67,6 +70,8 @@ export class AuthService {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('scopes', JSON.stringify(scopes));
+
+    this.scheduleRenewal();
   }
 
   public logout(): void {
@@ -93,5 +98,48 @@ export class AuthService {
 
   public getToken() {
     return localStorage.getItem('access_token');
+  }
+
+  public renewToken() {
+    this.auth0.checkSession({}, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setSession(result);
+      }
+    });
+  }
+
+  public scheduleRenewal() {
+    if (!this.isAuthenticated()) {
+      return;
+    }
+
+    this.unscheduleRenewal();
+
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+
+    const expiresIn$ = of(expiresAt).pipe(
+      mergeMap(expires => {
+        const now = Date.now();
+        // Use timer to track delay until expiration
+        // to run the refresh at the proper time
+        return timer(Math.max(1, expires - now));
+      })
+    );
+
+    // Once the delay time from above is
+    // reached, get a new JWT and schedule
+    // additional refreshes
+    this.refreshSubscription = expiresIn$.subscribe(() => {
+      this.renewToken();
+      this.scheduleRenewal();
+    });
+  }
+
+  public unscheduleRenewal() {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
   }
 }

@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 import { SnotifyService } from 'ng-snotify';
-
-import { EventService } from '../../../shared/event.service';
 import { TakDataService } from '../../shared/tak-data.service';
+import { TakService } from '../../shared/tak.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -21,7 +18,7 @@ export class TakAddComponent implements OnInit {
   constructor(public addModalRef: BsModalRef,
     private dataService: TakDataService,
     private fb: FormBuilder,
-    private eventService: EventService,
+    private eventService: TakService,
     private snotifyService: SnotifyService
     ) { }
 
@@ -40,7 +37,7 @@ export class TakAddComponent implements OnInit {
 
     this.dataService.create(tak).subscribe(res => {
       if (res) {
-        this.eventService.newTak(res);
+        this.eventService.entryChanged$.emit();
         this.addModalRef.hide();
         this.snotifyService.success('Tak succesvol toegevoegd!');
       }

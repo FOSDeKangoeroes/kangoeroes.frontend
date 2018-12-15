@@ -1,13 +1,13 @@
 import { DataSource } from '@angular/cdk/collections';
 import { Leiding } from '../../../shared/leiding.model';
 import { MatPaginator, MatSort } from '@angular/material';
-import { BehaviorSubject, Subscription, Observable, merge } from 'rxjs';
 import { LeidingDataService } from '../../../shared/leiding-data.service';
-
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
-import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 import { LeidingService } from '../../../shared/leiding.service';
 import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
+import { Subscription, Observable, merge } from 'rxjs';
+import { LeidingQueryOptions } from '../../../shared/leiding-query-options';
+
 
 export class LeidingTableDataSource extends DataSource<Leiding> {
 
@@ -22,7 +22,8 @@ export class LeidingTableDataSource extends DataSource<Leiding> {
         private sort: MatSort,
         private searchBarService: SearchBarService,
         private leidingDataService: LeidingDataService,
-        private eventService: LeidingService
+        private eventService: LeidingService,
+        private takId?: number
     ) {
         super();
         this.serviceSubscription = this.searchBarService.searchString$.subscribe(res => {
@@ -43,7 +44,8 @@ export class LeidingTableDataSource extends DataSource<Leiding> {
 
         return merge(...dataMutations).pipe(
             switchMap(() => {
-                const options = new QueryOptions();
+                const options = new LeidingQueryOptions();
+                options.takId = this.takId;
                 options.pageNumber = this.paginator.pageIndex + 1;
                 options.pageSize = this.paginator.pageSize;
                 options.query = this.searchString;

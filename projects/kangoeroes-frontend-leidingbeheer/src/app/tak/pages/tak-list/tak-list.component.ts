@@ -5,23 +5,22 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { EventService } from '../../../shared/event.service';
 import { TakTableService } from '../../shared/tak-table.service';
 import { TakAddComponent } from '../../components/tak-add/tak-add.component';
+import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
 
 
 
 @Component({
   selector: 'app-tak-list',
   templateUrl: './tak-list.component.html',
-  styleUrls: ['./tak-list.component.scss']
+  styleUrls: ['./tak-list.component.scss'],
+  providers: [SearchBarService]
 })
 export class TakListComponent implements OnInit {
 
   public addModal: BsModalRef;
 
-  displayedColumns = ['naam', 'leiding', 'volgorde'];
   constructor(
-    private modalService: BsModalService,
-    private takService: TakTableService) {
-    this.takService.displayedColumns = this.displayedColumns;
+    private modalService: BsModalService) {
    }
 
   ngOnInit() {

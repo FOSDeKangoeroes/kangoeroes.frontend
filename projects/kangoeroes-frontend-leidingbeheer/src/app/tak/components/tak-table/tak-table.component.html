@@ -1,14 +1,8 @@
-<div class="leiding-container">
-  <div class="example-header">
-    <div class="example-loading-shade" *ngIf="dataSource.loading$ | async">
-      <mat-spinner></mat-spinner>
-    </div>
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Zoeken">
-    </mat-form-field> 
-  </div>
-  <mat-table #table [dataSource]="dataSource" matSortDirection='asc' matSortActive='volgorde' matSortDisableClear matSort>
-  
+<div class="tak-container">
+
+  <mat-table #table [dataSource]="dataSource" matSortDirection='asc' matSortActive='volgorde' matSortDisableClear
+    matSort>
+
     <ng-container matColumnDef="naam">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
       <mat-cell *matCellDef="let tak"><a routerLink="/takken/{{tak.id}}">{{tak.naam}}</a></mat-cell>
@@ -16,7 +10,7 @@
     <ng-container matColumnDef="leiding">
       <mat-header-cell *matHeaderCellDef>Aantal leiding</mat-header-cell>
       <mat-cell *matCellDef="let tak">
-          {{tak.leidingCount}}
+        {{tak.leidingCount}}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="volgorde">
@@ -26,7 +20,7 @@
 
       </mat-cell>
     </ng-container>
-    
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>

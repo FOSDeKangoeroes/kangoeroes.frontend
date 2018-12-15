@@ -2,7 +2,7 @@
 <div class="col-md-12">
   <h1 class="h1"> {{tak.naam}}</h1>
   <p>Volgorde: {{tak.volgorde}}</p>
-<!--Actieknoppen-->
+
 <div class="card card-accent-primary">
   <div class="card-header">
    Acties
@@ -14,16 +14,17 @@
     <i class="icon-user-follow"> Persoon toevoegen...</i>
   </button>
   </div>
-</div><!--Einde actieknoppen-->
+</div>
 
 
-<!--Tabel met leiding voor gekozen tak-->
+
 <div class="card card-accent-primary">
   <div class="card-header">
     Personen in {{tak.naam}}
   </div>
 <div class="table table-striped">
-  <app-leiding-table [takId]="tak.id"></app-leiding-table>
+
+  <app-leiding-table [displayedColumns]="displayedColumns" [takId]="tak.id"></app-leiding-table>
 </div>
 </div>
 </div>

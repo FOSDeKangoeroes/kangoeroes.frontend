@@ -41,6 +41,10 @@ const routes: Routes = [
         data: {
           title: 'Personen'
         }
+      },
+      {
+        path: 'poef',
+        loadChildren: './poef/poef-routing.module#PoefRoutingModule'
       }
     ]
   },

@@ -15,7 +15,7 @@ export interface Action {
 })
 export class LeidingListComponent implements OnInit {
   displayedColumns = [
-    'tak',
+    'tak.volgorde',
     'voornaam',
     'naam',
     'email',

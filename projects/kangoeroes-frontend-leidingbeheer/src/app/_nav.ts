@@ -3,7 +3,6 @@ export const navigation = [
     name: 'Dashboard',
     url: '/dashboard',
     icon: 'icon-speedometer'
-
   },
   {
     name: 'Personen',
@@ -20,12 +19,16 @@ export const navigation = [
         icon: 'icon-user'
       }
     ]
-  }
-  ,
+  },
   {
     name: 'Poef',
     icon: 'icon-map',
     children: [
+      {
+        name: 'Categorieën',
+        url: '/poef/drank-type',
+        icon: 'icon-cup'
+      },
       {
         name: 'Dranken',
         url: '/poef/drank',

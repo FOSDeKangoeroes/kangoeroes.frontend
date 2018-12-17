@@ -6,24 +6,30 @@ export const navigation = [
 
   },
   {
-    name: 'Takken',
-    url: '/takken',
-    icon: 'icon-people'
-  },
-  {
     name: 'Personen',
-    url: '/personen',
-    icon: 'icon-user'
-  },
+    icon: 'icon-people',
+    children: [
+      {
+        name: 'Takken',
+        url: '/takken',
+        icon: 'icon-people'
+      },
+      {
+        name: 'Personen',
+        url: '/personen',
+        icon: 'icon-user'
+      }
+    ]
+  }
+  ,
   {
     name: 'Poef',
-    url: '/poef',
-    icon: 'icon-speedometer',
+    icon: 'icon-map',
     children: [
       {
         name: 'Dranken',
         url: '/poef/drank',
-        icon: 'icon-speedometer'
+        icon: 'icon-cup'
       }
     ]
   }

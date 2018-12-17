@@ -1,0 +1,24 @@
+  <mat-table #table [dataSource]="dataSource" matSort matSortDirection='asc' matSortActive="type.naam" matSorDisableClear>
+
+    <ng-container matColumnDef="type.naam">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Type</mat-header-cell>
+      <mat-cell *matCellDef="let drank">{{drank.typeNaam}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="naam">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Naam</mat-header-cell>
+      <mat-cell *matCellDef="let drank">
+        <a routerLink="/dranken/{{drank.id}}">{{drank.naam}}</a>
+
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="currentPrijs">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Prijs</mat-header-cell>
+      <mat-cell *matCellDef="let drank">
+          {{drank.prijs}}
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="dataSource.totalLength" [pageSizeOptions]="[25, 100]"></mat-paginator>

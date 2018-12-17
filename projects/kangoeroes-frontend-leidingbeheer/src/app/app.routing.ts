@@ -44,8 +44,11 @@ const routes: Routes = [
       },
       {
         path: 'poef',
-        loadChildren: './poef/poef-routing.module#PoefRoutingModule'
-      }
+        loadChildren: './poef/poef.module#PoefModule',
+        data: {
+          title: 'Poef'
+        }
+      },
     ]
   },
   {

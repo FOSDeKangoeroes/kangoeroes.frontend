@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: 'drank',
     loadChildren: './drank/drank.module#DrankModule'
+  },
+  {
+    path: 'drank-type',
+    loadChildren: './drank-type/drank-type.module#DrankTypeModule'
   }
 ];
 

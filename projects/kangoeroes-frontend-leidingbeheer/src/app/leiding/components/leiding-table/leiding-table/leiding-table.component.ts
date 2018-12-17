@@ -21,7 +21,7 @@ export class LeidingTableComponent implements OnInit {
   dataSource: LeidingTableDataSource;
 
   private possibleColumns = [
-    'tak',
+    'tak.volgorde',
     'voornaam',
     'naam',
     'email',

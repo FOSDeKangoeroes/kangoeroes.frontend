@@ -14,5 +14,17 @@ export const navigation = [
     name: 'Personen',
     url: '/personen',
     icon: 'icon-user'
+  },
+  {
+    name: 'Poef',
+    url: '/poef',
+    icon: 'icon-speedometer',
+    children: [
+      {
+        name: 'Dranken',
+        url: '/poef/drank',
+        icon: 'icon-speedometer'
+      }
+    ]
   }
 ];

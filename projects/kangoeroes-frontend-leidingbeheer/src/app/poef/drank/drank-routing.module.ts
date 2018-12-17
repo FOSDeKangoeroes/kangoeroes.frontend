@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DrankListComponent } from './drank/pages/drank-list/drank-list.component';
+import { DrankListComponent } from './pages/drank-list/drank-list.component';
 
 const routes: Routes = [
   {
-    path: 'drank',
-    loadChildren: './drank/drank.module#DrankModule'
+    path: '',
+    component: DrankListComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PoefRoutingModule { }
+export class DrankRoutingModule { }

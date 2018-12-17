@@ -4,6 +4,7 @@ import { PoefRoutingModule } from './poef-routing.module';
 import { DrankListComponent } from './drank/pages/drank-list/drank-list.component';
 import { DrankTableComponent } from './drank/components/drank-table/drank-table.component';
 import { MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
+import { SearchBarModule } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.module';
 
 @NgModule({
   declarations: [DrankListComponent, DrankTableComponent],
@@ -12,7 +13,8 @@ import { MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/mate
     PoefRoutingModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    SearchBarModule
   ]
 })
 export class PoefModule {}

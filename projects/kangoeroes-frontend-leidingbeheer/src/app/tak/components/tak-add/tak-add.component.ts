@@ -3,7 +3,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SnotifyService } from 'ng-snotify';
 import { TakDataService } from '../../shared/tak-data.service';
-import { TakService } from '../../shared/tak.service';
+import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-table/event.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,7 +18,7 @@ export class TakAddComponent implements OnInit {
   constructor(public addModalRef: BsModalRef,
     private dataService: TakDataService,
     private fb: FormBuilder,
-    private eventService: TakService,
+    private eventService: EventService,
     private snotifyService: SnotifyService
     ) { }
 

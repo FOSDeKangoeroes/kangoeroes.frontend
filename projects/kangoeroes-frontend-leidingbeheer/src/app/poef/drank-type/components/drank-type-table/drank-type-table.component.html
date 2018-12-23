@@ -1,0 +1,13 @@
+<mat-table #table [dataSource]="dataSource" matSort matSortDirection='asc' matSortActive="naam" matSorDisableClear>
+
+  <ng-container matColumnDef="naam">
+    <mat-header-cell mat-sort-header *matHeaderCellDef>Type</mat-header-cell>
+    <mat-cell *matCellDef="let type">{{type.displayName}}</mat-cell>
+  </ng-container>
+
+ 
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator [length]="dataSource.totalLength" [pageSizeOptions]="[25, 100]"></mat-paginator>

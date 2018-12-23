@@ -6,8 +6,10 @@ import { ResourceService } from '../data-service/resource-service';
 import { Resource } from '../data-service/resource-model';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { QueryOptions } from '../data-service/query-options';
+import { EventService } from './event.service';
 
-export abstract class KangoeroeDataSource<T extends Resource> extends DataSource<T> {
+// Service van maken?
+export class KangoeroeTableDataSource<T extends Resource> extends DataSource<T> {
   data: T[];
   private searchString: string;
   totalLength: number;
@@ -17,7 +19,8 @@ export abstract class KangoeroeDataSource<T extends Resource> extends DataSource
     protected paginator: MatPaginator,
     protected sort: MatSort,
     protected searchBarService: SearchBarService,
-    protected dataService: ResourceService<T>
+    protected dataService: ResourceService<T>,
+    protected eventService: EventService
   ) {
     super();
       this.serviceSubscription = this.searchBarService.searchString$.subscribe(res => {

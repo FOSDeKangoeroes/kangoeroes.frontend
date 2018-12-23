@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TakTableComponent } from './tak-table.component';
 import { MatTableModule, MatProgressSpinnerModule, MatCheckboxModule, MatSortModule, MatPaginatorModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { KangoeroeDataTableModule } from 'projects/kangoeroes-frontend-core/src/lib/data-table/data-table.module';
 
 @NgModule({
   declarations: [TakTableComponent],
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     MatCheckboxModule,
     MatSortModule,
     MatPaginatorModule,
-    RouterModule
+    RouterModule,
+    KangoeroeDataTableModule
   ],
   exports: [TakTableComponent]
 })

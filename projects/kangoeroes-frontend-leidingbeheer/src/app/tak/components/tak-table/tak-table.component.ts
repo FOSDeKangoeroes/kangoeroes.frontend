@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatSort, MatPaginator } from '@angular/material';
 import { TakDataService } from '../../shared/tak-data.service';
 import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
-import { TakTableDataSource } from './tak-table-data-source';
-import { TakService } from '../../shared/tak.service';
+import { KangoeroeTableDataSource } from 'projects/kangoeroes-frontend-core/src/lib/data-table/data-source';
+import { Tak } from '../../shared/tak.model';
+import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-table/event.service';
 
 @Component({
   selector: 'app-tak-table',
@@ -16,7 +17,7 @@ export class TakTableComponent implements OnInit {
 
   @Input() displayedColumns: string[];
 
-  dataSource: TakTableDataSource;
+  dataSource: KangoeroeTableDataSource<Tak>;
 
   private possibleColumns = [
     'naam',
@@ -27,14 +28,14 @@ export class TakTableComponent implements OnInit {
   constructor(
     private takDataService: TakDataService,
     private searchBarService: SearchBarService,
-    private takService: TakService) {}
+    private takService: EventService) {}
 
   ngOnInit() {
     if (!this.displayedColumns) {
       this.displayedColumns = this.possibleColumns;
     }
 
-    this.dataSource = new TakTableDataSource(
+    this.dataSource = new KangoeroeTableDataSource(
       this.paginator,
       this.sort,
       this.searchBarService,

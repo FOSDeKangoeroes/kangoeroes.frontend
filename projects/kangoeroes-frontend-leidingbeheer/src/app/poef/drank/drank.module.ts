@@ -6,6 +6,7 @@ import { MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/mate
 import { SearchBarModule } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.module';
 import { DrankTableComponent } from './components/drank-table/drank-table.component';
 import { DrankListComponent } from './pages/drank-list/drank-list.component';
+import { KangoeroeDataTableModule } from 'projects/kangoeroes-frontend-core/src/lib/data-table/data-table.module';
 
 @NgModule({
   declarations: [DrankListComponent, DrankTableComponent],
@@ -15,7 +16,8 @@ import { DrankListComponent } from './pages/drank-list/drank-list.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    SearchBarModule
+    SearchBarModule,
+    KangoeroeDataTableModule
   ]
 })
 export class DrankModule { }

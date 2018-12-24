@@ -1,0 +1,44 @@
+<form [formGroup]='addDrankFormGroup' (ngSubmit)='onSubmit()' class="form-horizontal">
+  <div class="modal-header">
+    <h4 class="modal-title">Nieuwe drank toevoegen</h4>
+    <button type="button" class="close" (click)="addDrankModalRef.hide()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <fieldset>
+
+      <div class="form-group">
+        <div class="col-12">
+          <app-select-list formControlName="type" placeholder="Type*" [dataService]="drankTypeDataService"></app-select-list>
+          <mat-error *ngIf='addDrankFormGroup.get("type").errors?.required && addDrankFormGroup.get("type").touched'>Type is verplicht</mat-error>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Naam*" formControlName='naam'>
+          <mat-error *ngIf='addDrankFormGroup.get("naam").errors?.required && addDrankFormGroup.get("naam").touched'>Naam
+            is verplicht</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-group">
+
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Prijs*" formControlName='prijs'>
+          <mat-error *ngIf='addDrankFormGroup.get("prijs").errors?.required && addDrankFormGroup.get("prijs").touched'>Prijs
+            is verplicht</mat-error>
+        </mat-form-field>
+      </div>
+
+    </fieldset>
+
+  </div>
+  <div class="modal-footer">
+
+    <button type="submit" [disabled]="!addDrankFormGroup.valid" class="btn btn-success">Toevoegen</button>
+  </div>
+</form>

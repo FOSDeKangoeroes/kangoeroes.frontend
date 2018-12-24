@@ -9,6 +9,7 @@ import { Util } from '../../util';
 import { LeidingDataService } from '../../shared/leiding-data.service';
 import { TakDataService } from '../../../tak/shared/tak-data.service';
 import { LeidingService } from '../../shared/leiding.service';
+import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-table/event.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,16 +19,13 @@ import { LeidingService } from '../../shared/leiding.service';
 })
 export class LeidingAddComponent implements OnInit {
   public addLeidingFormGroup: FormGroup;
-  public takken: Tak[];
-  public takkenLoading = true;
 
-  @Output() public newLeiding = new EventEmitter<Leiding>();
   constructor(
     public addLeidingModalRef: BsModalRef,
     private fb: FormBuilder,
     private dataService: LeidingDataService,
     public takDataService: TakDataService,
-    private eventService: LeidingService,
+    private eventService: EventService,
     private snotifyService: SnotifyService
   ) {}
 
@@ -41,8 +39,6 @@ export class LeidingAddComponent implements OnInit {
       datumGestopt: [''],
       datumGestart: ['']
     });
-
-    console.log(this.addLeidingFormGroup);
   }
 
   onSubmit() {

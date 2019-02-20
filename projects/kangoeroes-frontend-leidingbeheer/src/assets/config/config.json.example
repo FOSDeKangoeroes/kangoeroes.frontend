@@ -1,0 +1,12 @@
+{
+    "production": "false",
+    "appUrl": "http://localhost:4200",
+    "auth0ClientId": "",
+    "auth0Domain": "",
+    "auth0Audience": "",
+    "auth0RedirectUri": "",
+    "auth0Scopes": "openid roles",
+    "auth0ResponseType": "token id_token",
+    "postAuthUrl":"/dashboard"
+
+}

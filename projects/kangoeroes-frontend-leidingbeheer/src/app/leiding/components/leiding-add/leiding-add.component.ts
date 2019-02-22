@@ -25,7 +25,7 @@ export class LeidingAddComponent implements OnInit {
     private fb: FormBuilder,
     private dataService: LeidingDataService,
     public takDataService: TakDataService,
-    private eventService: EventService,
+    private eventService: LeidingService,
     private snotifyService: SnotifyService
   ) {}
 

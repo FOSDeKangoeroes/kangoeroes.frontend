@@ -13,9 +13,11 @@ import { DateComponent } from './components/date/date.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { InputComponent } from './components/input/input.component';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
+import { SelectComponent } from './components/select/select.component';
+import { SelectListModule } from '../components/select-list/select-list.module';
 
 @NgModule({
-  declarations: [ButtonComponent, CheckboxComponent, DateComponent, InputComponent, RadiobuttonComponent],
+  declarations: [ButtonComponent, CheckboxComponent, DateComponent, InputComponent, RadiobuttonComponent, SelectComponent],
   imports: [
     CommonModule,
     MatCheckboxModule,
@@ -24,7 +26,8 @@ import { RadiobuttonComponent } from './components/radiobutton/radiobutton.compo
     MatMomentDateModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    SelectListModule
   ]
 })
 export class DynamicFormModule { }

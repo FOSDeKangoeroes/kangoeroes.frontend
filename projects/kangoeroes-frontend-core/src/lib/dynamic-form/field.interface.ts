@@ -18,12 +18,12 @@ export interface Validator {
 export interface FieldConfig {
     label?: string;
     name?: string;
-    inputType: string;
+    inputType?: string;
     options?: string;
     type: string;
     value?: any;
     validations?: Validator[];
-    dataService: ResourceService<Resource>;
-    resourceFactory: ResourceFactory<Resource>;
-    columns?: number;
+    dataService?: ResourceService<Resource>;
+    resourceFactory?: ResourceFactory<Resource>;
+    cssClass?: string;
 }

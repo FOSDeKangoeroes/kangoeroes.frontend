@@ -3,7 +3,7 @@ import { FieldConfig } from '../../field.interface';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-dynamic-form',
+  selector: 'kangoeroe-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss']
 })
@@ -22,6 +22,7 @@ export class DynamicFormComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.form = this.createControl();
   }
 
   createControl() {

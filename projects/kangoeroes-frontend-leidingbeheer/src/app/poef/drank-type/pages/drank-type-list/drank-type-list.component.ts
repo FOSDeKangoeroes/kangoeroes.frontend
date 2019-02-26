@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DrankTypeAddComponent } from '../../components/drank-type-add/drank-type-add.component';
 
 @Component({
   selector: 'app-drank-type-list',
@@ -9,9 +11,14 @@ import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/comp
 })
 export class DrankTypeListComponent implements OnInit {
 
-  constructor() { }
+  public addModal: BsModalRef;
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
+  }
+
+  openAddModal() {
+    this.addModal = this.modalService.show(DrankTypeAddComponent);
   }
 
 }

@@ -7,8 +7,10 @@ import { DrankTypeTableComponent } from './components/drank-type-table/drank-typ
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { SearchBarModule } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.module';
 import { DrankTypeAddComponent } from './components/drank-type-add/drank-type-add.component';
+import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/dynamic-form.module';
 
 @NgModule({
+  entryComponents: [DrankTypeAddComponent],
   declarations: [DrankTypeListComponent, DrankTypeTableComponent, DrankTypeAddComponent],
   imports: [
     CommonModule,
@@ -16,7 +18,9 @@ import { DrankTypeAddComponent } from './components/drank-type-add/drank-type-ad
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    SearchBarModule
+    SearchBarModule,
+    DynamicFormModule
   ]
+
 })
 export class DrankTypeModule { }

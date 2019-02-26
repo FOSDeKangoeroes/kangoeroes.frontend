@@ -1,3 +1,7 @@
-<p>
-  drank-type-add works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title">Type toevoegen</h4>
+</div>
+
+<div class="modal-body">
+  <kangoeroe-dynamic-form [fields]="regConfig" (submit)="onSubmit($event)"></kangoeroe-dynamic-form>
+</div>

@@ -8,7 +8,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit {
-
   @Input() fields: FieldConfig[] = [];
 
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
@@ -19,7 +18,7 @@ export class DynamicFormComponent implements OnInit {
     return this.form.value;
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.createControl();
@@ -33,7 +32,10 @@ export class DynamicFormComponent implements OnInit {
         return;
       }
 
-      const control = this.fb.control(field.value, this.bindValidations(field.validations || []));
+      const control = this.fb.control(
+        field.value,
+        this.bindValidations(field.validations || [])
+      );
 
       group.addControl(field.name, control);
     });
@@ -44,7 +46,7 @@ export class DynamicFormComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
     event.stopPropagation();
-    if(this.form.valid) {
+    if (this.form.valid) {
       this.submit.emit(this.form.value);
     } else {
       this.validateAllFormFields(this.form);
@@ -66,8 +68,7 @@ export class DynamicFormComponent implements OnInit {
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
       const control = formGroup.get(field);
-      control.markAsTouched({onlySelf: true});
+      control.markAsTouched({ onlySelf: true });
     });
   }
-
 }

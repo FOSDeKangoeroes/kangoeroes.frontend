@@ -8,10 +8,11 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
 import { SearchBarModule } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.module';
 import { DrankTypeAddComponent } from './components/drank-type-add/drank-type-add.component';
 import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/dynamic-form.module';
+import { DrankTypeDetailComponent } from './pages/drank-type-detail/drank-type-detail.component';
 
 @NgModule({
   entryComponents: [DrankTypeAddComponent],
-  declarations: [DrankTypeListComponent, DrankTypeTableComponent, DrankTypeAddComponent],
+  declarations: [DrankTypeListComponent, DrankTypeTableComponent, DrankTypeAddComponent, DrankTypeDetailComponent],
   imports: [
     CommonModule,
     DrankTypeRoutingModule,

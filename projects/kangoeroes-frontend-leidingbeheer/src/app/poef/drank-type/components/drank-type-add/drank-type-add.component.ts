@@ -5,6 +5,8 @@ import { Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DrankTypeDataService } from '../../shared/drank-type-data.service';
 import { SnotifyService } from 'ng-snotify';
+import { DrankTypeService } from '../../shared/drank-type.service';
+import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-table/event.service';
 
 @Component({
   selector: 'modal-content',
@@ -41,7 +43,8 @@ export class DrankTypeAddComponent implements OnInit {
 constructor(
   private dataService: DrankTypeDataService,
   private addModalRef: BsModalRef,
-  private snotifyService: SnotifyService
+  private snotifyService: SnotifyService,
+  private eventService: EventService
   ) {
 
 }
@@ -54,6 +57,7 @@ constructor(
 
   onSubmit(event: Event) {
     this.dataService.create(event).subscribe(res => {
+      this.eventService.entryChanged$.emit();
       this.addModalRef.hide();
     },
     error => {

@@ -2,7 +2,7 @@
 
   <ng-container matColumnDef="naam">
     <mat-header-cell mat-sort-header *matHeaderCellDef>Type</mat-header-cell>
-    <mat-cell *matCellDef="let type">{{type.displayName}}</mat-cell>
+    <mat-cell *matCellDef="let type"><a routerLink="/poef/drank-type/{{type.id}}">{{type.displayName}}</a></mat-cell>
   </ng-container>
 
  

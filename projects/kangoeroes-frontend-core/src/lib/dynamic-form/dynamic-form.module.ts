@@ -15,9 +15,19 @@ import { InputComponent } from './components/input/input.component';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { SelectComponent } from './components/select/select.component';
 import { SelectListModule } from '../components/select-list/select-list.module';
+import { DynamicFieldDirective } from './directives/dynamic-field.directive';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 @NgModule({
-  declarations: [ButtonComponent, CheckboxComponent, DateComponent, InputComponent, RadiobuttonComponent, SelectComponent],
+  declarations: [
+    ButtonComponent,
+    CheckboxComponent,
+    DateComponent,
+    InputComponent,
+    RadiobuttonComponent,
+    SelectComponent,
+    DynamicFieldDirective,
+    DynamicFormComponent],
   imports: [
     CommonModule,
     MatCheckboxModule,

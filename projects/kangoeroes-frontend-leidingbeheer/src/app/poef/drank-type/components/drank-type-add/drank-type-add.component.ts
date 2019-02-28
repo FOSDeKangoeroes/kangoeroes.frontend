@@ -5,7 +5,6 @@ import { Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DrankTypeDataService } from '../../shared/drank-type-data.service';
 import { SnotifyService } from 'ng-snotify';
-import { DrankTypeService } from '../../shared/drank-type.service';
 import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-table/event.service';
 
 @Component({
@@ -36,7 +35,6 @@ export class DrankTypeAddComponent implements OnInit {
     }
   ];
 
- 
 /**
  *
  */
@@ -52,8 +50,6 @@ constructor(
 
   ngOnInit() {
   }
-
- 
 
   onSubmit(event: Event) {
     this.dataService.create(event).subscribe(res => {

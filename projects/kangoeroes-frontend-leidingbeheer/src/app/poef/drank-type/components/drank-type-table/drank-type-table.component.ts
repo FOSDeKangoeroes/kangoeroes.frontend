@@ -5,11 +5,20 @@ import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/comp
 import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-table/event.service';
 import { DrankType } from '../../shared/drank-type-model';
 import { DrankTypeDataService } from '../../shared/drank-type-data.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Drank } from '../../../drank/shared/drank.model';
 
 @Component({
   selector: 'app-drank-type-table',
   templateUrl: './drank-type-table.component.html',
-  styleUrls: ['./drank-type-table.component.scss']
+  styleUrls: ['./drank-type-table.component.scss'],
+  animations: [
+  trigger('detailExpand', [
+    state('collapsed', style({ height: '0px', minHeight: '0', display: 'none' })),
+  state('expanded', style({ height: '*' })),
+  transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ])
+  ]
 })
 export class DrankTypeTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -18,6 +27,7 @@ export class DrankTypeTableComponent implements OnInit {
   @Input() displayedColumns: string[];
 
   private possibleColumns = ['naam'];
+  expandedElement: Drank;
   dataSource: KangoeroeTableDataSource<DrankType>;
 
   constructor(

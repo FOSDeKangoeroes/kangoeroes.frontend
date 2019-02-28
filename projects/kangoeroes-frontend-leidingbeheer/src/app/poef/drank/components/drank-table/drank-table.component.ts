@@ -17,6 +17,8 @@ export class DrankTableComponent implements OnInit {
 
   @Input() displayedColumns: string[];
 
+  @Input() typeId: number;
+
   private possibleColumns = ['type.naam', 'naam', 'currentPrijs'];
   dataSource: KangoeroeTableDataSource<Drank>;
 

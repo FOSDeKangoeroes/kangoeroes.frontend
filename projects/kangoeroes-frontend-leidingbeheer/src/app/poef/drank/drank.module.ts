@@ -30,6 +30,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ModalModule.forRoot()
 
   ],
-  entryComponents: [DrankAddComponent]
+  entryComponents: [DrankAddComponent],
+  exports: [DrankTableComponent]
 })
 export class DrankModule { }

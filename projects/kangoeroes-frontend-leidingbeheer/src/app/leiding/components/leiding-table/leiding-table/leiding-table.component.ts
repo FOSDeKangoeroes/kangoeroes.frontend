@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { LeidingTableDataSource } from './leiding-table-datasource';
-import { BehaviorSubject } from 'rxjs';
 import { LeidingDataService } from '../../../shared/leiding-data.service';
 import { LeidingService } from '../../../shared/leiding.service';
 import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';

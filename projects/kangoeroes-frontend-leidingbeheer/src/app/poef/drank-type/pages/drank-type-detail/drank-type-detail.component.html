@@ -1,3 +1,35 @@
-<p>
-  {{type.displayName}}
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="h1"> {{type.naam}}</h1>
+
+    <div class="card card-accent-primary">
+      <div class="card-header">
+        Acties
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-primary"  (click)="openEditModal()"><i
+            class="icon-pencil"></i> Wijzigen...</button>
+        <button type="button" class="btn btn-danger" [disabled]="hasLeiding" 
+          (click)="openDeleteModal()"><i class="icon-trash"></i> Verwijderen...</button>
+        <button type="button" class="btn btn-success pull-right"  (click)="openAddModal()">
+          <i class="icon-user-follow"></i> Drank toevoegen...
+        </button>
+      </div>
+    </div>
+
+
+
+    <div class="card card-accent-primary">
+      <div class="card-header">
+        Dranken in {{type.naam}}
+      </div>
+      <div class="table table-striped">
+
+        <app-drank-table [displayedColumns]="displayedColumns"></app-drank-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

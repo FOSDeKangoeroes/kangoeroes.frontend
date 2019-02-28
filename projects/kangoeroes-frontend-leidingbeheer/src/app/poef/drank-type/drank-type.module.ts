@@ -9,6 +9,8 @@ import { SearchBarModule } from 'projects/kangoeroes-frontend-core/src/lib/compo
 import { DrankTypeAddComponent } from './components/drank-type-add/drank-type-add.component';
 import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/dynamic-form.module';
 import { DrankTypeDetailComponent } from './pages/drank-type-detail/drank-type-detail.component';
+import { DrankModule } from '../drank/drank.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   entryComponents: [DrankTypeAddComponent],
@@ -20,7 +22,8 @@ import { DrankTypeDetailComponent } from './pages/drank-type-detail/drank-type-d
     MatPaginatorModule,
     MatSortModule,
     SearchBarModule,
-    DynamicFormModule
+    DynamicFormModule,
+    DrankModule
   ]
 
 })

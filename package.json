@@ -11,6 +11,7 @@
     "build-totems-prod": "ng build kangoeroes-frontend-totems --configuration=production --outputPath=dist/totems",
     "build-totems-staging": "ng build kangoeroes-frontend-totems --configuration=staging --outputPath=dist/totems-staging",
     "build-leidingbeheer-staging": "ng build kangoeroes-frontend-leidingbeheer --configuration=dev --outputPath=dist/leidingbeheer-staging",
+    "build-leidingbeheer-production": "ng build kangoeroes-frontend-leidingbeheer --configuration=production --outputPath=dist/leidingbeheer-production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

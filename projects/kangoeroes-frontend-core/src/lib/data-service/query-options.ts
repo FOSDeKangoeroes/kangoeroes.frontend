@@ -1,14 +1,20 @@
-export interface QueryBuilder {
+export interface IQueryBuilder {
   toQueryMap: () => Map<string, string>;
   toQueryString: () => string;
 }
 
-export class QueryOptions implements QueryBuilder {
+export interface ParentEntity {
+  name: string;
+  value: number;
+}
+
+export class QueryOptions implements IQueryBuilder {
   public pageNumber: number;
   public pageSize: number;
   public sortBy: string;
   public sortOrder: string;
   public query: string;
+  public parentEntity?: ParentEntity;
 
   constructor() {
     this.pageNumber = 1;
@@ -26,6 +32,9 @@ export class QueryOptions implements QueryBuilder {
     queryMap.set('sortOrder', `${this.sortOrder}`);
     queryMap.set('query', `${this.query}`);
 
+    if (this.parentEntity) {
+      queryMap.set(`${this.parentEntity.name}`, `${this.parentEntity.value}`);
+    }
     return queryMap;
   }
 

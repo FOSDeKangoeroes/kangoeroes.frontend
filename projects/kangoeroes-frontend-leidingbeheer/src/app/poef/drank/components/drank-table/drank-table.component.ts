@@ -35,6 +35,13 @@ export class DrankTableComponent implements OnInit {
       this.searchBarService,
       this.drankDataService,
       this.drankService);
+
+      if (this.typeId) {
+        this.dataSource.parentEntity = {
+          name: 'DrankType',
+          value: this.typeId
+        };
+      }
   }
 
 }

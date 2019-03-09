@@ -11,7 +11,7 @@ import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/comp
 })
 export class DrankTypeDetailComponent implements OnInit {
 
-  private type: DrankType;
+  public type: DrankType;
 
   constructor(private route: ActivatedRoute) { }
 

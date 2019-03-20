@@ -13,6 +13,8 @@ export class DrankTypeDetailComponent implements OnInit {
 
   public type: DrankType;
 
+  public displayedColumns: string[];
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {

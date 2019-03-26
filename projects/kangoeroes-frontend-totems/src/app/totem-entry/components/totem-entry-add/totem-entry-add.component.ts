@@ -10,6 +10,7 @@ import { Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-adjective-data.service';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class TotemEntryAddComponent implements OnInit {
     public adjectiveDataService: TotemAdjectiveDataService,
     public animalDataService: AnimalDataService,
     public totemEntryDataService: TotemEntryDataService,
-    private totemEntryService: TotemEntryService
+    private totemEntryService: TotemEntryService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -40,7 +42,7 @@ export class TotemEntryAddComponent implements OnInit {
       adjectief: [, [Validators.required]],
       totem: [, [Validators.required]],
       datumGekregen: [''],
-      voorouder: [, [Validators.required]]
+      voorouder: [,]
 
     });
   }
@@ -51,16 +53,20 @@ export class TotemEntryAddComponent implements OnInit {
 
   onSubmit() {
     const datumGekregen = moment(this.addEntryFormGroup.value.datumGekregen).toISOString();
-    const voorouder = this.addEntryFormGroup.value.voorouder.control ? this.addEntryFormGroup.value.voorouder.control : 0;
+    const voorouder = this.addEntryFormGroup.value.voorouder ? this.addEntryFormGroup.value.voorouder : 0;
     const newEntry = {
-      leidingId: this.addEntryFormGroup.value.persoon.control,
-      totemId: this.addEntryFormGroup.value.totem.control,
-      adjectiefId: this.addEntryFormGroup.value.adjectief.control,
+      leidingId: this.addEntryFormGroup.value.persoon,
+      totemId: this.addEntryFormGroup.value.totem,
+      adjectiefId: this.addEntryFormGroup.value.adjectief,
       datumGegeven: datumGekregen ? datumGekregen : undefined,
       voorouderId: voorouder
     };
   this.totemEntryDataService.create(newEntry).subscribe(res => {
     this.totemEntryService.entryChanged$.emit();
+  }, error => {
+      this.snackbar.open(`${error.message}`, null, {
+        duration: 2000
+      });
   });
   }
 

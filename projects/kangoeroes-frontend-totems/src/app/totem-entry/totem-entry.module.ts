@@ -17,7 +17,8 @@ import {
   MatDialogModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { TotemEntriesComponent } from './pages/totem-entries/totem-entries.component';
 import { TotemEntryAddComponent } from './components/totem-entry-add/totem-entry-add.component';
@@ -43,6 +44,7 @@ import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/comp
     MatMenuModule,
     MatDialogModule,
     MatDatepickerModule,
+    MatSnackBarModule,
     PickColumnModule,
     MatButtonModule,
     ReactiveFormsModule,

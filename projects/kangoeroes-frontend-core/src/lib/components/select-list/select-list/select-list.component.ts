@@ -1,17 +1,19 @@
-
 import { HttpHeaders } from '@angular/common/http';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Component, OnInit, Input, ViewChild, forwardRef } from '@angular/core';
 import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+  map
+} from 'rxjs/operators';
 import { NgSelectComponent } from '@ng-select/ng-select';
 import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
 import { ResourceService } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-service';
 import { ResourceFactory } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-factory';
 import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 import { Pagination } from './pagination-model';
-
-
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -20,20 +22,19 @@ import { Pagination } from './pagination-model';
   styleUrls: ['./select-list.component.scss'],
   providers: [
     {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => SelectListComponent),
-    multi: true
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectListComponent),
+      multi: true
     }
   ]
 })
-export class SelectListComponent<T extends Resource> implements OnInit, ControlValueAccessor {
-
+export class SelectListComponent<T extends Resource>
+  implements OnInit, ControlValueAccessor {
   @Input() placeholder: string;
   @Input() dataService: ResourceService<T>;
   @Input() resourceFactory: ResourceFactory<T>;
 
   @ViewChild('selectList') selectList: NgSelectComponent;
-
 
   list: T[];
   queryOptions = new QueryOptions();
@@ -41,12 +42,9 @@ export class SelectListComponent<T extends Resource> implements OnInit, ControlV
   search$ = new Subject<string>();
   loading = false;
 
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit() {
-
     this.loadLeiding();
     this.searchLeiding();
   }
@@ -78,45 +76,46 @@ export class SelectListComponent<T extends Resource> implements OnInit, ControlV
 
   fetchMore() {
     if (this.list.length < this.paginationData.totalCount) {
-       this.loading = true;
-    this.queryOptions.pageNumber++;
-    this.dataService.list(this.queryOptions).subscribe(data => {
-      this.list = this.list.concat(data.body);
-      this.paginationData = this.parseHeaders(data.headers);
-      this.loading = false;
-    });
+      this.loading = true;
+      this.queryOptions.pageNumber++;
+      this.dataService.list(this.queryOptions).subscribe(data => {
+        this.list = this.list.concat(data.body);
+        this.paginationData = this.parseHeaders(data.headers);
+        this.loading = false;
+      });
     }
-
   }
 
   searchLeiding() {
-     this.search$.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      switchMap(res => {
-        this.queryOptions.pageNumber = 1;
-        this.queryOptions.query = res;
-        this.loading = true;
-        return this.dataService.list(this.queryOptions);
-      }),
-      map(data => {
-        this.list = data.body;
-        this.paginationData = this.parseHeaders(data.headers);
-        this.loading = false;
-      })
-    ).subscribe();
+    this.search$
+      .pipe(
+        debounceTime(200),
+        distinctUntilChanged(),
+        switchMap(res => {
+          this.queryOptions.pageNumber = 1;
+          this.queryOptions.query = res;
+          this.loading = true;
+          return this.dataService.list(this.queryOptions);
+        }),
+        map(data => {
+          this.list = data.body;
+          this.paginationData = this.parseHeaders(data.headers);
+          this.loading = false;
+        })
+      )
+      .subscribe();
   }
 
   add(searchTerm: string) {
     this.loading = true;
     this.selectList.close();
 
-   const result = this.resourceFactory.create(searchTerm);
-   this.dataService.create(result).subscribe(() => {
-     this.list.push(result);
+    const result = this.resourceFactory.create(searchTerm);
+    this.dataService.create(result).subscribe(() => {
+      this.list.push(result);
 
-    this.loading = false;
-   });
+      this.loading = false;
+    });
   }
 
   private parseHeaders(headers: HttpHeaders): Pagination {

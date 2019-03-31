@@ -258,7 +258,9 @@ export class AutocompleteComponent<T extends Resource>
     }
 
     return (item: any) => {
-      return item.displayName;
+      if (item) {
+        return item.displayName;
+      }
     };
   }
 

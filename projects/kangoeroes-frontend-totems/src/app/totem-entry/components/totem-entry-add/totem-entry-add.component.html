@@ -5,32 +5,27 @@
 >
   <div class="col-2">
     <lib-kng-autocomplete
-      [formControl]="addEntryFormGroup.controls['persoon']"
+      [formControl]="addEntryFormGroup.get('persoon')"
       placeholder="Persoon*"
       [source]="leidingDataService"
       [hasProgressBar]="true"
       [showAddNew]="true"
-      displayItem="item.displayName"
+      [validationErrors]="addEntryFormGroup.get('persoon').errors"
             
     ></lib-kng-autocomplete>
+
   </div>
 
   <div class="col-2">
-    <app-select-list
-      formControlName="adjectief"
-      placeholder="Adjectief*"
-      [dataService]="adjectiveDataService"
-      [resourceFactory]="adjectiveFactory"
-    ></app-select-list>
+    <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('adjectief')" placeholder="Adjectief*"
+      [source]="adjectiveDataService" [hasProgressBar]="true" [showAddNew]="true"
+      [validationErrors]="addEntryFormGroup.get('adjectief').errors"></lib-kng-autocomplete>
   </div>
 
   <div class="col-2">
-    <app-select-list
-      formControlName="totem"
-      placeholder="Totem*"
-      [dataService]="animalDataService"
-      [resourceFactory]="animalFactory"
-    ></app-select-list>
+    <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('totem')" placeholder="Totem*"
+      [source]="animalDataService" [hasProgressBar]="true" [showAddNew]="true"
+      [validationErrors]="addEntryFormGroup.get('totem').errors"></lib-kng-autocomplete>
   </div>
 
   <mat-form-field class="col-2">
@@ -48,11 +43,9 @@
   </mat-form-field>
 
   <div class="col-2">
-    <app-select-list
-      formControlName="voorouder"
-      placeholder="Peetje/Meetje"
-      [dataService]="totemEntryDataService"
-    ></app-select-list>
+    <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Peetje/Meetje"
+      [source]="totemEntryDataService" [hasProgressBar]="true" [showAddNew]="true"
+      [validationErrors]="addEntryFormGroup.get('voorouder').errors"></lib-kng-autocomplete>
   </div>
   <button
     type="submit"

@@ -7,11 +7,14 @@
 
   <div class="col-12">
     <h6>Totemgegevens</h6>
-    <app-select-list #adjectiveSelectList  placeholder="Adjectief*" [dataService]="adjectiveDataService"></app-select-list>
+    <lib-kng-autocomplete
+    [formControl]="addEntryFormGroup.get('adjectief')"
+    placeholder="Adjectief*" [source]="adjectiveDataService"></lib-kng-autocomplete>
   </div>
 
   <div class="col-12">
-    <app-select-list  placeholder="Totem*" [dataService]="animalDataService" ></app-select-list>
+    <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('totem')" placeholder="Totem*"
+      [source]="animalDataService"></lib-kng-autocomplete>
   </div>
 
 
@@ -22,7 +25,7 @@
   </mat-form-field>
 
   <div class="col-12">
-    <app-select-list  placeholder="Peetje/Meetje" [dataService]="totemEntryDataService"></app-select-list>
+<lib-kng-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Voorouder" [source]="totemEntryDataService"></lib-kng-autocomplete>
   </div> 
 <div class="col-12">
 <button type="submit" [disabled]="!addEntryFormGroup.valid" mat-raised-button class="col-2 float-right">Wijzigen</button>

@@ -4,12 +4,15 @@
   (ngSubmit)="onSubmit()"
 >
   <div class="col-2">
-    <app-select-list
-      formControlName="persoon"
+    <lib-kng-autocomplete
+      [formControl]="addEntryFormGroup.controls['persoon']"
       placeholder="Persoon*"
-      [dataService]="leidingDataService"
-      [resourceFactory]="leidingFactory"
-    ></app-select-list>
+      [source]="leidingDataService"
+      [hasProgressBar]="true"
+      [showAddNew]="true"
+      displayItem="item.displayName"
+            
+    ></lib-kng-autocomplete>
   </div>
 
   <div class="col-2">

@@ -29,6 +29,7 @@ import { TotemEntryReuseDataComponent } from './components/totem-entry-reuse-dat
 import { TotemEntryFamilyComponent } from './components/totem-entry-family/totem-entry-family.component';
 import { TotemEntryAddDescendantComponent } from './components/totem-entry-add-descendant/totem-entry-add-descendant.component';
 import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
+import { AutocompleteModule } from 'projects/kangoeroes-frontend-core/src/lib/components/autocomplete/autocomplete.module';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/comp
     MatFormFieldModule,
     FormsModule,
     NgSelectModule,
-    SelectListModule
+    SelectListModule,
+    AutocompleteModule
 
   ],
   declarations: [

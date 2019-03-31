@@ -12,6 +12,7 @@ import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
 import { MatSnackBar } from '@angular/material';
 import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validators/autocomplete-validator';
+import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
 
 
 @Component({
@@ -21,11 +22,12 @@ import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validato
 })
 export class TotemEntryAddComponent implements OnInit {
   addEntryFormGroup: FormGroup;
-  required = [Validators.required];
 
   leidingFactory = new LeidingFactory();
   adjectiveFactory = new AdjectiveFactory();
   animalFactory = new AnimalFactory();
+
+  displayItem = (x: Resource) => x.displayName;
 
   constructor(
     private fb: FormBuilder,
@@ -40,10 +42,10 @@ export class TotemEntryAddComponent implements OnInit {
   ngOnInit() {
     this.addEntryFormGroup = this.fb.group({
       persoon: [, [Validators.required, RequireMatch]],
-      adjectief: [, [Validators.required]],
-      totem: [, [Validators.required]],
+      adjectief: [, [Validators.required, RequireMatch]],
+      totem: [, [Validators.required, RequireMatch]],
       datumGekregen: [''],
-      voorouder: [,]
+      voorouder: [, RequireMatch]
 
     });
   }
@@ -55,15 +57,15 @@ export class TotemEntryAddComponent implements OnInit {
     const voorouder = this.addEntryFormGroup.value.voorouder ? this.addEntryFormGroup.value.voorouder : 0;
     const newEntry = {
       leidingId: this.addEntryFormGroup.value.persoon.id,
-      totemId: this.addEntryFormGroup.value.totem,
-      adjectiefId: this.addEntryFormGroup.value.adjectief,
+      totemId: this.addEntryFormGroup.value.totem.id,
+      adjectiefId: this.addEntryFormGroup.value.adjectief.id,
       datumGegeven: datumGekregen ? datumGekregen : undefined,
-      voorouderId: voorouder
+      voorouderId: voorouder.id
     };
   this.totemEntryDataService.create(newEntry).subscribe(res => {
     this.totemEntryService.entryChanged$.emit();
   }, error => {
-      this.snackbar.open(`${error.message}`, null, {
+      this.snackbar.open(`${error.error}`, null, {
         duration: 2000
       });
   });

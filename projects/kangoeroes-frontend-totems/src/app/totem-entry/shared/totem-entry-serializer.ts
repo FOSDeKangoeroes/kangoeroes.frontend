@@ -24,6 +24,7 @@ export class TotemEntrySerializer implements Serializer<TotemEntry> {
     newEntry.leidingVoornaam = json.leidingVoornaam;
     newEntry.reuseDateAdjectief = json.reuseDateAdjectief;
     newEntry.reuseDateTotem = json.reuseDateTotem;
+
     newEntry.voorouderAdjectief = json.voorouderAdjectief;
     newEntry.voorouderId = json.voorouderId;
     newEntry.voorouderTotem = json.voorouderTotem;

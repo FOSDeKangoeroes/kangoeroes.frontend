@@ -8,20 +8,25 @@ import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-
 import { AnimalDataService } from '../../../totemanimal/shared/animal-data.service';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
 import * as moment from 'moment';
+import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validators/autocomplete-validator';
 
 @Component({
   selector: 'app-totem-entry-edit',
   templateUrl: './totem-entry-edit.component.html',
   styleUrls: ['./totem-entry-edit.component.scss']
 })
-export class TotemEntryEditComponent implements OnInit, AfterViewInit {
+export class TotemEntryEditComponent implements OnInit {
 
   @Input() totemEntry: TotemEntry;
 
-  @ViewChild('adjectiveSelectList')
-  adjectiveSelectList;
   addEntryFormGroup: FormGroup;
-  required = [Validators.required];
+  private voorouder?: TotemEntry;
+
+  displayFnGrandparent = (x: any) => {
+ if (x) {
+   return `${x.displayName} \/\/ ${x.leidingVoornaam} ${x.leidingNaam}`;
+ }
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -34,18 +39,21 @@ export class TotemEntryEditComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
+
     this.addEntryFormGroup = this.fb.group({
-      adjectief: [this.totemEntry.adjectief.id, [Validators.required]],
-      totem: [this.totemEntry.totem.id, [Validators.required]],
+      adjectief: [this.totemEntry.adjectief, [Validators.required, RequireMatch]],
+      totem: [this.totemEntry.totem, [Validators.required, RequireMatch]],
       datumGekregen: [''],
-      voorouder: [this.totemEntry.voorouderId]
-       
+      voorouder: [[RequireMatch]]
+
     });
 
-  }
+    if  (this.totemEntry.voorouderId) {
+      this.totemEntryDataService.read(this.totemEntry.voorouderId).subscribe(res => {
+        this.addEntryFormGroup.get('voorouder').setValue(res);
+      });
+    }
 
-  ngAfterViewInit(): void {
-   
   }
 
   addFormControl(name: string, formGroup: FormGroup): void {
@@ -54,11 +62,11 @@ export class TotemEntryEditComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     const datumGekregen = moment(this.addEntryFormGroup.value.datumGekregen).toISOString();
-    const voorouder = this.addEntryFormGroup.value.voorouder.control ? this.addEntryFormGroup.value.voorouder.control : 0;
+    const voorouder = this.addEntryFormGroup.value.voorouder.id ? this.addEntryFormGroup.value.voorouder.id : 0;
     const newEntry = {
 
-      totemId: this.addEntryFormGroup.value.totem.control,
-      adjectiefId: this.addEntryFormGroup.value.adjectief.control,
+      totemId: this.addEntryFormGroup.value.totem.id,
+      adjectiefId: this.addEntryFormGroup.value.adjectief.id,
       datumGegeven: datumGekregen ? datumGekregen : undefined,
       voorouderId: voorouder
     };

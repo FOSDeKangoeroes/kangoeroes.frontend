@@ -11,6 +11,7 @@ import * as moment from 'moment';
 import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-adjective-data.service';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
 import { MatSnackBar } from '@angular/material';
+import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validators/autocomplete-validator';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class TotemEntryAddComponent implements OnInit {
 
   ngOnInit() {
     this.addEntryFormGroup = this.fb.group({
-      persoon: [, [Validators.required]],
+      persoon: [, [Validators.required, RequireMatch]],
       adjectief: [, [Validators.required]],
       totem: [, [Validators.required]],
       datumGekregen: [''],
@@ -47,15 +48,13 @@ export class TotemEntryAddComponent implements OnInit {
     });
   }
 
-   addFormControl(name: string, formGroup: FormGroup): void {
-    this.addEntryFormGroup.addControl(name, formGroup);
-  }
+
 
   onSubmit() {
     const datumGekregen = moment(this.addEntryFormGroup.value.datumGekregen).toISOString();
     const voorouder = this.addEntryFormGroup.value.voorouder ? this.addEntryFormGroup.value.voorouder : 0;
     const newEntry = {
-      leidingId: this.addEntryFormGroup.value.persoon,
+      leidingId: this.addEntryFormGroup.value.persoon.id,
       totemId: this.addEntryFormGroup.value.totem,
       adjectiefId: this.addEntryFormGroup.value.adjectief,
       datumGegeven: datumGekregen ? datumGekregen : undefined,

@@ -1,0 +1,21 @@
+<form [formGroup]='formGroup' (ngSubmit)='onSubmit()'>
+  <h1 mat-dialog-title>Nieuw persoon toevoegen</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Naam</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="formGroup.get('name').errors?.required && formGroup.get('name').touched">Vul dit veld in.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Voornaam</mat-label>
+      <input  matInput formControlName="firstname">
+      <mat-error *ngIf="formGroup.get('firstname').errors?.required && formGroup.get('firstname').touched">Vul dit veld in.
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button type="button" mat-button (click)="onCancel()">Cancel</button>
+    <button type="submit" [disabled]="!formGroup.valid" mat-button>Ok</button>
+  </div>
+</form>

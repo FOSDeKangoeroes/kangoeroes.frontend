@@ -10,9 +10,10 @@ import { Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-adjective-data.service';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validators/autocomplete-validator';
 import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
+import { LeidingAddComponent } from '../../../leiding/leiding-add/leiding-add.component';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class TotemEntryAddComponent implements OnInit {
     public animalDataService: AnimalDataService,
     public totemEntryDataService: TotemEntryDataService,
     private totemEntryService: TotemEntryService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -69,6 +71,17 @@ export class TotemEntryAddComponent implements OnInit {
         duration: 2000
       });
   });
+  }
+
+  addNewPerson(value: string) {
+    console.log(value)
+    this.dialog.open(LeidingAddComponent, {
+      width: '500px',
+      data: {
+        value: value
+      }
+    });
+
   }
 
 }

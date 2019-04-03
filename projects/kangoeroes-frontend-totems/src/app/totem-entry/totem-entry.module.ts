@@ -30,6 +30,8 @@ import { TotemEntryFamilyComponent } from './components/totem-entry-family/totem
 import { TotemEntryAddDescendantComponent } from './components/totem-entry-add-descendant/totem-entry-add-descendant.component';
 import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
 import { AutocompleteModule } from 'projects/kangoeroes-frontend-core/src/lib/components/autocomplete/autocomplete.module';
+import { LeidingAddComponent } from '../leiding/leiding-add/leiding-add.component';
+import { LeidingModule } from '../leiding/leiding.module';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { AutocompleteModule } from 'projects/kangoeroes-frontend-core/src/lib/co
     FormsModule,
     NgSelectModule,
     SelectListModule,
-    AutocompleteModule
+    AutocompleteModule,
+    LeidingModule,
+    MatDialogModule
 
   ],
   declarations: [
@@ -66,6 +70,6 @@ import { AutocompleteModule } from 'projects/kangoeroes-frontend-core/src/lib/co
     TotemEntryFamilyComponent,
     TotemEntryAddDescendantComponent
   ],
-  entryComponents: [TotemEntryAddDescendantComponent]
+  entryComponents: [TotemEntryAddDescendantComponent, LeidingAddComponent]
 })
 export class TotemEntryModule {}

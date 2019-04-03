@@ -259,7 +259,7 @@ export class AutocompleteComponent<T extends Resource>
 
     return (item: any) => {
       if (item) {
-        return item.displayName;
+        return item ? this.viewItem(item) : item;
       }
     };
   }
@@ -312,7 +312,7 @@ export class AutocompleteComponent<T extends Resource>
       return this.displayItemFn(item);
     }
     // using eval() can be dangerous, better use displayItemFn function
-    return item;
+    return this.displayItem ? eval(this.displayItem) : item.displayname;
   }
 
   public clearValue() {
@@ -361,7 +361,7 @@ export class AutocompleteComponent<T extends Resource>
     if (!val) {
       return;
     }
-    this.selectedOption = val.displayName;
+    this.selectedOption = val;
 
     if (this.autocompleteInput) {
       this.autocompleteInput.nativeElement.value = this.viewItem(

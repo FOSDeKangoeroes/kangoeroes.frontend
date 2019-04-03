@@ -57,7 +57,7 @@
   >
     <mat-option *ngFor="let item of autocompleteList" [value]="item">
       <span>
-        {{ item.displayName }}
+        {{ viewItem(item) }}
       </span>
     </mat-option>
     <mat-option *ngIf="query && noSuggestions" disabled>

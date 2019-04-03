@@ -11,6 +11,8 @@
       [hasProgressBar]="true"
       [showAddNew]="true"
       [validationErrors]="addEntryFormGroup.get('persoon').errors"
+      (createNew)="addNewPerson($event)"
+      [displayItemFn]="displayItem"
             
     ></lib-kng-autocomplete>
 
@@ -18,14 +20,16 @@
 
   <div class="col-2">
     <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('adjectief')" placeholder="Adjectief*"
-      [source]="adjectiveDataService" [hasProgressBar]="true" [showAddNew]="true"
-      [validationErrors]="addEntryFormGroup.get('adjectief').errors"></lib-kng-autocomplete>
+      [source]="adjectiveDataService" [hasProgressBar]="true"
+      [validationErrors]="addEntryFormGroup.get('adjectief').errors"
+      [displayItemFn]="displayItem"></lib-kng-autocomplete>
   </div>
 
   <div class="col-2">
     <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('totem')" placeholder="Totem*"
-      [source]="animalDataService" [hasProgressBar]="true" [showAddNew]="true"
-      [validationErrors]="addEntryFormGroup.get('totem').errors"></lib-kng-autocomplete>
+      [source]="animalDataService" [hasProgressBar]="true"
+      [validationErrors]="addEntryFormGroup.get('totem').errors"
+      [displayItemFn]="displayItem"></lib-kng-autocomplete>
   </div>
 
   <mat-form-field class="col-2">
@@ -44,7 +48,7 @@
 
   <div class="col-2">
     <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Peetje/Meetje"
-      [source]="totemEntryDataService" [hasProgressBar]="true" [showAddNew]="true"
+      [source]="totemEntryDataService" [hasProgressBar]="true"
       [validationErrors]="addEntryFormGroup.get('voorouder').errors"></lib-kng-autocomplete>
   </div>
   <button

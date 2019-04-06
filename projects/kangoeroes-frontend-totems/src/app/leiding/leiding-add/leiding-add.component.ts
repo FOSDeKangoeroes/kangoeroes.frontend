@@ -20,11 +20,10 @@ export class LeidingAddComponent implements OnInit {
     private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    console.log(this.data);
-    const personDataArray = this.data.value.split(' ', 1);
+  
     this.formGroup = this.fb.group({
-      name: [personDataArray[0], [Validators.required]],
-      firstname: [personDataArray[1], [Validators.required]]
+      name: [, [Validators.required]],
+      firstname: [this.data.value, [Validators.required]]
     });
   }
 

@@ -16,10 +16,7 @@ import { HttpParams } from '@angular/common/http';
 import {
   NG_VALUE_ACCESSOR,
   ControlValueAccessor,
-  FormControl,
-  Validator,
-  AbstractControl,
-  ValidationErrors
+  FormControl
 } from '@angular/forms';
 import { ResourceService } from '../../../data-service/resource-service';
 import { Resource } from '../../../data-service/resource-model';
@@ -111,7 +108,7 @@ export class AutocompleteComponent<T extends Resource>
   @Input() minChars = 2;
   @Input() clearAfterSearch = false;
   @Input() showAddNew = false;
-  @Input() addNewText = 'Add new';
+  @Input() addNewText = 'Nieuw toevoegen';
   @Input() isFocused = false;
   @Input() validationErrors: string[] = [];
   @Input() serviceParams?: HttpParams;

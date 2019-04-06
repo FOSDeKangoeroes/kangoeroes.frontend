@@ -48,7 +48,7 @@
 
   <div class="col-2">
     <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Peetje/Meetje"
-      [source]="totemEntryDataService" [hasProgressBar]="true"
+      [source]="totemEntryDataService" [hasProgressBar]="true" [displayItemFn]="displayItem"
       [validationErrors]="addEntryFormGroup.get('voorouder').errors"></lib-kng-autocomplete>
   </div>
   <button

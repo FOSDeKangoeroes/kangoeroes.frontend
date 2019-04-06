@@ -16,6 +16,7 @@ import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
 import * as moment from 'moment';
 import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validators/autocomplete-validator';
 import { Router } from '@angular/router';
+import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
 
 @Component({
   selector: 'app-totem-entry-edit',
@@ -27,6 +28,12 @@ export class TotemEntryEditComponent implements OnInit {
 
   addEntryFormGroup: FormGroup;
   private voorouder?: TotemEntry;
+
+  displayFn = (x: Resource) => {
+    if(x) {
+      return x.displayName;
+    }
+  }
 
   displayFnGrandparent = (x: any) => {
 

@@ -81,7 +81,6 @@ export class TotemEntryAddComponent implements OnInit {
   }
 
   addNewPerson(value: string) {
-    console.log(value);
     this.dialog.open(LeidingAddComponent, {
       width: '500px',
       data: {

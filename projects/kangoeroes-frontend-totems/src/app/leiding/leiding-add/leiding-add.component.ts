@@ -41,4 +41,8 @@ export class LeidingAddComponent implements OnInit {
 
   }
 
+  onCancel() {
+    this.dialogRef.close();
+  }
+
 }

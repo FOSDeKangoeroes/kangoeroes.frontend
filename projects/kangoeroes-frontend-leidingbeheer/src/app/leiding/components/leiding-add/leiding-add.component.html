@@ -44,17 +44,16 @@
         <mat-error *ngIf='addLeidingFormGroup.get("email").errors?.email && addLeidingFormGroup.get("email").touched'>Geef een geldig emailadres</mat-error>
       </div>
 
-      <mat-form-field class="col-12">
+   <!--   <mat-form-field class="col-12">
         <input matInput placeholder="Leiding sinds" matInput [matDatepicker]="leidingSindsPicker" formControlName="datumGestart">
         <mat-datepicker-toggle matSuffix [for]="leidingSindsPicker"></mat-datepicker-toggle>
         <mat-datepicker #leidingSindsPicker></mat-datepicker>
-      </mat-form-field>
+      </mat-form-field>-->
 
-      <mat-form-field class="col-12">
-        <input matInput placeholder="Gestopt op" matInput [matDatepicker]="gestoptPicker" formControlName="datumGestopt">
-        <mat-datepicker-toggle matSuffix [for]="gestoptPicker"></mat-datepicker-toggle>
-        <mat-datepicker #gestoptPicker></mat-datepicker>
-      </mat-form-field>
+      <lib-date-picker title="Leiding sinds" formControlName="datumGestart"></lib-date-picker>
+
+      <lib-date-picker title="Gestopt op" formControlName="datumGestopt"></lib-date-picker>
+
     </fieldset>
 
   </div>

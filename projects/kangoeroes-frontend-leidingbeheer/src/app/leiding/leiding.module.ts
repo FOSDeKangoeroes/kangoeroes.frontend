@@ -16,6 +16,7 @@ import { LeidingChangeTakComponent } from './components/leiding-change-tak/leidi
 import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
 import { LeidingTableModule } from './components/leiding-table/leiding-table.module';
 import { SearchBarModule } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.module';
+import { DateModule } from 'projects/kangoeroes-frontend-core/src/lib/components/date/date.module';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
     MatDatepickerModule,
     NgSelectModule,
     SelectListModule,
-    SearchBarModule
+    SearchBarModule,
+    DateModule
   ],
   declarations: [LeidingListComponent,
     LeidingAddComponent,

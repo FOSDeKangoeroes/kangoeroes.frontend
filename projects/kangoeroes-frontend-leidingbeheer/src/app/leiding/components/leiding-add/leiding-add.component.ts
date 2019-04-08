@@ -3,13 +3,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnotifyService } from 'ng-snotify';
 import * as moment from 'moment';
-import { Leiding } from '../../shared/leiding.model';
-import { Tak } from '../../../tak/shared/tak.model';
 import { Util } from '../../util';
 import { LeidingDataService } from '../../shared/leiding-data.service';
 import { TakDataService } from '../../../tak/shared/tak-data.service';
 import { LeidingService } from '../../shared/leiding.service';
-import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-table/event.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -42,12 +39,10 @@ export class LeidingAddComponent implements OnInit {
   }
 
   onSubmit() {
-    const gestopt = moment(
-      this.addLeidingFormGroup.value.datumGestopt
-    ).toISOString();
-    const gestart = moment(
-      this.addLeidingFormGroup.value.datumGestart
-    ).toISOString();
+    const gestopt = this.addLeidingFormGroup.value.datumGestopt;
+
+    const gestart = this.addLeidingFormGroup.value.datumGestart;
+
     const leiding = {
       naam: this.addLeidingFormGroup.value.naam,
       voornaam: this.addLeidingFormGroup.value.voornaam,

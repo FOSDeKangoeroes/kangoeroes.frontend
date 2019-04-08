@@ -32,6 +32,7 @@ import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/comp
 import { AutocompleteModule } from 'projects/kangoeroes-frontend-core/src/lib/components/autocomplete/autocomplete.module';
 import { LeidingAddComponent } from '../leiding/leiding-add/leiding-add.component';
 import { LeidingModule } from '../leiding/leiding.module';
+import { DateModule } from 'projects/kangoeroes-frontend-core/src/lib/components/date/date.module';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { LeidingModule } from '../leiding/leiding.module';
     SelectListModule,
     AutocompleteModule,
     LeidingModule,
-    MatDialogModule
+    MatDialogModule,
+    DateModule
 
   ],
   declarations: [

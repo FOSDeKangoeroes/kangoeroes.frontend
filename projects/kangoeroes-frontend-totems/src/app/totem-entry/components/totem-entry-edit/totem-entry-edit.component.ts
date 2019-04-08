@@ -4,8 +4,6 @@ import {
   Component,
   OnInit,
   Input,
-  ViewChild,
-  AfterViewInit
 } from '@angular/core';
 import { TotemEntry } from '../../shared/totem-entry-model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -13,7 +11,6 @@ import { LeidingDataService } from '../../../leiding/leiding-data.service';
 import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-adjective-data.service';
 import { AnimalDataService } from '../../../totemanimal/shared/animal-data.service';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
-import * as moment from 'moment';
 import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validators/autocomplete-validator';
 import { Router } from '@angular/router';
 import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
@@ -60,7 +57,7 @@ export class TotemEntryEditComponent implements OnInit {
     this.addEntryFormGroup = this.fb.group({
       adjectief: [this.totemEntry.adjectief, [Validators.required, RequireMatch]],
       totem: [this.totemEntry.totem, [Validators.required, RequireMatch]],
-      datumGekregen: [''],
+      datumGekregen: [this.totemEntry.datumGegeven],
       voorouder: [[RequireMatch]]
 
     });
@@ -78,7 +75,7 @@ export class TotemEntryEditComponent implements OnInit {
   }
 
   onSubmit() {
-    const datumGekregen = moment(this.addEntryFormGroup.value.datumGekregen).toISOString();
+    const datumGekregen = this.addEntryFormGroup.value.datumGekregen;
     const voorouder = this.addEntryFormGroup.value.voorouder.id ? this.addEntryFormGroup.value.voorouder.id : 0;
     const newEntry = {
 

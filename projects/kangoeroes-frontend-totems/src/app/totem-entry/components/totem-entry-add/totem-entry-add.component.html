@@ -32,7 +32,7 @@
       [displayItemFn]="displayItem"></lib-kng-autocomplete>
   </div>
 
-  <mat-form-field class="col-2">
+ <!-- <mat-form-field class="col-2">
     <input
       matInput
       [matDatepicker]="datumPicker"
@@ -44,7 +44,11 @@
       [for]="datumPicker"
     ></mat-datepicker-toggle>
     <mat-datepicker #datumPicker></mat-datepicker>
-  </mat-form-field>
+  </mat-form-field>-->
+
+  <div>
+    <lib-date-picker title="Datum gekregen" formControlName="datumGekregen"></lib-date-picker>
+  </div>
 
   <div class="col-2">
     <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Peetje/Meetje"

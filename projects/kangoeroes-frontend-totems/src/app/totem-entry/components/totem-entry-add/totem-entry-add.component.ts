@@ -7,8 +7,6 @@ import { LeidingDataService } from '../../../leiding/leiding-data.service';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment-timezone';
-
 import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-adjective-data.service';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
@@ -56,9 +54,8 @@ export class TotemEntryAddComponent implements OnInit {
   }
 
   onSubmit() {
-    const datumGekregen = moment(
-      this.addEntryFormGroup.value.datumGekregen
-    ).tz('Europe/Brussels').format();
+    const datumGekregen = this.addEntryFormGroup.value.datumGekregen;
+    
     const voorouder = this.addEntryFormGroup.value.voorouder
       ? this.addEntryFormGroup.value.voorouder
       : 0;

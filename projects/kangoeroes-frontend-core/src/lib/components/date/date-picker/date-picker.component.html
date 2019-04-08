@@ -1,7 +1,7 @@
 <mat-form-field>
   
-  <input matInput [matDatepicker]="picker" [value]="dateValue" (dateInput)="addEvent('input', $event)"
+  <input matInput #input [matDatepicker]="picker" (focus)="picker.open()" [value]="dateValue" (dateInput)="addEvent('input', $event)"
     [placeholder]="title">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+  <mat-datepicker (closed)="input.blur()" #picker></mat-datepicker>
 </mat-form-field>

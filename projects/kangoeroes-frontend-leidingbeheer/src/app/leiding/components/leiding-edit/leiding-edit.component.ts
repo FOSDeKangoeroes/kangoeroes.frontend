@@ -41,8 +41,8 @@ export class LeidingEditComponent implements OnInit {
   }
 
   onSubmit() {
-    const gestopt = moment(this.editLeidingFormGroup.value.datumGestopt).toISOString();
-    const gestart = moment(this.editLeidingFormGroup.value.datumGestart).toISOString();
+    const gestopt = this.editLeidingFormGroup.value.datumGestopt;
+    const gestart = this.editLeidingFormGroup.value.datumGestart;
     const leiding = {
       naam: this.editLeidingFormGroup.value.naam,
       voornaam: this.editLeidingFormGroup.value.voornaam,

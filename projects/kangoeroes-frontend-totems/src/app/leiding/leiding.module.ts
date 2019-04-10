@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { LeidingAddComponent } from './leiding-add/leiding-add.component';
 import { MatSnackBarModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LeidingEditComponent } from './leiding-edit/leiding-edit.component';
+import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/dynamic-form.module';
 
 
 @NgModule({
-  declarations: [LeidingAddComponent],
+  declarations: [LeidingAddComponent, LeidingEditComponent],
   imports: [
     CommonModule,
     MatSnackBarModule,
@@ -14,9 +16,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    DynamicFormModule
   ],
-  exports: [],
+  exports: [LeidingEditComponent],
   entryComponents: [LeidingAddComponent]
 })
 export class LeidingModule {}

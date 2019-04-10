@@ -1,9 +1,6 @@
 <form [formGroup]="addEntryFormGroup" class="form-inline" (ngSubmit)="onSubmit()">
-  <div class="col-12">
-   <h6>Persoon</h6>
-<p>{{totemEntry.leidingVoornaam}} {{totemEntry.leidingNaam}}</p>
-  </div>
-  
+
+  <app-leiding-edit class="col-12" [leiding]="totemEntry.leiding"></app-leiding-edit>
 
   <div class="col-12">
     <h6>Totemgegevens</h6>

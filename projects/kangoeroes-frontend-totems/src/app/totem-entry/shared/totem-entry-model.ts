@@ -1,6 +1,8 @@
 import { Animal } from '../../totemanimal/shared/animal.model';
 import { Adjective } from '../../totemadjective/shared/adjective.model';
 import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
+import { Leiding } from '../../leiding/leiding.model';
+
 
 export class TotemEntry extends Resource {
   leidingNaam: string;
@@ -13,4 +15,5 @@ export class TotemEntry extends Resource {
   reuseDateTotem: Date;
   reuseDateAdjectief: Date;
   datumGegeven: Date;
+  leiding: Leiding;
 }

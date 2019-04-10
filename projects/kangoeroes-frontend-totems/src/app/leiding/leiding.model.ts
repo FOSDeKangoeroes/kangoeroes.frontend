@@ -5,4 +5,5 @@ export class Leiding extends Resource {
     naam: string;
     voornaam: string;
     takId: number;
+    datumGestopt: Date;
 }

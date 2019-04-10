@@ -18,6 +18,7 @@ import { SelectListModule } from '../components/select-list/select-list.module';
 import { DynamicFieldDirective } from './directives/dynamic-field.directive';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DateModule } from '../components/date/date.module';
 
 @NgModule({
   entryComponents: [
@@ -48,7 +49,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    SelectListModule
+    SelectListModule,
+    DateModule
   ],
   exports: [DynamicFormComponent]
 })

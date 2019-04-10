@@ -1,0 +1,8 @@
+
+  <h6>Persoonsgegevens</h6>
+  <p>{{ leiding.voornaam }} {{ leiding.naam }}</p>
+
+  <kangoeroe-dynamic-form
+    [fields]="regConfig"
+    (submit)="onSubmit($event)"
+  ></kangoeroe-dynamic-form>

@@ -6,4 +6,6 @@ export class Leiding extends Resource {
     voornaam: string;
     takId: number;
     datumGestopt: Date;
+    leidingSinds: string;
+    email: string;
 }

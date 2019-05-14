@@ -1,4 +1,5 @@
 @import "~@ng-select/ng-select/themes/material.theme.css";
+@import '~@angular/material/theming';
 
 mat-form-field {
     width: 100%; 
@@ -22,4 +23,8 @@ button:focus {
 
 .mat-row {
     min-height: 20px;
+}
+
+.mat-row:hover {
+    background-color: rgba(gray,0.2)
 }

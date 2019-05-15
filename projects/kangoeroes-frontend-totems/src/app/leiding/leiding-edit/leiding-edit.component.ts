@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Leiding } from '../leiding.model';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { FieldConfig } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/field.interface';
 import { LeidingDataService } from '../leiding-data.service';
 
@@ -20,10 +19,9 @@ export class LeidingEditComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.leiding);
     this.regConfig = [
       {
-        name:'datumGestopt',
+        name: 'datumGestopt',
         label: 'Datum gestopt als leiding',
         type: 'date',
         value: this.leiding.datumGestopt
@@ -38,10 +36,10 @@ export class LeidingEditComponent implements OnInit {
   }
 
   onSubmit(event) {
-    console.log(event);
+
     this.leiding.datumGestopt = event.datumGestopt;
     this.leidingDataService.update(this.leiding, this.leiding.id).subscribe(res => {
-      console.log(res);
+
     });
   }
 

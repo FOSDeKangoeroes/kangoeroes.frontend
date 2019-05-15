@@ -5,13 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NoDatePipe implements PipeTransform {
 
-  private readonly dateTotest = new Date('0001-01-01').toISOString();
+  private readonly dateTotest = new Date('0001-01-01');
 
-  transform(value: any, args?: any): any {
-    if (value !== this.dateTotest) {
+  transform(value: string, args?: any): any {
+    console.log(value);
+    if (value !== '0001') {
       return value;
     }
-    return 'n.v.t.';
+    return 'Onbekend';
   }
 
 }

@@ -55,7 +55,7 @@ export class TotemEntryAddComponent implements OnInit {
 
   onSubmit(formDirective: FormGroupDirective) {
     const datumGekregen = this.addEntryFormGroup.value.datumGekregen;
-    
+
     const voorouder = this.addEntryFormGroup.value.voorouder
       ? this.addEntryFormGroup.value.voorouder
       : 0;
@@ -79,12 +79,6 @@ export class TotemEntryAddComponent implements OnInit {
         });
       }
     );
-  }
-
-  private updateFormValidators() {
-    Object.keys(this.addEntryFormGroup.controls).forEach(key => {
-      this.addEntryFormGroup.get(key).updateValueAndValidity();
-    });
   }
 
   addNewPerson(value: string) {

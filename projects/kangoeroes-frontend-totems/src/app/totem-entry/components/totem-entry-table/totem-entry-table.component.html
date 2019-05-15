@@ -20,7 +20,7 @@
 
       <ng-container matColumnDef="datumGegeven">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Datum gekregen</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.datumGegeven | date: 'dd-MM-yyyy'}}</mat-cell>
+        <mat-cell *matCellDef="let row">{{row.datumGegeven | date: 'dd-MM-yyyy' | noDate: row.datumGegeven}}</mat-cell>
       </ng-container>
 
           <ng-container matColumnDef="voorouder.adjectief.naam">
@@ -30,11 +30,11 @@
 
           <ng-container matColumnDef="reuseDateTotem">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Hergebruikdatum totem</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.reuseDateTotem |  date: 'yyyy' | noDate}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.reuseDateTotem |  date: 'yyyy' | noDate: row.reuseDateTotem}}</mat-cell>
           </ng-container>
         <ng-container matColumnDef="reuseDateAdjectief">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Hergebruikdatum adjectief</mat-header-cell>
-          <mat-cell *matCellDef="let row">{{row.reuseDateAdjectief | date: 'yyyy' | noDate}}</mat-cell>
+          <mat-cell *matCellDef="let row">{{row.reuseDateAdjectief | date: 'yyyy' | noDate: row.reuseDateTotem}}</mat-cell>
         </ng-container>
 
           <ng-container matColumnDef="acties">

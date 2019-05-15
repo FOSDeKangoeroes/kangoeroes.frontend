@@ -69,6 +69,7 @@ export class TotemEntryAddComponent implements OnInit {
     this.totemEntryDataService.create(newEntry).subscribe(
       res => {
         this.totemEntryService.entryChanged$.emit();
+        this.addEntryFormGroup.reset();
       },
       error => {
         this.snackbar.open(`${error.error}`, null, {

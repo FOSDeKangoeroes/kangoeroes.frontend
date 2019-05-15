@@ -5,7 +5,7 @@ import { TotemEntryService } from '../../shared/totem-entry.service';
 import { AnimalDataService } from '../../../totemanimal/shared/animal-data.service';
 import { LeidingDataService } from '../../../leiding/leiding-data.service';
 
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-adjective-data.service';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
@@ -53,7 +53,7 @@ export class TotemEntryAddComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(formDirective: FormGroupDirective) {
     const datumGekregen = this.addEntryFormGroup.value.datumGekregen;
     
     const voorouder = this.addEntryFormGroup.value.voorouder
@@ -70,6 +70,8 @@ export class TotemEntryAddComponent implements OnInit {
       res => {
         this.totemEntryService.entryChanged$.emit();
         this.addEntryFormGroup.reset();
+        formDirective.resetForm();
+
       },
       error => {
         this.snackbar.open(`${error.error}`, null, {
@@ -77,6 +79,12 @@ export class TotemEntryAddComponent implements OnInit {
         });
       }
     );
+  }
+
+  private updateFormValidators() {
+    Object.keys(this.addEntryFormGroup.controls).forEach(key => {
+      this.addEntryFormGroup.get(key).updateValueAndValidity();
+    });
   }
 
   addNewPerson(value: string) {

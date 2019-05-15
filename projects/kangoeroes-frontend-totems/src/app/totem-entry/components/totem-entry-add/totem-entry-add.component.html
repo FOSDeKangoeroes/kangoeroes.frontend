@@ -1,7 +1,8 @@
 <form
   [formGroup]="addEntryFormGroup"
   class="form-inline"
-  (ngSubmit)="onSubmit()"
+  (ngSubmit)="onSubmit(formDirective)"
+  #formDirective="ngForm"
 >
   <div class="col-2">
     <lib-kng-autocomplete

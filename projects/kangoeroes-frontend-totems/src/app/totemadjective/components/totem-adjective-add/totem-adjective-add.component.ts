@@ -40,6 +40,8 @@ export class TotemAdjectiveAddComponent implements OnInit {
         });
         this.adjectiveService.newAdjective$.emit(res);
         this.form.resetForm();
+      }, error => {
+        this.snackbar.open(error.error, null, { duration: 2000 });
       });
     }
   }

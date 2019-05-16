@@ -40,6 +40,8 @@ export class TotemanimalAddComponent implements OnInit {
       this.animalService.newAnimal$.emit();
       this.form.resetForm();
 
+    }, error => {
+      this.snackbar.open(error.error, null, {duration: 2000});
     });
     }
   }

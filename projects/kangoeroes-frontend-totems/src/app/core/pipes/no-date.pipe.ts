@@ -7,8 +7,6 @@ export class NoDatePipe implements PipeTransform {
   private readonly dateTotest = '0001-01-01T00:00:00';
 
   transform(value: string, date?: string): any {
-    console.log(date);
-
     if (date !== this.dateTotest) {
       return value;
     }

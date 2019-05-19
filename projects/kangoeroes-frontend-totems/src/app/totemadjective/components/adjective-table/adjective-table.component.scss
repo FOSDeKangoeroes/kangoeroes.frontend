@@ -2,3 +2,8 @@
   display: flex !important;
   justify-content: flex-end !important;
 }
+
+.adjective-container {
+  max-height: 50vh;
+  overflow: auto;
+}

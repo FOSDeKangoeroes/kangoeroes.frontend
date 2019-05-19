@@ -33,6 +33,7 @@
     "@angular/upgrade": "^7.0.0",
     "@auth0/angular-jwt": "^2.0.0",
     "@ng-select/ng-select": "^2.16.2",
+    "@ngrx/store": "^7.4.0",
     "@types/auth0-js": "^8.11.7",
     "angular2-jwt": "^0.2.3",
     "auth0-js": "^9.8.0",

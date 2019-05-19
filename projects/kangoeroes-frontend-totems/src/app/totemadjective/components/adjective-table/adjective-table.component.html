@@ -1,3 +1,4 @@
+<div class="adjective-container">
 <mat-table #table [dataSource]="dataSource" matSort matSortDisableClear matSortDirection='asc' matSortActive="naam" aria-label="Totemdieren">
 
   <!-- Name Column -->
@@ -20,9 +21,9 @@
   </ng-container>
 
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
-
+</div>
 <mat-paginator #paginator [length]="dataSource.totalLength" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
 </mat-paginator>

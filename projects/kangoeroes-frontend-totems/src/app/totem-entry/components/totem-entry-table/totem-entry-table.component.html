@@ -1,4 +1,4 @@
-<div class="entry-container">
+<div #entryContainer class="entry-container">
   <mat-table #table [dataSource]="dataSource" matSort matSortDisableClear matSortDirection="asc" matSortActive="leiding.voornaam" aria-label="Elements">
 
     <!-- Id Column -->
@@ -50,6 +50,7 @@
   </mat-table>
 </div>
   <mat-paginator #paginator
+    (page)="scrollToTop()"
     [length]="dataSource.totalLength"
     [pageIndex]="0"
     [pageSize]="50"

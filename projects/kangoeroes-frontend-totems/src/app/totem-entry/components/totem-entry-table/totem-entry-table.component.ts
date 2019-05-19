@@ -4,7 +4,8 @@ import {
   ViewChild,
   Input,
   EventEmitter,
-  Output
+  Output,
+  ElementRef
 } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { TotemEntryTableDataSource } from './totem-entry-table-datasource';
@@ -22,6 +23,7 @@ import { TotemEntryService } from '../../shared/totem-entry.service';
 export class TotemEntryTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('entryContainer') tableContainer: ElementRef;
   dataSource: TotemEntryTableDataSource;
 
   @Input() searchString$: BehaviorSubject<string>;
@@ -41,6 +43,11 @@ export class TotemEntryTableComponent implements OnInit {
       this.totemEntryDataService,
       this.totemEntryService
     );
+
+  }
+
+  scrollToTop() {
+    this.tableContainer.nativeElement.scrollTop = 0;
   }
 
 }

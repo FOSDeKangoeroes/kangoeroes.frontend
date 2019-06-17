@@ -22,7 +22,7 @@ export class AuthorizationGuard implements CanActivate {
     if (this.authService.isAuthenticated()) {
 
       const token = decode(this.authService.getToken());
-      const roles: string[] = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      const roles: string[] = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'].roles;
 
       if (roles.includes('financieel_verantwoordelijke')) {
         return true;

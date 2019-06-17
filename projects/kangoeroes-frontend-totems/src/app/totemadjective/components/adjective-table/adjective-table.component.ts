@@ -1,6 +1,7 @@
 import { AdjectiveService } from '../../shared/adjective.service';
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { AdjectiveTableDataSource } from './adjective-table-datasource';
 
 import { Adjective } from '../../shared/adjective.model';

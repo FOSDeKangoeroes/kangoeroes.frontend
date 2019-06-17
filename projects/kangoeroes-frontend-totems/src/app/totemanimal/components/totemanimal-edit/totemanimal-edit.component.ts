@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Animal } from '../../shared/animal.model';
-import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AnimalDataService } from '../../shared/animal-data.service';
 import { AnimalService } from '../../shared/animal.service';

@@ -3,7 +3,8 @@ import { TotemAdjectiveDataService } from '../../shared/totem-adjective-data.ser
 import { Component, OnInit, Input, Inject } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-totem-adjective-edit',

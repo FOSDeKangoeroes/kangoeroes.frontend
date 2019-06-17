@@ -1,5 +1,5 @@
 import { AdjectiveService } from '../../shared/adjective.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TotemAdjectiveDataService } from '../../shared/totem-adjective-data.service';
 import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';

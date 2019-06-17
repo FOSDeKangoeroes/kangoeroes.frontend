@@ -10,7 +10,8 @@ import {
   TemplateRef,
   forwardRef
 } from '@angular/core';
-import { MatAutocomplete, FloatLabelType } from '@angular/material';
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { FloatLabelType } from '@angular/material/core';
 
 import { HttpParams } from '@angular/common/http';
 import {

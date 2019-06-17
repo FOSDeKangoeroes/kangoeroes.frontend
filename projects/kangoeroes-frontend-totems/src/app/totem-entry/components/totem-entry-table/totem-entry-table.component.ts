@@ -7,7 +7,8 @@ import {
   Output,
   ElementRef
 } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { TotemEntryTableDataSource } from './totem-entry-table-datasource';
 import { BehaviorSubject } from 'rxjs';
 import { TotemEntry } from '../../shared/totem-entry-model';

@@ -1,5 +1,5 @@
 
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { TitleService } from '../../../core/title/title.service';

@@ -1,6 +1,7 @@
 
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { map, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable, of as observableOf, merge, BehaviorSubject } from 'rxjs';
 import { Adjective } from '../../shared/adjective.model';

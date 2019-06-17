@@ -18,23 +18,23 @@ const routes: Routes = [
   {
     path: 'animals',
     canActivate: [AuthenticationGuard],
-    loadChildren: './totemanimal/totemanimal.module#TotemAnimalModule'
+    loadChildren: () => import('./totemanimal/totemanimal.module').then(m => m.TotemAnimalModule)
   },
   {
     path: 'adjectives',
     canActivate: [AuthenticationGuard],
-    loadChildren: './totemadjective/totemadjective.module#TotemAdjectiveModule'
+    loadChildren: () => import('./totemadjective/totemadjective.module').then(m => m.TotemAdjectiveModule)
   },
   {
     path: 'totems',
     canActivate: [AuthenticationGuard],
-    loadChildren: './totem-entry/totem-entry.module#TotemEntryModule'
+    loadChildren: () => import('./totem-entry/totem-entry.module').then(m => m.TotemEntryModule)
   },
   {
     path: 'tree',
     canActivate: [AuthenticationGuard],
     loadChildren:
-      './totem-family-tree/totem-family-tree.module#TotemFamilyTreeModule'
+      () => import('./totem-family-tree/totem-family-tree.module').then(m => m.TotemFamilyTreeModule)
   },
   {
     path: 'callback',

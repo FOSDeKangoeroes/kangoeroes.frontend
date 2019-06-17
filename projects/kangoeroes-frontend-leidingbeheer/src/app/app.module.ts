@@ -74,7 +74,7 @@ import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
 import { TokenInterceptor } from './interceptors/token-interceptor';
-import { MAT_DATE_LOCALE} from '@angular/material';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { EventService } from './shared/event.service';

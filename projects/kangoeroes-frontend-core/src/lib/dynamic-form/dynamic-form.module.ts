@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './components/button/button.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
-import {
-  MatCheckboxModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatRadioModule } from '@angular/material';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { DateComponent } from './components/date/date.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { InputComponent } from './components/input/input.component';

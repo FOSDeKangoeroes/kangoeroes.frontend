@@ -1,4 +1,5 @@
-import { MatDialog, MatTable } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
 import { TotemEntry } from '../../shared/totem-entry-model';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';

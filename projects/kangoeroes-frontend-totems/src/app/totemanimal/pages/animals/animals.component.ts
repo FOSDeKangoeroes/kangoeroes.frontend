@@ -2,7 +2,7 @@ import { ColumnService } from '../../../core/title/column.service';
 import { Component, OnInit } from '@angular/core';
 import { TitleService } from '../../../core/title/title.service';
 import { BehaviorSubject } from 'rxjs';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 // tslint:disable-next-line:max-line-length
 
 import { Animal } from '../../shared/animal.model';

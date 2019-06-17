@@ -2,19 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TotemAnimalRoutingModule } from './totemanimal-routing.module';
 import { AnimalsComponent } from './pages/animals/animals.component';
-import {
-  MatGridListModule,
-  MatCardModule,
-  MatMenuModule,
-  MatIconModule,
-  MatButtonModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatSortModule,
-  MatSnackBarModule,
-  MatDialogModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { DierenTableComponent } from './components/dieren-table/dieren-table.component';
 import { TotemanimalAddComponent } from './components/totemanimal-add/totemanimal-add.component';
 import { ReactiveFormsModule } from '@angular/forms';

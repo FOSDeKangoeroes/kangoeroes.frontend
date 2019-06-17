@@ -1,6 +1,6 @@
 import { ColumnService } from '../../../core/title/column.service';
 import { Adjective } from '../../shared/adjective.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TitleService } from '../../../core/title/title.service';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';

@@ -30,21 +30,21 @@ const routes: Routes = [
       },
       {
         path: 'takken',
-        loadChildren: './tak/tak.module#TakModule',
+        loadChildren: () => import('./tak/tak.module').then(m => m.TakModule),
         data: {
           title: 'Takken'
         }
       },
       {
         path: 'personen',
-        loadChildren: './leiding/leiding.module#LeidingModule',
+        loadChildren: () => import('./leiding/leiding.module').then(m => m.LeidingModule),
         data: {
           title: 'Personen'
         }
       },
       {
         path: 'poef',
-        loadChildren: './poef/poef.module#PoefModule',
+        loadChildren: () => import('./poef/poef.module').then(m => m.PoefModule),
         data: {
           title: 'Poef'
         }

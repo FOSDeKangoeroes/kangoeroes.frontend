@@ -1,6 +1,7 @@
 import { DataSource } from '@angular/cdk/collections';
 import { Leiding } from '../../../shared/leiding.model';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { LeidingDataService } from '../../../shared/leiding-data.service';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { LeidingService } from '../../../shared/leiding.service';

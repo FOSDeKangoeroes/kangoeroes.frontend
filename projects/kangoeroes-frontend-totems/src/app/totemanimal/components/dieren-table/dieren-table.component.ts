@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { DierenTableDataSource } from './dieren-table-datasource';
 import { AnimalDataService } from '../../shared/animal-data.service';
 import { BehaviorSubject } from 'rxjs';

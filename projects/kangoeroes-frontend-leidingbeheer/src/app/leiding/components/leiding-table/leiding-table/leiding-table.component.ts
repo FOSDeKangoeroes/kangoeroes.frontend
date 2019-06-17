@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { LeidingTableDataSource } from './leiding-table-datasource';
 import { LeidingDataService } from '../../../shared/leiding-data.service';
 import { LeidingService } from '../../../shared/leiding.service';

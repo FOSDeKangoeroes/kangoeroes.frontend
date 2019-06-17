@@ -5,11 +5,11 @@ import { DrankListComponent } from './drank/pages/drank-list/drank-list.componen
 const routes: Routes = [
   {
     path: 'drank',
-    loadChildren: './drank/drank.module#DrankModule'
+    loadChildren: () => import('./drank/drank.module').then(m => m.DrankModule)
   },
   {
     path: 'drank-type',
-    loadChildren: './drank-type/drank-type.module#DrankTypeModule'
+    loadChildren: () => import('./drank-type/drank-type.module').then(m => m.DrankTypeModule)
   }
 ];
 

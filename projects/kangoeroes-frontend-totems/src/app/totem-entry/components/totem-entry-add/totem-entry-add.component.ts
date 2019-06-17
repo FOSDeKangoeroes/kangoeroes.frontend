@@ -9,7 +9,8 @@ import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular
 import { Component, OnInit } from '@angular/core';
 import { TotemAdjectiveDataService } from '../../../totemadjective/shared/totem-adjective-data.service';
 import { TotemEntryDataService } from '../../shared/totem-entry-data.service';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validators/autocomplete-validator';
 import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
 import { LeidingAddComponent } from '../../../leiding/leiding-add/leiding-add.component';

@@ -1,4 +1,4 @@
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TotemEntryService } from '../../shared/totem-entry.service';
 import {
   Component,

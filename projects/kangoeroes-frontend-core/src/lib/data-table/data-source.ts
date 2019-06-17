@@ -1,6 +1,7 @@
 import { DataSource } from '@angular/cdk/table';
 import { Observable, Subscription, merge } from 'rxjs';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { SearchBarService } from '../components/search-bar/search-bar.service';
 import { ResourceService } from '../data-service/resource-service';
 import { Resource } from '../data-service/resource-model';

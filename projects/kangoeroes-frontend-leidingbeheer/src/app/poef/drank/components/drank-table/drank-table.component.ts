@@ -13,8 +13,8 @@ import { Drank } from '../../shared/drank.model';
   styleUrls: ['./drank-table.component.scss']
 })
 export class DrankTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   @Input() displayedColumns: string[];
 

@@ -22,8 +22,8 @@ import { Drank } from '../../../drank/shared/drank.model';
   ]
 })
 export class DrankTypeTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   @Input() displayedColumns: string[];
 

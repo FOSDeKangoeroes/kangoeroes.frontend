@@ -13,8 +13,8 @@ import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-tab
   styleUrls: ['./tak-table.component.scss']
 })
 export class TakTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   @Input() displayedColumns: string[];
 

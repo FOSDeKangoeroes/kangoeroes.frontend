@@ -12,8 +12,8 @@ import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/comp
   styleUrls: ['./leiding-table.component.scss']
 })
 export class LeidingTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   @Input() displayedColumns: string[];
   @Input() takId: number;

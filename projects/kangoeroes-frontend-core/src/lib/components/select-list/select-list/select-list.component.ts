@@ -34,7 +34,7 @@ export class SelectListComponent<T extends Resource>
   @Input() dataService: ResourceService<T>;
   @Input() resourceFactory: ResourceFactory<T>;
 
-  @ViewChild('selectList') selectList: NgSelectComponent;
+  @ViewChild('selectList', { static: true }) selectList: NgSelectComponent;
 
   list: T[];
   queryOptions = new QueryOptions();

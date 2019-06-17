@@ -13,7 +13,7 @@ import { TotemEntryAddDescendantComponent } from '../totem-entry-add-descendant/
 export class TotemEntryFamilyComponent implements OnInit {
   @Input() totemEntry: TotemEntry;
    @Input() descendants: TotemEntry[];
-   @ViewChild('descendantsTable') descendantsTable: MatTable<TotemEntry>;
+   @ViewChild('descendantsTable', { static: true }) descendantsTable: MatTable<TotemEntry>;
   displayedColumns: string[] = ['displayName', 'totem'];
 
   constructor(private dialog: MatDialog) {

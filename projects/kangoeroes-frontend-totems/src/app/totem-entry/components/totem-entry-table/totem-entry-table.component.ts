@@ -22,9 +22,9 @@ import { TotemEntryService } from '../../shared/totem-entry.service';
   styleUrls: ['./totem-entry-table.component.scss']
 })
 export class TotemEntryTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('entryContainer') tableContainer: ElementRef;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild('entryContainer', { static: true }) tableContainer: ElementRef;
   dataSource: TotemEntryTableDataSource;
 
   @Input() searchString$: BehaviorSubject<string>;

@@ -13,7 +13,7 @@ export class TotemAdjectiveAddComponent implements OnInit {
 
   addAdjectiveFormGroup: FormGroup;
 
-  @ViewChild(FormGroupDirective) form;
+  @ViewChild(FormGroupDirective, { static: true }) form;
 
   constructor(
     private fb: FormBuilder,

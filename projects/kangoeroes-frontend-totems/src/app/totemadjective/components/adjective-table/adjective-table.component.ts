@@ -15,8 +15,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./adjective-table.component.scss']
 })
 export class AdjectiveTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   dataSource: AdjectiveTableDataSource;
 
   @Input() searchString$: BehaviorSubject<string>;

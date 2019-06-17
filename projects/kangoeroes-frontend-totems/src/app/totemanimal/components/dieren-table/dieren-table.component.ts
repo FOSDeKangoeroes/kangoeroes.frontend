@@ -14,8 +14,8 @@ import { Animal } from '../../shared/animal.model';
   styleUrls: ['./dieren-table.component.css']
 })
 export class DierenTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   dataSource: DierenTableDataSource;
 
   @Input() searchString$: BehaviorSubject<string>;

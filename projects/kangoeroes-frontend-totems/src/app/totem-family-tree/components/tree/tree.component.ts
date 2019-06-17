@@ -12,7 +12,7 @@ export class TreeComponent implements OnInit {
 
   private diagram: go.Diagram = new go.Diagram();
 
-  @ViewChild('diagramDiv')
+  @ViewChild('diagramDiv', { static: true })
   private diagramRef: ElementRef;
 
  

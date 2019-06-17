@@ -13,7 +13,7 @@ export class TotemanimalAddComponent implements OnInit {
 
   addAnimalFormGroup: FormGroup;
 
-  @ViewChild(FormGroupDirective) form;
+  @ViewChild(FormGroupDirective, { static: true }) form;
 
   constructor(
     private fb: FormBuilder,

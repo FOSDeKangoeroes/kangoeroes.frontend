@@ -13,7 +13,7 @@ export class DrankTypeDetailComponent implements OnInit {
 
   public type: DrankType;
 
-  public displayedColumns: string[];
+  public displayedColumns = ['naam', 'currentPrijs'];
 
   constructor(private route: ActivatedRoute) { }
 

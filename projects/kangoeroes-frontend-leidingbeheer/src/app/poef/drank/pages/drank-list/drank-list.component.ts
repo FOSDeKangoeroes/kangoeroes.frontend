@@ -12,6 +12,7 @@ import { DrankAddComponent } from '../../components/drank-add/drank-add.componen
 export class DrankListComponent implements OnInit {
 
   private addModal: BsModalRef;
+  columnsToDisplay = ['type.naam', 'naam', 'currentPrijs'];
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {

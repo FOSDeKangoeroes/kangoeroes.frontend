@@ -1,32 +1,25 @@
-<table mat-table #table [dataSource]="dataSource" multiTemplateDataRows matSort matSortDirection='asc' matSortActive="naam" matSorDisableClear>
-
+<table
+  mat-table
+  #table
+  [dataSource]="dataSource"
+  multiTemplateDataRows
+  matSort
+  matSortDirection="asc"
+  matSortActive="naam"
+  matSorDisableClear
+>
   <ng-container matColumnDef="naam">
     <th mat-header-cell mat-sort-header *matHeaderCellDef>Type</th>
-    <td mat-cell *matCellDef="let type"><a routerLink="/poef/drank-type/{{type.id}}">{{type.displayName}}</a></td>
-  </ng-container>
-
-  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <div class="example-element-diagram">
-          <div class="example-element-position"> {{element.naam}} </div>
-
-        </div>
-       <!-- <div class="example-element-description">
-          {{element.description}}
-          <span class="example-element-description-attribution"> -- Wikipedia </span>
-        </div>-->
-      </div>
+    <td mat-cell *matCellDef="let type">
+      <a routerLink="/poef/drank-type/{{ type.id }}">{{ type.displayName }}</a>
     </td>
   </ng-container>
 
- 
-
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"
-      [class.example-expanded-row]="expandedElement === row"
-      (click)="expandedElement = expandedElement === row ? null : row"></tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<mat-paginator [length]="dataSource.totalLength" [pageSizeOptions]="[25, 100]"></mat-paginator>
+
+<mat-paginator
+  [length]="dataSource.totalLength"
+  [pageSizeOptions]="[25, 100]"
+></mat-paginator>

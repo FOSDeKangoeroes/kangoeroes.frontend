@@ -36,7 +36,9 @@
               "projects/kangoeroes-frontend-core/tsconfig.lib.json",
               "projects/kangoeroes-frontend-core/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -130,7 +132,9 @@
             "polyfills": "projects/kangoeroes-frontend-leidingbeheer/src/polyfills.ts",
             "tsConfig": "projects/kangoeroes-frontend-leidingbeheer/tsconfig.spec.json",
             "karmaConfig": "projects/kangoeroes-frontend-leidingbeheer/karma.conf.js",
-            "styles": ["projects/kangoeroes-frontend-leidingbeheer/styles.css"],
+            "styles": [
+              "projects/kangoeroes-frontend-leidingbeheer/styles.css"
+            ],
             "scripts": [],
             "assets": [
               "projects/kangoeroes-frontend-leidingbeheer/src/favicon.ico",
@@ -145,7 +149,9 @@
               "projects/kangoeroes-frontend-leidingbeheer/tsconfig.app.json",
               "projects/kangoeroes-frontend-leidingbeheer/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -170,7 +176,6 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/kangoeroes-frontend-totems/src/styles.scss"
             ],
@@ -267,14 +272,22 @@
               "projects/kangoeroes-frontend-totems/styles.scss"
             ],
             "scripts": [],
-            "assets": ["src/favicon.ico", "src/assets"]
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -293,5 +306,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "defaultCollection": "@datorama/akita"
   }
 }

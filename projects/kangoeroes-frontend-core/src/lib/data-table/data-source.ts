@@ -14,7 +14,6 @@ import {
 import { QueryOptions, ParentEntity } from '../data-service/query-options';
 import { EventService } from './event.service';
 
-// Service van maken?
 export class KangoeroeTableDataSource<T extends Resource> extends DataSource<
   T
 > {
@@ -41,6 +40,7 @@ export class KangoeroeTableDataSource<T extends Resource> extends DataSource<
   }
 
   connect(): Observable<T[]> {
+
     const dataMutations = [
       this.paginator.page,
       this.sort.sortChange,
@@ -53,18 +53,10 @@ export class KangoeroeTableDataSource<T extends Resource> extends DataSource<
 
     return merge(...dataMutations).pipe(
       switchMap(() => {
-        const options = new QueryOptions();
 
-        options.pageNumber = this.paginator.pageIndex + 1;
-        options.pageSize = this.paginator.pageSize;
-        options.query = this.searchString;
-        options.sortBy = this.sort.active;
-        options.sortOrder = this.sort.direction;
+        const params = this.buildQueryOptions();
 
-        if (this.parentEntity) {
-          options.parentEntity = this.parentEntity;
-        }
-        return this.dataService.list(options);
+        return this.dataService.list(params);
       }),
       map(data => {
         const headers = JSON.parse(data.headers.get('X-Pagination'));
@@ -73,6 +65,22 @@ export class KangoeroeTableDataSource<T extends Resource> extends DataSource<
         return data.body;
       })
     );
+  }
+
+  private buildQueryOptions(): QueryOptions {
+    const options = new QueryOptions();
+
+    options.pageNumber = this.paginator.pageIndex + 1;
+    options.pageSize = this.paginator.pageSize;
+    options.query = this.searchString;
+    options.sortBy = this.sort.active;
+    options.sortOrder = this.sort.direction;
+
+    if (this.parentEntity) {
+      options.parentEntity = this.parentEntity;
+    }
+
+    return options;
   }
 
   disconnect() {

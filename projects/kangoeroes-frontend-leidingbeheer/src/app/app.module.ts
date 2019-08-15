@@ -81,11 +81,6 @@ import { EventService } from './shared/event.service';
 import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
 import { ConfigModule } from 'projects/kangoeroes-frontend-core/src/lib/config/config.module';
 import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
-import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
-import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
-import { environment } from '../environments/environment';
-
 
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
@@ -116,9 +111,7 @@ const appInitializerFn = (appConfig: ConfigService) => {
       config: {
         tokenGetter: jwtTokenGetter
       }
-    }),
-    environment.production ? [] : AkitaNgDevtools.forRoot(),
-    AkitaNgRouterStoreModule.forRoot()
+    })
   ],
   declarations: [
     AppComponent,
@@ -150,8 +143,7 @@ const appInitializerFn = (appConfig: ConfigService) => {
       multi: true,
       deps: [ConfigService]
     },
-    EventService,
-    { provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' }}
+    EventService
   ],
   bootstrap: [AppComponent]
 })

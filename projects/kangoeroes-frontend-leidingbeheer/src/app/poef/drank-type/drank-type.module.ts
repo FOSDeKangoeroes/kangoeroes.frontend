@@ -13,10 +13,11 @@ import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dyn
 import { DrankTypeDetailComponent } from './pages/drank-type-detail/drank-type-detail.component';
 import { DrankModule } from '../drank/drank.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DrankTypeEditComponent } from './components/drank-type-edit/drank-type-edit.component';
 
 @NgModule({
-  entryComponents: [DrankTypeAddComponent],
-  declarations: [DrankTypeListComponent, DrankTypeTableComponent, DrankTypeAddComponent, DrankTypeDetailComponent],
+  entryComponents: [DrankTypeAddComponent, DrankTypeEditComponent],
+  declarations: [DrankTypeListComponent, DrankTypeTableComponent, DrankTypeAddComponent, DrankTypeDetailComponent, DrankTypeEditComponent],
   imports: [
     CommonModule,
     DrankTypeRoutingModule,

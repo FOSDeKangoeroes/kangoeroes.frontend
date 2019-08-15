@@ -31,8 +31,6 @@
     "@angular/router": "^8.0.1",
     "@angular/upgrade": "^8.0.1",
     "@auth0/angular-jwt": "^2.0.0",
-    "@datorama/akita": "^4.9.5",
-    "@datorama/akita-ng-entity-service": "^1.0.0",
     "@ng-select/ng-select": "^2.16.2",
     "@types/auth0-js": "^9.10.2",
     "auth0-js": "^9.8.0",

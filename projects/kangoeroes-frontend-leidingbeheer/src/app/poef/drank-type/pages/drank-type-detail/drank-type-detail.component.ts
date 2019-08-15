@@ -40,6 +40,11 @@ export class DrankTypeDetailComponent implements OnInit {
     options.initialState = initialState;
     this.editModal = this.modalService.show(DrankTypeEditComponent, options);
 
+    this.setupEditSubmission();
+  }
+
+  // Observable manipulation when the modal is submitted.
+  private setupEditSubmission() {
     this.editModal.content.editedType
       .pipe(
         mergeMap((value: DrankType) => {

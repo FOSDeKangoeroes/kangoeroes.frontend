@@ -28,7 +28,6 @@ export class DrankDetailComponent implements OnInit {
     this.route.data.pipe(
       mergeMap(item => {
         this.drank = item['drank'];
-        console.log(this.drank);
        return this.drankDataService.listPrices(this.drank.id);
       })
     ).subscribe();

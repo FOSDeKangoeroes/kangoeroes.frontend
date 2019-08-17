@@ -1,3 +1,52 @@
-<p>
-  drank-detail works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="h1">{{ drank.displayName }}</h1>
+
+    <div class="card card-accent-primary">
+      <div class="card-header">
+        Acties
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-primary">
+          <i class="icon-pencil"></i> Wijzigen...
+        </button>
+        <button type="button" class="btn btn-danger">
+          <i class="icon-trash"></i> Verwijderen...
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-accent-primary ">
+          <div class="card-header">
+            Details
+          </div>
+          <div class="card-body">
+            <dl>
+              <dt>Naam:</dt>
+              <dd>{{ drank.displayName }}</dd>
+              <dt>Huidige prijs:</dt>
+              <dd>€{{ drank.prijs }}</dd>
+              <dt>Categorie:</dt>
+              <dd>{{ drank.typeNaam }}</dd>
+              <dt>In stock:</dt>
+              <dd>{{ drank.inStock === true ? 'Ja' : 'Nee' }}</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card card-accent-primary">
+        <div class="card-header">
+          Prijsgeschiedenis
+        </div>
+        <div class="card-body">
+          TODO
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

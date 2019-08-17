@@ -1,0 +1,3 @@
+<dl *ngFor="let price of prices | async">
+<dt>{{price.createdOn | date: 'dd/MM/yyyy - HH:mm'}}</dt> <dd>€{{price.waarde}}</dd>
+</dl>

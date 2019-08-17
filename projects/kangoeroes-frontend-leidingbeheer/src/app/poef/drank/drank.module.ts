@@ -16,9 +16,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DrankDetailComponent } from './pages/drank-detail/drank-detail.component';
+import { DrankPriceHistoryComponent } from './components/drank-price-history/drank-price-history.component';
 
 @NgModule({
-  declarations: [DrankListComponent, DrankTableComponent, DrankAddComponent, DrankDetailComponent],
+  declarations: [DrankListComponent, DrankTableComponent, DrankAddComponent, DrankDetailComponent, DrankPriceHistoryComponent],
   imports: [
     CommonModule,
     DrankRoutingModule,

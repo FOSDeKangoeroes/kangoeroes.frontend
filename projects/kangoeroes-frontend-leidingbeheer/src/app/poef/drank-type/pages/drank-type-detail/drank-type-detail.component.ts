@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DrankType } from '../../shared/drank-type-model';
 import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
 import { DrankTypeEditComponent } from '../../components/drank-type-edit/drank-type-edit.component';
@@ -27,7 +27,8 @@ export class DrankTypeDetailComponent implements OnInit {
     private modalService: BsModalService,
     private drankTypeService: DrankTypeService,
     private drankTypeDataService: DrankTypeDataService,
-    private snotifyService: SnotifyService
+    private snotifyService: SnotifyService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -41,6 +42,18 @@ export class DrankTypeDetailComponent implements OnInit {
     this.editModal = this.modalService.show(DrankTypeEditComponent, options);
 
     this.setupEditSubmission();
+  }
+
+  openDeleteModal() {
+    if (confirm(`Wil je ${this.type.displayName} verwijderen?`)) {
+      this.drankTypeDataService.delete(this.type.id).subscribe(res => {
+        this.router.navigate(['/poef/drank-type']);
+        this.snotifyService.success(`Type werd verwijderd.`);
+      }, err => {
+        this.snotifyService.error('Kan type niet verwijderen.');
+      });
+
+    }
   }
 
   // Observable manipulation when the modal is submitted.

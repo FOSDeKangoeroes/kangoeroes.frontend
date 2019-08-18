@@ -17,9 +17,17 @@ import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/comp
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DrankDetailComponent } from './pages/drank-detail/drank-detail.component';
 import { DrankPriceHistoryComponent } from './components/drank-price-history/drank-price-history.component';
+import { DrankEditComponent } from './components/drank-edit/drank-edit.component';
+import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/dynamic-form.module';
 
 @NgModule({
-  declarations: [DrankListComponent, DrankTableComponent, DrankAddComponent, DrankDetailComponent, DrankPriceHistoryComponent],
+  declarations: [
+    DrankListComponent,
+    DrankTableComponent,
+    DrankAddComponent,
+    DrankDetailComponent,
+    DrankPriceHistoryComponent,
+    DrankEditComponent],
   imports: [
     CommonModule,
     DrankRoutingModule,
@@ -28,6 +36,7 @@ import { DrankPriceHistoryComponent } from './components/drank-price-history/dra
     MatPaginatorModule,
     SearchBarModule,
     KangoeroeDataTableModule,
+    DynamicFormModule,
     ReactiveFormsModule,
     FormsModule,
     SelectListModule,
@@ -36,7 +45,7 @@ import { DrankPriceHistoryComponent } from './components/drank-price-history/dra
     ModalModule.forRoot()
 
   ],
-  entryComponents: [DrankAddComponent],
+  entryComponents: [DrankAddComponent,DrankEditComponent],
   exports: [DrankTableComponent]
 })
 export class DrankModule { }

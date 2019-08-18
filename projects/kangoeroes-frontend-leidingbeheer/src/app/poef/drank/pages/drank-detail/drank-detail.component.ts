@@ -6,6 +6,8 @@ import { SnotifyService } from 'ng-snotify';
 import { Prijs } from '../../shared/prijs.model';
 import { Observable, concat } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DrankEditComponent } from '../../components/drank-edit/drank-edit.component';
 
 @Component({
   selector: 'app-drank-detail',
@@ -17,11 +19,14 @@ export class DrankDetailComponent implements OnInit {
 
   prices$: Observable<Prijs[]>;
 
+  private editModal: BsModalRef;
+
   constructor(
     private route: ActivatedRoute,
     private drankDataService: DrankDataService,
     private snotifyService: SnotifyService,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit() {
@@ -47,5 +52,28 @@ export class DrankDetailComponent implements OnInit {
         }
       );
     }
+  }
+
+  edit() {
+    const initialState = {drank: this.drank};
+    const options = new ModalOptions();
+    options.initialState = initialState;
+
+    this.editModal = this.modalService.show(DrankEditComponent, options);
+
+    this.setupEditSubmission();
+  }
+
+  private setupEditSubmission() {
+    this.editModal.content.editedDrank.pipe(
+      mergeMap((value: Drank) => {
+        return this.drankDataService.update(value, value.id);
+      })
+    ).subscribe(res => {
+      this.editModal.hide();
+      this.snotifyService.success('Drank werd gewijzigd.');
+    }, err => {
+      this.snotifyService.error('Drank kon niet gewijzigd worden.');
+    });
   }
 }

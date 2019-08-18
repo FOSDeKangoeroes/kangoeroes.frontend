@@ -17,7 +17,7 @@ const componentMapper = {
   date: DateComponent,
   radiobutton: RadiobuttonComponent,
   checkbox: CheckboxComponent
-}
+};
 
 @Directive({
   selector: '[dynamicField]'

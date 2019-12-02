@@ -2,7 +2,7 @@
 
 ## Wat
 
-Monorepo voor alle Angular frontends:
+Monorepo voor alle Angular frontends.
 
 - kangoeroes-frontend-core: library met gedeelde code: components, services,..
 - kangoeroes-frontend-leidingbeheer: Angular 7 frontend voor het beheer van leiding, poef en schulden

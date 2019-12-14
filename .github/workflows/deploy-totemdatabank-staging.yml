@@ -3,7 +3,8 @@ name: deploy-totems-staging
 on:
   push:
     paths:
-      - '!projects/kangoeroes-frontend-leidingbeheer/**'
+      - 'projects/kangoeroes-frontend-totems/**'
+      - 'projects/kangoeroes-frontend-core/**'
 
 jobs:
   build:

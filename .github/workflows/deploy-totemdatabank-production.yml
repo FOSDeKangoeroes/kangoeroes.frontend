@@ -1,4 +1,4 @@
-name: deploy-totems-staging
+name: deploy-totems-production
 
 on:
   push:

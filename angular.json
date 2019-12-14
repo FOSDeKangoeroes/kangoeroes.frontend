@@ -194,7 +194,7 @@
                 },
                 {
                   "replace": "projects/kangoeroes-frontend-totems/src/assets/config/config.json",
-                  "with": "projects/kangoeroes-frontend-totems/src/assets/config/config.staging.json"
+                  "with": "projects/kangoeroes-frontend-totems/src/assets/config/config.production.json"
                 }
               ],
               "optimization": true,
@@ -216,6 +216,10 @@
                 {
                   "replace": "projects/kangoeroes-frontend-core/src/environment.ts",
                   "with": "projects/kangoeroes-frontend-totems/src/environments/environment.staging.ts"
+                },
+                {
+                  "replace": "projects/kangoeroes-frontend-totems/src/assets/config/config.json",
+                  "with": "projects/kangoeroes-frontend-totems/src/assets/config/config.staging.json"
                 }
               ],
               "optimization": true,

@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'projects/kangoeroes-frontend-totems/**'
-      - 'projects/kangoeroes-frontend-core/**'
+    paths-ignore:
+      - 'projects/kangoeroes-frontend-leidingbeheer/**'
   pull_request:
     branches:
       - master

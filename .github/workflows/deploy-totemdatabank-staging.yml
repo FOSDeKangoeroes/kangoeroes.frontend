@@ -29,5 +29,6 @@ jobs:
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v1
       with: 
-        app-name: totemdatabank-staging # Replace with your app name
+        app-name: totems-staging # Replace with your app name
         publish-profile: ${{secrets.totems_staging_profile}}
+        package: ./dist/totems

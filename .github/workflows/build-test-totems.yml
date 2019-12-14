@@ -31,7 +31,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm ci
-        ng lint
+        npm lint
         npm run build-totems-prod
       env:
         CI: true

@@ -1,5 +1,5 @@
-import { Serializer } from "projects/kangoeroes-frontend-core/src/lib/data-service/serializer";
-import { Tak } from "./tak.model";
+import { Serializer } from 'projects/kangoeroes-frontend-core/src/lib/data-service/serializer';
+import { Tak } from './tak.model';
 
 export class TakSerializer implements Serializer<Tak> {
 
@@ -13,10 +13,8 @@ export class TakSerializer implements Serializer<Tak> {
         newTak.id = json.id;
 
         return newTak;
-        
-    }    toJson(resource: Tak) {
-        throw new Error("Method not implemented.");
-    }
 
-    
+    }    toJson(resource: Tak) {
+        throw new Error('Method not implemented.');
+    }
 }

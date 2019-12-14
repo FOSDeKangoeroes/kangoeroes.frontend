@@ -45,7 +45,7 @@ import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dyn
     ModalModule.forRoot()
 
   ],
-  entryComponents: [DrankAddComponent,DrankEditComponent],
+  entryComponents: [DrankAddComponent, DrankEditComponent],
   exports: [DrankTableComponent]
 })
 export class DrankModule { }

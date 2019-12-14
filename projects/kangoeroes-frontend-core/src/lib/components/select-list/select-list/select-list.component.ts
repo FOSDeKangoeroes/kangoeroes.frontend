@@ -16,8 +16,8 @@ import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-ser
 import { Pagination } from './pagination-model';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'app-select-list',
+
+  selector: 'kng-core-select-list',
   templateUrl: './select-list.component.html',
   styleUrls: ['./select-list.component.scss'],
   providers: [

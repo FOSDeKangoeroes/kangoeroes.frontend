@@ -27,7 +27,7 @@ export class TotemEntryEditComponent implements OnInit {
   private voorouder?: TotemEntry;
 
   displayFn = (x: Resource) => {
-    if(x) {
+    if (x) {
       return x.displayName;
     }
   }

@@ -8,6 +8,7 @@ import { SnotifyService } from 'ng-snotify';
 import { EventService } from 'projects/kangoeroes-frontend-core/src/lib/data-table/event.service';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'modal-content',
   templateUrl: './drank-type-add.component.html',
   styleUrls: ['./drank-type-add.component.scss']

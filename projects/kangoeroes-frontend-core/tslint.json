@@ -4,7 +4,7 @@
         "directive-selector": [
             true,
             "attribute",
-            "kng-core",
+            "kngCore",
             "camelCase"
         ],
         "component-selector": [

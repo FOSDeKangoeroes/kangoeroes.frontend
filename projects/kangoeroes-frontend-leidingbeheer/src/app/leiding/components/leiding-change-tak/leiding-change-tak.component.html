@@ -10,7 +10,7 @@
 
       <div class="form-group">
         <div class="col-12">
-          <app-select-list formControlName="tak" [dataService]="takDataService" placeholder="Tak"></app-select-list>
+          <kng-core-select-list formControlName="tak" [dataService]="takDataService" placeholder="Tak"></kng-core-select-list>
           <div class="text-danger" *ngIf='changeTakFormGroup.get("tak").errors?.required && changeTakFormGroup.get("tak").touched'>Dit veld is verplicht.</div>
           <div class="text-danger" *ngIf='changeTakFormGroup.get("tak").errors?.min && changeTakFormGroup.get("tak").touched'>Kies een geldige tak</div>
           </div>

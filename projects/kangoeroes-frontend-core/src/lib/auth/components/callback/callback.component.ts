@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-callback',
+  selector: 'kng-core-app-callback',
   templateUrl: './callback.component.html',
   styleUrls: ['./callback.component.scss']
 })

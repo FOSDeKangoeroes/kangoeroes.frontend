@@ -3,7 +3,7 @@
 <form [formGroup]='formGroup' (ngSubmit)='onSubmit()'>
   <h1 mat-dialog-title>Afstammeling toevoegen aan {{data.displayName}}</h1>
   <div mat-dialog-content>
- <app-select-list formControlName="voorouder" placeholder="Afstammeling*" [dataService]="totemEntryDataService"></app-select-list>
+ <kng-core-select-list formControlName="voorouder" placeholder="Afstammeling*" [dataService]="totemEntryDataService"></kng-core-select-list>
   </div>
   <div mat-dialog-actions>
     <button type="button" mat-button (click)="onCancel()">Cancel</button>

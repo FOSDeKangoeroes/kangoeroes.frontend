@@ -31,7 +31,8 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm ci
-        npm run lint
+        npm run lint-core
+        npm run lint-totems
         npm run build-totems-prod
       env:
         CI: true

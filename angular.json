@@ -95,7 +95,7 @@
                 },
                 {
                   "replace": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.json",
-                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config.staging.json"
+                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.staging.json"
                 }
               ]
             },
@@ -107,7 +107,7 @@
                 },
                 {
                   "replace": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.json",
-                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config.production.json"
+                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.production.json"
                 }
               ],
               "optimization": true,

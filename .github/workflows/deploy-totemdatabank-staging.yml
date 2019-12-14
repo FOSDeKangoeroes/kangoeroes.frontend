@@ -30,4 +30,4 @@ jobs:
       uses: azure/webapps-deploy@v1
       with: 
         app-name: totemdatabank-staging # Replace with your app name
-        publish-profile: ${{secrets.totems_staging_publish_profile}}
+        publish-profile: ${{secrets.totems_staging_profile}}

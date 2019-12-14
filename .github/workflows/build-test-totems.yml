@@ -28,12 +28,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install
-      run: npm ci
-    - name: ng lint
-      run: ng lint
     - name: npm install, build, and test
-      run: 
+      run: |
+        npm ci
+        ng lint
         npm run build-totems-prod
       env:
         CI: true

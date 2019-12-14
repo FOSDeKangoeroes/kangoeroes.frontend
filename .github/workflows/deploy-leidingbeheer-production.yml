@@ -3,7 +3,7 @@ name: deploy-leidingbeheer-production
 on:
   push:
     branches:
-     - staging
+     - production
     ignore-paths:
       - 'projects/kangoeroes-frontend-totems/**'
 

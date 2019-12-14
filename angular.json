@@ -60,7 +60,8 @@
             "tsConfig": "projects/kangoeroes-frontend-leidingbeheer/tsconfig.app.json",
             "assets": [
               "projects/kangoeroes-frontend-leidingbeheer/src/favicon.ico",
-              "projects/kangoeroes-frontend-leidingbeheer/src/assets"
+              "projects/kangoeroes-frontend-leidingbeheer/src/assets",
+              "projects/kangoeroes-frontend-leidingbeheer/src/web.config"
             ],
             "styles": [
               "projects/kangoeroes-frontend-leidingbeheer/src/scss/style.scss",
@@ -86,11 +87,27 @@
                 }
               ]
             },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/kangoeroes-frontend-leidingbeheer/src/environments/environment.ts",
+                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/environments/environment.dev.ts"
+                },
+                {
+                  "replace": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.json",
+                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config.staging.json"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
                   "replace": "projects/kangoeroes-frontend-leidingbeheer/src/environments/environment.ts",
                   "with": "projects/kangoeroes-frontend-leidingbeheer/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.json",
+                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config.production.json"
                 }
               ],
               "optimization": true,

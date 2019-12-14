@@ -12,7 +12,7 @@
 
       <div class="form-group">
         <div class="col-12">
-          <app-select-list formControlName="tak" placeholder="Tak" [dataService]="takDataService"></app-select-list>
+          <kng-core-select-list formControlName="tak" placeholder="Tak" [dataService]="takDataService"></kng-core-select-list>
           <mat-error *ngIf='addLeidingFormGroup.get("tak").errors?.required && addLeidingFormGroup.get("tak").touched'>Tak
             is verplicht</mat-error>
         </div>
@@ -45,9 +45,9 @@
         <mat-datepicker #leidingSindsPicker></mat-datepicker>
       </mat-form-field>-->
 
-      <lib-date-picker class="col-12" title="Leiding sinds" formControlName="datumGestart"></lib-date-picker>
+      <kng-core-date-picker class="col-12" title="Leiding sinds" formControlName="datumGestart"></kng-core-date-picker>
 
-      <lib-date-picker class="col-12" title="Gestopt op" formControlName="datumGestopt"></lib-date-picker>
+      <kng-core-date-picker class="col-12" title="Gestopt op" formControlName="datumGestopt"></kng-core-date-picker>
 
     </fieldset>
 

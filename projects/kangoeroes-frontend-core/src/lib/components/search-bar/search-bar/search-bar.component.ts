@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SearchBarService } from '../search-bar.service';
 
 @Component({
-  selector: 'lib-search-bar',
+  selector: 'kng-core-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
 })

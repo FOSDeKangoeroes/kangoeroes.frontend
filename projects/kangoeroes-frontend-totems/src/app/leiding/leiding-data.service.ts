@@ -13,7 +13,7 @@ import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/
 export class LeidingDataService extends ResourceService<Leiding> {
 
   constructor(httpClient: HttpClient, configService: ConfigService) {
-    
+
     const config = configService.get();
     const appUrl = `${config.appUrl}/api`;
     super(httpClient, appUrl, 'leiding', new LeidingSerializer());

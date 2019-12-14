@@ -5,7 +5,7 @@
   #formDirective="ngForm"
 >
   <div class="col-2">
-    <lib-kng-autocomplete
+    <kng-core-autocomplete
       [formControl]="addEntryFormGroup.get('persoon')"
       placeholder="Persoon*"
       [source]="leidingDataService"
@@ -15,22 +15,22 @@
       (createNew)="addNewPerson($event)"
       [displayItemFn]="displayItem"
             
-    ></lib-kng-autocomplete>
+    ></kng-core-autocomplete>
 
   </div>
 
   <div class="col-2">
-    <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('adjectief')" placeholder="Adjectief*"
-      [source]="adjectiveDataService" [hasProgressBar]="true"
-      [validationErrors]="addEntryFormGroup.get('adjectief').errors"
-      [displayItemFn]="displayItem"></lib-kng-autocomplete>
+    <kng-core-autocomplete [formControl]="addEntryFormGroup.get('adjectief')" placeholder="Adjectief*"
+                           [source]="adjectiveDataService" [hasProgressBar]="true"
+                           [validationErrors]="addEntryFormGroup.get('adjectief').errors"
+                           [displayItemFn]="displayItem"></kng-core-autocomplete>
   </div>
 
   <div class="col-2">
-    <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('totem')" placeholder="Totem*"
-      [source]="animalDataService" [hasProgressBar]="true"
-      [validationErrors]="addEntryFormGroup.get('totem').errors"
-      [displayItemFn]="displayItem"></lib-kng-autocomplete>
+    <kng-core-autocomplete [formControl]="addEntryFormGroup.get('totem')" placeholder="Totem*"
+                           [source]="animalDataService" [hasProgressBar]="true"
+                           [validationErrors]="addEntryFormGroup.get('totem').errors"
+                           [displayItemFn]="displayItem"></kng-core-autocomplete>
   </div>
 
  <!-- <mat-form-field class="col-2">
@@ -48,13 +48,13 @@
   </mat-form-field>-->
 
   <div>
-    <lib-date-picker title="Datum gekregen" formControlName="datumGekregen"></lib-date-picker>
+    <kng-core-date-picker title="Datum gekregen" formControlName="datumGekregen"></kng-core-date-picker>
   </div>
 
   <div class="col-2">
-    <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Peetje/Meetje"
-      [source]="totemEntryDataService" [hasProgressBar]="true" [displayItemFn]="displayItem"
-      [validationErrors]="addEntryFormGroup.get('voorouder').errors"></lib-kng-autocomplete>
+    <kng-core-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Peetje/Meetje"
+                           [source]="totemEntryDataService" [hasProgressBar]="true" [displayItemFn]="displayItem"
+                           [validationErrors]="addEntryFormGroup.get('voorouder').errors"></kng-core-autocomplete>
   </div>
   <button
     type="submit"

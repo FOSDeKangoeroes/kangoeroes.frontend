@@ -5,7 +5,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 
 @Component({
-  selector: 'lib-date-picker',
+  selector: 'kng-core-date-picker',
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss'],
   providers: [

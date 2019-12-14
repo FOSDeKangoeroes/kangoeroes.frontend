@@ -13,7 +13,7 @@ export class LeidingDataService extends ResourceService<Leiding> {
 
   constructor(httpClient: HttpClient, configService: ConfigService) {
     const url = `${configService.get().appUrl}/api`;
-    super(httpClient, url, 'leiding', new LeidingSerializer())
+    super(httpClient, url, 'leiding', new LeidingSerializer());
    }
 
   public tak(leidingId: number, newTakId: number) {

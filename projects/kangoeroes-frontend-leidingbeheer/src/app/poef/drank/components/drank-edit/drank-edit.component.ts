@@ -6,6 +6,7 @@ import { Validators } from '@angular/forms';
 import { DrankTypeDataService } from '../../../drank-type/shared/drank-type-data.service';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'modal-content',
   templateUrl: './drank-edit.component.html',
   styleUrls: ['./drank-edit.component.scss']

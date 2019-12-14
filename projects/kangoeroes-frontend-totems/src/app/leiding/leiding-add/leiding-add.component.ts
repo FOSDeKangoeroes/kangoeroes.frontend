@@ -21,7 +21,7 @@ export class LeidingAddComponent implements OnInit {
     private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-  
+
     this.formGroup = this.fb.group({
       name: [, [Validators.required]],
       firstname: [this.data.value, [Validators.required]]

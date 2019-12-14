@@ -24,7 +24,7 @@ import { Resource } from '../../../data-service/resource-model';
 import { QueryOptions } from '../../../data-service/query-options';
 
 @Component({
-  selector: 'lib-kng-autocomplete',
+  selector: 'kng-core-autocomplete',
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss'],
   providers: [
@@ -103,7 +103,7 @@ export class AutocompleteComponent<T extends Resource>
   @Input() floatLabel: FloatLabelType = 'auto';
   @Input() formControl?: FormControl;
   @Input() doPrefetch = false;
-  @Input() displayItem? = 'item.name';
+  @Input() displayItem ? = 'item.name';
   @Input() hasSearchButton = false;
   @Input() hasProgressBar = false;
   @Input() minChars = 2;
@@ -135,7 +135,7 @@ export class AutocompleteComponent<T extends Resource>
 
   public prefetch() {
     if (!this.service) {
-      throw new Error("Service for prefetch is not defined in 'Source'");
+      throw new Error('Service for prefetch is not defined in \'Source\'');
     }
 
     this.storedItems = [];
@@ -310,6 +310,7 @@ export class AutocompleteComponent<T extends Resource>
       return this.displayItemFn(item);
     }
     // using eval() can be dangerous, better use displayItemFn function
+    // tslint:disable-next-line: no-eval
     return this.displayItem ? eval(this.displayItem) : item.displayname;
   }
 

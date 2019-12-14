@@ -4,14 +4,14 @@
 
   <div class="col-12">
     <h6>Totemgegevens</h6>
-    <lib-kng-autocomplete
+    <kng-core-autocomplete
     [formControl]="addEntryFormGroup.get('adjectief')"
-    placeholder="Adjectief*" [source]="adjectiveDataService" [displayItemFn]="displayFn"></lib-kng-autocomplete>
+    placeholder="Adjectief*" [source]="adjectiveDataService" [displayItemFn]="displayFn"></kng-core-autocomplete>
   </div>
 
   <div class="col-12">
-    <lib-kng-autocomplete [formControl]="addEntryFormGroup.get('totem')" placeholder="Totem*"
-      [source]="animalDataService" [displayItemFn]="displayFn"></lib-kng-autocomplete>
+    <kng-core-autocomplete [formControl]="addEntryFormGroup.get('totem')" placeholder="Totem*"
+                           [source]="animalDataService" [displayItemFn]="displayFn"></kng-core-autocomplete>
   </div>
 
 
@@ -21,10 +21,10 @@
     <mat-datepicker #datumPicker></mat-datepicker>
   </mat-form-field>-->
 
-    <lib-date-picker class="col-12" title="Datum gekregen" formControlName="datumGekregen"></lib-date-picker>
+    <kng-core-date-picker class="col-12" title="Datum gekregen" formControlName="datumGekregen"></kng-core-date-picker>
 
   <div class="col-12">
-<lib-kng-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Voorouder" [source]="totemEntryDataService" [displayItemFn]="displayFn"></lib-kng-autocomplete>
+<kng-core-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Voorouder" [source]="totemEntryDataService" [displayItemFn]="displayFn"></kng-core-autocomplete>
   </div> 
 <div class="col-12">
 <button type="submit" [disabled]="!addEntryFormGroup.valid" mat-raised-button class="col-2 float-right">Wijzigen</button>

@@ -13,4 +13,4 @@ import { CommonModule } from '@angular/common';
     CallbackComponent
   ]
 })
-export class KangoeroesAuthModule { } 
+export class KangoeroesAuthModule { }

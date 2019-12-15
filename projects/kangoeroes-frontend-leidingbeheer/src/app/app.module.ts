@@ -1,6 +1,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, Injectable, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -81,6 +81,8 @@ import { EventService } from './shared/event.service';
 import { KangoeroesAuthModule } from 'projects/kangoeroes-frontend-core/src/public_api';
 import { ConfigModule } from 'projects/kangoeroes-frontend-core/src/lib/config/config.module';
 import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
+import { AgGridModule } from 'ag-grid-angular';
+import * as Sentry from '@sentry/browser';
 
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
@@ -92,6 +94,21 @@ const appInitializerFn = (appConfig: ConfigService) => {
   };
 };
 
+Sentry.init({
+  dsn: 'https://13025cf14d1041e5a7edb0b5f0b8c50a@sentry.io/1857456'
+});
+
+@Injectable(
+  {providedIn: 'root',
+useClass: ErrorHandler}
+)
+export class SentryErrorHandler implements ErrorHandler {
+  constructor() {}
+  handleError(error) {
+    const eventId = Sentry.captureException(error.originalError || error);
+    Sentry.showReportDialog({ eventId });
+  }
+}
 
 @NgModule({
   imports: [
@@ -111,7 +128,8 @@ const appInitializerFn = (appConfig: ConfigService) => {
       config: {
         tokenGetter: jwtTokenGetter
       }
-    })
+    }),
+    AgGridModule.withComponents()
   ],
   declarations: [
     AppComponent,

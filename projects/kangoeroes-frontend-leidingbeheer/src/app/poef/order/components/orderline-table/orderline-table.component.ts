@@ -25,8 +25,7 @@ export class OrderlineTableComponent implements OnInit {
     { headerName: 'Besteld op', field: 'orderCreatedOn' }
   ];
 
-  private gridApi: GridApi;
-  private gridColumnApi: ColumnApi;
+
   public frameworkComponents;
 
 
@@ -39,9 +38,4 @@ export class OrderlineTableComponent implements OnInit {
 
   ngOnInit() {}
 
-  onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.autoSizeAllColumns();
-  }
 }

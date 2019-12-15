@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { OrderDataService } from '../../shared/order-data.service';
 import { Observable } from 'rxjs';
 import { Order } from '../../shared/order.model';
-import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 import { map } from 'rxjs/operators';
+import { OrderQueryOptions } from '../../shared/order-query-options';
 
 @Component({
   selector: 'app-order-list',
@@ -17,7 +17,9 @@ export class OrderListComponent implements OnInit {
   constructor(private orderDataService: OrderDataService) { }
 
   ngOnInit() {
-    this.orders = this.orderDataService.list(new QueryOptions()).pipe(map(x => x.body));
+    this.orders = this.orderDataService.list(new OrderQueryOptions()).pipe(map(x => x.body));
   }
+
+  
 
 }

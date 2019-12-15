@@ -1,6 +1,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER, Injectable, ErrorHandler } from '@angular/core';
+import { NgModule, APP_INITIALIZER, Injectable, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -160,6 +160,9 @@ export class SentryErrorHandler implements ErrorHandler {
       useFactory: appInitializerFn,
       multi: true,
       deps: [ConfigService]
+    },
+    {
+      provide: LOCALE_ID, useValue: 'nl-be'
     },
     EventService
   ],

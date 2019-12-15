@@ -6,6 +6,7 @@ export class OrderQueryOptions extends QueryOptions {
          public start: Date;
          public end: Date;
 
+         // If there are no parameters provided, take a filter for the last 30 days, with a max of a 100 results.
          constructor(
            start: Date = new Date(),
            end: Date = OrderQueryOptions.getDefaultEndDate()
@@ -18,6 +19,7 @@ export class OrderQueryOptions extends QueryOptions {
            this.end = end;
          }
 
+         // Calculate the date for 30 days from now.
          private static getDefaultEndDate(): Date {
            const result = new Date();
            result.setDate(result.getDate() + 30);

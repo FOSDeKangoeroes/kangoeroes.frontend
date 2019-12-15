@@ -2,7 +2,7 @@ import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-ser
 import { convertToDate, calculateStartDate } from 'projects/kangoeroes-frontend-core/src/lib/utils';
 
 
-export class OrderQueryOptions extends QueryOptions {
+export class OrderlineQueryOptions extends QueryOptions {
          public start: Date;
          public end: Date;
 
@@ -13,13 +13,12 @@ export class OrderQueryOptions extends QueryOptions {
          ) {
            super();
            this.pageSize = 100;
-           this.sortBy = 'createdOn';
+           this.sortBy = 'order.CreatedOn';
            this.sortOrder = 'desc';
            this.start = start;
            this.end = end;
          }
 
-       
 
          toQueryMap() {
            const queryMap = new Map<string, string>();

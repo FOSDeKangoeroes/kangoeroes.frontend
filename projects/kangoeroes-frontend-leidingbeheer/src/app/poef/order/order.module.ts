@@ -7,14 +7,15 @@ import { OrderTableComponent } from './components/order-table/order-table.compon
 import { OrderlineTableComponent } from './components/orderline-table/orderline-table.component';
 import { OrderPersonTableComponent } from './components/order-person-table/order-person-table.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { CurrencyRenderer } from './components/currency-renderer/currency-renderer.component';
 
 @NgModule({
-  declarations: [OrderListComponent, OrderTableComponent, OrderlineTableComponent, OrderPersonTableComponent],
+  declarations: [OrderListComponent, OrderTableComponent, OrderlineTableComponent, OrderPersonTableComponent, CurrencyRenderer],
   imports: [
     CommonModule,
     OrderRoutingModule,
     MatTabsModule,
-    AgGridModule.withComponents()
+    AgGridModule.withComponents([CurrencyRenderer])
   ]
 })
 export class OrderModule { }

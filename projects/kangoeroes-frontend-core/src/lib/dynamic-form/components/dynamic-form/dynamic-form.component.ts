@@ -3,7 +3,7 @@ import { FieldConfig } from '../../field.interface';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'kangoeroe-dynamic-form',
+  selector: 'kng-core-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss']
 })

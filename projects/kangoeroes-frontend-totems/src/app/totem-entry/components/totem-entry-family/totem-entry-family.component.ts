@@ -16,9 +16,7 @@ export class TotemEntryFamilyComponent implements OnInit {
    @ViewChild('descendantsTable', { static: true }) descendantsTable: MatTable<TotemEntry>;
   displayedColumns: string[] = ['displayName', 'totem'];
 
-  constructor(private dialog: MatDialog) {
-   
-  }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
 

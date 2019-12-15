@@ -20,7 +20,7 @@ const componentMapper = {
 };
 
 @Directive({
-  selector: '[dynamicField]'
+  selector: '[kngCoreDynamicField]'
 })
 export class DynamicFieldDirective implements OnInit {
 

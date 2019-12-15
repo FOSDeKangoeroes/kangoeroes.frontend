@@ -9,7 +9,7 @@ import { KangoeroesAuthModule } from '../kangoeroes-auth.module';
 import { AuthService } from 'projects/kangoeroes-frontend-core/src/lib/auth/services/auth.service';
 
 
-@Injectable({ 
+@Injectable({
   providedIn: KangoeroesAuthModule
 })
 export class AuthenticationGuard implements CanActivate {
@@ -39,6 +39,6 @@ export class AuthenticationGuard implements CanActivate {
 
     this.authService.login();
     return false;
- 
+
   }
 }

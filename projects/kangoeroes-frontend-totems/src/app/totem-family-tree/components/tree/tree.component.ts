@@ -15,8 +15,6 @@ export class TreeComponent implements OnInit {
   @ViewChild('diagramDiv', { static: true })
   private diagramRef: ElementRef;
 
- 
-
   constructor(private treeDataService: FamilyTreeDataService) {
 
     const $ = go.GraphObject.make;
@@ -25,7 +23,6 @@ export class TreeComponent implements OnInit {
 
     this.diagram.layout = $(go.TreeLayout, {angle: 90, nodeSpacing: 10, layerSpacing: 40, layerStyle: go.TreeLayout.LayerUniform });
 
-    
     this.diagram.nodeTemplate =
       $(go.Node, 'Auto',
         { deletable: false, toolTip: null},
@@ -51,7 +48,7 @@ this.diagram.allowMove = false;
       $(go.Link,  // the whole link panel
         { routing: go.Link.Orthogonal, corner: 5, selectable: false },
         $(go.Shape, { strokeWidth: 3, stroke: '#424242' }));  // the gray link shape
-    
+
   }
 
   ngOnInit() {

@@ -1,0 +1,11 @@
+{
+    "production": "false",
+    "appUrl": "https://staging-kangoeroe-api.azurewebsites.net",
+    "auth0ClientId": "GIgIApHhEwCZ1BgfjU6oWHXc6fT2Hwsg",
+    "auth0Domain": "dekangoeroes-development.eu.auth0.com",
+    "auth0Audience": "admin.dekangoeroes.be",
+    "auth0RedirectUri": "https://leidingbeheer-staging.azurewebsites.net/callback",
+    "auth0Scopes": "openid roles",
+    "auth0ResponseType": "token id_token",
+    "postAuthUrl": "/dashboard"
+}

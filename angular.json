@@ -60,7 +60,8 @@
             "tsConfig": "projects/kangoeroes-frontend-leidingbeheer/tsconfig.app.json",
             "assets": [
               "projects/kangoeroes-frontend-leidingbeheer/src/favicon.ico",
-              "projects/kangoeroes-frontend-leidingbeheer/src/assets"
+              "projects/kangoeroes-frontend-leidingbeheer/src/assets",
+              "projects/kangoeroes-frontend-leidingbeheer/src/web.config"
             ],
             "styles": [
               "projects/kangoeroes-frontend-leidingbeheer/src/scss/style.scss",
@@ -86,11 +87,27 @@
                 }
               ]
             },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/kangoeroes-frontend-leidingbeheer/src/environments/environment.ts",
+                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/environments/environment.dev.ts"
+                },
+                {
+                  "replace": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.json",
+                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.staging.json"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
                   "replace": "projects/kangoeroes-frontend-leidingbeheer/src/environments/environment.ts",
                   "with": "projects/kangoeroes-frontend-leidingbeheer/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.json",
+                  "with": "projects/kangoeroes-frontend-leidingbeheer/src/assets/config/config.production.json"
                 }
               ],
               "optimization": true,
@@ -291,8 +308,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/kangoeroes-frontend-totems/tsconfig.app.json",
+              "projects/kangoeroes-frontend-totems/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

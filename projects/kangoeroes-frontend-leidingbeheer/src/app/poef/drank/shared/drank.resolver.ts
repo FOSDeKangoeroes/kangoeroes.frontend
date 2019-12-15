@@ -1,8 +1,8 @@
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
-import { Drank } from "./drank.model";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { DrankDataService } from "./drank-data.service";
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Drank } from './drank.model';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DrankDataService } from './drank-data.service';
 
 @Injectable({
     providedIn: 'root'

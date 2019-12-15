@@ -1,0 +1,39 @@
+name: Build and test totems
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'projects/kangoeroes-frontend-leidingbeheer/**'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'projects/kangoeroes-frontend-totems/**'
+      - 'projects/kangoeroes-frontend-core/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm run lint-core
+        npm run lint-totems
+        npm run build-totems-prod
+      env:
+        CI: true
+

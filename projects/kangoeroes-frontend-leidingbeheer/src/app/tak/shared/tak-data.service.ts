@@ -12,7 +12,7 @@ export class TakDataService extends ResourceService<Tak> {
 
   constructor(httpClient: HttpClient, configService: ConfigService) {
 
-    const url = `${configService.get().appUrl}/api`
-    super(httpClient,url,'tak', new TakSerializer())
+    const url = `${configService.get().appUrl}/api`;
+    super(httpClient, url, 'tak', new TakSerializer());
    }
 }

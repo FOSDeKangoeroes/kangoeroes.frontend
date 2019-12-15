@@ -11,9 +11,7 @@
             class="icon-pencil"></i> Wijzigen...</button>
         <button type="button" (click)="openDeleteModal()" class="btn btn-danger"
           ><i class="icon-trash"></i> Verwijderen...</button>
-        <button type="button" class="btn btn-success pull-right">
-          <i class="icon-user-follow"></i> Drank toevoegen...
-        </button>
+       
       </div>
     </div>
 
@@ -25,7 +23,13 @@
       </div>
       <div class="table table-striped">
 
-        <app-drank-table [typeId]="type.id" [displayedColumns]="displayedColumns"></app-drank-table>
+       <ag-grid-angular
+    class="ag-theme-material col-12"
+    [rowData]="rowData | async"
+    [columnDefs]="columns"
+    >
+</ag-grid-angular>
+        <!--<app-drank-table [typeId]="type.id" [displayedColumns]="displayedColumns"></app-drank-table>-->
       </div>
     </div>
   </div>

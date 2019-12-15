@@ -6,7 +6,7 @@ export const navigation = [
   },
   {
     name: 'Personen',
-    icon: 'icon-people',
+    icon: 'icon-arrow-down',
     children: [
       {
         name: 'Takken',
@@ -22,7 +22,7 @@ export const navigation = [
   },
   {
     name: 'Poef',
-    icon: 'icon-map',
+    icon: 'icon-arrow-down',
     children: [
       {
         name: 'Categorieën',
@@ -33,6 +33,11 @@ export const navigation = [
         name: 'Dranken',
         url: '/poef/drank',
         icon: 'icon-cup'
+      },
+      {
+        name: 'Bestellingen en consumpties',
+        url: '/poef/bestellingen',
+        icon: 'icon-basket'
       }
     ]
   }

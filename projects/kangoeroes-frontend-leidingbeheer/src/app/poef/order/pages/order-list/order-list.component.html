@@ -1,0 +1,25 @@
+<div class="alert alert-primary">Standaard worden de eerste 100 bestellingen van de laatste 60 dagen getoond. Gebruik de filter om gerichtere resultaten te krijgen.</div>
+
+<div class="card card-accent-primary">
+<div class="card-header">
+Filter
+</div>
+
+</div>
+<div class="card card-accent-primary">
+<div class="card-header">
+<button type="button" class="btn btn-primary"  ><i
+            class="icon-plus"></i> Toevoegen...</button>
+</div>
+<mat-tab-group animationDuration="0ms">
+  <mat-tab label="Per bestelling">
+    <app-order-table [orders]="orders"></app-order-table>
+  </mat-tab>
+  <mat-tab label="Per consumptie">
+    <app-orderline-table></app-orderline-table>
+  </mat-tab>
+  <mat-tab label="Per persoon">
+    <app-order-person-table></app-order-person-table>
+  </mat-tab>
+</mat-tab-group>
+</div>

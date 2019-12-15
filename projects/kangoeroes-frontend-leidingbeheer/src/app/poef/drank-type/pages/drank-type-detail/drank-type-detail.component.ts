@@ -6,8 +6,12 @@ import { DrankTypeEditComponent } from '../../components/drank-type-edit/drank-t
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { DrankTypeService } from '../../shared/drankType.service';
 import { DrankTypeDataService } from '../../shared/drank-type-data.service';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, switchMap, map } from 'rxjs/operators';
 import { SnotifyService } from 'ng-snotify';
+import { DrankTypeSubDataService } from '../../shared/drank-type-sub-data.service';
+import { Drank } from '../../../drank/shared/drank.model';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-drank-type-detail',
@@ -18,21 +22,33 @@ import { SnotifyService } from 'ng-snotify';
 export class DrankTypeDetailComponent implements OnInit {
   public type: DrankType;
 
-  public displayedColumns = ['naam', 'currentPrijs'];
-
   editModal: BsModalRef;
+
+  columns = [
+    {headerName: 'Naam', field: 'naam', sortable: true, filter: true},
+    {headerName: 'Prijs', field: 'prijs'}
+  ];
+
+ rowData: Observable<Drank[]>;
 
   constructor(
     private route: ActivatedRoute,
     private modalService: BsModalService,
     private drankTypeService: DrankTypeService,
     private drankTypeDataService: DrankTypeDataService,
+    private drankTypeSubResourceService: DrankTypeSubDataService,
     private snotifyService: SnotifyService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.route.data.subscribe(item => (this.type = item['type']));
+
+    this.route.data.pipe(map(item => {
+        this.type = item['type'];
+        this.rowData = this.drankTypeSubResourceService.list(this.type.id, new QueryOptions());
+    })
+    ).subscribe();
+
   }
 
   openEditModal() {

@@ -14,6 +14,7 @@ import { DrankTypeDetailComponent } from './pages/drank-type-detail/drank-type-d
 import { DrankModule } from '../drank/drank.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrankTypeEditComponent } from './components/drank-type-edit/drank-type-edit.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   entryComponents: [DrankTypeAddComponent, DrankTypeEditComponent],
@@ -26,7 +27,8 @@ import { DrankTypeEditComponent } from './components/drank-type-edit/drank-type-
     MatSortModule,
     SearchBarModule,
     DynamicFormModule,
-    DrankModule
+    DrankModule,
+    AgGridModule.withComponents()
   ]
 
 })

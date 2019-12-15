@@ -5,19 +5,17 @@
 Monorepo voor alle Angular frontends.
 
 - kangoeroes-frontend-core: library met gedeelde code: components, services,..
-- kangoeroes-frontend-leidingbeheer: Angular 7 frontend voor het beheer van leiding, poef en schulden
-- kangoeroes-frontend-totems: Angular 7 frontend voor het beheer van de totemdatabank
+- kangoeroes-frontend-leidingbeheer: Angular frontend voor het beheer van leiding, poef en schulden
+- kangoeroes-frontend-totems: Angular frontend voor het beheer van de totemdatabank
 
 ## 0. Prerequisites
 
 - Git
 - npm
 - Angular cli
-- Environment file (aan te vragen/ zie voorbeeld)
 - Gebruikersaccount op Auth0 (aan te vragen)
-- Werkende backend (zie backend repository). Dit staat  hardcoded op `localhost:5000`in proxy.config.json. De backend moet in development dus op die url draaien.
 
-## 1. Download the repo
+## 1. Clonen
 
 Zorg dat je een SSH key hebt toegevoegd aan je GitHub profiel.
 

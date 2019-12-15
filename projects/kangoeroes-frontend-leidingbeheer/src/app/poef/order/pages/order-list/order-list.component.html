@@ -11,12 +11,15 @@ Filter
 <button type="button" class="btn btn-primary"  ><i
             class="icon-plus"></i> Toevoegen...</button>
 </div>
-<mat-tab-group animationDuration="0ms">
+<mat-tab-group animationDuration="200ms">
   <mat-tab label="Per bestelling">
     <app-order-table [orders]="orders"></app-order-table>
   </mat-tab>
   <mat-tab label="Per consumptie">
-    <app-orderline-table></app-orderline-table>
+    <ng-template matTabContent>
+      <app-orderline-table [orderlines]="orderlines"></app-orderline-table>
+    </ng-template>
+    
   </mat-tab>
   <mat-tab label="Per persoon">
     <app-order-person-table></app-order-person-table>

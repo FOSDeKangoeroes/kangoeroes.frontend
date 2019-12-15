@@ -83,11 +83,12 @@ import { ConfigModule } from 'projects/kangoeroes-frontend-core/src/lib/config/c
 import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
 import { AgGridModule } from 'ag-grid-angular';
 import * as Sentry from '@sentry/browser';
-
+import { registerLocaleData } from '@angular/common';
+import localeBe from '@angular/common/locales/nl-BE';
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
 }
-
+registerLocaleData(localeBe, 'nl-BE');
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
     return appConfig.loadAppConfig();

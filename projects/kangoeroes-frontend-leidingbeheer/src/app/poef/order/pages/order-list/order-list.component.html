@@ -13,7 +13,9 @@ Filter
 </div>
 <mat-tab-group animationDuration="200ms">
   <mat-tab label="Per bestelling">
+    <ng-template matTabContent>
     <app-order-table [orders]="orders"></app-order-table>
+  </ng-template>
   </mat-tab>
   <mat-tab label="Per consumptie">
     <ng-template matTabContent>

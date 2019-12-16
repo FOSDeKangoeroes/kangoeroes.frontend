@@ -11,23 +11,21 @@ import { OrderlineSummary } from './orderline-summary';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class OrderlineDataService extends ResourceService<Orderline> {
+  constructor(httpClient: HttpClient, configService: ConfigService) {
+    const url = `${configService.get().appUrl}/api`;
+    const endpoint = 'orderline';
+    super(httpClient, url, endpoint, new OrderlineSerializer());
+  }
 
-
-    constructor(httpClient: HttpClient, configService: ConfigService) {
-        const url = `${configService.get().appUrl}/api`;
-        const endpoint = 'orderline';
-        super(httpClient, url, endpoint, new OrderlineSerializer());
-
-    }
-
-    summary(queryOptions: QueryOptions = new OrderlineQueryOptions()) : Observable<HttpResponse<OrderlineSummary[]>> {
-        return this.httpClient
-          .get<OrderlineSummary[]>(
-            `${this.url}/${this.endpoint}/summary?${queryOptions.toQueryString()}`,
-            { observe: 'response' }
-          );
-    }
+  summary(
+    queryOptions: QueryOptions = new OrderlineQueryOptions()
+  ): Observable<HttpResponse<OrderlineSummary[]>> {
+    return this.httpClient.get<OrderlineSummary[]>(
+      `${this.url}/${this.endpoint}/summary?${queryOptions.toQueryString()}`,
+      { observe: 'response' }
+    );
+  }
 }

@@ -29,7 +29,6 @@ export class OrderlineTableComponent implements OnInit {
   public frameworkComponents;
 
 
- 
   constructor() {
     this.frameworkComponents = {
       currencyRenderer: CurrencyRenderer

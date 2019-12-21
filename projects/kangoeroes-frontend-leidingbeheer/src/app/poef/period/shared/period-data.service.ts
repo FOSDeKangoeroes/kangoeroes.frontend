@@ -10,7 +10,6 @@ import { PeriodSerializer } from './period-serializer';
 })
 export class PeriodDataService extends ResourceService<Period> {
 
-
     constructor(httpClient: HttpClient, configService: ConfigService) {
         const url = `${configService.get().appUrl}/api`;
         const endpoint = 'period';

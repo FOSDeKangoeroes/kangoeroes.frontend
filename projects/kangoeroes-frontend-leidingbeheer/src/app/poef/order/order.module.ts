@@ -8,6 +8,7 @@ import { OrderlineTableComponent } from './components/orderline-table/orderline-
 import { OrderPersonTableComponent } from './components/order-person-table/order-person-table.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { CurrencyRenderer } from './components/currency-renderer/currency-renderer.component';
+import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
 
 @NgModule({
   declarations: [OrderListComponent, OrderTableComponent, OrderlineTableComponent, OrderPersonTableComponent, CurrencyRenderer],
@@ -15,6 +16,7 @@ import { CurrencyRenderer } from './components/currency-renderer/currency-render
     CommonModule,
     OrderRoutingModule,
     MatTabsModule,
+    SelectListModule,
     AgGridModule.withComponents([CurrencyRenderer])
   ]
 })

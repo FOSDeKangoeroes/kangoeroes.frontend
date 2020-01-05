@@ -9,15 +9,25 @@ import { OrderPersonTableComponent } from './components/order-person-table/order
 import { AgGridModule } from 'ag-grid-angular';
 import { CurrencyRenderer } from './components/currency-renderer/currency-renderer.component';
 import { SelectListModule } from 'projects/kangoeroes-frontend-core/src/lib/components/select-list/select-list.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { DateModule } from 'projects/kangoeroes-frontend-core/src/lib/components/date/date.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { AutocompleteModule } from 'projects/kangoeroes-frontend-core/src/lib/components/autocomplete/autocomplete.module';
+import { PeriodFilterComponent } from './components/period-filter/period-filter.component';
 
 @NgModule({
-  declarations: [OrderListComponent, OrderTableComponent, OrderlineTableComponent, OrderPersonTableComponent, CurrencyRenderer],
+  declarations: [OrderListComponent, OrderTableComponent, OrderlineTableComponent, OrderPersonTableComponent, CurrencyRenderer, PeriodFilterComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,
     MatTabsModule,
     SelectListModule,
-    AgGridModule.withComponents([CurrencyRenderer])
+    AgGridModule.withComponents([CurrencyRenderer]),
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    AutocompleteModule
   ]
 })
 export class OrderModule { }

@@ -1,37 +1,37 @@
-<div class="alert alert-primary">Standaard worden de eerste 100 bestellingen van de laatste 60 dagen getoond. Gebruik de filter om gerichtere resultaten te krijgen.</div>
-
-<div class="card card-accent-primary">
-<div class="card-header">
-Filter
-</div>
-<div class="col-3">
-  <kng-core-select-list  [placeholder]="Periode" [dataService]="periodDataService" ></kng-core-select-list>
+<div class="alert alert-primary">
+  Standaard worden de eerste 100 bestellingen van de laatste 60 dagen getoond.
+  Gebruik de filter om gerichtere resultaten te krijgen.
 </div>
 
-<input type="date"/>
-<input type="date"/>
+<div class="card card-accent-primary">
+  <div class="card-header">
+    Filter
+  </div>
+  <div class="card-body">
+    <app-period-filter [dataService]="periodDataService"></app-period-filter>
+  </div>
 </div>
 <div class="card card-accent-primary">
-<div class="card-header">
-<button type="button" class="btn btn-primary"  ><i
-            class="icon-plus"></i> Toevoegen...</button>
-</div>
-<mat-tab-group animationDuration="200ms">
-  <mat-tab label="Per bestelling">
-    <ng-template matTabContent>
-    <app-order-table [orders]="orders"></app-order-table>
-  </ng-template>
-  </mat-tab>
-  <mat-tab label="Per consumptie">
-    <ng-template matTabContent>
-      <app-orderline-table [orderlines]="orderlines"></app-orderline-table>
-    </ng-template>
-    
-  </mat-tab>
-  <mat-tab label="Per persoon">
-    <ng-template matTabContent>
-    <app-order-person-table [summary]="summary"></app-order-person-table>
-  </ng-template>
-  </mat-tab>
-</mat-tab-group>
+  <div class="card-header">
+    <button type="button" class="btn btn-primary">
+      <i class="icon-plus"></i> Toevoegen...
+    </button>
+  </div>
+  <mat-tab-group animationDuration="200ms">
+    <mat-tab label="Per bestelling">
+      <ng-template matTabContent>
+        <app-order-table [orders]="orders"></app-order-table>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Per consumptie">
+      <ng-template matTabContent>
+        <app-orderline-table [orderlines]="orderlines"></app-orderline-table>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Per persoon">
+      <ng-template matTabContent>
+        <app-order-person-table [summary]="summary"></app-order-person-table>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
 </div>

@@ -1,3 +1,8 @@
+/**
+ * Mainly taken from https://github.com/vguleaev/Angular-Material-Autocomplete.
+ * Made some modifications here and there.
+ */
+
 import {
   AfterViewInit,
   Component,
@@ -102,11 +107,11 @@ export class AutocompleteComponent<T extends Resource>
   @Input() placeholder = '';
   @Input() floatLabel: FloatLabelType = 'auto';
   @Input() formControl?: FormControl;
-  @Input() doPrefetch = false;
+  @Input() doPrefetch = true;
   @Input() displayItem ? = 'item.name';
   @Input() hasSearchButton = false;
   @Input() hasProgressBar = false;
-  @Input() minChars = 2;
+  @Input() minChars = 0;
   @Input() clearAfterSearch = false;
   @Input() showAddNew = false;
   @Input() addNewText = 'Nieuw toevoegen';

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-3">
+    <kng-core-autocomplete
+      placeholder="Periode"
+      [source]="dataService"
+      (optionSelected)="onSelected($event)"
+    ></kng-core-autocomplete>
+  </div>
+  <div class="col-3">
+    <mat-form-field class="date-field">
+      <input
+        matInput
+        #input
+        [matDatepicker]="startPicker"
+        placeholder="Start"
+        [value]="selectedStartDate"
+        (dateChange)="onStartDateChanged($event)"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="col-3">
+    <mat-form-field class="date-field">
+      <input
+        matInput
+        #input
+        [matDatepicker]="endPicker"
+        placeholder="Einde"
+        [value]="selectedEndDate"
+        (dateChange)="onEndDateChanged($event)"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>

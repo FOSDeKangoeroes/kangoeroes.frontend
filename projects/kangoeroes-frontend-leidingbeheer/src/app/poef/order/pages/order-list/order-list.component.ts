@@ -9,6 +9,8 @@ import { Orderline } from '../../shared/orderline.model';
 import { OrderlineQueryOptions } from '../../shared/orderline-query-options';
 import { OrderlineSummary } from '../../shared/orderline-summary';
 import { PeriodDataService } from '../../../period/shared/period-data.service';
+import { Period } from '../../../period/shared/period.model';
+import { PeriodFilterService } from '../../components/period-filter.service';
 
 @Component({
   selector: 'app-order-list',
@@ -20,13 +22,19 @@ export class OrderListComponent implements OnInit {
   orders: Observable<Order[]>;
   orderlines: Observable<Orderline[]>;
   summary: Observable<OrderlineSummary[]>;
+  selectedStartDate: Date;
+  selectedEndDate: Date;
 
   constructor(
     private orderDataService: OrderDataService,
     private orderlineDataService: OrderlineDataService,
-    private periodDataService: PeriodDataService) { }
+    public periodDataService: PeriodDataService,
+    private periodFilterService: PeriodFilterService) { }
 
   ngOnInit() {
+
+    
+
     this.orders = this.orderDataService.list(new OrderQueryOptions()).pipe(map(x => x.body));
 
     this.orderlines = this.orderlineDataService.list(new OrderlineQueryOptions()).pipe(map(x => x.body));

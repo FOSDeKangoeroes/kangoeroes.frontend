@@ -1,6 +1,6 @@
 {
     "production": "true",
-    "appUrl": "https://staging-kangoeroe-api.azurewebsites.net",
+    "appUrl": "http://localhost:5000",
     "auth0ClientId": "qsVUJU2hWqxNu15XzwZp5AtkWhlJ6Wic",
     "auth0Domain": "dekangoeroes-development.eu.auth0.com",
     "auth0Audience": "admin.dekangoeroes.be",

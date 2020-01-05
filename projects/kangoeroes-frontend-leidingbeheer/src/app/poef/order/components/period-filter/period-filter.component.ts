@@ -20,7 +20,7 @@ export class PeriodFilterComponent implements OnInit {
 
   ngOnInit() {
     this.periodFilter.startDate$.subscribe(res => {
-      
+
       this.selectedStartDate = res;
     });
 

@@ -19,8 +19,6 @@ export class OrderQueryOptions extends QueryOptions {
            this.end = end;
          }
 
-       
-
          toQueryMap() {
            const queryMap = new Map<string, string>();
            queryMap.set('pageNumber', `${this.pageNumber}`);

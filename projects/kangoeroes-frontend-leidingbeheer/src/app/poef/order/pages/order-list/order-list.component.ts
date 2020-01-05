@@ -33,7 +33,6 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit() {
 
-    
 
     this.orders = this.orderDataService.list(new OrderQueryOptions()).pipe(map(x => x.body));
 

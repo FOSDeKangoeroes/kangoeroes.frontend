@@ -17,7 +17,13 @@ import { AutocompleteModule } from 'projects/kangoeroes-frontend-core/src/lib/co
 import { PeriodFilterComponent } from './components/period-filter/period-filter.component';
 
 @NgModule({
-  declarations: [OrderListComponent, OrderTableComponent, OrderlineTableComponent, OrderPersonTableComponent, CurrencyRenderer, PeriodFilterComponent],
+  declarations: [
+    OrderListComponent,
+    OrderTableComponent,
+    OrderlineTableComponent,
+    OrderPersonTableComponent,
+    CurrencyRenderer,
+    PeriodFilterComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,

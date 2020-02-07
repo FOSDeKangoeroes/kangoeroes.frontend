@@ -100,7 +100,7 @@ export class AutocompleteComponent<T extends Resource>
   @Output() optionSelected = new EventEmitter();
   @Output() createNew = new EventEmitter();
 
-  @ViewChild('autocompleteInput', { static: false }) autocompleteInput: ElementRef;
+  @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
   @ViewChild('autocomplete', { static: true }) autocomplete: MatAutocomplete;
 
   @Input() name = '';

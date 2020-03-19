@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderDataService } from '../../shared/order-data.service';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, forkJoin } from 'rxjs';
 import { Order } from '../../shared/order.model';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { OrderQueryOptions } from '../../shared/order-query-options';
 import { OrderlineDataService } from '../../shared/orderline-data.service';
 import { Orderline } from '../../shared/orderline.model';
@@ -18,7 +18,6 @@ import { PeriodFilterService } from '../../components/period-filter.service';
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit {
-
   orders: Observable<Order[]>;
   orderlines: Observable<Orderline[]>;
   summary: Observable<OrderlineSummary[]>;
@@ -29,16 +28,27 @@ export class OrderListComponent implements OnInit {
     private orderDataService: OrderDataService,
     private orderlineDataService: OrderlineDataService,
     public periodDataService: PeriodDataService,
-    private periodFilterService: PeriodFilterService) { }
+    private periodFilterService: PeriodFilterService
+  ) {}
 
   ngOnInit() {
+    forkJoin(
+      this.periodFilterService.startDate$,
+      this.periodFilterService.endDate$
+    ).pipe(
+      map(([first, second]) => {
+        console.log({ first, second });
+      })
+    );
 
+    this.orders = this.orderDataService
+      .list(new OrderQueryOptions())
+      .pipe(map(x => x.body));
 
-    this.orders = this.orderDataService.list(new OrderQueryOptions()).pipe(map(x => x.body));
-
-    this.orderlines = this.orderlineDataService.list(new OrderlineQueryOptions()).pipe(map(x => x.body));
+    this.orderlines = this.orderlineDataService
+      .list(new OrderlineQueryOptions())
+      .pipe(map(x => x.body));
 
     this.summary = this.orderlineDataService.summary().pipe(map(x => x.body));
   }
-
 }

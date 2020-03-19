@@ -49,7 +49,8 @@ export class LeidingAddComponent implements OnInit {
       email: this.addLeidingFormGroup.value.email,
       takId: this.addLeidingFormGroup.value.tak,
       datumGestopt: gestopt ? gestopt : undefined,
-      leidingSinds: gestart ? gestart : undefined
+      leidingSinds: gestart ? gestart : undefined,
+      createAccounts: true
     };
 
     this.dataService.create(leiding).subscribe(

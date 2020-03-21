@@ -40,7 +40,7 @@ export class LeidingEditComponent implements OnInit {
 
     this.leiding.datumGestopt = event.datumGestopt;
     this.leidingDataService.update(this.leiding, this.leiding.id).subscribe(res => {
-      this.snackbar.open(`Stopdatum van ${res.displayName} werd gewijzigd!`)
+      this.snackbar.open(`Stopdatum van ${res.displayName} werd gewijzigd!`);
     });
   }
 

@@ -26,3 +26,4 @@ npm-debug.log
 *.env
 /wwwroot
 /dist
+git-version.ts

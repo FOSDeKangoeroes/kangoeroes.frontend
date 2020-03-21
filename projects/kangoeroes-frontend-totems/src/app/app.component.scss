@@ -1,5 +1,17 @@
+:host {
+    min-height: 100vh;
+}
+
 .container-fluid {
     position: absolute;
     top: 128px;
     margin-bottom: 28px;
+
 }
+
+footer {
+    color: gray;
+    margin-top: 16px;
+    float: right;
+}
+

@@ -24,10 +24,11 @@ export class AuthenticationGuard implements CanActivate {
     if (this.authService.isAuthenticated()) {
 
       const token = decode(this.authService.getToken());
-      const roles: string[] = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      const rolesInToken: string[] = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
 
+      const roleNeeded = next.data.role as string;
 
-      if (roles.includes('opperhoofd')) {
+      if (rolesInToken.includes(roleNeeded)) {
         return true;
 
       } else {

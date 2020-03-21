@@ -8,6 +8,7 @@ import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AuthorizationGuard } from './core/auth/authorization.guard';
 import { CallbackComponent } from 'projects/kangoeroes-frontend-core/src/lib/auth/components/callback/callback.component';
+import { AuthenticationGuard } from 'projects/kangoeroes-frontend-core/src/lib/auth/guards/authentication.guard';
 
 const routes: Routes = [
   // Normale url (localhost:4200 bijv.) redirecten naar localhost:4200/#/dashboard
@@ -20,35 +21,42 @@ const routes: Routes = [
     path: '',
     component: FullLayoutComponent,
     data: {
-      title: 'Home'
+      title: 'Home',
+      role: 'financieel_verantwoordelijke'
     },
-    canActivate: [AuthorizationGuard],
+    canActivate: [AuthenticationGuard],
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        data: { role: 'financieel_verantwoordelijke' }
       },
       {
         path: 'takken',
         loadChildren: () => import('./tak/tak.module').then(m => m.TakModule),
         data: {
-          title: 'Takken'
+          title: 'Takken',
+          role: 'financieel_verantwoordelijke'
         }
       },
       {
         path: 'personen',
-        loadChildren: () => import('./leiding/leiding.module').then(m => m.LeidingModule),
+        loadChildren: () =>
+          import('./leiding/leiding.module').then(m => m.LeidingModule),
         data: {
-          title: 'Personen'
+          title: 'Personen',
+          role: 'financieel_verantwoordelijke'
         }
       },
       {
         path: 'poef',
-        loadChildren: () => import('./poef/poef.module').then(m => m.PoefModule),
+        loadChildren: () =>
+          import('./poef/poef.module').then(m => m.PoefModule),
         data: {
-          title: 'Poef'
+          title: 'Poef',
+          role: 'financieel_verantwoordelijke'
         }
-      },
+      }
     ]
   },
   {

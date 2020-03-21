@@ -6,7 +6,6 @@ import { TakResolverService } from './tak/shared/tak-resolver.service';
 
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { AuthorizationGuard } from './core/auth/authorization.guard';
 import { CallbackComponent } from 'projects/kangoeroes-frontend-core/src/lib/auth/components/callback/callback.component';
 import { AuthenticationGuard } from 'projects/kangoeroes-frontend-core/src/lib/auth/guards/authentication.guard';
 

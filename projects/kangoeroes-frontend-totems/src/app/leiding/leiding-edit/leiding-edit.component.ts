@@ -28,7 +28,7 @@ export class LeidingEditComponent implements OnInit {
       },
       {
         type: 'button',
-        label: 'Wijzigen',
+        label: 'Stopdatum opslaan',
         cssClass: 'mat-raised-button float-right'
       }
     ];

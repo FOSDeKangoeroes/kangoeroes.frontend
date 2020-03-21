@@ -1,6 +1,11 @@
 <div [formGroup]="group" [ngClass]="field.cssClass">
-<kng-core-date-picker [title]="field.label" [formControlName]="field.name">
-</kng-core-date-picker>
+<!--<kng-core-date-picker [title]="field.label" [formControlName]="field.name">
+</kng-core-date-picker>-->
+<mat-form-field class="col-12">
+    <input matInput [matDatepicker]="datumPicker" [placeholder]="field.label" [formControlName]="field.name" [value]="field.value">
+    <mat-datepicker-toggle matSuffix [for]="datumPicker"></mat-datepicker-toggle>
+    <mat-datepicker #datumPicker></mat-datepicker>
+  </mat-form-field>
 <ng-container *ngFor="let validation of field.validations;" ngProjectAs="mat-error">
   <mat-error *ngIf="group.get(field.name).hasError(validation.name)">{{validation.message}}</mat-error>
 </ng-container>

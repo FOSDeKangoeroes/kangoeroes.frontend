@@ -15,19 +15,19 @@
   </div>
 
 
-  <!-- <mat-form-field class="col-12">
+   <mat-form-field class="col-12">
     <input matInput [matDatepicker]="datumPicker" placeholder="Datum gekregen" formControlName="datumGekregen" [value]="totemEntry.datumGegeven">
     <mat-datepicker-toggle matSuffix [for]="datumPicker"></mat-datepicker-toggle>
     <mat-datepicker #datumPicker></mat-datepicker>
-  </mat-form-field>-->
+  </mat-form-field>
 
-    <kng-core-date-picker class="col-12" title="Datum gekregen" formControlName="datumGekregen"></kng-core-date-picker>
+    <!--<kng-core-date-picker class="col-12" title="Datum gekregen" formControlName="datumGekregen"></kng-core-date-picker>-->
 
   <div class="col-12">
 <kng-core-autocomplete [formControl]="addEntryFormGroup.get('voorouder')" placeholder="Voorouder" [source]="totemEntryDataService" [displayItemFn]="displayFn"></kng-core-autocomplete>
   </div> 
 <div class="col-12">
-<button type="submit" [disabled]="!addEntryFormGroup.valid" mat-raised-button class="col-2 float-right">Wijzigen</button>
+<button type="submit" [disabled]="!addEntryFormGroup.valid" mat-raised-button class="float-right">Totemgegevens opslaan</button>
 </div>
 
 </form>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Leiding } from '../leiding.model';
 import { FieldConfig } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/field.interface';
 import { LeidingDataService } from '../leiding-data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LeidingEditComponent implements OnInit {
 
   regConfig: FieldConfig[];
 
-  constructor(private leidingDataService: LeidingDataService) { }
+  constructor(private leidingDataService: LeidingDataService, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
 
@@ -39,7 +40,7 @@ export class LeidingEditComponent implements OnInit {
 
     this.leiding.datumGestopt = event.datumGestopt;
     this.leidingDataService.update(this.leiding, this.leiding.id).subscribe(res => {
-
+      this.snackbar.open(`Stopdatum van ${res.displayName} werd gewijzigd!`)
     });
   }
 

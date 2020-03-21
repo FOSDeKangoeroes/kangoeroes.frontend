@@ -85,6 +85,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import * as Sentry from '@sentry/browser';
 import { registerLocaleData } from '@angular/common';
 import localeBe from '@angular/common/locales/nl-BE';
+import { gitVersion } from 'projects/kangoeroes-frontend-core/src/lib/config/git-version';
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -96,7 +97,8 @@ const appInitializerFn = (appConfig: ConfigService) => {
 };
 
 Sentry.init({
-  dsn: 'https://13025cf14d1041e5a7edb0b5f0b8c50a@sentry.io/1857456'
+  dsn: 'https://13025cf14d1041e5a7edb0b5f0b8c50a@sentry.io/1857456',
+  release: 'leidingbeheer@' + gitVersion.branch + '-' + gitVersion.commit
 });
 
 @Injectable(

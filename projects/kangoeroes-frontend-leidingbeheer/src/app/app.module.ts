@@ -73,7 +73,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppForbiddenComponent } from './components/app-forbidden/app-forbidden.component';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
-import { TokenInterceptor } from './interceptors/token-interceptor';
+import { TokenInterceptor } from '../../../kangoeroes-frontend-core/src/lib/auth/interceptors/token-interceptor';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { OverlayModule } from '@angular/cdk/overlay';

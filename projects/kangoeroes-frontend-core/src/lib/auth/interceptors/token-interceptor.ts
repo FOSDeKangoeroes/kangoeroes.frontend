@@ -8,7 +8,9 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { AuthService } from 'projects/kangoeroes-frontend-core/src/lib/auth/services/auth.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TokenInterceptor implements HttpInterceptor {
   constructor() {}
 

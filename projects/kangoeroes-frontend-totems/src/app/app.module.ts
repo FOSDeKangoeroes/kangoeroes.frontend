@@ -19,6 +19,7 @@ import { ConfigModule } from 'projects/kangoeroes-frontend-core/src/lib/config/c
 import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/config.service';
 import { AuthModule } from './core/auth/auth.module';
 import { LeidingAddComponent } from './leiding/leiding-add/leiding-add.component';
+import { TokenInterceptor } from 'projects/kangoeroes-frontend-core/src/lib/auth/interceptors/token-interceptor';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -27,7 +28,8 @@ const appInitializerFn = (appConfig: ConfigService) => {
 };
 
 export const httpInterceptorProviders = [
-  { provide: HTTP_INTERCEPTORS, useClass: BadRequestInterceptor, multi: true }
+  { provide: HTTP_INTERCEPTORS, useClass: BadRequestInterceptor, multi: true },
+  {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
 ];
 @NgModule({
   declarations: [AppComponent],

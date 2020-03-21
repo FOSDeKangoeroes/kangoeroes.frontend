@@ -4,7 +4,7 @@ const { writeFileSync } = require('fs');
 const gitInfo = {
   commit: git.short(),
   commitLong: git.long(),
-  branch: git.branch()
+  branch: process.env.GITHUB_REF
 };
 const ts = 'export const gitVersion = ' + JSON.stringify(gitInfo, null, 2);
 

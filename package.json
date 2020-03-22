@@ -20,6 +20,10 @@
     "git-version": "node scripts/git-version-gen.js",
     "e2e": "ng e2e"
   },
+  "post-commit": [
+    "git-version"
+  ],
+
   "private": true,
   "dependencies": {
     "@ag-grid-community/all-modules": "^22.1.0",
@@ -81,6 +85,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "~1.4.2",
     "ng-packagr": "^5.1.0",
+    "post-commit": "0.0.1",
     "protractor": "^5.3.2",
     "ts-node": "~8.3.0",
     "tsickle": "^0.35.0",

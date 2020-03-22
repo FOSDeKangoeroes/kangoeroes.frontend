@@ -1,8 +1,12 @@
 const git = require('git-rev-sync');
 const { writeFileSync } = require('fs');
 
-const fullBranchName = process.env.GITHUB_REF;
-const shortName = fullBranchName.split('/')[2];
+const fullBranchName = process.env.GITHUB_REF || git.short();
+let shortName = 'dev'
+if(fullBranchName) {
+  shortName = fullBranchName.split('/')[2];
+}
+
 
 const gitInfo = {
   commit: git.short(),

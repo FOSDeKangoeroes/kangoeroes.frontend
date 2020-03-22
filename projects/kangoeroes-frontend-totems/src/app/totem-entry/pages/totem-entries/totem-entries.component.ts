@@ -1,13 +1,16 @@
 
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
 import { TitleService } from '../../../core/title/title.service';
 import { ColumnService } from '../../../core/title/column.service';
 import { PickColumnDialogComponent } from '../../../ui/pick-column/totemanimal-pick-column-dialog/pick-column-dialog.component';
 import { Leiding } from '../../../leiding/leiding.model';
 
 import { Router } from '@angular/router';
+import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
+import { TotemEntryAddComponent } from '../../components/totem-entry-add/totem-entry-add.component';
+import { shareReplay, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-totem-entries',
@@ -34,12 +37,17 @@ export class TotemEntriesComponent implements OnInit {
   leidingSearch$ = new Subject<string>();
   private readonly COLUMN_KEY = 'totem-entries-columns';
 
+  $isHandSet: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay());
 
   constructor(
     public titleService: TitleService,
     private columnService: ColumnService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
   ) {
     this.titleService.setTitle('Getotemiseerden');
   }
@@ -94,5 +102,9 @@ export class TotemEntriesComponent implements OnInit {
 
   detail(event) {
   this.router.navigate(['totems', event.id]);
+  }
+
+  openAdd() {
+    const addDialog = this.dialog.open(TotemEntryAddComponent);
   }
 }

@@ -23,7 +23,6 @@
   "post-commit": [
     "git-version"
   ],
-
   "private": true,
   "dependencies": {
     "@ag-grid-community/all-modules": "^22.1.0",

@@ -46,6 +46,10 @@ export class AuthService {
     });
   }
 
+  public getCachedProfile(): auth0.Auth0UserProfile {
+    return JSON.parse(localStorage.getItem('profile')) as auth0.Auth0UserProfile;
+  }
+
   public getProfile(cb): void {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
@@ -55,8 +59,9 @@ export class AuthService {
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
         self.userProfile = profile;
+        localStorage.setItem('profile', JSON.stringify(this.userProfile));
       }
-      cb(err, profile);
+      //cb(err, profile);
     });
   }
 
@@ -71,6 +76,8 @@ export class AuthService {
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('scopes', JSON.stringify(scopes));
 
+    this.getProfile(authResult);
+  
     this.scheduleRenewal();
   }
 
@@ -80,6 +87,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('scopes');
+    localStorage.removeItem('profile');
     // Go back to the home route
     this.router.navigate(['/logout']);
   }

@@ -3,10 +3,19 @@
 </div>
 </div>
 
-<div class="row">
+<!--Only visible on screens that are big enough-->
+<div class="row" *ngIf="!($isHandSet | async)">
   <div class="col-12">
     <app-totem-entry-add></app-totem-entry-add>
   </div>
+</div>
+
+<!--Only visible on handset devices-->
+<div class="row" *ngIf="$isHandSet | async">
+  <div class="col-12">
+    <button (click)="openAdd()" mat-raised-button color='primary'>Getotemiseerde toevoegen</button>
+  </div>
+  
 </div>
 
 <div class="row mt-3">

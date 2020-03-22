@@ -1,27 +1,67 @@
 <mat-toolbar class="top-nav" color="primary">
   <mat-toolbar-row class="nav mat-elevation-z6">
-  <a routerLink="/totems" routerLinkActive="active" class="nav-link">Totemdatabank</a>
-<span class="divider"></span>
-<a routerLink="/totems" routerLinkActive="active" class="nav-link">Getotemiseerden</a>
-<a routerLink="/tree" routerLinkActive="active" class="nav-link"> Stamboom</a>
+    <button
+      mat-button
+      [mat-menu-trigger-for]="menu"
+      fxHide="false"
+      fxHide.gt-sm
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="nav-wrapper" fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <a routerLink="/totems" class="nav-link">Totemdatabank</a>
 
-<a routerLink="/animals" routerLinkActive="active" class="nav-link">Dieren</a>
+      <span class="divider"></span>
+    
+        <a routerLink="/totems" routerLinkActive="active" class="nav-link"
+        >Getotemiseerden</a
+      >
+      <a routerLink="/tree" routerLinkActive="active" class="nav-link">
+        Stamboom</a
+      >
 
-<a routerLink="/adjectives" routerLinkActive="active" class="nav-link">Adjectieven</a>
+      <a routerLink="/animals" routerLinkActive="active" class="nav-link"
+        >Dieren</a
+      >
 
-<div class="float-right">
-  <span class="nav-link authButton" *ngIf="!authService.isAuthenticated()" (click)="authService.login()">Inloggen</span>
-<span class="nav-link authButton" *ngIf="authService.isAuthenticated()" (click)="authService.logout()">Uitloggen</span>
-</div>
+      <a routerLink="/adjectives" routerLinkActive="active" class="nav-link"
+        >Adjectieven</a
+      >
+      
+      
+      <span class="divider"></span>
 
-
-<span class="divider"></span>
-
+      <div>
+         <span
+        class="nav-link authButton"
+        *ngIf="!authService.isAuthenticated()"
+        (click)="authService.login()"
+        >Inloggen</span
+      >
+      <span
+        class="nav-link authButton"
+        *ngIf="authService.isAuthenticated()"
+        (click)="authService.logout()"
+        >Uitloggen</span
+      >
+      </div>
+     
+    </div>
   </mat-toolbar-row>
   <mat-toolbar-row class="primary-header">
-   
-<h1>{{titleService.title$ | async}}</h1>
-
+    <h1>{{ titleService.title$ | async }}</h1>
   </mat-toolbar-row>
   <mat-toolbar-row class="sheet"></mat-toolbar-row>
 </mat-toolbar>
+
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item routerLink="/totems">Getotemiseerden</button>
+  <button mat-menu-item routerLink="/tree">Stamboom</button>
+  <button mat-menu-item routerLink="/animals">Dieren</button>
+  <button mat-menu-item routerLink="/adjectives">Adjectieven</button>
+  <button *ngIf="!authService.isAuthenticated()"
+        (click)="authService.login()" mat-menu-item>Inloggen</button>
+  <button *ngIf="authService.isAuthenticated()"
+        (click)="authService.logout()" mat-menu-item >Uitloggen</button>
+  <!--<button mat-menu-item>Help</button>-->
+</mat-menu>

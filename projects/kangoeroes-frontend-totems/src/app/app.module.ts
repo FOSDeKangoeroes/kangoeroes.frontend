@@ -20,6 +20,7 @@ import { ConfigService } from 'projects/kangoeroes-frontend-core/src/lib/config/
 import { AuthModule } from './core/auth/auth.module';
 import { LeidingAddComponent } from './leiding/leiding-add/leiding-add.component';
 import { TokenInterceptor } from 'projects/kangoeroes-frontend-core/src/lib/auth/interceptors/token-interceptor';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -45,7 +46,8 @@ export const httpInterceptorProviders = [
     MatIconModule,
     MatMomentDateModule,
     AuthModule,
-    ConfigModule
+    ConfigModule,
+    FlexLayoutModule
   ],
   providers: [
     httpInterceptorProviders,

@@ -35,7 +35,7 @@
       mat-button
       [mat-menu-trigger-for]="accountMenu"
     >
-      <img class="avatar" [src]="authService.getCachedProfile().picture"/>
+      <img class="avatar" [src]="authService.getCachedProfile()?.picture"/>
     </button>
      
     </div>

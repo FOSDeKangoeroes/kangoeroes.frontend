@@ -16,7 +16,7 @@
   
    <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
-        <img [src]="auth.getCachedProfile().picture" class="img-avatar" [alt]="auth.getCachedProfile().name"/>
+        <img [src]="auth.getCachedProfile()?.picture" class="img-avatar" [alt]="auth.getCachedProfile()?.name"/>
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
         <div class="dropdown-header text-center"><strong>Account</strong></div>

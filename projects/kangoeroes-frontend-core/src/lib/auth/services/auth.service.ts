@@ -61,7 +61,6 @@ export class AuthService {
         self.userProfile = profile;
         localStorage.setItem('profile', JSON.stringify(this.userProfile));
       }
-      //cb(err, profile);
     });
   }
 
@@ -77,7 +76,6 @@ export class AuthService {
     localStorage.setItem('scopes', JSON.stringify(scopes));
 
     this.getProfile(authResult);
-  
     this.scheduleRenewal();
   }
 

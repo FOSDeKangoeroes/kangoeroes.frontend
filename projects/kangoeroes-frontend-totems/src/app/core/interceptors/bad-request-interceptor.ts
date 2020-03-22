@@ -14,11 +14,17 @@ export class BadRequestInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(tap(event => {
 
     }, (error: HttpErrorResponse) => {
-      if (error.status === 400 || error.status === 500) {
-        this.snackbar.open(error.error.message, null, {
-          duration: 3000
-        });
+      let errorMessage = 'Er ging iets fout. Bekijk de console voor meer info.';
+      if (error.status === 400) {
+        errorMessage = error.message;
+      } else if (error.status === 500) {
+        errorMessage = error.error.message;
       }
+
+      this.snackbar.open(errorMessage, null, {
+        duration: 3000
+      });
+
     }));
 
   }

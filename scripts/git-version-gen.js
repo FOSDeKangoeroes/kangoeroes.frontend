@@ -1,17 +1,18 @@
 const git = require('git-rev-sync');
 const { writeFileSync } = require('fs');
 
-const fullBranchName = process.env.GITHUB_REF || git.short();
-let shortName = 'dev'
-if(fullBranchName) {
-  shortName = fullBranchName.split('/')[2];
+console.log(process.env.GITHUB_REF);
+let fullBranchName = process.env.GITHUB_REF || git.branch();
+
+if(fullBranchName.includes('/')) {
+  fullBranchName = fullBranchName.split('/')[2];
 }
 
 
 const gitInfo = {
   commit: git.short(),
   commitLong: git.long(),
-  branch: shortName
+  branch: fullBranchName
 };
 const ts = 'export const gitVersion = ' + JSON.stringify(gitInfo, null, 2);
 

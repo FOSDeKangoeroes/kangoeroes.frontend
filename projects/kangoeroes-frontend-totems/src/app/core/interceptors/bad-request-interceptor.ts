@@ -14,8 +14,8 @@ export class BadRequestInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(tap(event => {
 
     }, (error: HttpErrorResponse) => {
-      if (error.status === 400) {
-        this.snackbar.open(error.error, null, {
+      if (error.status === 400 || error.status === 500) {
+        this.snackbar.open(error.error.message, null, {
           duration: 3000
         });
       }

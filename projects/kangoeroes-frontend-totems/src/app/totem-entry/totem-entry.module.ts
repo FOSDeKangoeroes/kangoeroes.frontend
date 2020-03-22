@@ -70,6 +70,6 @@ import { DateModule } from 'projects/kangoeroes-frontend-core/src/lib/components
     TotemEntryFamilyComponent,
     TotemEntryAddDescendantComponent
   ],
-  entryComponents: [TotemEntryAddDescendantComponent, LeidingAddComponent]
+  entryComponents: [TotemEntryAddDescendantComponent, LeidingAddComponent, TotemEntryAddComponent]
 })
 export class TotemEntryModule {}

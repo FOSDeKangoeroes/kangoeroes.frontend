@@ -50,3 +50,12 @@ a {
 .nav-wrapper {
   width: 100%;
 }
+
+$avatar-size: 40px !default;
+
+.avatar {
+ height: $avatar-size;
+ width: $avatar-size;
+ border-radius: 50%;
+ flex-shrink: 0;
+}

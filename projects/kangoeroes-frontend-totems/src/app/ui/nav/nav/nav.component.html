@@ -31,20 +31,12 @@
       
       <span class="divider"></span>
 
-      <div>
-         <span
-        class="nav-link authButton"
-        *ngIf="!authService.isAuthenticated()"
-        (click)="authService.login()"
-        >Inloggen</span
-      >
-      <span
-        class="nav-link authButton"
-        *ngIf="authService.isAuthenticated()"
-        (click)="authService.logout()"
-        >Uitloggen</span
-      >
-      </div>
+        <button
+      mat-button
+      [mat-menu-trigger-for]="accountMenu"
+    >
+      <img class="avatar" [src]="authService.getCachedProfile().picture"/>
+    </button>
      
     </div>
   </mat-toolbar-row>
@@ -53,6 +45,13 @@
   </mat-toolbar-row>
   <mat-toolbar-row class="sheet"></mat-toolbar-row>
 </mat-toolbar>
+
+<mat-menu x-position="before" #accountMenu="matMenu">
+  <button *ngIf="!authService.isAuthenticated()"
+        (click)="authService.login()" mat-menu-item>Inloggen</button>
+  <button *ngIf="authService.isAuthenticated()"
+        (click)="authService.logout()" mat-menu-item >Uitloggen</button>
+</mat-menu>
 
 <mat-menu x-position="before" #menu="matMenu">
   <button mat-menu-item routerLink="/totems">Getotemiseerden</button>

@@ -1,7 +1,6 @@
 const git = require('git-rev-sync');
 const { writeFileSync } = require('fs');
 
-console.log(process.env.GITHUB_REF);
 let fullBranchName = process.env.GITHUB_REF || git.branch();
 
 if(fullBranchName.includes('/')) {

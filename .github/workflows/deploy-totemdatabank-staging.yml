@@ -4,9 +4,8 @@ on:
   push:
     branches:
      - staging
-    paths:
-      - 'projects/kangoeroes-frontend-totems/**'
-      - 'projects/kangoeroes-frontend-core/**'
+    ignore-paths:
+      - 'projects/kangoeroes-frontend-leidingbeheer/**'
 
 jobs:
   build:

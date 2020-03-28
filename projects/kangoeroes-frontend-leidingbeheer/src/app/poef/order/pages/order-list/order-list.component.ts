@@ -36,14 +36,9 @@ export class OrderListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    forkJoin(
-      this.periodFilterService.startDate$,
-      this.periodFilterService.endDate$
-    ).pipe(
-      map(([first, second]) => {
-        console.log({ first, second });
-      })
-    );
+    this.periodFilterService.endDate$.subscribe(res => {
+      console.log(res);
+    });
 
     this.orders = this.orderDataService
       .list(new OrderQueryOptions())

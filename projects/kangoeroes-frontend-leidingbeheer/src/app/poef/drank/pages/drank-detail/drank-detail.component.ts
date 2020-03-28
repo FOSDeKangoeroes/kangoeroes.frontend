@@ -5,7 +5,7 @@ import { DrankDataService } from '../../shared/drank-data.service';
 import { SnotifyService } from 'ng-snotify';
 import { Prijs } from '../../shared/prijs.model';
 import { Observable, concat } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DrankEditComponent } from '../../components/drank-edit/drank-edit.component';
 
@@ -30,14 +30,13 @@ export class DrankDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.data.pipe(
-      mergeMap(item => {
+   this.route.data.pipe(
+      map(item => {
         this.drank = item['drank'];
-       return this.drankDataService.listPrices(this.drank.id);
+       this.prices$ = this.drankDataService.listPrices(this.drank.id);
       })
     ).subscribe();
 
-    this.prices$ = this.drankDataService.listPrices(this.drank.id);
   }
 
   delete() {

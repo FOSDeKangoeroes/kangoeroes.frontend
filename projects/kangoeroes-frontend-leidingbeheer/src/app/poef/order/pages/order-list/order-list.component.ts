@@ -9,8 +9,9 @@ import { Orderline } from '../../shared/orderline.model';
 import { OrderlineQueryOptions } from '../../shared/orderline-query-options';
 import { OrderlineSummary } from '../../shared/orderline-summary';
 import { PeriodDataService } from '../../../period/shared/period-data.service';
-import { Period } from '../../../period/shared/period.model';
 import { PeriodFilterService } from '../../components/period-filter.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CreatePeriodComponent } from '../../../period/components/create-period/create-period.component';
 
 @Component({
   selector: 'app-order-list',
@@ -24,11 +25,14 @@ export class OrderListComponent implements OnInit {
   selectedStartDate: Date;
   selectedEndDate: Date;
 
+  addPeriodModal: BsModalRef;
+
   constructor(
     private orderDataService: OrderDataService,
     private orderlineDataService: OrderlineDataService,
     public periodDataService: PeriodDataService,
-    private periodFilterService: PeriodFilterService
+    private periodFilterService: PeriodFilterService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit() {
@@ -50,5 +54,9 @@ export class OrderListComponent implements OnInit {
       .pipe(map(x => x.body));
 
     this.summary = this.orderlineDataService.summary().pipe(map(x => x.body));
+  }
+
+  openAddPeriodModal() {
+    this.addPeriodModal = this.modalService.show(CreatePeriodComponent);
   }
 }

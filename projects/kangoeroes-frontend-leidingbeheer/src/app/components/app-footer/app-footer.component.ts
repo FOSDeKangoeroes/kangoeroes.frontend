@@ -5,7 +5,7 @@ import { gitVersion } from 'projects/kangoeroes-frontend-core/src/lib/config/git
   selector: 'app-footer',
   templateUrl: './app-footer.component.html'
 })
-export class AppFooterComponent { 
+export class AppFooterComponent {
 
  version: string;
 

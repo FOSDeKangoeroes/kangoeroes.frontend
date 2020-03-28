@@ -6,6 +6,9 @@
 <div class="card card-accent-primary">
   <div class="card-header">
     Filter
+    <button (click)="openAddPeriodModal()" type="button" class="btn btn-primary float-right">
+      <i class="icon-plus"></i> Periode toevoegen...
+    </button>
   </div>
   <div class="card-body">
     <app-period-filter [dataService]="periodDataService"></app-period-filter>
@@ -13,7 +16,7 @@
 </div>
 <div class="card card-accent-primary">
   <div class="card-header">
-    <button type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary float-right">
       <i class="icon-plus"></i> Toevoegen...
     </button>
   </div>

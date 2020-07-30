@@ -8,5 +8,6 @@
     "auth0Scopes": "openid roles profile email",
     "auth0ResponseType": "token id_token",
     "postAuthUrl": "/dashboard",
-    "appInsightsInstrumentationKey": ""
+    "appInsightsInstrumentationKey": "",
+    "applicationName":"leidingbeheer-frontend"
 }

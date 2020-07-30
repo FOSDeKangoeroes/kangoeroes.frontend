@@ -8,13 +8,18 @@ import { ConfigService } from '../config/config.service';
 export class MonitoringService {
   appInsights: ApplicationInsights;
   constructor(configService: ConfigService) {
-    const instrumentationKey = configService.get().appInsightsInstrumentationKey;
+    const config = configService.get();
+    const instrumentationKey = config.appInsightsInstrumentationKey;
     this.appInsights = new ApplicationInsights({
       config: {
         instrumentationKey: instrumentationKey,
         enableAutoRouteTracking: true,
-        enableCorsCorrelation: true // option to log all route changes
+        enableCorsCorrelation: true, // option to log all route changes
+
       },
+    });
+    this.appInsights.addTelemetryInitializer(envelope => {
+      envelope.tags['ai.cloud.role'] = config.applicationName;
     });
     this.appInsights.loadAppInsights();
   }

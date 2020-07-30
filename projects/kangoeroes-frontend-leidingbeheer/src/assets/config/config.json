@@ -7,5 +7,6 @@
     "auth0RedirectUri": "http://localhost:4200/callback",
     "auth0Scopes": "openid roles profile email",
     "auth0ResponseType": "token id_token",
-    "postAuthUrl": "/dashboard"
+    "postAuthUrl": "/dashboard",
+    "appInsightsInstrumentationKey": ""
 }

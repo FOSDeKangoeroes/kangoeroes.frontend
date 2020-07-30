@@ -7,5 +7,6 @@
     "auth0RedirectUri": "https://leidingbeheer-staging.azurewebsites.net/callback",
     "auth0Scopes": "openid roles profile",
     "auth0ResponseType": "token id_token",
-    "postAuthUrl": "/dashboard"
+    "postAuthUrl": "/dashboard",
+    "appInsightsInstrumentationKey": "7e79f8d9-796c-410e-b2fd-88f8190ee06d"
 }

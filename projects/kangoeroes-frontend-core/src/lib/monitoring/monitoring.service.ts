@@ -15,12 +15,12 @@ export class MonitoringService {
         instrumentationKey: instrumentationKey,
         enableAutoRouteTracking: true,
         enableCorsCorrelation: true, // option to log all route changes
-        
+
       },
     });
     this.appInsights.addTelemetryInitializer(envelope => {
-      envelope.tags['ai.cloud.role'] = config.applicationName
-    })
+      envelope.tags['ai.cloud.role'] = config.applicationName;
+    });
     this.appInsights.loadAppInsights();
   }
 

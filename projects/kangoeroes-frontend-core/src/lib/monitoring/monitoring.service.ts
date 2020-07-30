@@ -12,7 +12,8 @@ export class MonitoringService {
     this.appInsights = new ApplicationInsights({
       config: {
         instrumentationKey: instrumentationKey,
-        enableAutoRouteTracking: true, // option to log all route changes
+        enableAutoRouteTracking: true,
+        enableCorsCorrelation: true // option to log all route changes
       },
     });
     this.appInsights.loadAppInsights();

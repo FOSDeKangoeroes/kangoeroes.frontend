@@ -18,9 +18,9 @@ export interface Validator {
 export interface FieldConfig {
     label?: string;
     name?: string;
-    inputType?: string;
+    inputType?: 'text' | 'color'| 'date'| 'datetime-local'| 'month'| 'week'| 'time'| 'email'| 'number'| 'range'| 'search'| 'tel'| 'url';
     options?: string;
-    type: string;
+    type: 'input' | 'button' | 'select' | 'date' | 'radiobutton' | 'checkbox';
     value?: any;
     validations?: Validator[];
     dataService?: ResourceService<Resource>;

@@ -13,15 +13,17 @@ export class MonitoringService {
     this.appInsights = new ApplicationInsights({
       config: {
         instrumentationKey: instrumentationKey,
-        enableAutoRouteTracking: true,
-        enableCorsCorrelation: true, // option to log all route changes
+        enableAutoRouteTracking: true
 
       },
     });
-    this.appInsights.addTelemetryInitializer(envelope => {
-      envelope.tags['ai.cloud.role'] = config.applicationName;
-    });
     this.appInsights.loadAppInsights();
+
+    const initializer = (envelope) => {
+      envelope.tags['ai.cloud.role'] = config.applicationName;
+    };
+
+    this.appInsights.addTelemetryInitializer(initializer);
   }
 
   logPageView(name?: string, url?: string) {

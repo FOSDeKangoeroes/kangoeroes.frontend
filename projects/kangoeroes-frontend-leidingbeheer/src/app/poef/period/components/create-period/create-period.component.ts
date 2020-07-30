@@ -3,11 +3,12 @@ import { FieldConfig } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-f
 import { Validators } from '@angular/forms';
 import { PeriodDataService } from '../../shared/period-data.service';
 import * as moment from 'moment';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-create-period',
   templateUrl: './create-period.component.html',
-  styleUrls: ['./create-period.component.scss']
+  styleUrls: ['./create-period.component.scss'],
 })
 export class CreatePeriodComponent implements OnInit {
   regConfig: FieldConfig[] = [
@@ -21,9 +22,9 @@ export class CreatePeriodComponent implements OnInit {
         {
           name: 'required',
           validator: Validators.required,
-          message: 'Naam is verplicht.'
-        }
-      ]
+          message: 'Naam is verplicht.',
+        },
+      ],
     },
     {
       type: 'date',
@@ -35,9 +36,9 @@ export class CreatePeriodComponent implements OnInit {
         {
           name: 'required',
           validator: Validators.required,
-          message: 'Startdatum is verplicht.'
-        }
-      ]
+          message: 'Startdatum is verplicht.',
+        },
+      ],
     },
     {
       type: 'date',
@@ -49,18 +50,18 @@ export class CreatePeriodComponent implements OnInit {
         {
           name: 'required',
           validator: Validators.required,
-          message: 'Einddatum is verplicht.'
-        }
-      ]
+          message: 'Einddatum is verplicht.',
+        },
+      ],
     },
     {
       type: 'button',
       label: 'Toevoegen',
-      cssClass: 'btn btn-success col-12'
-    }
+      cssClass: 'btn btn-success col-12',
+    },
   ];
 
-  constructor(private periodDataService: PeriodDataService) {}
+  constructor(private periodDataService: PeriodDataService,   public addPeriodRef: BsModalRef) {}
 
   ngOnInit() {}
 
@@ -69,13 +70,12 @@ export class CreatePeriodComponent implements OnInit {
     const newPeriod = {
       name: event.naam,
       start: moment(event.startDate).utc(true),
-      end: moment(event.endDate).utc(true)
+      end: moment(event.endDate).utc(true),
     };
 
-    this.periodDataService.create(newPeriod).subscribe(res => {
+    this.periodDataService.create(newPeriod).subscribe((res) => {
       console.log('Succes!');
       console.log(res);
     });
-
   }
 }

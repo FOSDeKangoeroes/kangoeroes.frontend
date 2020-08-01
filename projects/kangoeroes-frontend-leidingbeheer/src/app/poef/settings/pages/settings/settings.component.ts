@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TakDataService } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/tak/shared/tak-data.service';
 import { Tak } from 'projects/kangoeroes-frontend-leidingbeheer/src/app/tak/shared/tak.model';
 import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-settings',
@@ -16,7 +17,7 @@ export class SettingsComponent implements OnInit {
    'name', 'tabIsAllowed'
   ];
 
-  constructor(public takDataService: TakDataService) { }
+  constructor(public takDataService: TakDataService, public snotify: SnotifyService) { }
 
   ngOnInit() {
     const queryOptions = new QueryOptions();
@@ -31,7 +32,7 @@ export class SettingsComponent implements OnInit {
     tak.tabIsAllowed = !tak.tabIsAllowed;
 
     this.takDataService.update(tak, tak.id).subscribe(res => {
-      console.log('updated!');
+      this.snotify.success(`Poefstatus voor ${res.displayName} is gewijzigd!`);
     });
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({
@@ -7,23 +7,28 @@ import { ConfigService } from '../config/config.service';
 })
 export class MonitoringService {
   appInsights: ApplicationInsights;
-  constructor(configService: ConfigService) {
-    const config = configService.get();
-    const instrumentationKey = config.appInsightsInstrumentationKey;
-    this.appInsights = new ApplicationInsights({
-      config: {
-        instrumentationKey: instrumentationKey,
-        enableAutoRouteTracking: true
+  constructor(private configService: ConfigService) {
 
-      },
-    });
-    this.appInsights.loadAppInsights();
+  }
 
-    const initializer = (envelope) => {
-      envelope.tags['ai.cloud.role'] = config.applicationName;
-    };
+ public startAppInsights() {
+const config = this.configService.get();
+const instrumentationKey = config.appInsightsInstrumentationKey;
+this.appInsights = new ApplicationInsights({
+  config: {
+    instrumentationKey: instrumentationKey,
+    enableAutoRouteTracking: true,
+   // enableCorsCorrelation: true,
+    distributedTracingMode: DistributedTracingModes.W3C,
+  },
+});
+this.appInsights.loadAppInsights();
 
-    this.appInsights.addTelemetryInitializer(initializer);
+const initializer = (envelope) => {
+  envelope.tags['ai.cloud.role'] = config.applicationName;
+};
+
+this.appInsights.addTelemetryInitializer(initializer);
   }
 
   logPageView(name?: string, url?: string) {

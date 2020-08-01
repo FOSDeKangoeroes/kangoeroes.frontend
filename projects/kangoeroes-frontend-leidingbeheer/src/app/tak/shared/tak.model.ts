@@ -5,6 +5,7 @@ export class Tak extends Resource {
     naam: string;
     volgorde: number;
     leidingCount: number;
+    tabIsAllowed: boolean;
 
     public hasLeiding(): boolean {
         return this.leidingCount > 0;

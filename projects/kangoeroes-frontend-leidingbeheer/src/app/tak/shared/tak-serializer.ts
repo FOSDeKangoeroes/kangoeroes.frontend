@@ -11,6 +11,7 @@ export class TakSerializer implements Serializer<Tak> {
         newTak.naam = json.naam;
         newTak.volgorde = json.volgorde;
         newTak.id = json.id;
+        newTak.tabIsAllowed = json.tabIsAllowed;
 
         return newTak;
 

@@ -1,0 +1,18 @@
+<div class="card card-accent-primary">
+  <div class="card-header">Takken die poef kunnen gebruiken</div>
+  <div class="card-body">
+    <table mat-table [dataSource]="takken">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Tak</th>
+        <td mat-cell *matCellDef="let tak">{{tak.displayName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="tabIsAllowed">
+        <th mat-header-cell *matHeaderCellDef>Poefstatus</th>
+        <td mat-cell *matCellDef="let tak"><mat-slide-toggle [checked]="tak.tabIsAllowed" (change)="toggleTabAllowed(tak)"></mat-slide-toggle></td>
+         
+      </ng-container> 
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+<tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+  </div>
+</div>

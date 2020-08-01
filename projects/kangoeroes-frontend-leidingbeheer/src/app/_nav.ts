@@ -36,5 +36,10 @@ export const navigation = [
            name: 'Bestellingen en consumpties',
            url: '/poef/bestellingen',
            icon: 'icon-basket'
+         },
+         {
+           name: 'Poefinstellingen',
+           url: '/poef/instellingen',
+           icon: 'icon-settings'
          }
        ];

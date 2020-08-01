@@ -16,9 +16,7 @@ export class AppComponent {
     this.auth.handleAuthentication();
     this.auth.scheduleRenewal();
 
-    if (auth.userProfile) {
-      console.log(auth.userProfile);
-    }
+    this.monitoringService.startAppInsights();
 
   }
 }

@@ -14,8 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AutocompleteModule } from 'projects/kangoeroes-frontend-core/src/lib/components/autocomplete/autocomplete.module';
 import { PeriodFilterComponent } from './components/period-filter/period-filter.component';
-import { CreatePeriodComponent } from '../period/components/create-period/create-period.component';
-import { PeriodModule } from '../period/period.module';
+import { CreateOrderComponent } from './components/create-order/create-order.component';
+import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/dynamic-form.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PeriodModule } from '../period/period.module';
     OrderlineTableComponent,
     OrderPersonTableComponent,
     CurrencyRenderer,
-    PeriodFilterComponent],
+    PeriodFilterComponent,
+    CreateOrderComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,
@@ -34,7 +36,11 @@ import { PeriodModule } from '../period/period.module';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    AutocompleteModule
-  ]
+    AutocompleteModule,
+    DynamicFormModule,
+    ReactiveFormsModule
+  ],
+  exports: [CreateOrderComponent],
+  entryComponents: [CreateOrderComponent]
 })
 export class OrderModule { }

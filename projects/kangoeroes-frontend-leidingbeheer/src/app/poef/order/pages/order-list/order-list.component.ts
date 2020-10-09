@@ -12,6 +12,7 @@ import { PeriodDataService } from '../../../period/shared/period-data.service';
 import { PeriodFilterService } from '../../components/period-filter.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CreatePeriodComponent } from '../../../period/components/create-period/create-period.component';
+import { CreateOrderComponent } from '../../components/create-order/create-order.component';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class OrderListComponent implements OnInit, OnDestroy {
   selectedEndDate: Date;
 
   addPeriodModal: BsModalRef;
+  addOrderModal: BsModalRef;
 
   private orderSubscription: Subscription;
 
@@ -66,5 +68,9 @@ export class OrderListComponent implements OnInit, OnDestroy {
 
   openAddPeriodModal() {
     this.addPeriodModal = this.modalService.show(CreatePeriodComponent);
+  }
+
+  openAddOrderModal() {
+    this.addOrderModal = this.modalService.show(CreateOrderComponent);
   }
 }

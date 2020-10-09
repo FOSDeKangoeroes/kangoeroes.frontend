@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4>Nieuwe periode</h4>
+  <button type="button" class="close" (click)="addPeriodRef.hide()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="orderForm" class="form-horizontal">
+    <div class="form-group row">
+      <div class="col-4">
+        <kng-core-select-list formControlName="orderedFor" placeholder="Persoon" [dataService]="leidingDataService"></kng-core-select-list>
+      </div>
+       <div class="col-4">
+        <kng-core-select-list formControlName="drink" placeholder="Drank" [dataService]="drankDataService">
+        </kng-core-select-list>
+      </div>
+        <mat-form-field class="col-4">
+          <mat-label>Aantal</mat-label>
+          <input matInput type="number" formControlName="quantity">
+        </mat-form-field> 
+    </div>
+  </form>
+</div>

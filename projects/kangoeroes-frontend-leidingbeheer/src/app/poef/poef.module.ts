@@ -5,6 +5,8 @@ import { DrankModule } from './drank/drank.module';
 import { DrankTypeModule } from './drank-type/drank-type.module';
 import { CreatePeriodComponent } from './period/components/create-period/create-period.component';
 import { PeriodModule } from './period/period.module';
+import { CreateOrderComponent } from './order/components/create-order/create-order.component';
+import { OrderModule } from './order/order.module';
 
 @NgModule({
   imports: [
@@ -12,8 +14,9 @@ import { PeriodModule } from './period/period.module';
     PoefRoutingModule,
     DrankModule,
     DrankTypeModule,
-    PeriodModule
+    PeriodModule,
+    OrderModule
   ],
-  entryComponents: [CreatePeriodComponent]
+  entryComponents: [CreatePeriodComponent, CreateOrderComponent]
 })
 export class PoefModule {}

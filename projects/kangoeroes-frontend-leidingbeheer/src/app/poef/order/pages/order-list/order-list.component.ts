@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { OrderDataService } from '../../shared/order-data.service';
-import { Observable, combineLatest, forkJoin } from 'rxjs';
+import { Observable, combineLatest, forkJoin, merge, Subscription } from 'rxjs';
 import { Order } from '../../shared/order.model';
 import { map, switchMap } from 'rxjs/operators';
 import { OrderQueryOptions } from '../../shared/order-query-options';
@@ -13,12 +13,13 @@ import { PeriodFilterService } from '../../components/period-filter.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CreatePeriodComponent } from '../../../period/components/create-period/create-period.component';
 
+
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.scss']
 })
-export class OrderListComponent implements OnInit {
+export class OrderListComponent implements OnInit, OnDestroy {
   orders: Observable<Order[]>;
   orderlines: Observable<Orderline[]>;
   summary: Observable<OrderlineSummary[]>;
@@ -26,6 +27,8 @@ export class OrderListComponent implements OnInit {
   selectedEndDate: Date;
 
   addPeriodModal: BsModalRef;
+
+  private orderSubscription: Subscription;
 
   constructor(
     private orderDataService: OrderDataService,
@@ -36,19 +39,29 @@ export class OrderListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.periodFilterService.endDate$.subscribe(res => {
-      console.log(res);
-    });
 
-    this.orders = this.orderDataService
-      .list(new OrderQueryOptions())
+    const mutations = [
+      this.periodFilterService.startDate$,
+      this.periodFilterService.endDate$
+    ];
+
+    this.orderSubscription = combineLatest(mutations).pipe(
+     map(([start, end], index) => {
+       this.orders = this.orderDataService
+      .list(new OrderQueryOptions(start, end))
       .pipe(map(x => x.body));
 
     this.orderlines = this.orderlineDataService
-      .list(new OrderlineQueryOptions())
+      .list(new OrderlineQueryOptions(start, end))
       .pipe(map(x => x.body));
+     })
+   ).subscribe();
 
     this.summary = this.orderlineDataService.summary().pipe(map(x => x.body));
+  }
+
+  ngOnDestroy() {
+    this.orderSubscription.unsubscribe();
   }
 
   openAddPeriodModal() {

@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { PeriodDataService } from '../../shared/period-data.service';
 import * as moment from 'moment';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-create-period',
@@ -61,12 +62,11 @@ export class CreatePeriodComponent implements OnInit {
     },
   ];
 
-  constructor(private periodDataService: PeriodDataService,   public addPeriodRef: BsModalRef) {}
+  constructor(private periodDataService: PeriodDataService,   public addPeriodRef: BsModalRef, private snotify: SnotifyService) {}
 
   ngOnInit() {}
 
   onSubmit(event) {
-    console.log(event);
     const newPeriod = {
       name: event.naam,
       start: moment(event.startDate).utc(true),
@@ -74,8 +74,9 @@ export class CreatePeriodComponent implements OnInit {
     };
 
     this.periodDataService.create(newPeriod).subscribe((res) => {
-      console.log('Succes!');
-      console.log(res);
+      this.addPeriodRef.hide();
+      this.snotify.success('Periode werd toegevoegd!');
+
     });
   }
 }

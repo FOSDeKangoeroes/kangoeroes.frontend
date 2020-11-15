@@ -10,7 +10,7 @@ export class AppFooterComponent {
  version: string;
 
  constructor() {
-   this.version = `${gitVersion.branch}-${gitVersion.commit}`;
+   this.version =  '1.0'; // `${gitVersion.branch}-${gitVersion.commit}`;
  }
 
 }

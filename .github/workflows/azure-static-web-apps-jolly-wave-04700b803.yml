@@ -1,13 +1,17 @@
-name: Azure Static Web Apps CI/CD
+name: leidingbeheer production
 
 on:
   push:
     branches:
       - production
+    ignore-paths:
+      - 'projects/kangoeroes-frontend-totems/**'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - production
+    ignore-paths:
+      - 'projects/kangoeroes-frontend-totems/**'
 
 jobs:
   build_and_deploy_job:
@@ -28,8 +32,8 @@ jobs:
           ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
-          api_location: "api" # Api source code path - optional
-          output_location: "" # Built app content directory - optional
+          app_build_command: "npm run build-leidingbeheer-production"
+          app_artifact_location: "dist/leidingbeheer-production"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:

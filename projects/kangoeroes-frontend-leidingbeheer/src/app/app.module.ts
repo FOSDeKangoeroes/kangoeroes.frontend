@@ -85,7 +85,6 @@ import { AgGridModule } from 'ag-grid-angular';
 
 import { registerLocaleData } from '@angular/common';
 import localeBe from '@angular/common/locales/nl-BE';
-import { gitVersion } from 'projects/kangoeroes-frontend-core/src/lib/config/git-version';
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
 }

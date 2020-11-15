@@ -3,13 +3,13 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-      - staging
+      - master
     ignore-paths:
       - 'projects/kangoeroes-frontend-totems/**'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - staging
+      - master
     ignore-paths:
       - 'projects/kangoeroes-frontend-totems/**'
 

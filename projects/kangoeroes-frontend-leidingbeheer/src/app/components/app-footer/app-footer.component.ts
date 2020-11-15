@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { gitVersion } from 'projects/kangoeroes-frontend-core/src/lib/config/git-version';
 
 @Component({
   selector: 'app-footer',

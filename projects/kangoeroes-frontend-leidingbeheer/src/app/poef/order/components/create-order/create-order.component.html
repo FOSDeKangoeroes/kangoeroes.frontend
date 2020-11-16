@@ -4,51 +4,66 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-
+<form [formGroup]="orderForm" class="form-horizontal" (submit)="onSubmit()">
 <div class="modal-body">
-  <form [formGroup]="orderForm" class="form-horizontal">
-    <div class="form-group row">
-      
+  
+    <div class="" formArrayName="orderlines"
+      *ngFor="let line of orderForm.get('orderlines').controls; let i = index;">      
+      <div class="form-group row" [formGroupName]="i">
         <mat-form-field class="col-4">
           <mat-label>Voor</mat-label>
           <input type="text" placeholder="Leider" aria-label="Leider" matInput formControlName="orderedFor"
             [matAutocomplete]="auto">
-
-            <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #auto="matAutocomplete">
-              <ng-container *ngIf="leadersLoading">
-                <mat-option disabled>Laden...</mat-option>
-              </ng-container>
-              <ng-container *ngIf="leaders">
-                <mat-option  *ngFor="let option of filteredLeaders | async" [value]="option">
+          <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #auto="matAutocomplete">
+            <ng-container *ngIf="leadersLoading">
+              <mat-option disabled>Laden...</mat-option>
+            </ng-container>
+            <ng-container *ngIf="leaders">
+              <mat-option *ngFor="let option of filteredLeaders[i] | async" [value]="option">
                 {{option.displayName}}
               </mat-option>
-              </ng-container>
-              
-            </mat-autocomplete>
+            </ng-container>
+
+          </mat-autocomplete>
+
+
         </mat-form-field>
-        <mat-form-field class="col-4"> 
+        <mat-form-field class="col-4">
           <mat-label>Drank</mat-label>
           <input type="text" placeholder="Drank" aria-label="Drank" matInput formControlName="drink"
             [matAutocomplete]="auto2">
-      
           <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #auto2="matAutocomplete">
             <ng-container *ngIf="drinksLoading">
               <mat-option disabled>Laden...</mat-option>
             </ng-container>
             <ng-container *ngIf="drinks">
-              <mat-option *ngFor="let option of filteredDrinks | async" [value]="option">
+              <mat-option *ngFor="let option of filteredDrinks[i] | async" [value]="option">
                 {{option.displayName}}
               </mat-option>
             </ng-container>
-      
+
           </mat-autocomplete>
+
         </mat-form-field>
-      
-      
-        <mat-form-field class="col-4">
+
+
+        <mat-form-field class="col-3">
           <mat-label>Aantal</mat-label>
           <input matInput type="number" formControlName="quantity">
-        </mat-form-field> 
+        </mat-form-field>
+        <button mat-icon-button (click)="removeLine(i)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
     </div>
-  </form>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="addLineToForm()">Lijn toevoegen</button>
+    </div>
+    
+ 
 </div>
+<div class="modal-footer">
+  <button [disabled]="submittingOrder" type="submit" class="btn btn-success">Opslaan</button>
+</div>
+ </form>
+

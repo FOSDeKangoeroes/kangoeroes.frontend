@@ -19,6 +19,8 @@ import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dyn
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     DynamicFormModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   exports: [CreateOrderComponent],
   entryComponents: [CreateOrderComponent]

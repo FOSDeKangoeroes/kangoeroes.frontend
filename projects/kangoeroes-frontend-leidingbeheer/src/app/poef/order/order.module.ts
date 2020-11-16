@@ -17,6 +17,8 @@ import { PeriodFilterComponent } from './components/period-filter/period-filter.
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { DynamicFormModule } from 'projects/kangoeroes-frontend-core/src/lib/dynamic-form/dynamic-form.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     AutocompleteModule,
     DynamicFormModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatAutocompleteModule
   ],
   exports: [CreateOrderComponent],
   entryComponents: [CreateOrderComponent]

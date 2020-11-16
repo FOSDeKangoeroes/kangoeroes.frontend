@@ -71,6 +71,8 @@ export class OrderListComponent implements OnInit, OnDestroy {
   }
 
   openAddOrderModal() {
-    this.addOrderModal = this.modalService.show(CreateOrderComponent);
+    this.addOrderModal = this.modalService.show(CreateOrderComponent, {
+      class: 'modal-lg'
+    });
   }
 }

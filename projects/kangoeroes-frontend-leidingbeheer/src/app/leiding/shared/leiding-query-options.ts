@@ -3,6 +3,7 @@ import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-ser
 export class LeidingQueryOptions extends QueryOptions {
 
     public takId: number;
+    public tab = false;
 
     constructor() {
         super();
@@ -15,6 +16,7 @@ export class LeidingQueryOptions extends QueryOptions {
         queryMap.set('sortBy', `${this.sortBy}`);
         queryMap.set('sortOrder', `${this.sortOrder}`);
         queryMap.set('query', `${this.query}`);
+        queryMap.set('tab', `${this.tab}`)
 
         if (this.takId) {
             queryMap.set('tak', `${this.takId}`);

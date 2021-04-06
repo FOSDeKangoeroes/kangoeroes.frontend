@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../kangoeroes-frontend-core/src/lib/auth/services/auth.service';
-import { gitVersion } from 'projects/kangoeroes-frontend-core/src/lib/config/git-version';
 import { MonitoringService } from 'projects/kangoeroes-frontend-core/src/lib/monitoring/monitoring.service';
 
 @Component({
@@ -15,6 +14,6 @@ export class AppComponent {
   constructor(private auth: AuthService, private monitoringService: MonitoringService) {
     this.auth.handleAuthentication();
 
-    this.version = `${gitVersion.branch}-${gitVersion.commit}`;
+    this.version = `UNKNOWN`;
   }
 }

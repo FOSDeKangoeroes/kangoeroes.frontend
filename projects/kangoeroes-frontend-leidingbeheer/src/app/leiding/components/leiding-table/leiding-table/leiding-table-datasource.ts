@@ -3,7 +3,7 @@ import { Leiding } from '../../../shared/leiding.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { LeidingDataService } from '../../../shared/leiding-data.service';
-import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, map, delay } from 'rxjs/operators';
 import { LeidingService } from '../../../shared/leiding.service';
 import { SearchBarService } from 'projects/kangoeroes-frontend-core/src/lib/components/search-bar/search-bar.service';
 import { Subscription, Observable, merge } from 'rxjs';
@@ -45,6 +45,7 @@ export class LeidingTableDataSource extends DataSource<Leiding> {
 
         return merge(...dataMutations).pipe(
             switchMap(() => {
+                this.eventService.leidingLoading$.emit(true);
                 const options = new LeidingQueryOptions();
                 options.takId = this.takId;
                 options.pageNumber = this.paginator.pageIndex + 1;
@@ -54,10 +55,12 @@ export class LeidingTableDataSource extends DataSource<Leiding> {
                 options.sortOrder = this.sort.direction;
                 return this.leidingDataService.list(options);
             }),
+            delay(5000),
             map(data => {
                 const headers = JSON.parse(data.headers.get('X-Pagination'));
                 this.paginator.pageSize = headers.pageSize;
                 this.totalLength = headers.totalCount;
+                this.eventService.leidingLoading$.emit(false);
                 return data.body;
             })
         );

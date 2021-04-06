@@ -19,6 +19,7 @@ export class LeidingTableComponent implements OnInit {
   @Input() takId: number;
 
   dataSource: LeidingTableDataSource;
+  loading = false;
 
   private possibleColumns = [
     'tak.volgorde',
@@ -31,7 +32,7 @@ export class LeidingTableComponent implements OnInit {
 
   constructor(
     private leidingDataService: LeidingDataService,
-    private leidingService: LeidingService,
+    public leidingService: LeidingService,
     private searchBarService: SearchBarService
   ) {}
 
@@ -41,6 +42,8 @@ export class LeidingTableComponent implements OnInit {
     if (!this.displayedColumns) {
       this.displayedColumns = this.possibleColumns;
     }
+
+    this.leidingService.leidingLoading$.subscribe(res => this.loading = res);
 
     this.dataSource = new LeidingTableDataSource(
       this.paginator,

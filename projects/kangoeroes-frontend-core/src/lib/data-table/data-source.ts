@@ -53,6 +53,7 @@ export class KangoeroeTableDataSource<T extends Resource> extends DataSource<
 
     return merge(...dataMutations).pipe(
       switchMap(() => {
+        this.eventService.loading$.emit(true);
 
         const params = this.buildQueryOptions();
 
@@ -62,6 +63,7 @@ export class KangoeroeTableDataSource<T extends Resource> extends DataSource<
         const headers = JSON.parse(data.headers.get('X-Pagination'));
         this.paginator.pageSize = headers.pageSize;
         this.totalLength = headers.totalCount;
+        this.eventService.loading$.emit(false);
         return data.body;
       })
     );

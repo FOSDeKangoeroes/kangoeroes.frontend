@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { OrderDataService } from '../../shared/order-data.service';
-import { Observable, combineLatest, forkJoin, merge, Subscription } from 'rxjs';
+import { Observable, combineLatest, forkJoin, merge, Subscription, Subject } from 'rxjs';
 import { Order } from '../../shared/order.model';
 import { map, switchMap } from 'rxjs/operators';
 import { OrderQueryOptions } from '../../shared/order-query-options';
@@ -24,6 +24,7 @@ export class OrderListComponent implements OnInit, OnDestroy {
   orders: Observable<Order[]>;
   orderlines: Observable<Orderline[]>;
   summary: Observable<OrderlineSummary[]>;
+  refresh: Subject<boolean> = new Subject();
   selectedStartDate: Date;
   selectedEndDate: Date;
 
@@ -44,11 +45,11 @@ export class OrderListComponent implements OnInit, OnDestroy {
 
     const mutations = [
       this.periodFilterService.startDate$,
-      this.periodFilterService.endDate$
+      this.periodFilterService.endDate$,
     ];
 
     this.orderSubscription = combineLatest(mutations).pipe(
-     map(([start, end], index) => {
+     map(([start, end, refresh], index) => {
        this.orders = this.orderDataService
       .list(new OrderQueryOptions(start, end))
       .pipe(map(x => x.body));

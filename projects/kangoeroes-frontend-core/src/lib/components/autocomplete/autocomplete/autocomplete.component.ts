@@ -151,7 +151,9 @@ export class AutocompleteComponent<T extends Resource>
       params = this.serviceParams;
     }
 
-    this.service.list().subscribe((result: any) => {
+    const queryOptions = new QueryOptions();
+    queryOptions.pageSize = 1000;
+    this.service.list(queryOptions).subscribe((result: any) => {
       this.storedItems = this.transformResult(result);
       this.noSuggestions = result.length === 0;
       this.saveReturnType(this.storedItems);

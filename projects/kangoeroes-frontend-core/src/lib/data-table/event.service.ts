@@ -7,5 +7,6 @@ import { KangoeroeDataTableModule } from './data-table.module';
 export class EventService {
 
   entryChanged$ = new EventEmitter<any>();
+  loading$ = new EventEmitter<boolean>();
   constructor() { }
 }

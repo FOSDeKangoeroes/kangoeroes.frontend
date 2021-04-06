@@ -4,7 +4,7 @@
   "auth0ClientId": "qsVUJU2hWqxNu15XzwZp5AtkWhlJ6Wic",
   "auth0Domain": "dekangoeroes-development.eu.auth0.com",
   "auth0Audience": "admin.dekangoeroes.be",
-  "auth0RedirectUri": "https://totems-production.azurewebsites.net/callback",
+  "auth0RedirectUri": "https://jolly-wave-04700b803.azurestaticapps.net/callback",
   "auth0Scopes": "openid roles profile",
   "auth0ResponseType": "token id_token",
   "postAuthUrl": "/totems",

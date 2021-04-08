@@ -14,6 +14,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { RequireMatch } from 'projects/kangoeroes-frontend-core/src/lib/validators/autocomplete-validator';
 import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service/resource-model';
 import { LeidingAddComponent } from '../../../leiding/leiding-add/leiding-add.component';
+import { Leiding } from '../../../leiding/leiding.model';
+import { pipe } from 'rxjs';
+import { debounceTime, switchMap } from 'rxjs/operators';
+import { QueryOptions } from 'projects/kangoeroes-frontend-core/src/lib/data-service/query-options';
 
 @Component({
   selector: 'app-totem-entry-add',
@@ -22,6 +26,7 @@ import { LeidingAddComponent } from '../../../leiding/leiding-add/leiding-add.co
 })
 export class TotemEntryAddComponent implements OnInit {
   addEntryFormGroup: FormGroup;
+  leaders: Leiding[];
 
   leidingFactory = new LeidingFactory();
   adjectiveFactory = new AdjectiveFactory();
@@ -51,7 +56,7 @@ export class TotemEntryAddComponent implements OnInit {
       totem: [, [Validators.required, RequireMatch]],
       datumGekregen: [''],
       voorouder: [, RequireMatch]
-    });
+    });    
   }
 
   onSubmit(formDirective: FormGroupDirective) {
@@ -72,6 +77,9 @@ export class TotemEntryAddComponent implements OnInit {
         this.totemEntryService.entryChanged$.emit();
         this.addEntryFormGroup.reset();
         formDirective.resetForm();
+        this.snackbar.open(`${res.displayName} succesvol toegevoegd!`, null, {
+          duration: 2000
+        })
 
       },
       error => {

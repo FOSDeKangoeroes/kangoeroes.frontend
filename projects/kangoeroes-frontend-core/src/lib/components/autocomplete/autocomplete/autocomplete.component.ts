@@ -27,6 +27,8 @@ import {
 import { ResourceService } from '../../../data-service/resource-service';
 import { Resource } from '../../../data-service/resource-model';
 import { QueryOptions } from '../../../data-service/query-options';
+import { debounceTime } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'kng-core-autocomplete',
@@ -107,11 +109,10 @@ export class AutocompleteComponent<T extends Resource>
   @Input() placeholder = '';
   @Input() floatLabel: FloatLabelType = 'auto';
   @Input() formControl?: FormControl;
-  @Input() doPrefetch = true;
   @Input() displayItem ? = 'item.name';
   @Input() hasSearchButton = false;
   @Input() hasProgressBar = false;
-  @Input() minChars = 0;
+  @Input() minChars = 3;
   @Input() clearAfterSearch = false;
   @Input() showAddNew = false;
   @Input() addNewText = 'Nieuw toevoegen';
@@ -121,13 +122,11 @@ export class AutocompleteComponent<T extends Resource>
   @Input() displayItemFn?: (item: any) => string;
   @Input() displayTemplate?: TemplateRef<any>;
   @Input() transformResult: any = (x: any) => x.body;
+  @Input() sortBy: string;
 
   constructor() {}
 
   ngOnInit() {
-    if (this.doPrefetch) {
-      this.prefetch();
-    }
   }
 
   ngAfterViewInit() {
@@ -136,28 +135,8 @@ export class AutocompleteComponent<T extends Resource>
         this.autocompleteInput.nativeElement.focus();
       });
     }
-  }
 
-  public prefetch() {
-    if (!this.service) {
-      throw new Error('Service for prefetch is not defined in \'Source\'');
-    }
-
-    this.storedItems = [];
-    this.noSuggestions = false;
-
-    let params = new HttpParams();
-    if (this.serviceParams) {
-      params = this.serviceParams;
-    }
-
-    const queryOptions = new QueryOptions();
-    queryOptions.pageSize = 1000;
-    this.service.list(queryOptions).subscribe((result: any) => {
-      this.storedItems = this.transformResult(result);
-      this.noSuggestions = result.length === 0;
-      this.saveReturnType(this.storedItems);
-    });
+    fromEvent(this.autocompleteInput.nativeElement, 'keyup').pipe(debounceTime(500)).subscribe((value: KeyboardEvent) => { this.onKey(value); });
   }
 
   public search() {
@@ -185,6 +164,10 @@ export class AutocompleteComponent<T extends Resource>
     if (force || this.query.length >= this.minChars) {
       const queryOptions = new QueryOptions();
       queryOptions.query = this.query;
+      if(this.sortBy) {
+        queryOptions.sortBy = this.sortBy;
+      }
+      
 
       /* let params = new HttpParams();
       params = params.set('query', this.query);
@@ -304,12 +287,6 @@ export class AutocompleteComponent<T extends Resource>
     if (this.selectedOption) {
       return;
     }
-
-    if (this.doSearchViaService) {
-      this.fetch();
-    } else {
-      this.filterStoredItems();
-    }
   }
 
   public viewItem(item: any) {
@@ -334,7 +311,7 @@ export class AutocompleteComponent<T extends Resource>
   get doSearchViaService() {
     // check if search result returns from service or from local data
     // if prefetch is active only one request will be made on init
-    return this.service && !this.doPrefetch;
+    return this.service;
   }
 
   public onCreateNew() {
@@ -347,6 +324,7 @@ export class AutocompleteComponent<T extends Resource>
     }
 
     this.createNew.emit(this.selectedOption);
+    this.clearValue();
   }
 
   private isQueryEmpty(query: string): boolean {

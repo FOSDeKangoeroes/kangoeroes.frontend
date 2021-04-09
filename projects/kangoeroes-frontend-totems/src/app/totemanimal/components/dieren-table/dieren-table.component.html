@@ -7,6 +7,14 @@ matSortActive="naam" aria-label="Totemdieren">
   <mat-header-cell *matHeaderCellDef mat-sort-header>Naam</mat-header-cell>
   <mat-cell *matCellDef="let row">{{row.naam}}</mat-cell>
 </ng-container>
+<ng-container matColumnDef="entryCount">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>Aantal personen met deze totem</mat-header-cell>
+  <mat-cell *matCellDef="let row">{{row.entryCount}}</mat-cell>
+</ng-container>
+<ng-container matColumnDef="reuseDate">
+  <mat-header-cell *matHeaderCellDef>Vroegste hergebruikdatum</mat-header-cell>
+  <mat-cell *matCellDef="let row">{{row.reuseDate | date: 'dd-MM-yyyy'}}</mat-cell>
+</ng-container>
 <ng-container matColumnDef="createdOn">
   <mat-header-cell *matHeaderCellDef mat-sort-header>Aanmaakdatum</mat-header-cell>
   <mat-cell *matCellDef="let row">{{row.createdOn | date: 'dd-MM-yyyy'}}</mat-cell>

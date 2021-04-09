@@ -20,7 +20,7 @@ export class AnimalsComponent implements OnInit {
 
   displayedColumns = [];
 
-  possibleColumns = ['naam', 'createdOn', 'actions'];
+  possibleColumns = ['naam', 'createdOn','entryCount','reuseDate', 'actions'];
   private  readonly COLUMN_KEY = 'animal-columns';
   constructor(
     public titleService: TitleService,

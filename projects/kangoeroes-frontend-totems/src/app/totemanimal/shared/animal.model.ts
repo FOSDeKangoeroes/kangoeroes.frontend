@@ -3,5 +3,7 @@ import { Resource } from 'projects/kangoeroes-frontend-core/src/lib/data-service
 export class Animal extends Resource {
     naam: string;
     createdOn: Date;
+    entryCount: number;
+    reuseDate: Date;
 
 }

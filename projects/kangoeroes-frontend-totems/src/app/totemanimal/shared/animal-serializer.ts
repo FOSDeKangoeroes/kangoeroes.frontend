@@ -11,6 +11,8 @@ export class AnimalSerializer implements Serializer<Animal> {
     newAnimal.displayName = json.naam;
     newAnimal.id = json.id;
     newAnimal.naam = json.naam;
+    newAnimal.entryCount = json.entryCount;
+    newAnimal.reuseDate = json.reuseDate
 
     return newAnimal;
   }
